@@ -2,7 +2,35 @@
     margin: auto;
     
   }
-  .sl img{
-    width: 100%;
+  .service{
+    background-color: #00BC86;
+    padding: 20px 30px 12px;
+  }
+  .mySwiper{
+    color: white ;
+    padding: 0;
     margin: auto;
+  }
+  .icon{
+    padding: 0 0;
+    text-align: right;
+  }
+  .top-text{
+    text-align: left;
+    margin: 0;
+    padding: 0 0 0 0;
+    line-height: 1.8;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  .bot-text{
+    text-align: left;
+    margin: 0;
+    padding: 0 0 0 0;
+  }
+  .col-img{
+    padding: 0 0 0 0;
+  }
+  .col-text{
+    padding-left: -10px;
   }
