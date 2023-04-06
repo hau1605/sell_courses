@@ -19,21 +19,38 @@ export default class CoursesController {
     }
 
     // Call the getCourses method from the CoursesDAO class with the filters, page and courses per page arguments
-    const { coursesList, totalNumCourses } = await CoursesDAO.getCourses({
+    const { coursesList, totalNumCourses } = await CoursesDAO
+      .getCourses({
         filters,
         page,
         coursesPerPage,
-      });
+    });
   
       // Construct a response object with the courses list and other relevant information
-      let response = {
-        courses: coursesList,
-        page: page,
-        filters: filters,
-        entries_per_page: coursesPerPage,
-        total_results: totalNumCourses,
-      };
-      // Send the response object as a JSON response
-      res.json(response);
-    }
+    let response = {
+      courses: coursesList,
+      page: page,
+      filters: filters,
+      entries_per_page: coursesPerPage,
+      total_results: totalNumCourses,
+    };
+    // Send the response object as a JSON response
+    res.json(response);
   }
+
+  static async apiGetCoursesById(req, res, next) {
+    try {
+        let id = req.params.id || {};
+        let course = await CoursesDAO.getCourseById(id);
+        if (!course) {
+            res.status(404).json({ error: "Not found" })
+            return;
+        }
+        res.json(course);
+    }
+    catch (e) {
+        console.log(`api, ${e}`);
+        res.status(500).json({ error: e });
+    }
+}
+}
