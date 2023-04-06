@@ -17,12 +17,32 @@ import 'swiper/css';
 import "swiper/css/free-mode";
 import 'swiper/css/navigation';
 import Button from 'react-bootstrap/Button';
+import { useEffect } from 'react'
+
 const Banner = () => {
     const [index, setIndex] = useState(0);
     const swiper = useSwiper();
     const handleSelect = (selectedIndex, e) => {
         setIndex(selectedIndex);
     };
+    useEffect(() => {
+    //     const btn_fc=document.querySelectorAll(".btn_fc");
+    // btn_fc.addEventListener('click',()=>{
+    //     btn_fc.classList.add("btn_new_focus");
+    //     console.log('huhu')
+
+    // });
+    let btnnew_List=document.querySelectorAll('.btn_fc');
+    btnnew_List.forEach(btnnew=>{
+        btnnew.addEventListener('click',()=>{
+            document.querySelector('.btn_new_focus').classList.remove('btn_new_focus');
+            btnnew.classList.add('btn_new_focus');
+        })
+    })
+
+    }, [])
+    
+    
     return (
         <div className='body'>
             <Swiper
@@ -54,8 +74,6 @@ const Banner = () => {
                     alt="First slide"
                 /></SwiperSlide>
             </Swiper>
-
-
             <div className='service'>
                 <Swiper
                     loop={true}
@@ -142,6 +160,75 @@ const Banner = () => {
                         </Row>
                     </SwiperSlide>
                 </Swiper>
+            </div>
+            <div className='dm-course'>
+                <div className='line-box'></div>
+                <h2 className='header-text'>DANH MỤC KHÓA HỌC</h2>
+                <Container>
+                    <Row>
+                    <Col>
+                        <button className='dm-btn'>
+                            <Row>
+                                <Col xs='2'>
+                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-1.png?v=1650870899583'/>
+                                </Col>
+                                <Col><p className='dm-text'>Kỹ năng ngoại ngữ</p></Col>
+                            </Row>
+                        </button>
+                    </Col>
+                    <Col>
+                        <button className='dm-btn'>
+                            <Row>
+                                <Col xs='2'>
+                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-1.png?v=1650870899583'/>
+                                </Col>
+                                <Col><p className='dm-text'>Kỹ năng ngoại ngữ</p></Col>
+                            </Row>
+                        </button>
+                    </Col><Col>
+                        <button className='dm-btn'>
+                            <Row>
+                                <Col xs='2'>
+                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-1.png?v=1650870899583'/>
+                                </Col>
+                                <Col><p className='dm-text'>Kỹ năng ngoại ngữ</p></Col>
+                            </Row>
+                        </button>
+                    </Col><Col>
+                        <button className='dm-btn'>
+                            <Row>
+                                <Col xs='2'>
+                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-1.png?v=1650870899583'/>
+                                </Col>
+                                <Col><p className='dm-text'>Kỹ năng ngoại ngữ</p></Col>
+                            </Row>
+                        </button>
+                    </Col>
+                    </Row>
+                </Container>
+                <div className='line-box'></div>
+                <Container className='news-course'>
+                    <Col >
+                        <h2 className='header-text mgl-12'>KHÓA HỌC MỚI NHẤT</h2>
+                    </Col>
+                    <Col>
+                        <button className='btn-new btn_fc btn_new_focus' autoFocus={true}>
+                            Tất cả
+                        </button>
+                        <button className='btn-new btn_fc' >
+                        Thiết kế đồ họa
+                        </button>
+                        <button className='btn-new btn_fc' >
+                        Sale, bán hàng
+                        </button>
+                        <button className='btn-new btn_fc' >
+                        Gia đình
+                        </button>
+                        <button className='btn-new btn_fc' >
+                        Tin học văn phòng
+                        </button>
+                    </Col>
+                </Container>
             </div>
         </div>
 

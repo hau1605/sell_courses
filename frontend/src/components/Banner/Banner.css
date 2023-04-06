@@ -33,3 +33,98 @@
   .col-text{
     padding-left: -10px;
   }
+
+.line-box{
+  height: 5px;
+  background-color: #FBB72C;
+  display: block;
+  border-radius: 20px;
+  width: 100px;
+  margin-bottom: 15px;
+  margin-top: 50px;
+}
+.header-text{
+  text-align: left;
+  font-weight: 800;
+}
+.dm-course{
+  background-color: white;
+  padding: 50px 50px;
+}
+  .dm-btn{
+    background-color: #fafafa;
+    padding: 12px 10px 12px 20px;
+    outline: solid 0px red;
+    border-radius: 15px;
+    border: none;
+    white-space: nowrap;
+    width: 250px;
+  }
+  .dm-btn:hover {
+    background-color: #00BC86;
+    padding: 12px 10px 12px 20px;
+    outline: solid 0px red;
+    border-radius: 15px;
+    border: none;
+  }
+  .dm-btn:hover .dm-text{
+    color: #ffffff;}
+  .dm-text{
+    color: #5B5B5B;
+    text-align: center;
+    margin: 5px 0 0 0;
+    font-size: 16px;
+    line-height: 2;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 150px;
+  }
+  .mgl-12{
+    margin-left: -12px;
+  }
+
+  .btn-new{
+    background-color: #fff;
+    padding: 12px 20px 12px 20px;
+    outline: solid 0px red;
+    border-radius: 12px;
+    border: none;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0 10px;
+  }
+  .btn-new:hover{
+    background-color: #fff;
+    outline: solid 0px red;
+    border-radius: 12px;
+    border: none;
+    color: #00BC86;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all ease 0.3s;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: all;
+    box-shadow: 0px 4px 12px rgba(124,124,124,0.19);
+  }
+  .btn_new_focus  {
+    background-color: #fff;
+    outline: solid 0px red;
+    border-radius: 12px;
+    border: none;
+    color: #00BC86;
+    white-space: nowrap;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all ease 0.3s;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: all;
+    box-shadow: 0px 4px 12px rgba(124,124,124,0.19);
+  }
