@@ -27,27 +27,28 @@ const Banner = () => {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src={slider_1}
+                        src='https://bizweb.dktcdn.net/thumb/2048x2048/100/453/393/themes/894913/assets/slider_1.png?1676281841878'
                         alt="First slide"
                     />
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src={slider_1}
+                        src='https://bizweb.dktcdn.net/thumb/2048x2048/100/453/393/themes/894913/assets/slider_1.png?1676281841878'
                         alt="First slide"
                     />
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src={slider_1}
+                        src='https://bizweb.dktcdn.net/thumb/2048x2048/100/453/393/themes/894913/assets/slider_1.png?1676281841878'
                         alt="First slide"
                     />
                 </Carousel.Item>
             </Carousel>
             <div className='service'>
                 <Swiper freeMode={true}
+                loop={true}
                     grabCursor={true}
                     modules={[FreeMode]}
                     className='mySwiper'          
@@ -93,7 +94,7 @@ const Banner = () => {
                             </Col>
                             <Col className='col-text' >
                                 <Row>
-                                    <h6 className='top-text'>THANH TOÁN MỘT LẦN</h6>
+                                    <h6 className='top-text'>THANH TOÁN 1 LẦN</h6>
                                 </Row>
                                 <Row>
                                     <p className='bot-text'>Học mãi mãi</p>
