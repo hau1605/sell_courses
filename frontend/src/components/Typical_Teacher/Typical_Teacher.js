@@ -60,13 +60,14 @@ const Typical_Teacher = () => {
             className=""
             containerClass="container-with-dots"
             dotListClass=""
-            draggable
+            draggable={false}
             focusOnSelect={false}
             infinite={false}
             itemClass=""
             keyBoardControl
-            minimumTouchDrag={80}
+            minimumTouchDrag={40}
             renderButtonGroupOutside
+            renderArrowsWhenDisabled={false}
             renderDotsOutside={false}
             responsive={{
               desktop: {
