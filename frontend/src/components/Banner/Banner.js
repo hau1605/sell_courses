@@ -9,12 +9,13 @@ import service_1 from "./service_1.png"
 import service_2 from "./service_2.png"
 import service_3 from "./service_3.png"
 import service_4 from "./service_4.webp"
-import slider_2 from "./slider_2.webp"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination} from 'swiper';
 import { FreeMode } from 'swiper';
 import 'swiper/css';
 import "swiper/css/free-mode";
+import 'swiper/css/navigation';
 const Banner = () => {
     const [index, setIndex] = useState(0);
 
@@ -47,10 +48,10 @@ const Banner = () => {
                 </Carousel.Item>
             </Carousel>
             <div className='service'>
-                <Swiper freeMode={true}
-                loop={true}
-                    grabCursor={true}
-                    modules={[FreeMode]}
+                <Swiper 
+    modules={[Navigation, Pagination]}
+                    navigation={true} 
+                    loop={true}
                     className='mySwiper'          
                     breakpoints={
                         {
