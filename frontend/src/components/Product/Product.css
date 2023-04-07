@@ -1,0 +1,98 @@
+@media only screen and (max-width: 760px){
+    .text-tittle{
+        font-size: 16px;
+    }
+    .text-price{
+        font-size: 16px;
+    }
+    .btn-level-normal{
+        font-size:10px;
+    }
+    .text-des{
+        font-size: 14px;
+    }
+  }
+  @media only screen and (min-width: 761px){
+    .text-tittle{
+        font-size: 20px;
+    }
+    .text-price{
+        font-size: 22px;
+    }
+    .btn-level-normal{
+        font-size:14px;
+    }
+    .text-des{
+        font-size: 16px;
+    }
+  }
+.Card{
+    padding: 15px;
+    box-shadow: 0px 4px 12px rgba(124,124,124,0.19);
+    border-radius: 18px;
+    border: none;
+    margin-bottom: 12px;
+}
+.card-img{
+    border-radius: 12px;
+}
+.btn-level-normal{
+    text-align: left;
+    background-color: #e1d6ff;
+    padding: 4px 12px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    border: none;
+    font-weight: 600;
+    color: #7768f2;
+    border-radius: 10px;
+    font-weight: 400;
+    text-align: left;
+    display: inline-block;
+
+}
+
+.btn-level-medium{
+    text-align: left;
+    background-color: #c5faeb;
+    padding: 4px 12px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    border: none;
+    color: #009067;
+    border-radius: 10px;
+    text-align: left;
+    display: inline-block;
+}
+.btn-level-hard{
+    text-align: left;
+    background-color: #fdd8d4;
+    padding: 4px 12px;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    border: none;
+    color: red;
+    border-radius: 10px;
+    text-align: left;
+    display: inline-block;
+}
+.text-tittle{
+    font-weight: 700;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient:vertical;
+}
+.text-des{
+    color: #00BC86;
+    font-weight: 700;
+    padding: 0;
+    margin-bottom: 0;
+}
+.text-price{
+    color: red;
+    font-weight: 700;
+    padding-top: 6px;
+    padding-bottom: 8px;
+}

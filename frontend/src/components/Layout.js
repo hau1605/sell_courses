@@ -2,7 +2,7 @@ import React from 'react';
 import { Layout, Space } from 'antd';
 
 import HomePage from "./HomePage/HomePage"
-const { Header, Footer, Content } = Layout;
+const { Header, Content } = Layout;
 const headerStyle = {
   textAlign: 'center',
   color: '#fff',
@@ -34,7 +34,7 @@ const WebLayout = () => (
     <Layout>
       <Header style={headerStyle}>Header</Header>
       <HomePage/>
-      <Footer style={footerStyle}>Footer</Footer>
+      
     </Layout>
   </Space>
 );
