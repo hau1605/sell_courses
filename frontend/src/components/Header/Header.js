@@ -2,7 +2,7 @@ import React from 'react';
 import logo from "./logo.webp"
 import "./Header.css"
 import { Col, Row } from 'antd';
-const WebHeader = () => (
+const Header = () => (
 
       <div className='header'>
         <div className='header_left'>
@@ -34,4 +34,4 @@ const WebHeader = () => (
       </div>
 
 );
-export default WebHeader;
+export default Header;

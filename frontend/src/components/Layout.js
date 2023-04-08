@@ -1,18 +1,14 @@
 import React from 'react';
 import { Card, Layout, Space } from 'antd';
 import { Routes, Route, Link } from "react-router-dom";
-
+import Header from './Header/Header';
 import HomePage from "./HomePage/HomePage"
-const { Header, Content } = Layout;
-const headerStyle = {
-  textAlign: 'center',
-  color: '#fff',
-  height: 64,
-  paddingInline: 50,
-  lineHeight: '64px',
-  backgroundColor: '#7dbcea',
-};
-
+import Banner from './Banner/Banner';
+import ProductDetail from './ProductDetail/ProductDetail';
+import Login from './Login/Login';
+import Logout from './Logout/Logout';
+import ProductList from './ProductList/ProductList';
+import Cart from './Cart/Cart';
 
 const WebLayout = () => (
   <Space
@@ -23,9 +19,15 @@ const WebLayout = () => (
     size={[0, 48]}
   >
     <Layout>
-      <Header style={headerStyle}>Header</Header>
-      <HomePage/>
-      
+      <Header >Header</Header>
+      <Routes>
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/ProductDetail" element={<ProductDetail/>} />
+        <Route path="/Login" element={<Login/>} />
+        <Route path="/Logout" element={<Logout/>} />
+        <Route path="/Cart" element={<Cart/>} />
+        <Route path="/ProductList" element={<ProductList/>} />
+      </Routes>
     </Layout>
     
   </Space>

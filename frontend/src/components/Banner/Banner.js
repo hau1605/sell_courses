@@ -128,7 +128,7 @@ const Banner = () => {
                     <SwiperSlide style={{ paddingBottom: '12px' }}>
                         <Row className='row'>
                             <Col className='col-img' xs='3'>
-                                <img className='icon' src={service_1} />
+                                <img className='iconn' src={service_1} />
                             </Col>
                             <Col className='col-text'>
                                 <Row>
@@ -143,7 +143,7 @@ const Banner = () => {
                     <SwiperSlide>
                         <Row>
                             <Col className='col-img' xs='3'>
-                                <img className='icon' src={service_2} />
+                                <img className='iconn' src={service_2} />
                             </Col>
                             <Col className='col-text' >
                                 <Row>
@@ -157,7 +157,7 @@ const Banner = () => {
                     </SwiperSlide><SwiperSlide>
                         <Row>
                             <Col className='col-img' xs='3'>
-                                <img className='icon' src={service_3} />
+                                <img className='iconn' src={service_3} />
                             </Col>
                             <Col className='col-text'>
                                 <Row>
@@ -171,7 +171,7 @@ const Banner = () => {
                     </SwiperSlide><SwiperSlide>
                         <Row>
                             <Col className='col-img' xs='3'>
-                                <img className='icon' src={service_4} />
+                                <img className='iconn' src={service_4} />
                             </Col>
                             <Col className='col-text'>
                                 <Row>
