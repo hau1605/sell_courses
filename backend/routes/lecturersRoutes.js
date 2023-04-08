@@ -1,69 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const lecturersDAO = require('../dao/lecturersDAO');
+const lecturersController = require('../controllers/lecturersController');
 
-// Create a new lecturer
-router.post('/', async (req, res) => {
-  try {
-    const newLecturer = req.body;
-    const createdLecturer = await lecturersDAO.createLecturer(newLecturer);
-    res.status(201).json(createdLecturer);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// Route to get all lecturers
+router.get('/', lecturersController.getAllLecturers);
 
-// Get all lecturers
-router.get('/', async (req, res) => {
-  try {
-    const lecturers = await lecturersDAO.getAllLecturers();
-    res.status(200).json(lecturers);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// Route to get a lecturer by ID
+router.get('/:id', lecturersController.getLecturerById);
 
-// Get a lecturer by ID
-router.get('/:id', async (req, res) => {
-  try {
-    const lecturerId = req.params.id;
-    const lecturer = await lecturersDAO.getLecturerById(lecturerId);
-    if (lecturer) {
-      res.status(200).json(lecturer);
-    } else {
-      res.status(404).json({ error: 'Lecturer not found' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// Route to create a new lecturer
+router.post('/', lecturersController.createLecturer);
 
-// Update a lecturer by ID
-router.put('/:id', async (req, res) => {
-  try {
-    const lecturerId = req.params.id;
-    const updatedLecturer = req.body;
-    const lecturer = await lecturersDAO.updateLecturer(lecturerId, updatedLecturer);
-    if (lecturer) {
-      res.status(200).json(lecturer);
-    } else {
-      res.status(404).json({ error: 'Lecturer not found' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// Route to update a lecturer by ID
+router.put('/:id', lecturersController.updateLecturer);
 
-// Delete a lecturer by ID
-router.delete('/:id', async (req, res) => {
-  try {
-    const lecturerId = req.params.id;
-    await lecturersDAO.deleteLecturer(lecturerId);
-    res.status(204).send();
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// Route to delete a lecturer by ID
+router.delete('/:id', lecturersController.deleteLecturer);
 
 module.exports = router;
 

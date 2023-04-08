@@ -1,69 +1,21 @@
 const express = require('express');
 const router = express.Router();
-const categoriesDAO = require('../dao/categoriesDAO');
+const categoriesController = require('../controllers/categoriesController');
 
-// Create a new category
-router.post('/', async (req, res) => {
-  try {
-    const newCategory = req.body;
-    const createdCategory = await categoriesDAO.createCategory(newCategory);
-    res.status(201).json(createdCategory);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// Route to get all categories
+router.get('/', categoriesController.getAllCategories);
 
-// Get all categories
-router.get('/', async (req, res) => {
-  try {
-    const categories = await categoriesDAO.getAllCategories();
-    res.status(200).json(categories);
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// Route to get a category by ID
+router.get('/:id', categoriesController.getCategoryById);
 
-// Get a category by ID
-router.get('/:id', async (req, res) => {
-  try {
-    const categoryId = req.params.id;
-    const category = await categoriesDAO.getCategoryById(categoryId);
-    if (category) {
-      res.status(200).json(category);
-    } else {
-      res.status(404).json({ error: 'Category not found' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// Route to create a new category
+router.post('/', categoriesController.createCategory);
 
-// Update a category by ID
-router.put('/:id', async (req, res) => {
-  try {
-    const categoryId = req.params.id;
-    const updatedCategory = req.body;
-    const category = await categoriesDAO.updateCategory(categoryId, updatedCategory);
-    if (category) {
-      res.status(200).json(category);
-    } else {
-      res.status(404).json({ error: 'Category not found' });
-    }
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// Route to update a category by ID
+router.put('/:id', categoriesController.updateCategory);
 
-// Delete a category by ID
-router.delete('/:id', async (req, res) => {
-  try {
-    const categoryId = req.params.id;
-    await categoriesDAO.deleteCategory(categoryId);
-    res.status(204).send();
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
-});
+// Route to delete a category by ID
+router.delete('/:id', categoriesController.deleteCategory);
 
 module.exports = router;
 
