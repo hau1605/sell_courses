@@ -2,6 +2,7 @@ import React from 'react';
 import { Layout, Space } from 'antd';
 
 import HomePage from "./HomePage/HomePage"
+import WebHeader from './Header/Header';
 const { Header, Content } = Layout;
 const headerStyle = {
   textAlign: 'center',
@@ -32,7 +33,7 @@ const WebLayout = () => (
     size={[0, 48]}
   >
     <Layout>
-      <Header style={headerStyle}>Header</Header>
+      <WebHeader />
       <HomePage/>
       
     </Layout>
