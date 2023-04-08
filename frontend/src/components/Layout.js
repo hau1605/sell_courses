@@ -3,12 +3,6 @@ import { Card, Layout, Space } from 'antd';
 import { Routes, Route, Link } from "react-router-dom";
 
 import HomePage from "./HomePage/HomePage"
-import Banner from './Banner/Banner';
-import ProductDetail from './ProductDetail/ProductDetail';
-import Login from './Login/Login';
-import Logout from './Logout/Logout';
-import ProductList from './ProductList/ProductList';
-import Cart from './Cart/Cart';
 const { Header, Content } = Layout;
 const headerStyle = {
   textAlign: 'center',
@@ -30,14 +24,8 @@ const WebLayout = () => (
   >
     <Layout>
       <Header style={headerStyle}>Header</Header>
-      <Routes>
-        <Route path="/" element={<HomePage/>} />
-        <Route path="/ProductDetail" element={<ProductDetail/>} />
-        <Route path="/Login" element={<Login/>} />
-        <Route path="/Logout" element={<Logout/>} />
-        <Route path="/Cart" element={<Cart/>} />
-        <Route path="/ProductList" element={<ProductList/>} />
-      </Routes>
+      <HomePage/>
+      
     </Layout>
     
   </Space>
