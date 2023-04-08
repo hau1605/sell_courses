@@ -1,7 +1,14 @@
 import React from 'react';
-import { Layout, Space } from 'antd';
+import { Card, Layout, Space } from 'antd';
+import { Routes, Route, Link } from "react-router-dom";
 
 import HomePage from "./HomePage/HomePage"
+import Banner from './Banner/Banner';
+import ProductDetail from './ProductDetail/ProductDetail';
+import Login from './Login/Login';
+import Logout from './Logout/Logout';
+import ProductList from './ProductList/ProductList';
+import Cart from './Cart/Cart';
 const { Header, Content } = Layout;
 const headerStyle = {
   textAlign: 'center',
@@ -11,18 +18,8 @@ const headerStyle = {
   lineHeight: '64px',
   backgroundColor: '#7dbcea',
 };
-const contentStyle = {
-  textAlign: 'center',
-  minHeight: 120,
-  lineHeight: '120px',
-  color: '#fff',
-  backgroundColor: '#108ee9',
-};
-const footerStyle = {
-  textAlign: 'center',
-  color: '#fff',
-  backgroundColor: '#7dbcea',
-};
+
+
 const WebLayout = () => (
   <Space
     direction="vertical"
@@ -33,9 +30,17 @@ const WebLayout = () => (
   >
     <Layout>
       <Header style={headerStyle}>Header</Header>
-      <HomePage/>
-      
+      <Routes>
+        <Route path="/" element={<HomePage/>} />
+        <Route path="/ProductDetail" element={<ProductDetail/>} />
+        <Route path="/Login" element={<Login/>} />
+        <Route path="/Logout" element={<Logout/>} />
+        <Route path="/Cart" element={<Cart/>} />
+        <Route path="/ProductList" element={<ProductList/>} />
+      </Routes>
     </Layout>
+    
   </Space>
+  
 );
 export default WebLayout;
