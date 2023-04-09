@@ -363,16 +363,23 @@ const Banner = () => {
                 </Row>
                 <Row >
                     <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                        <Product /></Col >
+                        <Product />
+                        </Col >
                     <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                        <Product /></Col>
+                        <Product />
+                        </Col>
                     <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                        <Product /></Col>
+                        <Product />
+                        </Col>
                     <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                        <Product /></Col><Col xs={6} lg={4} style={{ padding: '8px' }}>
-                        <Product /></Col>
+                        <Product />
+                        </Col>
                     <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                        <Product /></Col>
+                        <Product />
+                        </Col>
+                    <Col xs={6} lg={4} style={{ padding: '8px' }}>
+                        <Product />
+                        </Col>
                 </Row>
                 <Row>
                     <Col style={{ textAlign: 'center' }}>
