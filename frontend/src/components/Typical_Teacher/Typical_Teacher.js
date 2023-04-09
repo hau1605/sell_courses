@@ -103,7 +103,7 @@ const Typical_Teacher = () => {
       
   return (
     <div>
-      <h1 style={titleStyle} >Giáo Viên Tiêu Biểu</h1>
+      <h1 style={titleStyle} >Giảng Viên Tiêu Biểu</h1>
       <MultiCarousel />
     </div>
   );
