@@ -27,11 +27,8 @@ const Header = () => (
         </div>
         <div className='header_right'>
           <button>Đăng nhập</button>
-
           <button>Đăng ký</button>
         </div>
-
       </div>
-
 );
 export default Header;

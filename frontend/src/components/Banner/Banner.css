@@ -1,48 +1,18 @@
 @media only screen and (max-width: 763px){
-  .header-text{
-    font-size: 16px;
-  }
+ 
 }
 @media only screen and (max-width: 1150px){
-  .col-new{
-    display: none;
-  }
-  .col-new-mobile{
-    display:flex;
-  }
+  
   .service {
     padding:14px 30px 3px 30px;
-  }
-  .hot-course {
-    padding: 1px 20px;
-  }.dm-course{
-    padding: 1px 20px 20px;
   }
 }
 @media only screen and (min-width: 1151px){
   .service {
     padding:14px 70px 5px 70px;
   }
-  .hot-course {
-    padding: 1px 70px;
-  }.dm-course{
-    padding: 1px 70px 30px;
-  }
-  .col-new-mobile{
-    display: none;
-    padding-bottom: 10px;
-
-  }
 }
-
-
-
-
-.carousel-inner img {
-    margin: auto;
-    
-  }
-  .service{
+.service{
     background-color: #00BC86;
   }
   .mySwiper{
@@ -66,146 +36,7 @@
     margin: 0;
     padding: 0 0 0 0;
   }
-  .col-img{
-    padding: 0 0 0 0;
-  }
-  .col-text{
-    padding-left: -10px;
-  }
 
-.line-box{
-  height: 5px;
-  background-color: #FBB72C;
-  display: block;
-  border-radius: 20px;
-  width: 100px;
-  margin-bottom: 15px;
-  margin-top: 50px;
-}
-.header-text{
-  text-align: left;
-  font-weight: 800;
-  white-space: nowrap;
-  width: 150px;
-}
-.dm-course{
-  background-color: white;
-}
-.hot-course{
-  background-color: #edfaf1;
-}
-.slick-slide > div {
-  margin: 0 20px;
-}
 
-.slider-dm{
-  margin: 0 8px -20px -15px;
-}
-  .dm-btn{
-    background-color: #fafafa;
-    padding: 12px 10px 12px 20px;
-    outline: solid 0px red;
-    border-radius: 15px;
-    border: none;
-    white-space: nowrap;
-    width: 250px;
-    margin: 5px 15px;
-  }
-  .dm-btn:hover {
-    background-color: #00BC86;
-    padding: 12px 10px 12px 20px;
-    outline: solid 0px red;
-    border-radius: 15px;
-    border: none;
-  }
-  .dm-btn:hover .dm-text{
-    color: #ffffff;}
-  .dm-text{
-    color: #5B5B5B;
-    text-align: left;
-    margin: 5px 0 0 0;
-    font-size: 16px;
-    line-height: 2;
-    font-weight: 600;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 200px;
-  }
-  
 
-  .btn-new{
-    background-color: #fff;
-    padding: 12px 20px 12px 20px;
-    outline: solid 0px red;
-    border-radius: 12px;
-    border: none;
-    white-space: nowrap;
-    font-weight: 600;
-    font-size: 14px;
-    margin: 0 5px 15px;
-  }
-  .btn-new:hover{
-    background-color: #fff;
-    outline: solid 0px red;
-    border-radius: 12px;
-    border: none;
-    color: #00BC86;
-    white-space: nowrap;
-    font-weight: 600;
-    font-size: 14px;
-    transition: all ease 0.3s;
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
-    transition-delay: 0s;
-    transition-property: all;
-    box-shadow: 0px 4px 12px rgba(124,124,124,0.19);
-  }
-  .btn_new_focus  {
-    background-color: #fff;
-    outline: solid 0px red;
-    border-radius: 12px;
-    border: none;
-    color: #00BC86;
-    white-space: nowrap;
-    font-weight: 600;
-    font-size: 14px;
-    transition: all ease 0.3s;
-    transition-duration: 0.3s;
-    transition-timing-function: ease;
-    transition-delay: 0s;
-    transition-property: all;
-    box-shadow: 0px 4px 12px rgba(124,124,124,0.19);
-  }
-  .col-new{
-    text-align: end;
-  }
 
-  .btn-all{
-    margin-top: 10px;
-    padding: 10px 40px;
-    background-color: #00BC86;
-    color: white;
-    outline: none;
-    border: solid 1px #00BC86;
-    font-weight: 600;
-    font-size: 16px;
-    border-radius: 10px;
-    text-align: center;
-    display: inline-block;
-  }
-  .btn-all:hover{
-    margin-top: 10px;
-    padding: 10px 40px;
-    background-color: white;
-    color: #00BC86;
-    outline: none;
-    border: solid 1px #00BC86;
-    font-weight: 600;
-    font-size: 16px;
-    border-radius: 10px;    
-    transition: all 0.5s ease-in-out;
-  }
-  .hot-course{
-    padding-bottom:50px;
-  }
