@@ -19,7 +19,7 @@ const WebLayout = () => (
     size={[0, 48]}
   >
     <Layout>
-      <Header >Header</Header>
+      <Header style={{zIndex:1}} >Header</Header>
       <Routes>
         <Route path="/" element={<HomePage/>} />
         <Route path="/ProductDetail" element={<ProductDetail/>} />

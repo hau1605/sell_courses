@@ -10,7 +10,7 @@ const Header = () => (
         </div>
         <div className='header_center'>
           <ul className='header_menu'>
-            <div className='dropDown_header'>
+            <div style={{zIndex:1}} className='dropDown_header'>
                 <button className='dropDown_button'>Danh mục</button>
                   <div className='dropDown_list'>
                     <a href='#'>Trang chủ</a>

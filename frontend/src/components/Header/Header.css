@@ -41,12 +41,18 @@
     height: 100%;
 }
 
+.dropDown_button {
+    padding: 10px;
+    align-items: center;
+}
+
 .dropDown_list {
     display: none;
     position:absolute;
     min-width: 220px;
-    min-height: 200px;
+    min-height: 5000px;
     float:left;
+    background-color: white;
 }
 
 .dropDown_header:hover > .dropDown_list {
