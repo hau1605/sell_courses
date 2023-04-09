@@ -17,8 +17,8 @@ import "swiper/css/free-mode";
 import 'swiper/css/navigation';
 import "swiper/css/scrollbar";
 import { Scrollbar } from "swiper";
-import { useEffect } from 'react'
-const Banner = () => {
+const Banner = (props) => {
+    const imglist=props.imgs;
     return (
         <div >
             <Swiper
@@ -34,21 +34,11 @@ const Banner = () => {
                 modules={[Autoplay, Navigation]}
                 className="mySwiper"
             >
-                <SwiperSlide><img
+                {imglist.map((item,index)=><SwiperSlide><img
                     className="d-block w-100"
-                    src='https://bizweb.dktcdn.net/thumb/2048x2048/100/453/393/themes/894913/assets/slider_1.png?1676281841878'
+                    src={item}
                     alt="First slide"
-                /></SwiperSlide>
-                <SwiperSlide><img
-                    className="d-block w-100"
-                    src='https://bizweb.dktcdn.net/thumb/2048x2048/100/453/393/themes/894913/assets/slider_1.png?1676281841878'
-                    alt="First slide"
-                /></SwiperSlide>
-                <SwiperSlide><img
-                    className="d-block w-100"
-                    src='https://bizweb.dktcdn.net/thumb/2048x2048/100/453/393/themes/894913/assets/slider_1.png?1676281841878'
-                    alt="First slide"
-                /></SwiperSlide>
+                /></SwiperSlide>)}  
             </Swiper>
             <div className='service'>
                 <Swiper

@@ -167,36 +167,36 @@ const ProductHomePage = () => {
                             </Row>
                         </button>
                     </Slider>
-                <div className='line-box'></div>
-                <h2 className='header-text '>KHÓA HỌC MỚI NHẤT</h2>
-                <div className='new-course'>
-                <Row >
-                    <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                        <Product />
-                    </Col >
-                    <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                        <Product />
-                    </Col>
-                    <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                        <Product />
-                    </Col>
-                    <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                        <Product />
-                    </Col>
-                    <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                        <Product />
-                    </Col>
-                    <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                        <Product />
-                    </Col>
-                </Row>
+                    <div className='line-box'></div>
+                    <h2 className='header-text '>KHÓA HỌC MỚI NHẤT</h2>
+                    <div className='new-course'>
+                        <Row >
+                            <Col xs={6} lg={4} style={{ padding: '8px' }}>
+                                <Product />
+                            </Col >
+                            <Col xs={6} lg={4} style={{ padding: '8px' }}>
+                                <Product />
+                            </Col>
+                            <Col xs={6} lg={4} style={{ padding: '8px' }}>
+                                <Product />
+                            </Col>
+                            <Col xs={6} lg={4} style={{ padding: '8px' }}>
+                                <Product />
+                            </Col>
+                            <Col xs={6} lg={4} style={{ padding: '8px' }}>
+                                <Product />
+                            </Col>
+                            <Col xs={6} lg={4} style={{ padding: '8px' }}>
+                                <Product />
+                            </Col>
+                        </Row>
+                    </div>
+                    <Row>
+                        <Col style={{ textAlign: 'center' }}>
+                            <button className='btn-all'>Xem tất cả</button>
+                        </Col>
+                    </Row>
                 </div>
-                <Row>
-                    <Col style={{ textAlign: 'center' }}>
-                        <button className='btn-all'>Xem tất cả</button>
-                    </Col>
-                </Row>
-            </div>
             </div>
             <div className='hot-course'>
                 <div className='line-box'></div>
@@ -269,44 +269,42 @@ const ProductHomePage = () => {
                     </Col>
                 </Row>
                 <div className='new-course'>
-                <Row style={{ padding: '15px 0px' }}>
-                    <Col xs={6} style={{ padding: '0px 8px' }}>
-                        <img style={{ width: '100%', borderRadius: '10px' }} src='https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/banner_featured_1.png?1676281841878' />
-                    </Col>
-                    <Col xs={6} style={{ padding: '0px 8px' }}>
-                        <img style={{ width: '100%', borderRadius: '10px' }} src='https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/banner_featured_2.png?1676281841878' />
+                    <Row style={{ padding: '15px 0px' }}>
+                        <Col xs={6} style={{ padding: '0px 8px' }}>
+                            <img style={{ width: '100%', borderRadius: '10px' }} src='https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/banner_featured_1.png?1676281841878' />
+                        </Col>
+                        <Col xs={6} style={{ padding: '0px 8px' }}>
+                            <img style={{ width: '100%', borderRadius: '10px' }} src='https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/banner_featured_2.png?1676281841878' />
 
-                    </Col>
-                </Row>
-             
-                <Row >
-                    <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                        <Product />
-                    </Col>
-                    <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                        <Product />
-                    </Col>
-                    <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                        <Product /></Col>
-                    <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                        <Product />
-                    </Col>
-                    <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                        <Product />
-                    </Col>
-                    <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                        <Product />
-                    </Col>
-                    <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                        <Product />
-                    </Col>
-                    <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                        <Product />
-                    </Col>
-                </Row>
+                        </Col>
+                    </Row>
+
+                    <Row >
+                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
+                            <Product />
+                        </Col>
+                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
+                            <Product />
+                        </Col>
+                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
+                            <Product /></Col>
+                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
+                            <Product />
+                        </Col>
+                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
+                            <Product />
+                        </Col>
+                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
+                            <Product />
+                        </Col>
+                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
+                            <Product />
+                        </Col>
+                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
+                            <Product />
+                        </Col>
+                    </Row>
                 </div>
-                
-      
                 <Row>
                     <Col style={{ textAlign: 'center' }}>
                         <button className='btn-all'>Xem tất cả</button>
