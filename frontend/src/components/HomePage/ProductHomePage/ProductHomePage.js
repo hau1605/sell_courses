@@ -64,7 +64,7 @@ const ProductHomePage = () => {
             }]
     };
     return (
-        <div className='body'>
+        <div >
             <div className='dm-course'>
                 <div className='line-box'></div>
                 <h2 className='header-text'>DANH MỤC KHÓA HỌC</h2>
@@ -268,7 +268,7 @@ const ProductHomePage = () => {
                         </Swiper>
                     </Col>
                 </Row>
-                <div className='new-course'>
+                <div className='list-hot-course'>
                     <Row style={{ padding: '15px 0px' }}>
                         <Col xs={6} style={{ padding: '0px 8px' }}>
                             <img style={{ width: '100%', borderRadius: '10px' }} src='https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/banner_featured_1.png?1676281841878' />
