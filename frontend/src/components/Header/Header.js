@@ -13,7 +13,7 @@ const Header = () => (
           <ul className='header_menu'>
             <div className='dropDown_header'>
                 <button className='dropDown_button'>Danh mục</button>
-                </Link>
+                <Link/>
                   <div className='dropDown_list'>
                     <a href='#'>Trang chủ</a>
                     <a href='#'>Danh sách khóa học</a>
