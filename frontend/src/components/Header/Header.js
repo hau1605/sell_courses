@@ -2,18 +2,16 @@ import React from 'react';
 import logo from "./logo.webp"
 import "./Header.css"
 import { Col, Row } from 'antd';
-import { Link } from 'react-router-dom';
 const Header = () => (
 
       <div className='header'>
         <div className='header_left'>
-            <Link to='/'><img className='icon' src={logo} />  </Link>    
+            <img className='icon' src={logo} />      
         </div>
         <div className='header_center'>
           <ul className='header_menu'>
             <div className='dropDown_header'>
                 <button className='dropDown_button'>Danh mục</button>
-                <Link/>
                   <div className='dropDown_list'>
                     <a href='#'>Trang chủ</a>
                     <a href='#'>Danh sách khóa học</a>
@@ -29,8 +27,11 @@ const Header = () => (
         </div>
         <div className='header_right'>
           <button>Đăng nhập</button>
+
           <button>Đăng ký</button>
         </div>
+
       </div>
+
 );
 export default Header;
