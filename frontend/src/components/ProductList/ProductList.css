@@ -1,5 +1,38 @@
+@media only screen and (max-width: 1150px) {
+    .body{
+        padding: 30px 20px;
+
+    }
+}
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg)
+    }
+    100% {
+      transform: rotate(180deg)
+    }
+  }
+@media only screen and (min-width: 1151px) {
+    .body{
+        padding: 30px 150px;
+
+    }
+}
+.arrow-icon{
+    height: 20px;
+    top:12px;
+    right: 8px;
+}
+.arrow-icon.active{
+    transform: rotate(180deg);
+    transition: .4s ease-in-out;
+}
+.arrow-icon.inactive{
+    transform: rotate(0deg);
+    transition: .4s ease-in-out;
+
+}
 .body{
-    padding: 30px 150px;
     background-color: white;
 }
 .img-banner{
@@ -25,7 +58,7 @@
 .header-text-sub{
     font-size: 14px;
     font-weight: 800;
-    margin: 0;
+    margin: 10px 0 10px 0;
 }
 .course-nav{
     list-style: none;
@@ -78,9 +111,35 @@
     padding: 10px 0 10px 25px;
     border-top: 0.5px dashed #898989;
 }
+.text-course-nav:hover{
+    color: #00bc86;
+    
+}
 .text-course-nav{
     text-decoration: none;
     font-size: 14px;
     color: #898989;
-    
+    cursor: pointer;
+}
+.list-course>li:hover{
+    color: #00bc86;
+
+}
+.form-check{
+    margin: 5px 0 0;
+    cursor: pointer;
+}
+.form-check-label{
+    color: #898989;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.form-check-label:hover{
+    color: #00bc86;
+}
+.form-check-input{
+    background-color: white;
+}
+.form-check-input:checked{
+    background-color: #00bc86;
 }

@@ -34,7 +34,7 @@ const ProductList = () => {
                                 <p className="header-text-sub" onClick={() => setopenSubcourse(!opensubCourse)}>KHÓA HỌC</p>
                                 <ul className={`course-nav `}>
                                     <li><Link className='text-course-nav'>Trang chủ</Link></li>
-                                    <li onClick={() => setopenListcourse(!openListcourse)}> Danh sách khóa học
+                                    <li style={{position:'relative'}} className='text-course-nav'  onClick={() => setopenListcourse(!openListcourse)}>Danh sách khóa học
                                         <div>
                                             <ul className={`list-course ${openListcourse ? 'active' : 'inactive'}`}>
                                                 <li>
@@ -54,6 +54,7 @@ const ProductList = () => {
                                                 </li>
                                             </ul>
                                         </div>
+                                        <img className={`arrow-icon ${openListcourse ? 'active' : 'inactive'}`} style={{position:'absolute'}} src="https://cdn-icons-png.flaticon.com/512/2985/2985150.png"/>
                                     </li>
 
                                     <li><Link className='text-course-nav'>Khóa học tiêu biểu</Link></li>
@@ -64,24 +65,34 @@ const ProductList = () => {
                             <div className={`sb-level  ${opensubCourse ? 'activesubcourse' : 'inactivesubcourse'}`}>
                                 <p className="header-text-sub">TRÌNH ĐỘ</p>
                                 <Form>
-                                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                        <Form.Check style={{color:'green'}} type="checkbox" label="Cơ bản" />
-                                        <Form.Check type="checkbox" label="Mọi cấp độ" />
-                                        <Form.Check type="checkbox" label="Nâng cao" />
-                                        
+                                    <Form.Group className="mb-1" controlId="formBasicCheckboxNormal">
+                                        <Form.Check  type="checkbox" label="Cơ bản"/>
+                                    </Form.Group>
+                                    <Form.Group className="mb-1" controlId="formBasicCheckboxMedium">
+                                        <Form.Check type="checkbox" label="Mọi cấp độ"/>
+                                    </Form.Group>
+                                    <Form.Group className="mb-1" controlId="formBasicCheckboxHard">
+                                        <Form.Check type="checkbox" label="Nâng cao"/>
                                     </Form.Group>
                                 </Form>
                             </div>
                             <div>
                             <p className="header-text-sub">MỨC GIÁ</p>
                                 <Form>
-                                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                                        <Form.Check style={{color:'green'}} type="checkbox" label="Giá dưới 100.000đ" />
-                                        <Form.Check type="checkbox" label="100.000đ - 200.000đ" />
+                                    <Form.Group className="mb-1" controlId="formBasicCheckboxUnder200">
+                                        <Form.Check type="checkbox" label="Giá dưới 200.000đ" />
+                                    </Form.Group>
+                                    <Form.Group className="mb-1" controlId="formBasicCheckboxBetween200300">
                                         <Form.Check type="checkbox" label="200.000đ - 300.000đ" />
-                                        <Form.Check type="checkbox" label="300.000đ - 500.000đ" />
-                                        <Form.Check type="checkbox" label="500.000đ - 1.000.000đ" />
-                                        <Form.Check type="checkbox" label="Giá trên 1.000.000đ" />
+                                    </Form.Group>
+                                    <Form.Group className="mb-1" controlId="formBasicCheckboxBetween300400">
+                                        <Form.Check type="checkbox" label="300.000đ - 400.000đ" />
+                                    </Form.Group>
+                                    <Form.Group className="mb-1" controlId="formBasicCheckboxBetween400500">
+                                        <Form.Check type="checkbox" label="400.000đ - 500.000đ" />
+                                    </Form.Group>
+                                    <Form.Group className="mb-1" controlId="formBasicCheckboxUp500">
+                                        <Form.Check type="checkbox" label="Giá trên 500.000đ"/>
                                     </Form.Group>
                                 </Form>
                             </div>
