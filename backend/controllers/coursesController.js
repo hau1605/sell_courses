@@ -24,7 +24,9 @@ async function getCourses(req, res) {
   const page = parseInt(req.query.page) || 1;
   const coursesPerPage = parseInt(req.query.coursePerPage) || 6;
   const priceRanges = req.query.priceRanges || '';
-  const name = req.query.name||'';
+  const sort = req.query.sort || 'cost';
+  const sortOrder = req.query.sortOrder === "asc" ? 1 : -1
+  const name = req.query.name || '';
   const ranges = priceRanges.split(',').map(range => range.split('-').map(Number));
   const rangeQueries = ranges.map(range => {
     return {
@@ -34,32 +36,32 @@ async function getCourses(req, res) {
       }
     };
   });
-  let filters='';
-  if (priceRanges!==''&&name!=='') {
+  let filters = '';
+  if (priceRanges !== '' && name !== '') {
     filters = {
-      $and:[
-        {$or: rangeQueries},
-        {name:{$regex:name,$options:"i"}}
+      $and: [
+        { $or: rangeQueries },
+        { name: { $regex: name, $options: "i" } }
       ]
-  }}
-  else if(priceRanges==='')
-  {
+    }
+  }
+  else if (priceRanges === '') {
     filters = {
-      $and:[
-        {name:{$regex:name,$options:"i"}}
+      $and: [
+        { name: { $regex: name, $options: "i" } }
       ]
-  }}else {
+    }
+  } else {
     filters = {
-      $and:[
-        {$or: rangeQueries},
+      $and: [
+        { $or: rangeQueries },
       ]
+    }
   }
+  if (filters === '') {
+    filters = {};
   }
-  if (filters==='')
-  {
-    filters={};
-  }
-  const courses = await coursesDAO.getCourses(filters, page, coursesPerPage);
+  const courses = await coursesDAO.getCourses(filters, page, coursesPerPage,sort,sortOrder);
   const response = {
     filters: filters,
     totalCount: courses.totalCount,

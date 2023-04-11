@@ -17,7 +17,8 @@ import Product from '../../Product/Product';
 import { useEffect } from 'react';
 import CoursesDataService from "../../../services/CoursesDataService"
 const ProductHomePage = () => {
-    const [Products, setProducts] = useState([])
+    const [Products, setProducts] = useState([]);
+    const [newProducts, setnewProducts] = useState([]);
     useEffect(() => {
         let btnnew_List = document.querySelectorAll('.btn_fc');
         btnnew_List.forEach(btnnew => {
@@ -26,7 +27,17 @@ const ProductHomePage = () => {
                 btnnew.classList.add('btn_new_focus');
             })
         })
-        CoursesDataService.getAll()
+        CoursesDataService.getNewCourse()
+            .then(response => {
+                console.log(response.data);
+                console.log("ok");
+                setnewProducts(response.data.products);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+
+            CoursesDataService.getHotCourse()
             .then(response => {
                 console.log(response.data);
                 console.log("ok");
@@ -34,7 +45,8 @@ const ProductHomePage = () => {
             })
             .catch(e => {
                 console.log(e);
-            });
+            });    
+            
     }, [])
     const settings = {
         slidesToShow: 4, dots: true, infinite: false,
@@ -180,7 +192,9 @@ const ProductHomePage = () => {
                     <h2 className='header-text '>KHÓA HỌC MỚI NHẤT</h2>
                     <div className='new-course'>
                         <Row >
-
+                        {newProducts.map((item)=><Col xs={6} lg={4} md={4} style={{ padding: '8px' }}>
+                            <Product product={item} />
+                        </Col>)}
                         </Row>
                     </div>
                     <Row>
@@ -276,8 +290,6 @@ const ProductHomePage = () => {
                         {Products.map((item)=><Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
                             <Product product={item} />
                         </Col>)}
-                        
-
                     </Row>}
                 </div>
                 <Row>
