@@ -26,8 +26,10 @@ async function getCourses(req, res) {
   const priceRanges = req.query.priceRanges || '';
   const sort = req.query.sort || 'cost';
   const sortOrder = req.query.sortOrder === "asc" ? 1 : -1
+  const level = req.query.level || '';
   const name = req.query.name || '';
   const ranges = priceRanges.split(',').map(range => range.split('-').map(Number));
+  const arrLevel=level.split(',');
   const rangeQueries = ranges.map(range => {
     return {
       cost: {
@@ -36,28 +38,43 @@ async function getCourses(req, res) {
       }
     };
   });
+  const levelQueries = arrLevel.map(range => {
+    return {
+      level: {
+        $eq:range
+      }
+    };
+  });
   let filters = '';
-  if (priceRanges !== '' && name !== '') {
+  if (priceRanges!==''&&level!=='') {
     filters = {
       $and: [
         { $or: rangeQueries },
-        { name: { $regex: name, $options: "i" } }
+        { name: { $regex: name, $options: "i" } },
+        {$or:levelQueries}
       ]
     }
   }
-  else if (priceRanges === '') {
+  else if (priceRanges === ''&&level!=='') {
     filters = {
       $and: [
-        { name: { $regex: name, $options: "i" } }
+        { name: { $regex: name, $options: "i" } },
+        {$or:levelQueries}
       ]
     }
-  } else {
+  } else if (level === ''&&priceRanges!==''){
     filters = {
       $and: [
+        { name: { $regex: name, $options: "i" } },
         { $or: rangeQueries },
       ]
-    }
-  }
+    }}
+    else {filters = {
+      $and: [
+        { name: { $regex: name, $options: "i" } },
+      ]
+    }}
+  
   if (filters === '') {
     filters = {};
   }

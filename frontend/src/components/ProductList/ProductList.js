@@ -9,6 +9,7 @@ import Form from 'react-bootstrap/Form';
 import CustomPagination from "../Pagination/Pagination";
 import './ProductList.css'
 import CoursesDataService from "../../services/CoursesDataService";
+import { FormGroup } from "react-bootstrap";
 const ProductList = () => {
     const [Products, setProducts] = useState([])
     const [currentPage, setCurrentPage] = useState(1);
@@ -18,18 +19,25 @@ const ProductList = () => {
     const [priceBT300400, setPricesBT300400] = useState(false);
     const [priceBT400500, setPricesBT400500] = useState(false);
     const [priceAbove500, setPricesAbove500] = useState(false);
+    const [level, setLevel] = useState(false);
+    const [levelNormal, setlevelNormal] = useState(false);
+    const [levelMedium, setlevelMedium] = useState(false);
+    const [levelHard, setlevelHard] = useState(false);
     const [filterprice, setfilterprice] = useState(false)
     const [filter, setFilter] = useState({})
-    let filterstring = ''
-
+    const [sort,setSort]=useState('asc')
+    const [name,setName]=useState('TẤT CẢ KHÓA HỌC')
     const handlePageChange = async (pageNumber) => {
         // Xử lý khi người dùng chọn trang mới
         setCurrentPage(pageNumber);
-        
-    }
-    const changefilterprice = () => {
 
     }
+    const onchangeSortPrice = e => {
+        const _sort=e.target.value
+        setSort(_sort);
+        
+    }
+    
     const img = ['https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/breadcrumb_image.png?1676281841878']
     const [openListcourse, setopenListcourse] = useState(false);
     const [opensubCourse, setopenSubcourse] = useState(false);
@@ -38,18 +46,23 @@ const ProductList = () => {
         if (priceUnder200)
             filterstring = filterstring.concat('0-200000,')
         if (priceBT200300)
-            filterstring = filterstring+'200000-300000,'
+            filterstring = filterstring + '200000-300000,'
         if (priceBT300400)
             filterstring = filterstring.concat('300000-400000,')
         if (priceBT400500)
             filterstring = filterstring.concat('400000-500000,')
         if (priceAbove500)
             filterstring = filterstring.concat('500000-10000000')
+        let filterlevel=''
+        if (levelNormal) filterlevel=filterlevel.concat('normal,')
+        if (levelHard) filterlevel=filterlevel.concat('hard,')
+        if (levelMedium) filterlevel=filterlevel.concat('medium')
+        let filtername=name;
+        if(name==='TẤT CẢ KHÓA HỌC') filtername=''
         console.log(currentPage)
-        setFilter({currentPage: currentPage})
-        console.log(currentPage,filter)
-
-        CoursesDataService.getAll(currentPage,filterstring)
+        console.log(currentPage, sort,filterlevel)
+        
+        CoursesDataService.getAll(currentPage, filterstring,sort,filterlevel,filtername)
             .then(response => {
                 console.log(response.data);
                 console.log("ok");
@@ -62,7 +75,7 @@ const ProductList = () => {
 
         // if (filterstring) setFilter({price:filterstring});
         console.log(filterstring)
-    }, [currentPage,filterprice])
+    }, [currentPage, filterprice,sort,level,name])
     return (<div>
         <Banner imgs={img} />
         <div className='body'>
@@ -79,7 +92,7 @@ const ProductList = () => {
                 <div style={{ margin: '20px 0' }}>
                     <Row >
                         <Col xs='3' style={{ position: 'relative' }}>
-                            <p className="header-text-loai">TẤT CẢ SẢN PHẨM</p>
+                            <p className="header-text-loai">{name}</p>
                             <div className={`sb-subcourse`}>
                                 <p className="header-text-sub" onClick={() => setopenSubcourse(!opensubCourse)}>KHÓA HỌC</p>
                                 <ul className={`course-nav `}>
@@ -87,20 +100,17 @@ const ProductList = () => {
                                     <li style={{ position: 'relative' }} className='text-course-nav' onClick={() => setopenListcourse(!openListcourse)}>Danh sách khóa học
                                         <div>
                                             <ul className={`list-course ${openListcourse ? 'active' : 'inactive'}`}>
-                                                <li>
-                                                    Khóa học nấu ăn
+                                            <li onClick={()=>{setName('TẤT CẢ KHÓA HỌC');}}>
+                                                    Tất cả
                                                 </li>
-                                                <li>
-                                                    Khóa học nấu ăn
+                                                <li onClick={()=>{setName('Digital');}}>
+                                                    Digital
                                                 </li>
-                                                <li>
-                                                    Khóa học nấu ăn
+                                                <li onClick={()=>{setName('Learn');}}>
+                                                    Learn
                                                 </li>
-                                                <li>
-                                                    Khóa học nấu ăn
-                                                </li>
-                                                <li>
-                                                    Khóa học nấu ăn
+                                                <li onClick={()=>{setName('Tutorial')}}>
+                                                    Tutorial
                                                 </li>
                                             </ul>
                                         </div>
@@ -114,21 +124,21 @@ const ProductList = () => {
                             </div>
                             <div className={`sb-level  ${opensubCourse ? 'activesubcourse' : 'inactivesubcourse'}`}>
                                 <p className="header-text-sub">TRÌNH ĐỘ</p>
-                                <Form>
+                                <Form onChange={()=>setLevel(!level)}>
                                     <Form.Group className="mb-1" controlId="formBasicCheckboxNormal">
-                                        <Form.Check type="checkbox" label="Cơ bản" />
+                                        <Form.Check onChange={() => { setlevelNormal(!levelNormal) }} type="checkbox" label="Cơ bản" />
                                     </Form.Group>
                                     <Form.Group className="mb-1" controlId="formBasicCheckboxMedium">
-                                        <Form.Check type="checkbox" label="Mọi cấp độ" />
+                                        <Form.Check onChange={() => { setlevelMedium(!levelMedium) }} type="checkbox" label="Mọi cấp độ" />
                                     </Form.Group>
                                     <Form.Group className="mb-1" controlId="formBasicCheckboxHard">
-                                        <Form.Check type="checkbox" label="Nâng cao" />
+                                        <Form.Check onChange={() => { setlevelHard(!levelHard) }} type="checkbox" label="Nâng cao" />
                                     </Form.Group>
                                 </Form>
                             </div>
                             <div>
                                 <p className="header-text-sub">MỨC GIÁ</p>
-                                <Form onChange={() => {setfilterprice(!filterprice);setCurrentPage(1)}}>
+                                <Form onChange={() => { setfilterprice(!filterprice); setCurrentPage(1) }}>
                                     <Form.Group className="mb-1" controlId="formBasicCheckboxUnder200">
                                         <Form.Check type="checkbox" onChange={() => { setPricesUnder200(!priceUnder200) }} label="Giá dưới 200.000đ" />
                                     </Form.Group>
@@ -150,7 +160,22 @@ const ProductList = () => {
 
                             </div>
                         </Col>
-                        <Col xs='9'>
+                        <Col xs='9' style={{padding:'0px 0 0 7px'}}>
+                            <Row>
+                                <Col></Col>
+                                <Col xs='8' md='5' lg='3' style={{margin:'0 16px 0 0'}}>
+                                <Form>
+                                <FormGroup>
+                                <Form.Control as="select" onChange={onchangeSortPrice} aria-label="Default select example">
+                                    <option value="asc">Sắp xếp</option>
+                                    <option value="asc">Giá tăng dần</option>
+                                    <option value="dsc">Giá giảm dần</option>
+                                </Form.Control>
+                                </FormGroup>
+                                </Form>
+                                </Col>
+
+                            </Row>
                             <Row >
                                 {Products.length === 0 ? null :
                                     <Row >
@@ -160,7 +185,7 @@ const ProductList = () => {
                                     </Row>
                                 }
                             </Row>
-                            <CustomPagination
+                            <CustomPagination className="pagination"
                                 pageCount={pageCount}
                                 currentPage={currentPage}
                                 handlePageChange={handlePageChange}

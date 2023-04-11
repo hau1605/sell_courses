@@ -1,0 +1,8 @@
+
+
+.page-link{
+    color: #00BC86;
+}.active>.page-link, .page-link.active{
+    background-color: #00BC86;
+    border-color:#00BC86;
+}

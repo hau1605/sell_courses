@@ -143,3 +143,22 @@
 .form-check-input:checked{
     background-color: #00bc86;
 }
+.pagination{
+    text-align: center;
+    margin: 0 auto;
+    justify-content: center;
+}
+select.form-select{
+    justify-content: right;
+    text-align: left;
+    display: block;
+    margin: 0 12px 0 0;
+}
+.form-select{
+    justify-content: right;
+    padding: auto;
+}
+.form-select option{
+    border-radius: 12px;
+
+}

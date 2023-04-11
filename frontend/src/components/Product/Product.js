@@ -5,13 +5,18 @@ import { useState } from "react";
 import Card from 'react-bootstrap/Card';
 import Button from "react-bootstrap/esm/Button";
 import './Product.css';
-import { Link } from "react-router-dom";
+import { Link, Route } from "react-router-dom";
+import { Col } from "react-bootstrap";
 const Product = (props) => {
-  const levels = "normal";
-  const [level, setLevel] = useState(levels);
+  const [level, setLevel] = useState('');
+  
+  useEffect(()=>{
+    setLevel(props.product.level)
+  })
+
   return (
     <div>
-      
+
       <Link to='/ProductDetail' className="link">
         <Card className="Card">
           <Card.Img className="card-img " variant="top" src={props.product.poster} />
@@ -23,9 +28,13 @@ const Product = (props) => {
             <Card.Text className="text-des">
               Công nghệ thông tin
             </Card.Text>
-            <Card.Text className="text-price">
-              {props.product.cost}
-            </Card.Text>
+                <Card.Text >
+                  <p className="text-price">{props.product.cost.toLocaleString('vi', { style: 'currency', currency: 'VND' })} </p>
+                  
+                  <p className="text-price-sales">{Math.ceil(props.product.cost*1.3).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
+                </Card.Text>
+
+
           </Card.Body>
         </Card></Link>
     </div>

@@ -11,6 +11,9 @@
     .text-des{
         font-size: 14px;
     }
+    .text-price-sales{
+        font-size: 10px;
+    }
   }
   @media only screen and (min-width: 761px){
     .text-tittle{
@@ -18,6 +21,9 @@
     }
     .text-price{
         font-size: 22px;
+    }
+    .text-price-sales{
+        font-size: 16px;
     }
     .btn-level-normal{
         font-size:14px;
@@ -45,7 +51,7 @@
 .btn-level-normal{
     text-align: left;
     background-color: #e1d6ff;
-    padding: 4px 12px;
+    padding: 3px 10px;
     margin-top: 20px;
     margin-bottom: 8px;
     border: none;
@@ -61,7 +67,7 @@
 .btn-level-medium{
     text-align: left;
     background-color: #c5faeb;
-    padding: 4px 12px;
+    padding: 3px 10px;
     margin-top: 20px;
     margin-bottom: 8px;
     border: none;
@@ -73,7 +79,7 @@
 .btn-level-hard{
     text-align: left;
     background-color: #fdd8d4;
-    padding: 4px 12px;
+    padding: 3px 10px;
     margin-top: 20px;
     margin-bottom: 8px;
     border: none;
@@ -101,6 +107,19 @@
     color: red;
     font-weight: 700;
     padding-top: 6px;
-    padding-bottom: 8px;
+    padding-bottom: 0px;
     text-decoration: none;
+    padding-right: 14px;
+    display: inline-block;
+    margin: 0;
+}
+.text-price-sales{
+    text-align: center;
+    padding: auto 0;
+    display: inline-block;
+    color: #929292;
+    text-align: left;
+    text-decoration: line-through 0.1px;
+    font-weight: 500;
+    margin: 0;
 }
