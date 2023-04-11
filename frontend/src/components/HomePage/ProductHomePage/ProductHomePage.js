@@ -30,7 +30,7 @@ const ProductHomePage = () => {
             .then(response => {
                 console.log(response.data);
                 console.log("ok");
-                setProducts(response.data);
+                setProducts(response.data.products);
             })
             .catch(e => {
                 console.log(e);
