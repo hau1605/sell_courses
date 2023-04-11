@@ -34,15 +34,31 @@ async function getCourses(req, res) {
       }
     };
   });
-  let filters=''
-  if (priceRanges!=='') {
+  let filters='';
+  if (priceRanges!==''&&name!=='') {
     filters = {
       $and:[
         {$or: rangeQueries},
         {name:{$regex:name,$options:"i"}}
       ]
   }}
-
+  else if(priceRanges==='')
+  {
+    filters = {
+      $and:[
+        {name:{$regex:name,$options:"i"}}
+      ]
+  }}else {
+    filters = {
+      $and:[
+        {$or: rangeQueries},
+      ]
+  }
+  }
+  if (filters==='')
+  {
+    filters={};
+  }
   const courses = await coursesDAO.getCourses(filters, page, coursesPerPage);
   const response = {
     filters: filters,
