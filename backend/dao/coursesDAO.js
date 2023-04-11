@@ -22,13 +22,13 @@ const getAllCourses = async () => {
 };
 const getCourses= async (filters ,
   page ,
-  coursesPerPage )=>
+  coursesPerPage,sort,sortOrder )=>
 {
   const totalCount = await Course.countDocuments(filters);
   const totalPages = Math.ceil(totalCount / coursesPerPage);
   try {const filteredCoures = await Course.find(filters)
     .skip((page - 1) * coursesPerPage)
-    .limit(coursesPerPage)
+    .limit(coursesPerPage).sort({[sort]: sortOrder})
     return {filteredCoures, totalPages,totalCount};
   }
   catch(e){
