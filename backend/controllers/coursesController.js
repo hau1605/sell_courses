@@ -20,7 +20,40 @@ async function getAllCourses(req, res) {
     res.status(500).json({ error: error.message });
   }
 }
+async function getCourses(req, res) {
+  const page = parseInt(req.query.page) || 1;
+  const coursesPerPage = parseInt(req.query.coursePerPage) || 6;
+  const priceRanges = req.query.priceRanges || '';
+  const name = req.query.name||'';
+  const ranges = priceRanges.split(',').map(range => range.split('-').map(Number));
+  const rangeQueries = ranges.map(range => {
+    return {
+      cost: {
+        $gte: range[0],
+        $lte: range[1]
+      }
+    };
+  });
+  let filters=''
+  if (priceRanges!=='') {
+    filters = {
+      $and:[
+        {$or: rangeQueries},
+        {name:{$regex:name,$options:"i"}}
+      ]
+  }}
 
+  const courses = await coursesDAO.getCourses(filters, page, coursesPerPage);
+  const response = {
+    filters: filters,
+    totalCount: courses.totalCount,
+    totalPages: courses.totalPages,
+    currentPage: page,
+    coursesPerPage,
+    products: courses.filteredCoures
+  };
+  res.json(response)
+}
 // Get a course by ID
 async function getCourseById(req, res) {
   try {
@@ -66,6 +99,7 @@ async function deleteCourse(req, res) {
 module.exports = {
   createCourse,
   getAllCourses,
+  getCourses,
   getCourseById,
   updateCourse,
   deleteCourse
