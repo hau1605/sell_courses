@@ -1,4 +1,4 @@
-const User = require('./userModel');
+const User = require('../models/userModel');
 
 // Create a new user
 const createUser = async (userData) => {
@@ -6,6 +6,16 @@ const createUser = async (userData) => {
     const newUser = new User(userData);
     const savedUser = await newUser.save();
     return savedUser;
+  } catch (error) {
+    throw error;
+  }
+};
+
+// Get all user
+const getAllUsers = async () => {
+  try {
+    const user = await User.find();
+    return user;
   } catch (error) {
     throw error;
   }
@@ -52,6 +62,7 @@ const deleteUser = async (userId) => {
 
 module.exports = {
   createUser,
+  getAllUsers,
   getUserByEmail,
   getUserById,
   updateUser,
