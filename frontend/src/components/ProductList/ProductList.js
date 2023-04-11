@@ -81,7 +81,7 @@ const ProductList = () => {
         <div className='body'>
             <p><Link className="text-link-home" to='/'>Trang chủ</Link>/<span className="text-link-loai">Tất cả sản phẩm</span></p>
             <Container>
-                <Row style={{ padding: '15px 0px' }}>
+                <Row style={{ padding: '15px 0px' , margin:'0 -2px'}}>
                     <Col xs={6} style={{ padding: '0px 8px' }}>
                         <img className="img-banner" style={{ width: '100%', borderRadius: '10px', }} src='https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/banner_featured_1.png?1676281841878' />
                     </Col>
@@ -91,7 +91,7 @@ const ProductList = () => {
                 </Row>
                 <div style={{ margin: '20px 0' }}>
                     <Row >
-                        <Col xs='3' style={{ position: 'relative' }}>
+                        <Col xs='3' style={{ position: 'relative',padding:'0 14px 0 0'}} >
                             <p className="header-text-loai">{name}</p>
                             <div className={`sb-subcourse`}>
                                 <p className="header-text-sub" onClick={() => setopenSubcourse(!opensubCourse)}>KHÓA HỌC</p>
@@ -103,13 +103,13 @@ const ProductList = () => {
                                             <li onClick={()=>{setName('TẤT CẢ KHÓA HỌC');}}>
                                                     Tất cả
                                                 </li>
-                                                <li onClick={()=>{setName('Digital');}}>
+                                                <li onClick={()=>{setName('Digital');setCurrentPage(1)}}>
                                                     Digital
                                                 </li>
-                                                <li onClick={()=>{setName('Learn');}}>
+                                                <li onClick={()=>{setName('Learn');setCurrentPage(1)}}>
                                                     Learn
                                                 </li>
-                                                <li onClick={()=>{setName('Tutorial')}}>
+                                                <li onClick={()=>{setName('Tutorial');setCurrentPage(1)}}>
                                                     Tutorial
                                                 </li>
                                             </ul>
@@ -126,13 +126,13 @@ const ProductList = () => {
                                 <p className="header-text-sub">TRÌNH ĐỘ</p>
                                 <Form onChange={()=>setLevel(!level)}>
                                     <Form.Group className="mb-1" controlId="formBasicCheckboxNormal">
-                                        <Form.Check onChange={() => { setlevelNormal(!levelNormal) }} type="checkbox" label="Cơ bản" />
+                                        <Form.Check onChange={() => { setlevelNormal(!levelNormal);setCurrentPage(1) }} type="checkbox" label="Cơ bản" />
                                     </Form.Group>
                                     <Form.Group className="mb-1" controlId="formBasicCheckboxMedium">
-                                        <Form.Check onChange={() => { setlevelMedium(!levelMedium) }} type="checkbox" label="Mọi cấp độ" />
+                                        <Form.Check onChange={() => { setlevelMedium(!levelMedium);setCurrentPage(1) }} type="checkbox" label="Mọi cấp độ" />
                                     </Form.Group>
                                     <Form.Group className="mb-1" controlId="formBasicCheckboxHard">
-                                        <Form.Check onChange={() => { setlevelHard(!levelHard) }} type="checkbox" label="Nâng cao" />
+                                        <Form.Check onChange={() => { setlevelHard(!levelHard) ;setCurrentPage(1)}} type="checkbox" label="Nâng cao" />
                                     </Form.Group>
                                 </Form>
                             </div>
@@ -160,11 +160,11 @@ const ProductList = () => {
 
                             </div>
                         </Col>
-                        <Col xs='9' style={{padding:'0px 0 0 7px'}}>
+                        <Col xs='9' style={{padding:'0px 0 0 18px', margin:'0 0 0 0px'}}>
                             <Row>
                                 <Col></Col>
                                 <Col xs='8' md='5' lg='3' style={{margin:'0 16px 0 0'}}>
-                                <Form>
+                                <Form onChange={()=>setCurrentPage(1)}>
                                 <FormGroup>
                                 <Form.Control as="select" onChange={onchangeSortPrice} aria-label="Default select example">
                                     <option value="asc">Sắp xếp</option>
