@@ -1,9 +1,9 @@
 const userModel = require('../models/userModel');
 const express = require('express');
-const bodyParser = require('body-parser');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
+
 
 // Controller function to get all users
 const getAllUsers = async (req, res) => {
@@ -32,9 +32,23 @@ const getUserById = async (req, res) => {
 // Controller function to create a new user
 const createUser = async (req, res) => {
   try {
-    const newUser = req.body;
-    const createdUser = await userModel.createUser(newUser);
-    res.status(201).json(createdUser);
+    const emailR = req.body.email;
+    const passwordR = req.body.password;
+    const existingUser = await userModel.findOne({ email:{$eq:emailR} });
+
+    if (existingUser) {
+      return res.status(400).json({ error: 'Người dùng đã tồn tại' });
+    }
+
+    // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
+    const salt = await bcrypt.genSalt(10); // Tạo
+    console.log(salt);
+    const hashedPassword = await bcrypt.hash(passwordR, salt); // Mã hóa mật khẩu
+
+    // Tạo người dùng mới với mật khẩu đã được mã hóa
+    const newUser = new userModel({ email: emailR, password: hashedPassword });
+    await newUser.save();
+    res.status(201).json({ message: 'Người dùng đã được tạo' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -109,13 +123,29 @@ const resetPassword = async (req, res) => {
     res.status(500).json({ message: 'Lỗi server' });
   }
 }
+const login = async (req, res) => {
+  const emailR = req.body.email;
+  const passwordR = req.body.password;
+  const user = await userModel.findOne({ email:{$eq:emailR} });
 
+  if (!user) {
+    res.status(401).json({ error: 'Tài khoản không tồn tại' });
+  } else {
+    if (user.password === passwordR) {
+      res.status(200).json({ message: 'Đăng nhập thành công',user });
+    } else {
+      res.status(401).json({ error: 'Mật khẩu không chính xác' , user});
+    }
+  }
+}
+  
 module.exports = {
   getAllUsers,
   getUserById,
   createUser,
   updateUser,
   deleteUser,
+  login,
   resetPassword
 };
 
