@@ -1,0 +1,103 @@
+@media only screen and (max-width: 1150px) {
+    .body{
+        padding: 30px 20px;
+
+    }
+}
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg)
+    }
+    100% {
+      transform: rotate(180deg)
+    }
+  }
+@media only screen and (min-width: 1151px) {
+    .body{
+        padding: 30px 150px;
+
+    }
+}
+
+.container-form-login {
+  width: 300px;
+}
+
+input[type="email"],
+input[type="password"] {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  color: #403938;
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  background: #00bc86;
+  border: 1px solid #00bc86;
+  color: #fff;
+  border-radius: 3px;
+  width: 100%;
+  height: 40px;
+}
+
+input[type="submit"]:hover {
+  background: #008958;
+  border: #008958;
+  color: #fff;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.login-form {
+  background-color: white;
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.list-container {
+  display: flex;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 10px;
+  font-weight: bold;
+  padding-bottom: 4px;
+}
+
+.input-container label .required {
+  color: #ff0000;
+}
+.form form p {
+  text-align: center;
+}
+
+.action-form_bottom .btn-success {
+  cursor: pointer;
+  font-size: 16px;
+  background: #00bc86;
+  border: #00bc86;
+  color: #fff;
+  margin: 0 10px;;
+}
+.action-form_bottom .btn-success:hover {
+  background: #008958;
+  border: #008958;
+  color: #fff;
+}
