@@ -10,7 +10,6 @@ import { useSelector } from 'react-redux';
 const Header = () => {
   const totalCount=useSelector((state)=>state.Allcart.totalQuantity);
  
- 
   return(
       <header>
         <div className='tophead'>
@@ -119,7 +118,6 @@ const Header = () => {
                   <div className='text_header'>
                     <Link to='/ProductList'>Tất cả khóa học</Link>
                   </div>
-
                   <div className='top-cart-contain'>
                     <div className='mini-cart text-xs-center'>
                       <Link className='img_hover_cart' to='/Cart' title='Giỏ hàng'>
@@ -130,8 +128,8 @@ const Header = () => {
                   </div>
 
                   <div className='account_header'>
-                    <a href='/register' className='btns'>Đăng ký</a>
-                    <a href='/login'>Đăng nhập</a>
+                    <Link to='/register' className='btns'>Đăng ký</Link>
+                    <Link to='/login'>Đăng nhập</Link>
                   </div>
                 </div>
               </div>
