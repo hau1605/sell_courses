@@ -8,9 +8,19 @@ const Login=()=>{
     const [errorMessages, setErrorMessages] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isRecoverPasswordFormVisible, setIsRecoverPasswordFormVisible] = useState(false);
+    const [emailError, setEmailError] = useState('');
 
+  
     const handleEmailChange = (event) => {
+        const emailValue = event.target.value;
         setEmail(event.target.value);
+        // Kiểm tra tính hợp lệ của email
+        const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i; // Regex để kiểm tra email
+        if (!emailPattern.test(emailValue)) {
+            setEmailError('Email không hợp lệ');
+        } else {
+            setEmailError('');
+        }
     };
 
     const handlePasswordChange = (event) => {
@@ -29,38 +39,15 @@ const Login=()=>{
             console.log("Đăng nhập với email: ", email);
             console.log("Với mật khẩu: ", password);
             // Thực hiện các xử lý đăng nhập khác (gọi API, kiểm tra hợp lệ, ...)
-            try {
-                // Gửi dữ liệu đăng nhập tới backend để kiểm tra xác thực
-                const response = await fetch("/api/users", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({ email, password }),
-                });
-        
-                if (response.ok) {
-                    // Xử lý đăng nhập thành công
-                    console.log("Đăng nhập thành công");
-                } else {
-                    // Xử lý đăng nhập thất bại (tên đăng nhập hoặc mật khẩu không tồn tại trong cơ sở dữ liệu)
-                    console.log("Đăng nhập thất bại");
-                }
-            } catch (error) {
-                console.error("Lỗi khi đăng nhập", error);
-            }
+            window.location.href = '/'
         }
     };
-    const renderErrorMessage = (name) =>
-        name === errorMessages.name && (
-        <div className="error">{errorMessages.message}</div>
-    );
+    
     // Hàm để ẩn form phục hồi mật khẩu
     const showLoginForm = () => {
         setIsRecoverPasswordFormVisible(false);
         console.log("false")
     };
-
     // Hàm để hiển thị form phục hồi mật khẩu
     const showRecoverPasswordForm = () => {
         setIsRecoverPasswordFormVisible(true);
@@ -84,16 +71,16 @@ const Login=()=>{
                                             Email  
                                             <span className="required"> *</span>    
                                         </label>
-                                        <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" type="email" name="email" placeholder="Email" required />
-                                        {renderErrorMessage("email")}
+                                        <input type="email" message="hihi" name="email" placeholder="Email" onChange={handleEmailChange} required />
+                                        {emailError && <div style={{ color: 'red' }}>{emailError}</div>}
+
                                     </div>
                                     <div className="input-container">
                                         <label>
                                             Mật khẩu 
                                             <span className="required"> *</span>    
                                         </label>
-                                        <input type="password" name="pass" placeholder="Mật khẩu" required />
-                                        {renderErrorMessage("pass")}
+                                        <input type="password" name="pass" placeholder="Mật khẩu" onChange={handlePasswordChange} required />
                                     </div>
                                     <div className="button-container">
                                         <input className="btn" type="submit" value="Đăng nhập"/>
@@ -121,8 +108,9 @@ const Login=()=>{
                                         Email  
                                         <span className="required"> *</span>    
                                     </label>
-                                    <input pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" type="email" name="email" placeholder="Email" required />
-                                    {renderErrorMessage("email")}
+                                    <input type="email" name="email" placeholder="Email" onChange={handleEmailChange} required />
+                                    {emailError && <div style={{ color: 'red' }}>{emailError}</div>}
+
                                 </div>  
                                 <div className="action-form_bottom">
                                     <button type="button" class="btn btn-success btn-lg">Gửi</button>

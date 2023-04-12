@@ -8,7 +8,7 @@ const Register = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
+      
     const [phoneNumberError, setPhoneNumberError] = useState('');
     const [emailError, setEmailError] = useState('');
 
@@ -52,14 +52,7 @@ const Register = () => {
     
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Xử lý submit đăng ký tài khoản ở đây
-        if (phoneNumberError) {
-            alert('Vui lòng nhập số điện thoại hợp lệ');
-        }
-        // Kiểm tra tính hợp lệ của email trước khi submit đăng ký tài khoản
-        if (emailError) {
-            alert('Vui lòng nhập email hợp lệ');
-        }
+        
         // Có thể gọi API để gửi dữ liệu đăng ký lên server
         console.log('Đã đăng ký với các thông tin sau:');
         console.log('Họ:', firstName);
