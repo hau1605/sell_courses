@@ -19,8 +19,11 @@ const Login=()=>{
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         if (email === "" || password === "") {
             alert("Vui lòng nhập đầy đủ thông tin đăng nhập");
+            console.log("Đăng nhập với email: ", email);
+            console.log("Với mật khẩu: ", password);
         } else {
             // Xử lý đăng nhập với email và password đã nhập
             console.log("Đăng nhập với email: ", email);
