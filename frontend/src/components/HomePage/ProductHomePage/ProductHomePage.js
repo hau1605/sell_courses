@@ -94,7 +94,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-1.png?v=1650870899583' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-1.png?v=1650870899583' />
                                 </Col>
                                 <Col><p className='dm-text'>Kỹ năng ngoại ngữ</p></Col>
                             </Row>
@@ -102,7 +102,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-2.png?v=1650870918480' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-2.png?v=1650870918480' />
                                 </Col>
                                 <Col><p className='dm-text'>Phát triển cá nhân</p></Col>
                             </Row>
@@ -110,7 +110,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-3.png?v=1650870939317' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-3.png?v=1650870939317' />
                                 </Col>
                                 <Col><p className='dm-text'>Sales, bán hàng</p></Col>
                             </Row>
@@ -118,7 +118,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-4.png?v=1650870959740' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-4.png?v=1650870959740' />
                                 </Col>
                                 <Col><p className='dm-text'>Phong cách sống</p></Col>
                             </Row>
@@ -126,7 +126,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-5.png?v=1650871002043' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-5.png?v=1650871002043' />
                                 </Col>
                                 <Col><p className='dm-text'>Thiết kế đồ họa</p></Col>
                             </Row>
@@ -134,7 +134,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-6.png?v=1650871017387' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-6.png?v=1650871017387' />
                                 </Col>
                                 <Col><p className='dm-text'>Tin học văn phòng</p></Col>
                             </Row>
@@ -142,7 +142,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-7.png?v=1650871036620' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-7.png?v=1650871036620' />
                                 </Col>
                                 <Col><p className='dm-text'>Công nghệ thông tin</p></Col>
                             </Row>
@@ -150,7 +150,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-8.png?v=1650871148297' />
+                                    <img style={{width:'36px;',height:'36px'}}src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-8.png?v=1650871148297' />
                                 </Col>
                                 <Col><p className='dm-text'>Nhiếp ảnh, quay phim</p></Col>
                             </Row>
@@ -158,7 +158,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-9.png?v=1650871168327' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-9.png?v=1650871168327' />
                                 </Col>
                                 <Col><p className='dm-text'>Marketing</p></Col>
                             </Row>

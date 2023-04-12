@@ -8,7 +8,7 @@ class CoursesDataService {
     }
 
 getHotCourse(){
-    return axios.get(`http://localhost:4000/api/courses?coursePerPage=8&sort=numberOfView&sortOrder=asc`)
+    return axios.get(`http://localhost:4000/api/courses?coursePerPage=8&sort=numberOfView&sortOrder=dsc`)
 }
 getNewCourse(){
     return axios.get(`http://localhost:4000/api/courses?coursePerPage=6&sort=uploadDate&sortOrder=dsc`)
