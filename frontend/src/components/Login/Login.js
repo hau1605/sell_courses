@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Banner from "../Banner/Banner";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import "./Login.css";
 const Login=()=>{
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errorMessages, setErrorMessages] = useState({});
-    const [isSubmitted, setIsSubmitted] = useState(false);
     const [isRecoverPasswordFormVisible, setIsRecoverPasswordFormVisible] = useState(false);
     const [emailError, setEmailError] = useState('');
+    const [show, setShow] = useState(false);
 
-  
     const handleEmailChange = (event) => {
         const emailValue = event.target.value;
         setEmail(event.target.value);
@@ -30,16 +31,24 @@ const Login=()=>{
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        if (email === "" || password === "") {
-            alert("Vui lòng nhập đầy đủ thông tin đăng nhập");
-            console.log("Đăng nhập với email: ", email);
-            console.log("Với mật khẩu: ", password);
-        } else {
-            // Xử lý đăng nhập với email và password đã nhập
-            console.log("Đăng nhập với email: ", email);
-            console.log("Với mật khẩu: ", password);
-            // Thực hiện các xử lý đăng nhập khác (gọi API, kiểm tra hợp lệ, ...)
-            window.location.href = '/'
+        try {
+            const response = await axios.post('http://localhost:4000/api/users/login', {email, password});
+            if (response.status === 200) {
+                console.log('Đăng nhập thành công:', response.data.message);
+                setShow(false);
+                window.location.href = '/';
+            } else {
+                console.error('Lỗi đăng nhập:', response.data.error);
+                setShow(true);
+            }
+        } catch (error) {
+            if (error.response) {
+                console.error('Lỗi đăng nhập có res:', error.response.data.error);
+                setShow(true);
+            } else {
+                console.error('Lỗi đăng nhập không có res:', error.message);
+                setShow(true);
+            }
         }
     };
     
@@ -121,6 +130,20 @@ const Login=()=>{
                     )}
                 </section>
             </div>
+
+
+            <Modal show={show} onHide={()=>setShow(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Thông báo</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Email chưa được đăng ký. Vui lòng sử dụng email khác. 
+                    Hoặc <Link to='/register'>đăng ký ngay</Link>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button  variant="success" onClick={()=>setShow(false)}>Đồng ý</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 

@@ -36,7 +36,9 @@ const createUser = async (req, res) => {
     const passwordR = req.body.password;
     const existingUser = await userModel.findOne({ email:{$eq:emailR} });
     
-    return res.status(400).json({ error: 'Người dùng đã tồn tại' });
+    if(existingUser){
+      return res.status(400).json({ error: 'Người dùng đã tồn tại' });
+    }
 
     // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
     const salt = await bcrypt.genSalt(10); // Tạo
@@ -104,7 +106,7 @@ const resetPassword = async (req, res) => {
       }
     });
     const mailOptions = {
-      from: 'minhhau.uit@gmail.com',
+      from: '[KTPTHTW] minhhau.uit@gmail.com',
       to: email,
       subject: 'Đặt lại mật khẩu',
       html: `<p>Chào bạn,</p><p>Click vào đường dẫn sau để đặt lại mật khẩu:</p><p><a href="http://localhost:3000/api/reset-password/${token}">http://localhost:3000/api/reset-password/${token}</a></p><p>Chúng tôi khuyến khích bạn đổi mật khẩu sau khi đặt lại thành công.</p><p>Trân trọng,</p><p>Đội ngũ quản trị viên</p>`,
@@ -123,18 +125,28 @@ const resetPassword = async (req, res) => {
   }
 }
 const login = async (req, res) => {
-  const emailR = req.body.email;
-  const passwordR = req.body.password;
-  const user = await userModel.findOne({ email:{$eq:emailR} });
+  try {
+    const emailR = req.body.email;
+    const passwordR = req.body.password;
+    console.log(emailR);
+    console.log(passwordR);
+    const existingUser = await userModel.findOne({ email:{$eq:emailR} });
+    console.log(existingUser?true:false);
 
-  if (!user) {
-    res.status(401).json({ error: 'Tài khoản không tồn tại' });
-  } else {
-    if (user.password === passwordR) {
-      res.status(200).json({ message: 'Đăng nhập thành công',user });
-    } else {
-      res.status(401).json({ error: 'Mật khẩu không chính xác' , user});
+    if (!existingUser) {
+      res.status(401).json({ error: 'Tài khoản không tồn tại' });
+      console.log('Tài khoản không tồn tại');
+    } 
+    const isMatch = await bcrypt.compare(passwordR, existingUser.password);
+    console.log(isMatch);
+    if(!isMatch) {
+      res.status(401).json({ error: 'Mật khẩu không chính xác'});
     }
+    
+    res.status(200).json({ message: 'Đăng nhập thành công' });
+  } catch (err) {
+    console.error('Lỗi đăng nhập:', err);
+    res.status(500).json({ error: 'Đã xảy ra lỗi' });
   }
 }
   

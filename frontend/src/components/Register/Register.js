@@ -15,10 +15,7 @@ const Register = () => {
     const [emailError, setEmailError] = useState('');
     const values = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
     const [show, setShow] = useState(false);
-
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
+    
     const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);
     };
@@ -60,34 +57,25 @@ const Register = () => {
         try {
             const response = await axios.post('http://localhost:4000/api/users/', {email, password});
             if (response.status === 201) {
-                // Đăng ký thành công, thực hiện hành động tương ứng
                 console.log('Đăng ký thành công:', response.data.message);
-                // Thực hiện hành động sau khi đăng nhập thành công, chẳng hạn chuyển hướng trang
-                
+                setShow(false);
+                window.location.href = '/';
             } else {
-                // Đăng ký không thành công, hiển thị thông báo lỗi
                 console.error('Lỗi đăng ký1:', response.data.error);
-
+                setShow(true);
             }
         } catch (error) {
-            // Xử lý lỗi đăng nhập
             if (error.response) {
-                // Nếu có response từ server
-                console.error('Lỗi đăng nhập có res:', error.response.data.error);
-                
+                console.error('Lỗi đăng ký có res:', error.response.data.error);
+                setShow(true);
             } else {
-                // Nếu không có response từ server
-                console.error('Lỗi đăng nhập không có res:', error.message);
+                console.error('Lỗi đăng ký không có res:', error.message);
+                setShow(true);
             }
         }
-        // Có thể gọi API để gửi dữ liệu đăng ký lên server
-        // console.log('Đã đăng ký với các thông tin sau:');
-        // console.log('Họ:', firstName);
-        // console.log('Tên:', lastName);
-        // console.log('Số điện thoại:', phoneNumber);
-        // console.log('Email:', email);
-        // console.log('Mật khẩu:', password);
     };
+
+    
     const img = ['https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/breadcrumb_image.png?1676281841878']
 
     return (
@@ -138,7 +126,7 @@ const Register = () => {
                                     <input required type="password" value={password} onChange={handlePasswordChange} />
                                 </div>
                                 <div className="button-container">
-                                    <input className="btn" type="submit" value="Đăng ký" onClick={handleShow}/>
+                                    <input className="btn" type="submit" value="Đăng ký"/>
                                 </div>
                                 <p className='or'>
                                     Bạn đã có tài khoản? Đăng nhập <a href="/Login">tại đây</a>
@@ -149,7 +137,7 @@ const Register = () => {
                 </section>
             </div>
 
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={()=>setShow(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Thông báo</Modal.Title>
                 </Modal.Header>
@@ -158,10 +146,9 @@ const Register = () => {
                     Hoặc <Link to='/login'>đăng nhập ngay</Link>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button  variant="success" onClick={handleClose}>Đồng ý</Button>
+                    <Button  variant="success" onClick={()=>setShow(false)}>Đồng ý</Button>
                 </Modal.Footer>
             </Modal>
-
         </div>
     );
 }
