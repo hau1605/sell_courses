@@ -9,7 +9,7 @@ import Login from './Login/Login';
 import Register from './Register/Register';
 import ProductList from './ProductList/ProductList';
 import Cart from './Cart/Cart';
-
+import ResetPass from './ResetPass/ResetPass'
 const WebLayout = () => (
   <Space
     direction="vertical"
@@ -27,6 +27,7 @@ const WebLayout = () => (
         <Route path="/Register" element={<Register/>} />
         <Route path="/Cart" element={<Cart/>} />
         <Route path="/ProductList" element={<ProductList/>} />
+        <Route path="/reset-password" element={<ResetPass/>} />
       </Routes>
     </Layout>
     

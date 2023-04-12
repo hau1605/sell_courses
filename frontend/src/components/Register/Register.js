@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Banner from "../Banner/Banner";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import './Register.css'
 const Register = () => {
     const [firstName, setFirstName] = useState('');
@@ -8,10 +11,11 @@ const Register = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-
     const [phoneNumberError, setPhoneNumberError] = useState('');
     const [emailError, setEmailError] = useState('');
-
+    const values = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
+    const [show, setShow] = useState(false);
+    
     const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);
     };
@@ -48,26 +52,30 @@ const Register = () => {
         setPassword(event.target.value);
     };
 
-    
-    
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        // Xử lý submit đăng ký tài khoản ở đây
-        if (phoneNumberError) {
-            alert('Vui lòng nhập số điện thoại hợp lệ');
+        try {
+            const response = await axios.post('http://localhost:4000/api/users/', {email, password});
+            if (response.status === 201) {
+                console.log('Đăng ký thành công:', response.data.message);
+                setShow(false);
+                window.location.href = '/';
+            } else {
+                console.error('Lỗi đăng ký1:', response.data.error);
+                setShow(true);
+            }
+        } catch (error) {
+            if (error.response) {
+                console.error('Lỗi đăng ký có res:', error.response.data.error);
+                setShow(true);
+            } else {
+                console.error('Lỗi đăng ký không có res:', error.message);
+                setShow(true);
+            }
         }
-        // Kiểm tra tính hợp lệ của email trước khi submit đăng ký tài khoản
-        if (emailError) {
-            alert('Vui lòng nhập email hợp lệ');
-        }
-        // Có thể gọi API để gửi dữ liệu đăng ký lên server
-        console.log('Đã đăng ký với các thông tin sau:');
-        console.log('Họ:', firstName);
-        console.log('Tên:', lastName);
-        console.log('Số điện thoại:', phoneNumber);
-        console.log('Email:', email);
-        console.log('Mật khẩu:', password);
     };
+
+    
     const img = ['https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/breadcrumb_image.png?1676281841878']
 
     return (
@@ -128,6 +136,19 @@ const Register = () => {
                     </div>
                 </section>
             </div>
+
+            <Modal show={show} onHide={()=>setShow(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Thông báo</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Email đã tồn tại. Vui lòng sử dụng email khác. 
+                    Hoặc <Link to='/login'>đăng nhập ngay</Link>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button  variant="success" onClick={()=>setShow(false)}>Đồng ý</Button>
+                </Modal.Footer>
+            </Modal>
         </div>
     );
 }

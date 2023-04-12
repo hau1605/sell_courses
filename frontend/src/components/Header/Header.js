@@ -130,8 +130,8 @@ const Header = () => {
                   </div>
 
                   <div className='account_header'>
-                    <a href='/account/register' className='btns'>Đăng ký</a>
-                    <a href='/account/login'>Đăng nhập</a>
+                    <a href='/register' className='btns'>Đăng ký</a>
+                    <a href='/login'>Đăng nhập</a>
                   </div>
                 </div>
               </div>
