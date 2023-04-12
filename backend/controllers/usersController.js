@@ -35,13 +35,8 @@ const createUser = async (req, res) => {
     const emailR = req.body.email;
     const passwordR = req.body.password;
     const existingUser = await userModel.findOne({ email:{$eq:emailR} });
-    let errors = [];
-    if (existingUser) {
-      errors.push({
-        msg: "Người dùng đã tồn tại",
-      });
-      return res.status(400).json({ error: 'Người dùng đã tồn tại' });
-    }
+    
+    return res.status(400).json({ error: 'Người dùng đã tồn tại' });
 
     // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
     const salt = await bcrypt.genSalt(10); // Tạo
