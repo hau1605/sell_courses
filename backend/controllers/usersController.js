@@ -35,8 +35,11 @@ const createUser = async (req, res) => {
     const emailR = req.body.email;
     const passwordR = req.body.password;
     const existingUser = await userModel.findOne({ email:{$eq:emailR} });
-
+    let errors = [];
     if (existingUser) {
+      errors.push({
+        msg: "Người dùng đã tồn tại",
+      });
       return res.status(400).json({ error: 'Người dùng đã tồn tại' });
     }
 
@@ -49,6 +52,7 @@ const createUser = async (req, res) => {
     const newUser = new userModel({ email: emailR, password: hashedPassword });
     await newUser.save();
     res.status(201).json({ message: 'Người dùng đã được tạo' });
+    
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

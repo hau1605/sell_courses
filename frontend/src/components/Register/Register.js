@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Banner from "../Banner/Banner";
 import { Link } from "react-router-dom";
+import axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import './Register.css'
 const Register = () => {
     const [firstName, setFirstName] = useState('');
@@ -8,9 +11,13 @@ const Register = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-      
     const [phoneNumberError, setPhoneNumberError] = useState('');
     const [emailError, setEmailError] = useState('');
+    const values = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);
@@ -48,18 +55,38 @@ const Register = () => {
         setPassword(event.target.value);
     };
 
-    
-    
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        
+        try {
+            const response = await axios.post('http://localhost:4000/api/users/', {email, password});
+            if (response.status === 201) {
+                // Đăng ký thành công, thực hiện hành động tương ứng
+                console.log('Đăng ký thành công:', response.data.message);
+                // Thực hiện hành động sau khi đăng nhập thành công, chẳng hạn chuyển hướng trang
+                
+            } else {
+                // Đăng ký không thành công, hiển thị thông báo lỗi
+                console.error('Lỗi đăng ký1:', response.data.error);
+
+            }
+        } catch (error) {
+            // Xử lý lỗi đăng nhập
+            if (error.response) {
+                // Nếu có response từ server
+                console.error('Lỗi đăng nhập có res:', error.response.data.error);
+                
+            } else {
+                // Nếu không có response từ server
+                console.error('Lỗi đăng nhập không có res:', error.message);
+            }
+        }
         // Có thể gọi API để gửi dữ liệu đăng ký lên server
-        console.log('Đã đăng ký với các thông tin sau:');
-        console.log('Họ:', firstName);
-        console.log('Tên:', lastName);
-        console.log('Số điện thoại:', phoneNumber);
-        console.log('Email:', email);
-        console.log('Mật khẩu:', password);
+        // console.log('Đã đăng ký với các thông tin sau:');
+        // console.log('Họ:', firstName);
+        // console.log('Tên:', lastName);
+        // console.log('Số điện thoại:', phoneNumber);
+        // console.log('Email:', email);
+        // console.log('Mật khẩu:', password);
     };
     const img = ['https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/breadcrumb_image.png?1676281841878']
 
@@ -111,7 +138,7 @@ const Register = () => {
                                     <input required type="password" value={password} onChange={handlePasswordChange} />
                                 </div>
                                 <div className="button-container">
-                                    <input className="btn" type="submit" value="Đăng ký"/>
+                                    <input className="btn" type="submit" value="Đăng ký" onClick={handleShow}/>
                                 </div>
                                 <p className='or'>
                                     Bạn đã có tài khoản? Đăng nhập <a href="/Login">tại đây</a>
@@ -121,6 +148,20 @@ const Register = () => {
                     </div>
                 </section>
             </div>
+
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Thông báo</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Email đã tồn tại. Vui lòng sử dụng email khác. 
+                    Hoặc <Link to='/login'>đăng nhập ngay</Link>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button  variant="success" onClick={handleClose}>Đồng ý</Button>
+                </Modal.Footer>
+            </Modal>
+
         </div>
     );
 }
