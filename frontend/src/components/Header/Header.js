@@ -7,27 +7,6 @@ import cartIcon from "./cartIcon.png"
 import "./Header.css"
 import { Link } from 'react-router-dom';
 const Header = () => (
-<<<<<<< HEAD
-
-      <div className='header'>
-        <div className='header_left'>
-            <Link to='/'> <img className='icon' src={logo} /> </Link>
-                
-        </div>
-        <div className='header_center'>
-          <ul className='header_menu'>
-            <div className='dropDown_header'>
-                <Link to='/ProductList' ><button className='dropDown_button'>Danh mục</button></Link>
-                  <div className='dropDown_list'>
-                    <a href='#'>Trang chủ</a>
-                    <a href='#'>Danh sách khóa học</a>
-                    <a href='#'>Khóa học tiêu biểu</a>
-                    <a href='#'>Tin tức</a>
-                    <a href='#'>Liên hệ</a>
-                    <a href='#'>Giới thiệu</a>
-                    <a href='#'>Sản phẩm yêu thích</a>
-                  </div>
-=======
       <header>
         <div className='tophead'>
           <div className='container'>
@@ -39,7 +18,6 @@ const Header = () => (
                 <b> 22h00 </b>
                 các ngày
               </span>
->>>>>>> 9b78ca453484e5207689295fcaf9f08eb17ac36f
             </div>
             <div className='contact_header'>
               Hotline: 
@@ -47,16 +25,6 @@ const Header = () => (
             </div>
           </div>
         </div>
-<<<<<<< HEAD
-        <div className='header_right'>
-          <button>Đăng nhập</button>
-
-          <button>Đăng ký</button>
-        </div>
-
-      </div>
-
-=======
 
         <div className='header no-gutters'>
           <div className='container'>
@@ -193,6 +161,5 @@ const Header = () => (
           </div> */}
         </div>
       </header>
->>>>>>> 9b78ca453484e5207689295fcaf9f08eb17ac36f
 );
 export default Header;
