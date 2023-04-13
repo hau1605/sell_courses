@@ -4,6 +4,7 @@ import category from "./category.png"
 import caretRight from "./caretRight.svg"
 import searchIcon from "./searchIcon.png"
 import cartIcon from "./cartIcon.png"
+import {FiShoppingCart} from "react-icons"
 import "./Header.css"
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -106,7 +107,7 @@ const Header = () => {
                     <input type='text' name='query' autoComplete='off' placeholder='Tìm kiếm' className='inpit-group-field auto-search' required />
                     <span className='input-group-btn'>
                       <button type='submit' className='btn icon-fallback-text'>
-                        <img className='icon-search' src={searchIcon}></img>
+                        <img className='searchIcon' src={searchIcon}/>
                       </button>
                     </span>
                   </form>
@@ -120,10 +121,10 @@ const Header = () => {
                   </div>
                   <div className='top-cart-contain'>
                     <div className='mini-cart text-xs-center'>
-                      <Link className='img_hover_cart' to='/Cart' title='Giỏ hàng'>
+                      <a className='img_hover_cart' href='/cart' title='Giỏ hàng'>
                         <img className='cartIcon' src={cartIcon} />
-                        <span className='count_item count_item_pr hidden-count'>{totalCount}</span>
-                      </Link>
+                        <span className='count_item count_item_pr hidden-count'>0</span>
+                      </a>
                     </div>
                   </div>
 
