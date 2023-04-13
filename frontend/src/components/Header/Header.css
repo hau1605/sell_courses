@@ -47,7 +47,7 @@
     font-size: 15px;
 } */
 
-.dropDown_header_menu >a {
+/* .dropDown_header_menu >a {
     color:#00bc86 !important;
 }
 
@@ -56,9 +56,9 @@
     padding: 10px;
 }
 
-.dropDown_list {
+.dropDown_list { */
     /* border-radius: 20px; */
-    display: none;
+    /* display: none;
     position:absolute;
     flex-direction: column;
     align-items: center;
@@ -80,9 +80,9 @@
 
 .dropDown_header:hover > .dropDown_list {
     display: block;
-}
+} */
 
-.logo-wrapper::before {
+.logo::before {
     content: "";
     width: 1px;
     height: 31px;
@@ -90,13 +90,12 @@
     position: absolute;
     right: 0;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translate(-1276px, -6px);
+    z-index: 101;
 }
 
 .icon {
-    padding: 0 15px 0 0 ;
-    border-right: 1px solid gray;
-
+    transform: translateX(-14px);
 }
 /* --------------------------------------------------------------------------------------------- */
 
@@ -201,6 +200,7 @@
     color: #00bc86;
     cursor: pointer;
     width: 150px;
+    transform: translateX(24px);
 }
 
 .header .menu-bar-h .menu-bar img {
@@ -348,6 +348,7 @@
 
 .header .header_search form {
     margin-bottom: 0;
+    width: 310px;
 }
 
 .header .header_search form input {
@@ -402,7 +403,7 @@ div.container {
     align-items: center;
     justify-content: flex-end;
     position: relative;
-    width: 500px;
+    width: 560px;
 }
 
 .header .header-right .text_header a {
@@ -448,9 +449,20 @@ div.container {
     background: #00bc86;
 }
 
-header .account_header {
+.header .account_header {
     padding-left: 15px;
     margin-left: 15px;
+}
+
+.header .account_header a:last-child:before {
+    content: "";
+    width: 1px;
+    height: 31px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #929292;
 }
 
 .header .account_header a.btns {
