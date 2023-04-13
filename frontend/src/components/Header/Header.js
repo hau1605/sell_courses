@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from "./logo.webp"
 import category from "./category.png"
 import caretRight from "./caretRight.svg"
@@ -7,7 +7,11 @@ import cartIcon from "./cartIcon.png"
 import {FiShoppingCart} from "react-icons"
 import "./Header.css"
 import { Link } from 'react-router-dom';
-const Header = () => (
+import { useSelector } from 'react-redux';
+const Header = () => {
+  const totalCount=useSelector((state)=>state.Allcart.totalQuantity);
+ 
+  return(
       <header>
         <div className='tophead'>
           <div className='container'>
@@ -33,9 +37,9 @@ const Header = () => (
               <div className='col-xl-7 col-lg-6 col-12 col-header'>
                 <div className='logo_center'>
                   <div className='logo'>
-                    <a href='/' className='logo-wrapper'>
+                    <Link to='/'>
                     <img className='icon' src="//bizweb.dktcdn.net/100/453/393/themes/894913/assets/logo.png?1676281841878" alt="logo Template Udemy" />
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className='header_menu clearfix'>
@@ -54,11 +58,11 @@ const Header = () => (
                           </a>
                         </li>
                         <li className='nav-item level0'>
-                          <a className="a-img" href='/collection/all' title='Danh sách khóa học'>
+                          <Link to='ProductList'>
                             Danh sách khóa học
                             <i className='icon-right'></i>
                             <i class="fa-regular fa-angles-right"></i>
-                          </a>
+                          </Link>
                         </li>
                         <li className='nav-item'>
                           <a className='a-img' href='/san-pham-noi-bat' title='Khóa học tiêu biểu'>
@@ -113,21 +117,20 @@ const Header = () => (
               <div className='col-xl-5 col-lg-6 col-12'>
                 <div className='header-right'>
                   <div className='text_header'>
-                    <a href='/collection/all' title='Tất cả khóa học'>Tất cả khóa học</a>
+                    <Link to='/ProductList'>Tất cả khóa học</Link>
                   </div>
-
                   <div className='top-cart-contain'>
                     <div className='mini-cart text-xs-center'>
                       <a className='img_hover_cart' href='/cart' title='Giỏ hàng'>
-                        <i class="fa-solid fa-cart-shopping"></i>
+                        <img className='cartIcon' src={cartIcon} />
                         <span className='count_item count_item_pr hidden-count'>0</span>
                       </a>
                     </div>
                   </div>
 
                   <div className='account_header'>
-                    <a href='/account/register' className='btns'>Đăng ký</a>
-                    <a href='/account/login'>Đăng nhập</a>
+                    <Link to='/register' className='btns'>Đăng ký</Link>
+                    <Link to='/login'>Đăng nhập</Link>
                   </div>
                 </div>
               </div>
@@ -161,6 +164,6 @@ const Header = () => (
             <button>Đăng ký</button>
           </div> */}
         </div>
-      </header>
-);
+      </header>)
+};
 export default Header;

@@ -6,10 +6,10 @@ import HomePage from "./HomePage/HomePage"
 import Banner from './Banner/Banner';
 import ProductDetail from './ProductDetail/ProductDetail';
 import Login from './Login/Login';
-import Logout from './Logout/Logout';
+import Register from './Register/Register';
 import ProductList from './ProductList/ProductList';
 import Cart from './Cart/Cart';
-
+import ResetPass from './ResetPass/ResetPass'
 const WebLayout = () => (
   <Space
     direction="vertical"
@@ -24,9 +24,10 @@ const WebLayout = () => (
         <Route path="/" element={<HomePage/>} />
         <Route path="/ProductDetail" element={<ProductDetail/>} />
         <Route path="/Login" element={<Login/>} />
-        <Route path="/Logout" element={<Logout/>} />
+        <Route path="/Register" element={<Register/>} />
         <Route path="/Cart" element={<Cart/>} />
         <Route path="/ProductList" element={<ProductList/>} />
+        <Route path="/reset-password" element={<ResetPass/>} />
       </Routes>
     </Layout>
     

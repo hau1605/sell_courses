@@ -1,0 +1,164 @@
+@media only screen and (max-width: 1150px) {
+    .body{
+        padding: 30px 20px;
+
+    }
+}
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg)
+    }
+    100% {
+      transform: rotate(180deg)
+    }
+  }
+@media only screen and (min-width: 1151px) {
+    .body{
+        padding: 30px 150px;
+
+    }
+}
+.arrow-icon{
+    height: 20px;
+    top:12px;
+    right: 8px;
+}
+.arrow-icon.active{
+    transform: rotate(180deg);
+    transition: .4s ease-in-out;
+}
+.arrow-icon.inactive{
+    transform: rotate(0deg);
+    transition: .4s ease-in-out;
+
+}
+.body{
+    background-color: white;
+}
+.img-banner{
+    box-shadow: 0px 4px 30px rgba(19,28,25,0.1);
+}
+.text-link-home{
+    text-decoration: none;
+    color: #00bc86;
+    margin-right: 5px;
+}
+.text-link-home:hover{
+    font-weight: 700;
+    color: black;
+}
+.text-link-loai{
+    font-weight: 700;
+    margin-left: 5px;
+}
+.header-text-loai{
+    font-size: 16px;
+    font-weight: 800;
+}
+.header-text-sub{
+    font-size: 14px;
+    font-weight: 800;
+    margin: 10px 0 10px 0;
+}
+.course-nav{
+    list-style: none;
+    padding: 0;
+    text-decoration: none;
+    color: #898989;
+    overflow: hidden;
+    z-index: 1;
+}
+.course-nav > li{
+    padding: 10px 0;
+    border-bottom: 0.5px dashed  #898989;
+}
+.list-course{
+    padding: 0;
+    margin-bottom: -9px;
+    color: #898989;
+    transition: all .5s linear;
+    opacity: 0;
+    list-style: none;
+    overflow: hidden;
+}
+.sb-level{
+    
+}
+.sb-level.inactivesubcourse{
+    
+
+}
+.list-course.active{
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    margin-top: 10px;
+    transition: transform 0.3s ease-out;
+    transform: scaleY(1);
+    transform-origin: top;
+
+}
+.list-course.inactive {
+    opacity: 0;
+    margin-top: 10px;
+    visibility: hidden;
+    transition: transform 0.3s ease-out;
+    transform: scaleY(0);
+    height: 0;
+    
+  }
+.list-course > li{
+    padding: 10px 0 10px 25px;
+    border-top: 0.5px dashed #898989;
+}
+.text-course-nav:hover{
+    color: #00bc86;
+    
+}
+.text-course-nav{
+    text-decoration: none;
+    font-size: 14px;
+    color: #898989;
+    cursor: pointer;
+}
+.list-course>li:hover{
+    color: #00bc86;
+
+}
+.form-check{
+    margin: 5px 0 0;
+    cursor: pointer;
+}
+.form-check-label{
+    color: #898989;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.form-check-label:hover{
+    color: #00bc86;
+}
+.form-check-input{
+    background-color: white;
+}
+.form-check-input:checked{
+    background-color: #00bc86;
+}
+.pagination{
+    text-align: center;
+    margin: 0 auto;
+    justify-content: center;
+}
+select.form-select{
+    justify-content: right;
+    text-align: left;
+    display: block;
+    margin: 0 12px 0 0;
+}
+.form-select{
+    justify-content: right;
+    padding: auto;
+}
+.form-select option{
+    border-radius: 12px;
+
+}

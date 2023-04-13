@@ -15,9 +15,10 @@ import 'swiper/css/navigation';
 import "swiper/css/scrollbar";
 import Product from '../../Product/Product';
 import { useEffect } from 'react';
-
+import CoursesDataService from "../../../services/CoursesDataService"
 const ProductHomePage = () => {
-
+    const [Products, setProducts] = useState([]);
+    const [newProducts, setnewProducts] = useState([]);
     useEffect(() => {
         let btnnew_List = document.querySelectorAll('.btn_fc');
         btnnew_List.forEach(btnnew => {
@@ -26,6 +27,26 @@ const ProductHomePage = () => {
                 btnnew.classList.add('btn_new_focus');
             })
         })
+        CoursesDataService.getNewCourse()
+            .then(response => {
+                console.log(response.data);
+                console.log("ok");
+                setnewProducts(response.data.products);
+            })
+            .catch(e => {
+                console.log(e);
+            });
+
+            CoursesDataService.getHotCourse()
+            .then(response => {
+                console.log(response.data);
+                console.log("ok");
+                setProducts(response.data.products);
+            })
+            .catch(e => {
+                console.log(e);
+            });    
+            
     }, [])
     const settings = {
         slidesToShow: 4, dots: true, infinite: false,
@@ -64,7 +85,7 @@ const ProductHomePage = () => {
             }]
     };
     return (
-        <div className='body'>
+        <div >
             <div className='dm-course'>
                 <div className='line-box'></div>
                 <h2 className='header-text'>DANH MỤC KHÓA HỌC</h2>
@@ -73,7 +94,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-1.png?v=1650870899583' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-1.png?v=1650870899583' />
                                 </Col>
                                 <Col><p className='dm-text'>Kỹ năng ngoại ngữ</p></Col>
                             </Row>
@@ -81,7 +102,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-2.png?v=1650870918480' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-2.png?v=1650870918480' />
                                 </Col>
                                 <Col><p className='dm-text'>Phát triển cá nhân</p></Col>
                             </Row>
@@ -89,7 +110,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-3.png?v=1650870939317' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-3.png?v=1650870939317' />
                                 </Col>
                                 <Col><p className='dm-text'>Sales, bán hàng</p></Col>
                             </Row>
@@ -97,7 +118,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-4.png?v=1650870959740' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-4.png?v=1650870959740' />
                                 </Col>
                                 <Col><p className='dm-text'>Phong cách sống</p></Col>
                             </Row>
@@ -105,7 +126,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-5.png?v=1650871002043' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-5.png?v=1650871002043' />
                                 </Col>
                                 <Col><p className='dm-text'>Thiết kế đồ họa</p></Col>
                             </Row>
@@ -113,7 +134,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-6.png?v=1650871017387' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-6.png?v=1650871017387' />
                                 </Col>
                                 <Col><p className='dm-text'>Tin học văn phòng</p></Col>
                             </Row>
@@ -121,7 +142,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-7.png?v=1650871036620' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-7.png?v=1650871036620' />
                                 </Col>
                                 <Col><p className='dm-text'>Công nghệ thông tin</p></Col>
                             </Row>
@@ -129,7 +150,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-8.png?v=1650871148297' />
+                                    <img style={{width:'36px;',height:'36px'}}src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-8.png?v=1650871148297' />
                                 </Col>
                                 <Col><p className='dm-text'>Nhiếp ảnh, quay phim</p></Col>
                             </Row>
@@ -137,7 +158,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-9.png?v=1650871168327' />
+                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-9.png?v=1650871168327' />
                                 </Col>
                                 <Col><p className='dm-text'>Marketing</p></Col>
                             </Row>
@@ -171,24 +192,9 @@ const ProductHomePage = () => {
                     <h2 className='header-text '>KHÓA HỌC MỚI NHẤT</h2>
                     <div className='new-course'>
                         <Row >
-                            <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                                <Product />
-                            </Col >
-                            <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                                <Product />
-                            </Col>
-                            <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                                <Product />
-                            </Col>
-                            <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                                <Product />
-                            </Col>
-                            <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                                <Product />
-                            </Col>
-                            <Col xs={6} lg={4} style={{ padding: '8px' }}>
-                                <Product />
-                            </Col>
+                        {newProducts.map((item)=><Col xs={6} lg={4} md={4} style={{ padding: '8px' }}>
+                            <Product product={item} />
+                        </Col>)}
                         </Row>
                     </div>
                     <Row>
@@ -268,7 +274,7 @@ const ProductHomePage = () => {
                         </Swiper>
                     </Col>
                 </Row>
-                <div className='new-course'>
+                <div className='list-hot-course'>
                     <Row style={{ padding: '15px 0px' }}>
                         <Col xs={6} style={{ padding: '0px 8px' }}>
                             <img style={{ width: '100%', borderRadius: '10px' }} src='https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/banner_featured_1.png?1676281841878' />
@@ -279,31 +285,12 @@ const ProductHomePage = () => {
                         </Col>
                     </Row>
 
+                    {Products.length === 0 ? null : 
                     <Row >
-                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                            <Product />
-                        </Col>
-                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                            <Product />
-                        </Col>
-                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                            <Product /></Col>
-                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                            <Product />
-                        </Col>
-                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                            <Product />
-                        </Col>
-                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                            <Product />
-                        </Col>
-                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                            <Product />
-                        </Col>
-                        <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
-                            <Product />
-                        </Col>
-                    </Row>
+                        {Products.map((item)=><Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
+                            <Product product={item} />
+                        </Col>)}
+                    </Row>}
                 </div>
                 <Row>
                     <Col style={{ textAlign: 'center' }}>

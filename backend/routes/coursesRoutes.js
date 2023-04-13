@@ -5,8 +5,8 @@ const coursesController = require('../controllers/coursesController');
 // Define routes for courses
 
 // Get all courses
-router.get('/', coursesController.getAllCourses);
-
+// router.get('/', coursesController.getAllCourses);
+router.get('/',coursesController.getCourses);
 // Get course by ID
 router.get('/:id', coursesController.getCourseById);
 

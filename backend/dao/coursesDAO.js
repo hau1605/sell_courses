@@ -20,7 +20,22 @@ const getAllCourses = async () => {
     throw error;
   }
 };
-
+const getCourses= async (filters ,
+  page ,
+  coursesPerPage,sort,sortOrder )=>
+{
+  const totalCount = await Course.countDocuments(filters);
+  const totalPages = Math.ceil(totalCount / coursesPerPage);
+  try {const filteredCoures = await Course.find(filters)
+    .skip((page - 1) * coursesPerPage)
+    .limit(coursesPerPage).sort({[sort]: sortOrder})
+    return {filteredCoures, totalPages,totalCount};
+  }
+  catch(e){
+      console.error(`Unable to issue find command, ${e}`);
+      return {filteredCoures:[], totalPages:0,totalCount:0};
+  }
+}    
 // Get a course by ID
 const getCourseById = async (courseId) => {
   try {
@@ -53,6 +68,7 @@ const deleteCourse = async (courseId) => {
 module.exports = {
   createCourse,
   getAllCourses,
+  getCourses,
   getCourseById,
   updateCourse,
   deleteCourse
