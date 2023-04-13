@@ -10,28 +10,40 @@ import Register from './Register/Register';
 import ProductList from './ProductList/ProductList';
 import Cart from './Cart/Cart';
 import ResetPass from './ResetPass/ResetPass'
+import { SnackbarProvider } from 'notistack';
+
 const WebLayout = () => (
-  <Space
-    direction="vertical"
-    style={{
-      width: '100%',
-    }}
-    size={[0, 48]}
+  <SnackbarProvider maxSnack={4} autoHideDuration={1500}
+  iconVariant={{
+    success: '✅',
+    error: '🗑️',
+    warning: '⚠️',
+    info: 'ℹ️',
+  }}
   >
-    <Layout>
-      <Header style={{zIndex:1}} >Header</Header>
-      <Routes>
-        <Route path="/" element={<HomePage/>} />
-        <Route path="/ProductDetail" element={<ProductDetail/>} />
-        <Route path="/Login" element={<Login/>} />
-        <Route path="/Register" element={<Register/>} />
-        <Route path="/Cart" element={<Cart/>} />
-        <Route path="/ProductList" element={<ProductList/>} />
-        <Route path="/reset-password" element={<ResetPass/>} />
-      </Routes>
-    </Layout>
-    
-  </Space>
-  
+    <Space
+      direction="vertical"
+      style={{
+        width: '100%',
+      }}
+      size={[0, 48]}
+    >
+      <Layout>
+        <Header style={{ zIndex: 1 }} >Header</Header>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/ProductDetail" element={<ProductDetail />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/Cart" element={<Cart />} />
+          <Route path="/ProductList" element={<ProductList />} />
+          <Route path="/reset-password" element={<ResetPass />} />
+        </Routes>
+      </Layout>
+
+    </Space>
+  </SnackbarProvider>
+
+
 );
 export default WebLayout;
