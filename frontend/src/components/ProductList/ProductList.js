@@ -80,7 +80,6 @@ const ProductList = () => {
         <Banner imgs={img} />
         <div className='body'>
             <p><Link className="text-link-home" to='/'>Trang chủ</Link>/<span className="text-link-loai">Tất cả sản phẩm</span></p>
-            <Container>
                 <Row style={{ padding: '15px 0px' , margin:'0 -2px'}}>
                     <Col xs={6} style={{ padding: '0px 8px' }}>
                         <img className="img-banner" style={{ width: '100%', borderRadius: '10px', }} src='https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/banner_featured_1.png?1676281841878' />
@@ -193,7 +192,6 @@ const ProductList = () => {
                         </Col>
                     </Row>
                 </div>
-            </Container>
         </div>
     </div>);
 }

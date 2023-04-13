@@ -129,4 +129,10 @@
     text-decoration: line-through 0.1px;
     font-weight: 500;
     margin: 0;
+}.product-cart-icon{
+    color: #00BC86;
+
+}
+.product-cart-icon:hover{
+    color: red;
 }

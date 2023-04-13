@@ -1,5 +1,8 @@
+const topicsDAO = require('../dao/topicsDAO');
 const Topic = require('../models/topicModel');
-
+const mongoose = require('mongoose');
+const mongodb= require('mongodb');
+constObjectId = require('mongodb').ObjectID;
 // Controller function to get all topics
 exports.getAllTopics = async (req, res) => {
   try {
@@ -13,7 +16,9 @@ exports.getAllTopics = async (req, res) => {
 // Controller function to get a topic by ID
 exports.getTopicById = async (req, res) => {
   try {
+    console.log(req.params.id)
     const topic = await Topic.findById(req.params.id);
+    console.log(req.params.id)
     if (!topic) {
       return res.status(404).json({ success: false, message: 'Topic not found' });
     }

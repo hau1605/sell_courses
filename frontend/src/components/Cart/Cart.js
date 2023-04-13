@@ -7,7 +7,6 @@ import './Cart.css'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import Snackbar from '@mui/material/Snackbar';
 import {  VariantType, useSnackbar } from 'notistack';
 import { increaseQuantity,decreaseQuantity, getTotal,removeItem } from "../../features/cartSlice";
 const Cart = () => {
@@ -63,7 +62,8 @@ const Cart = () => {
                     <Col>
                         <p className="table-text cart-item-price">{(item.cost*item.quantity).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
                     </Col>
-                    <Col xs='1'><FaTrashAlt className="cart-item-trash-icon" onClick={()=>{handleClickVariant("error")}}/>
+                    <Col xs='1' onClick={handleClickVariant("error")}>
+                        <FaTrashAlt className="cart-item-trash-icon"  onClick={()=>{dispatch(removeItem(item))}}/>
                     </Col>
                 </Row>)
                 }

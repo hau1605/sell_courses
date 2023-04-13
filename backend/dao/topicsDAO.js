@@ -1,4 +1,6 @@
-const Topic = require('./topicModel');
+
+
+const Topic = require('../models/topicModel');
 
 // Create a new topic
 const createTopic = async (topicData) => {
@@ -24,7 +26,8 @@ const getAllTopics = async () => {
 // Get a topic by ID
 const getTopicById = async (topicId) => {
   try {
-    const topic = await Topic.findById(topicId);
+
+    const topic = await Topic.findById(id);
     return topic;
   } catch (error) {
     throw error;
