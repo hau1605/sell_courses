@@ -9,6 +9,7 @@ const lecturersRoutes = require('./routes/lecturersRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const topWeeksRoutes = require('./routes/topWeeksRoutes');
 const facebookUsersRoutes = require('./routes/facebookUsersRoutes');
+const config = require('./config/config.js');
 
 const app = express();
 connectDB();
@@ -28,8 +29,7 @@ app.use('/api/topWeeks', topWeeksRoutes);
 app.use('/api/facebookUsers', facebookUsersRoutes);
 
 // Start server
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+app.listen(config.PORT, () => {
+  console.log(`Server is running on port ${config.PORT}`);
 });
 

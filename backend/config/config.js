@@ -1,12 +1,17 @@
+require("dotenv").config(); // Load environment variables from .env file
+
 module.exports = {
   // Database configuration
-  DB_HOST: 'mongodb+srv://<username>:<password>@<cluster-url>/<database-name>', // MongoDB Atlas connection string
+  CONNECTION_STRING: process.env.CONNECTION_STRING,
   DB_OPTIONS: {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   },
 
+  //PORT
+  PORT: process.env.PORT,
+
   // JWT configuration
-  JWT_SECRET_KEY: 'your-secret-key', // Secret key for JWT
-  JWT_EXPIRATION_TIME: '1h' // JWT token expiration time
+  JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
+  JWT_EXPIRATION_TIME: process.env.JWT_EXPIRATION_TIME,
 };
