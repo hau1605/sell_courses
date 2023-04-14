@@ -2,7 +2,7 @@ import axios from "axios";
 
 class TeacherDataService {
     getAll() {
-        return axios.get(`http://localhost:4000/api/lecturers`)
+        return axios.get(`http://localhost:8000/api/lecturers`)
     }
 }
 

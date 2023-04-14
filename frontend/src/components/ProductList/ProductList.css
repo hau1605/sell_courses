@@ -1,4 +1,4 @@
-@media only screen and (max-width: 1150px) {
+@media only screen and (max-width: 1000px) {
     .body{
         padding: 30px 20px;
 
@@ -12,10 +12,9 @@
       transform: rotate(180deg)
     }
   }
-@media only screen and (min-width: 1151px) {
+@media only screen and (min-width: 1251px) {
     .body{
         padding: 30px 200px;
-
     }
 }
 .arrow-icon{

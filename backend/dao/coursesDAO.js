@@ -26,21 +26,7 @@ const getCourses= async (filters ,
 {
   const totalCount = await Course.countDocuments(filters);
   const totalPages = Math.ceil(totalCount / coursesPerPage);
-  try {const filteredCoures = await Course.aggregate([
-      {
-        $lookup: {
-          from: "topics",
-          localField: "idCourseTopic",
-          foreignField: "_id",
-          as: "topic"
-        }
-      },{
-        $match:
-          filters
-        
-      }
-    ]
-    )
+  try {const filteredCoures = await Course.find(filters)
     .skip((page - 1) * coursesPerPage)
     .limit(coursesPerPage).sort({[sort]: sortOrder});
     

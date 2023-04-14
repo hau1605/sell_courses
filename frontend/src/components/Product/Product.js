@@ -38,7 +38,7 @@ const Product = (props) => {
           {level === "hard" && <div className="btn-level-hard text-mb-10" >Nâng cao</div>}
           <Link to='/ProductDetail' className="link"><Card.Title className="text-tittle">{props.product.name}</Card.Title></Link>
           <Card.Text className="text-des">
-            {props.product.topic[0].name}
+            {props.product.categories}
           </Card.Text>
           <Card.Text >
             <p className="text-price">{props.product.cost.toLocaleString('vi', { style: 'currency', currency: 'VND' })} </p>
@@ -46,12 +46,12 @@ const Product = (props) => {
             <p className="text-price-sales">{Math.ceil(props.product.cost * 1.3).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
           </Card.Text>
           <Row>
-            <Col style={{ display: 'flex', justifyContent: 'left' }}>
-              <FaEye style={{ margin: '4px 4px 0 0', width: '14px', height: '14px' }} />
-              <p>{props.product.numberOfView}</p>
-              <MdOutlineDateRange style={{ margin: '4px 4px 0 10px', width: '14px', height: '14px' }} />
+            <Col style={{ display: 'flex', justifyContent: 'left', alignItems:'center' }}>
+              <FaEye style={{ margin: '0px 4px 0 0', width: '14px', height: '14px', alignSelf:'left' }} />
+              <p style={{ margin:'auto 0' }}>{props.product.numberOfView}</p>
+              <MdOutlineDateRange style={{ margin: '0px 2px 0 10px', width: '14px', alignSelf:'left' ,height: '14px' }} />
               
-              <p>{d.toLocaleDateString("vi-VI")}</p>
+              <p style={{ margin:'auto 0' }}>{d.toLocaleDateString("vi-VI")}</p>
             </Col>
             <Col onClick={handleClickVariant("success")} style={{ display: 'flex', justifyContent: 'right' }}>
               <FaCartPlus className="product-cart-icon" style={{ margin: '0 20px 0 0', width: '30px', height: '30px',  cursor: 'pointer' }} onClick={() => dispatch(addToCart(props.product))} />
