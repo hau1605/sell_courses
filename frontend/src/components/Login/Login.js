@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useDispatch } from "react-redux";
+import { setEmailResetPassword } from "../../features/userSlice";
+import { useNavigate } from 'react-router-dom';
+
 import "./Login.css";
 const Login=()=>{
     const [email, setEmail] = useState("");
@@ -11,10 +15,14 @@ const Login=()=>{
     const [isRecoverPasswordFormVisible, setIsRecoverPasswordFormVisible] = useState(false);
     const [emailError, setEmailError] = useState('');
     const [show, setShow] = useState(false);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleEmailChange = (event) => {
         const emailValue = event.target.value;
-        setEmail(event.target.value);
+        setEmail(emailValue);
         // Kiểm tra tính hợp lệ của email
         const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i; // Regex để kiểm tra email
         if (!emailPattern.test(emailValue)) {
@@ -22,6 +30,9 @@ const Login=()=>{
         } else {
             setEmailError('');
         }
+        console.log('Email đã nhập: ', emailValue);
+        dispatch(setEmailResetPassword(emailValue));
+        console.log(dispatch(setEmailResetPassword(emailValue))?'true':'false');
     };
 
     const handlePasswordChange = (event) => {
@@ -30,13 +41,13 @@ const Login=()=>{
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
         try {
-            const response = await axios.post('http://localhost:4000/api/users/login', {email, password});
+            const response = await axios.post('http://localhost:8000/api/users/login', {email, password});
             if (response.status === 200) {
                 console.log('Đăng nhập thành công:', response.data.message);
                 setShow(false);
-                window.location.href = '/';
+                // window.location.href = '/';
+                navigate("/");
             } else {
                 console.error('Lỗi đăng nhập:', response.data.error);
                 setShow(true);
@@ -52,15 +63,37 @@ const Login=()=>{
         }
     };
     
+    const handleForgotPassword = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await axios.post('http://localhost:8000/api/users/forgot-password', { email });
+            if (response.status === 200) {
+                // Nếu yêu cầu đặt lại mật khẩu thành công
+                setSuccess(true);
+                setError('');
+                window.location.href = 'http://localhost:3000/reset-password';
+                console.log('Đã gửi mail xác nhận');
+              } else {
+                // Nếu yêu cầu đặt lại mật khẩu không thành công
+                setSuccess(false);
+                setError(response.data.error || 'Có lỗi xảy ra. Vui lòng thử lại sau.');
+              }
+        } catch (error) {
+            console.error(`Lỗi yêu cầu đặt lại mật khẩu: ${error.message}`);
+            // Xử lý lỗi từ server
+            // (ví dụ: hiển thị thông báo lỗi cho người dùng)
+            setError('Có lỗi xảy ra. Vui lòng thử lại sau.');
+        }
+    };
     // Hàm để ẩn form phục hồi mật khẩu
     const showLoginForm = () => {
         setIsRecoverPasswordFormVisible(false);
-        console.log("false")
+        console.log("Hiển thị form lấy lại mật khẩu: false")
     };
     // Hàm để hiển thị form phục hồi mật khẩu
     const showRecoverPasswordForm = () => {
         setIsRecoverPasswordFormVisible(true);
-        console.log("true")
+        console.log("Hiển thị form lấy lại mật khẩu: true")
     };
     const img = ['https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/breadcrumb_image.png?1676281841878']
     return(
@@ -72,7 +105,6 @@ const Login=()=>{
                     {!isRecoverPasswordFormVisible ? (
                         <div className="container-form-login">
                             <h2 className="title text-center mb-4">Đăng nhập</h2>
-                            {/* {isSubmitted ? <div>Đăng nhập thành công</div> : renderForm} */}
                             <div className="form">
                                 <form onSubmit={handleSubmit}>
                                     <div className="input-container">
@@ -96,11 +128,11 @@ const Login=()=>{
                                     </div>
                                     <p>
                                         Bạn quên mật khẩu? 
-                                        <a href="#" class="btn-link-style text-info" onClick={showRecoverPasswordForm}> Lấy lại tại đây</a>
+                                        <Link className="btn-link-style text-info" onClick={showRecoverPasswordForm}> Lấy lại tại đây</Link>
                                     </p>
                                     <p>
                                         Bạn chưa có tài khoản? 
-                                        <a href="/register" class="btn-link-style text-info"> Đăng ký ngay</a>
+                                        <Link to="/register" className="btn-link-style text-info"> Đăng ký ngay</Link>
                                     </p>
                                 </form>
                             </div>
@@ -122,8 +154,8 @@ const Login=()=>{
 
                                 </div>  
                                 <div className="action-form_bottom">
-                                    <button type="button" class="btn btn-success btn-lg">Gửi</button>
-                                    <a href="#" class="btn btn-outline-secondary" onClick={showLoginForm}>Hủy</a>
+                                    <button type="button" className="btn btn-success btn-lg" onClick={handleForgotPassword}>Gửi</button>
+                                    <Link className="btn btn-outline-secondary" onClick={showLoginForm}>Hủy</Link>
                                 </div>
                             </form>
                         </div>

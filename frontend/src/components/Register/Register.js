@@ -55,13 +55,13 @@ const Register = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/api/users/', {email, password});
+            const response = await axios.post('http://localhost:8000/api/users/', {email, password});
             if (response.status === 201) {
                 console.log('Đăng ký thành công:', response.data.message);
                 setShow(false);
                 window.location.href = '/';
             } else {
-                console.error('Lỗi đăng ký1:', response.data.error);
+                console.error('Lỗi đăng ký:', response.data.error);
                 setShow(true);
             }
         } catch (error) {
@@ -129,7 +129,7 @@ const Register = () => {
                                     <input className="btn" type="submit" value="Đăng ký"/>
                                 </div>
                                 <p className='or'>
-                                    Bạn đã có tài khoản? Đăng nhập <a href="/Login">tại đây</a>
+                                    Bạn đã có tài khoản? Đăng nhập <Link to="/login">tại đây</Link>
                                 </p>
                             </form>
                         </div>
