@@ -3,7 +3,8 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
-
+const dotenv = require('dotenv');
+dotenv.config();
 
 // Controller function to get all users
 const getAllUsers = async (req, res) => {
@@ -34,6 +35,7 @@ const createUser = async (req, res) => {
   try {
     const emailR = req.body.email;
     const passwordR = req.body.password;
+    const currentTime = new Date();
     const existingUser = await userModel.findOne({ email:{$eq:emailR} });
     
     if(existingUser){
@@ -46,7 +48,7 @@ const createUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(passwordR, salt); // Mã hóa mật khẩu
 
     // Tạo người dùng mới với mật khẩu đã được mã hóa
-    const newUser = new userModel({ email: emailR, password: hashedPassword });
+    const newUser = new userModel({ email: emailR, password: hashedPassword , date: currentTime});
     await newUser.save();
     res.status(201).json({ message: 'Người dùng đã được tạo' });
     
@@ -84,46 +86,6 @@ const deleteUser = async (req, res) => {
   }
 };
 
-const resetPassword = async (req, res) => {
-  try {
-    // Nhận email từ yêu cầu của người dùng
-    const { email } = req.body;
-    // Kiểm tra xem email có tồn tại trong cơ sở dữ liệu hay không
-    const user = await userModel.findOne({ email });
-    if (!user) {
-      return res.status(404).json({ message: 'Không tìm thấy người dùng' });
-    }
-    // Tạo mã thông báo đặt lại mật khẩu
-    const token = jwt.sign({ email }, 'SECRET_KEY', { expiresIn: '1h' });
-    // Gửi email chứa đường dẫn đặt lại mật khẩu đến email của người dùng
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.gmail.com',
-      port: 587,
-      secure: false, // Sử dụng kết nối không an toàn (false) hoặc an toàn (true)
-      auth: {
-        user: 'minhhau.uit@gmail.com',
-        pass: 'anizmndbuctfyqsl'
-      }
-    });
-    const mailOptions = {
-      from: '[KTPTHTW] minhhau.uit@gmail.com',
-      to: email,
-      subject: 'Đặt lại mật khẩu',
-      html: `<p>Chào bạn,</p><p>Click vào đường dẫn sau để đặt lại mật khẩu:</p><p><a href="http://localhost:3000/api/reset-password/${token}">http://localhost:3000/api/reset-password/${token}</a></p><p>Chúng tôi khuyến khích bạn đổi mật khẩu sau khi đặt lại thành công.</p><p>Trân trọng,</p><p>Đội ngũ quản trị viên</p>`,
-    };
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error(error);
-        return res.status(500).json({ message: 'Lỗi gửi email' });
-      }
-      console.log('Đã gửi email đặt lại mật khẩu:', info.response);
-      return res.json({ message: 'Đã gửi email đặt lại mật khẩu' });
-    });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: 'Lỗi server' });
-  }
-}
 const login = async (req, res) => {
   try {
     const emailR = req.body.email;
@@ -149,7 +111,80 @@ const login = async (req, res) => {
     res.status(500).json({ error: 'Đã xảy ra lỗi' });
   }
 }
+
+const forgotPassword = async (req, res) => {
+  try {
+    // Nhận email từ yêu cầu của người dùng
+    const email = req.body.email;
+    // Kiểm tra xem email có tồn tại trong cơ sở dữ liệu hay không
+    const user = await userModel.findOne({ email });
+    if (!user) {
+      return res.status(404).json({ message: 'Không tìm thấy người dùng' });
+    }
+    const verificationCode = Math.floor(100000 + Math.random() * 900000);
+    const token = jwt.sign({ email, verificationCode }, process.env.JWT_SECRET_KEY, { expiresIn: JWT_EXPIRATION_TIME });
+    // Gửi email chứa đường dẫn đặt lại mật khẩu đến email của người dùng
+    const transporter = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      secure: false, // Sử dụng kết nối không an toàn (false) hoặc an toàn (true)
+      auth: {
+        user: 'minhhau.uit@gmail.com',
+        pass: 'tpkkllokrqcejpgs'
+      }
+    });
+    const mailOptions = {
+      to: email,
+      subject: 'Xác nhận đặt lại mật khẩu',
+      html: `<p>Mã xác nhận của bạn là: <strong>${verificationCode}</strong></p>`,
+    };
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Lỗi gửi email' });
+      } else {
+        console.log('Email sent: ' + info.response);
+        res.json({ message: 'Mã xác nhận đã được gửi đến địa chỉ email của bạn' });
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Lỗi server' });
+  }
+}
   
+const resetPassword = async (req, res) => {
+  try {
+    const verificationCode = req.body.verificationCode;
+    const newPassword = req.body.password;
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    console.log(verificationCode);
+    console.log('verificationCode còn hiệu lực');
+    console.log(decoded);
+    
+    if (!decoded) {
+      return res.status(401).json({ error: 'verificationCode không hợp lệ' });
+    }
+    const user = await userModel.findOne( { email:{$eq:decoded.email} } );
+    // Kiểm tra sự tồn tại của người dùng
+    if (!user) {
+      return res.status(401).json({ error: 'Người dùng không tồn tại' });
+    }
+    // Đổi mật khẩu và lưu vào cơ sở dữ liệu
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedPassword;
+    await user.save();
+    res.status(200).json({ message: 'Đổi mật khẩu thành công' });  
+  } catch (err) {
+    if (err.name === 'TokenExpiredError') {
+      console.log('Mã xác nhận đã hết hạn');
+    } else {
+      // Nếu là lỗi khác, xử lý theo logic của bạn
+      console.error('Lỗi kiểm tra mã xác nhận:', err);
+      res.status(500).json({ error: 'Đã xảy ra lỗi:', err });
+    }
+  }
+}
 module.exports = {
   getAllUsers,
   getUserById,
@@ -157,6 +192,7 @@ module.exports = {
   updateUser,
   deleteUser,
   login,
+  forgotPassword,
   resetPassword
 };
 
