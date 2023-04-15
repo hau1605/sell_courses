@@ -15,7 +15,7 @@ import { SnackbarProvider } from 'notistack';
 const WebLayout = () => (
   <SnackbarProvider maxSnack={4} autoHideDuration={1500}
   iconVariant={{
-    success: '✅',
+    success: '🛒',
     error: '🗑️',
     warning: '⚠️',
     info: 'ℹ️',

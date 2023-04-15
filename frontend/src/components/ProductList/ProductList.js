@@ -26,7 +26,7 @@ const ProductList = () => {
     const [filterprice, setfilterprice] = useState(false)
     const [filter, setFilter] = useState({})
     const [sort,setSort]=useState('asc')
-    const [name,setName]=useState('TẤT CẢ KHÓA HỌC')
+    const [categories,setCategories]=useState('TẤT CẢ KHÓA HỌC')
     const handlePageChange = async (pageNumber) => {
         // Xử lý khi người dùng chọn trang mới
         setCurrentPage(pageNumber);
@@ -57,12 +57,12 @@ const ProductList = () => {
         if (levelNormal) filterlevel=filterlevel.concat('normal,')
         if (levelHard) filterlevel=filterlevel.concat('hard,')
         if (levelMedium) filterlevel=filterlevel.concat('medium')
-        let filtername=name;
-        if(name==='TẤT CẢ KHÓA HỌC') filtername=''
+        let filtercategories=categories;
+        if(categories==='TẤT CẢ KHÓA HỌC') filtercategories=''
         console.log(currentPage)
         console.log(currentPage, sort,filterlevel)
         
-        CoursesDataService.getAll(currentPage, filterstring,sort,filterlevel,filtername)
+        CoursesDataService.getAll(currentPage, filterstring,sort,filterlevel,filtercategories)
             .then(response => {
                 console.log(response.data);
                 console.log("ok");
@@ -75,12 +75,11 @@ const ProductList = () => {
 
         // if (filterstring) setFilter({price:filterstring});
         console.log(filterstring)
-    }, [currentPage, filterprice,sort,level,name])
+    }, [currentPage, filterprice,sort,level,categories])
     return (<div>
         <Banner imgs={img} />
         <div className='body'>
             <p><Link className="text-link-home" to='/'>Trang chủ</Link>/<span className="text-link-loai">Tất cả sản phẩm</span></p>
-            <Container>
                 <Row style={{ padding: '15px 0px' , margin:'0 -2px'}}>
                     <Col xs={6} style={{ padding: '0px 8px' }}>
                         <img className="img-banner" style={{ width: '100%', borderRadius: '10px', }} src='https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/banner_featured_1.png?1676281841878' />
@@ -92,7 +91,7 @@ const ProductList = () => {
                 <div style={{ margin: '20px 0' }}>
                     <Row >
                         <Col xs='3' style={{ position: 'relative',padding:'0 14px 0 0'}} >
-                            <p className="header-text-loai">{name}</p>
+                            <p className="header-text-loai">{categories}</p>
                             <div className={`sb-subcourse`}>
                                 <p className="header-text-sub" onClick={() => setopenSubcourse(!opensubCourse)}>KHÓA HỌC</p>
                                 <ul className={`course-nav `}>
@@ -100,17 +99,28 @@ const ProductList = () => {
                                     <li style={{ position: 'relative' }} className='text-course-nav' onClick={() => setopenListcourse(!openListcourse)}>Danh sách khóa học
                                         <div>
                                             <ul className={`list-course ${openListcourse ? 'active' : 'inactive'}`}>
-                                            <li onClick={()=>{setName('TẤT CẢ KHÓA HỌC');}}>
+                                            <li onClick={()=>{setCategories('TẤT CẢ KHÓA HỌC');}}>
                                                     Tất cả
                                                 </li>
-                                                <li onClick={()=>{setName('Digital');setCurrentPage(1)}}>
-                                                    Digital
+                                                <li onClick={()=>{setCategories('Marketing');setCurrentPage(1)}}>
+                                                    Marketing
                                                 </li>
-                                                <li onClick={()=>{setName('Learn');setCurrentPage(1)}}>
-                                                    Learn
+                                                <li onClick={()=>{setCategories('Công nghệ thông tin');setCurrentPage(1)}}>
+                                                    Công nghệ thông tin
                                                 </li>
-                                                <li onClick={()=>{setName('Tutorial');setCurrentPage(1)}}>
-                                                    Tutorial
+                                                <li onClick={()=>{setCategories('Thiết kế đồ họa');setCurrentPage(1)}}>
+                                                    Thiết kế đồ họa
+                                                </li>
+                                                <li onClick={()=>{setCategories('Kỹ năng mềm');setCurrentPage(1)}}>
+                                                    Kỹ năng mềm
+                                                </li><li onClick={()=>{setCategories('Âm nhạc');setCurrentPage(1)}}>
+                                                    Âm nhạc
+                                                </li>
+                                               <li onClick={()=>{setCategories('Sales, bán hàng');setCurrentPage(1)}}>
+                                                    Sales, bán hàng
+                                                </li>
+                                               <li onClick={()=>{setCategories('Tutorial');setCurrentPage(1)}}>
+                                                    
                                                 </li>
                                             </ul>
                                         </div>
@@ -193,7 +203,6 @@ const ProductList = () => {
                         </Col>
                     </Row>
                 </div>
-            </Container>
         </div>
     </div>);
 }

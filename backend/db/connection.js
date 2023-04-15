@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
-
-// Replace the connection string with your MongoDB Atlas connection string
-const CONNECTION_STRING = 'mongodb+srv://hau165:Minhhau165@cluster0.zdekj4w.mongodb.net/BanKhoaHoc?retryWrites=true&w=majority';
+const config = require('../config/config.js');
 
 // Connect to MongoDB Atlas
 const connectDB = async () => {
   try {
-    await mongoose.connect(CONNECTION_STRING, {
+    await mongoose.connect(config.CONNECTION_STRING, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

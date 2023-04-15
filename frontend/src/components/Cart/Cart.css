@@ -5,6 +5,7 @@
     justify-content: center;
     text-align: center;
     align-items: center;
+    flex-direction: column;
 }
 .cart-header{
     display: flex;
@@ -57,4 +58,36 @@ p.table-text.cart-item-price{
 .cart-item-trash-icon:hover{
     color: red;
     cursor: pointer;
+}
+.cart-total-price{
+    display: inline-block;
+    color: red;
+    font-size: 18px;
+    margin-left: 10px;
+    font-weight: 700;
+    margin-right: 15px;
+}
+.btn-all.cart-btn-continue{
+    background-color: #000;
+    padding: 8px 25px 6px 25px;
+    border-color: black;
+    margin-right: 10px;
+    font-size: 14px;
+
+}
+.btn-all.cart-btn-checkout{
+    padding: 6px 25px;
+    border-color: #00bc86;
+    padding: 8px 25px 6px 25px;
+    font-size: 14px;
+
+}
+.btn-all.cart-btn-checkout:hover {
+    border-color: red;
+    color: red;
+}
+.btn-all.cart-btn-continue:hover {
+    border-color: red;
+    color: red;
+    background-color: white;
 }

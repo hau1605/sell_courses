@@ -1,5 +1,5 @@
 const Course = require('../models/courseModel');
-
+const Topic = require('../models/topicModel')
 // Create a new course
 const createCourse = async (courseData) => {
   try {
@@ -28,7 +28,8 @@ const getCourses= async (filters ,
   const totalPages = Math.ceil(totalCount / coursesPerPage);
   try {const filteredCoures = await Course.find(filters)
     .skip((page - 1) * coursesPerPage)
-    .limit(coursesPerPage).sort({[sort]: sortOrder})
+    .limit(coursesPerPage).sort({[sort]: sortOrder});
+    
     return {filteredCoures, totalPages,totalCount};
   }
   catch(e){

@@ -16,6 +16,9 @@ import "swiper/css/scrollbar";
 import Product from '../../Product/Product';
 import { useEffect } from 'react';
 import CoursesDataService from "../../../services/CoursesDataService"
+import {TbLanguage} from 'react-icons/tb'
+
+import {HiOutlineDesktopComputer} from 'react-icons/hi'
 const ProductHomePage = () => {
     const [Products, setProducts] = useState([]);
     const [newProducts, setnewProducts] = useState([]);
@@ -94,7 +97,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-1.png?v=1650870899583' />
+                                <TbLanguage style={{ color:'#5B5B5B',width:'36px',height:'36px'}}/>
                                 </Col>
                                 <Col><p className='dm-text'>Kỹ năng ngoại ngữ</p></Col>
                             </Row>
@@ -102,7 +105,7 @@ const ProductHomePage = () => {
                         <button className='dm-btn'>
                             <Row >
                                 <Col xs='2'>
-                                    <img style={{width:'36px;',height:'36px'}} src='https://bizweb.dktcdn.net/thumb/large/100/453/393/collections/cate-2.png?v=1650870918480' />
+                                <HiOutlineDesktopComputer style={{width:'36px',height:'36px'}}/>
                                 </Col>
                                 <Col><p className='dm-text'>Phát triển cá nhân</p></Col>
                             </Row>
