@@ -55,7 +55,7 @@ const Register = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/api/users/', {email, password});
+            const response = await axios.post('http://localhost:8000/api/users/', {email, password});
             if (response.status === 201) {
                 console.log('Đăng ký thành công:', response.data.message);
                 setShow(false);

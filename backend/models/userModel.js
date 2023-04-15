@@ -25,6 +25,9 @@ const userSchema = new mongoose.Schema({
   otpNumber: {
     type: String
   },
+  expiryTime: {
+    type: Date
+  },
   __v: {
     type: Number,
     default: 0

@@ -93,19 +93,19 @@ const login = async (req, res) => {
     console.log(emailR);
     console.log(passwordR);
     const existingUser = await userModel.findOne({ email:{$eq:emailR} });
-    console.log(existingUser?true:false);
+    console.log('Tồn tại user: ', existingUser?true:false);
 
     if (!existingUser) {
       res.status(401).json({ error: 'Tài khoản không tồn tại' });
       console.log('Tài khoản không tồn tại');
     } 
     const isMatch = await bcrypt.compare(passwordR, existingUser.password);
-    console.log(isMatch);
+    console.log('Mật khẩu đúng: ', isMatch);
     if(!isMatch) {
       res.status(401).json({ error: 'Mật khẩu không chính xác'});
+    } else {
+      res.status(200).json({ message: 'Đăng nhập thành công' });
     }
-    
-    res.status(200).json({ message: 'Đăng nhập thành công' });
   } catch (err) {
     console.error('Lỗi đăng nhập:', err);
     res.status(500).json({ error: 'Đã xảy ra lỗi' });
@@ -114,30 +114,35 @@ const login = async (req, res) => {
 
 const forgotPassword = async (req, res) => {
   try {
-    // Nhận email từ yêu cầu của người dùng
     const email = req.body.email;
     // Kiểm tra xem email có tồn tại trong cơ sở dữ liệu hay không
     const user = await userModel.findOne({ email });
     if (!user) {
       return res.status(404).json({ message: 'Không tìm thấy người dùng' });
     }
+    
+    // Tạo Otp
     const verificationCode = Math.floor(100000 + Math.random() * 900000);
-    const token = jwt.sign({ email, verificationCode }, process.env.JWT_SECRET_KEY, { expiresIn: JWT_EXPIRATION_TIME });
+    // const otpJwt = jwt.sign({ email, verificationCode }, process.env.JWT_SECRET_KEY, { expiresIn: JWT_EXPIRATION_TIME });
+    const expiryTime = new Date(Date.now() + 60 * 60 * 1000);
+    
     // Gửi email chứa đường dẫn đặt lại mật khẩu đến email của người dùng
     const transporter = nodemailer.createTransport({
       host: 'smtp.gmail.com',
       port: 587,
-      secure: false, // Sử dụng kết nối không an toàn (false) hoặc an toàn (true)
+      secure: false,
       auth: {
         user: 'minhhau.uit@gmail.com',
         pass: 'tpkkllokrqcejpgs'
       }
     });
+
     const mailOptions = {
       to: email,
       subject: 'Xác nhận đặt lại mật khẩu',
       html: `<p>Mã xác nhận của bạn là: <strong>${verificationCode}</strong></p>`,
     };
+
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
         console.error(error);
@@ -147,42 +152,51 @@ const forgotPassword = async (req, res) => {
         res.json({ message: 'Mã xác nhận đã được gửi đến địa chỉ email của bạn' });
       }
     });
+
+    await userModel.updateOne({ email: email }, {$set: {otpNumber: verificationCode, expiryTime: expiryTime}});
+    console.log('Mã OTP đã được lưu vào cơ sở dữ liệu:', verificationCode);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Lỗi server' });
   }
 }
-  
+const confirmOtp = async (req, res) => {
+  try {
+    const emailResetPassword = req.body.emailResetPassword;
+    const verificationCode = req.body.verificationCode;
+    console.log('Email: ', emailResetPassword);
+    console.log('Mã xác nhận nhập vào: ', verificationCode);
+    const user = await userModel.findOne( { email:{$eq:emailResetPassword} } );
+    console.log('Otp gửi về email: ', user.otpNumber);
+
+    if (verificationCode !== user.otpNumber) {
+      return res.status(401).json({ error: 'Otp không hợp lệ' });
+    } else {
+      console.log('Otp còn hiệu lực');
+      res.status(200).json({ message: 'Otp hợp lệ' }); 
+    }
+  } catch {
+    console.error('Lỗi kiểm tra mã xác nhận:', err);
+    res.status(500).json({ error: 'Đã xảy ra lỗi:', err });
+  }
+}
 const resetPassword = async (req, res) => {
   try {
-    const verificationCode = req.body.verificationCode;
+    const emailResetPassword = req.body.emailResetPassword;
     const newPassword = req.body.password;
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    console.log(verificationCode);
-    console.log('verificationCode còn hiệu lực');
-    console.log(decoded);
+    console.log('Email: ', emailResetPassword);
+    console.log('Mật khẩu mới nhập vào: ', newPassword);
     
-    if (!decoded) {
-      return res.status(401).json({ error: 'verificationCode không hợp lệ' });
-    }
-    const user = await userModel.findOne( { email:{$eq:decoded.email} } );
-    // Kiểm tra sự tồn tại của người dùng
-    if (!user) {
-      return res.status(401).json({ error: 'Người dùng không tồn tại' });
-    }
+    const user = await userModel.findOne( { email:{$eq:emailResetPassword} } );
     // Đổi mật khẩu và lưu vào cơ sở dữ liệu
     const hashedPassword = await bcrypt.hash(newPassword, 10);
     user.password = hashedPassword;
-    await user.save();
-    res.status(200).json({ message: 'Đổi mật khẩu thành công' });  
+    await user.save(); 
+    res.status(200).json({ message: 'Đổi mật khẩu thành công' });
+    console.log('Đổi mật khẩu thành công');
   } catch (err) {
-    if (err.name === 'TokenExpiredError') {
-      console.log('Mã xác nhận đã hết hạn');
-    } else {
-      // Nếu là lỗi khác, xử lý theo logic của bạn
-      console.error('Lỗi kiểm tra mã xác nhận:', err);
-      res.status(500).json({ error: 'Đã xảy ra lỗi:', err });
-    }
+    console.error('Lỗi đặt lại mật khẩu:', err);
+    res.status(500).json({ error: 'Đã xảy ra lỗi:', err });
   }
 }
 module.exports = {
@@ -193,6 +207,7 @@ module.exports = {
   deleteUser,
   login,
   forgotPassword,
+  confirmOtp,
   resetPassword
 };
 

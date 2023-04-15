@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import UserDataService from '../../services/UserDataService'
 import Banner from "../Banner/Banner";
 import { Link } from "react-router-dom";
 import './ResetPass.css'
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useSelector } from "react-redux";
+import { useNavigate } from 'react-router-dom';
 
 const ResetPass = () => {
     const [isResetPasswordFormVisible, setIsResetPasswordFormVisible] = useState(false);
@@ -14,17 +17,20 @@ const ResetPass = () => {
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
     const [verificationCodeError, setVerificationCodeError] = useState('');
-
+    const emailResetPassword = useSelector((state) => state.user.emailResetPassword);
+    const navigate = useNavigate();
     const img = ['https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/breadcrumb_image.png?1676281841878']
     
     const handleCodeChange = (event) => {
         const codeValue = event.target.value;
         const submitButton = document.getElementById('submitButton');
-
+        
         setVerificationCode(codeValue);
         if (codeValue.length === 6 && !isNaN(codeValue)) {
             submitButton.removeAttribute('disabled');
+            console.log(emailResetPassword);
             console.log("Đủ 6 số");
+            console.log(codeValue);
             setVerificationCodeError("");
         } else {
             submitButton.setAttribute('disabled', true);
@@ -32,6 +38,7 @@ const ResetPass = () => {
             setVerificationCodeError("Không đúng định dạng!");
         }
     };
+
     const handlePasswordChange = (event) => {
         setPassword(event.target.value);
     };
@@ -39,21 +46,32 @@ const ResetPass = () => {
     const handleSubmitCode = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/api/users/reset-password', {verificationCode});
+            console.log(emailResetPassword);
+            console.log(verificationCode);
+            const response = await axios.post('http://localhost:8000/api/users/reset-password/confirmOtp', { emailResetPassword,verificationCode });
+            console.log(response.status);
             if (response.status === 200) {
-                console.log('Mã xác nhận đúng', response.data.message);
+                console.log('Mã xác nhận đúng. ', response.data.message);
                 setShow(false);
+                setIsResetPasswordFormVisible(true);
+                console.log("Hiển thị form đặt mật khẩu.");
             } else {
-                console.error('Lỗi đăng nhập:', response.data.error);
+                console.error('Mã đăng nhập không hợp lệ:', response.data.error);
                 setShow(true);
+                setIsResetPasswordFormVisible(false);
+                console.log("Hiển thị form nhập mã xác nhận");
             }
         } catch (error) {
             if (error.response) {
-                console.error('Lỗi đăng nhập có res:', error.response.data.error);
+                console.error('Lỗi 1:', error.response.data.error);
                 setShow(true);
+                setIsResetPasswordFormVisible(false);
+                console.log("Hiển thị form nhập mã xác nhận");
             } else {
-                console.error('Lỗi đăng nhập không có res:', error.message);
+                console.error('Lỗi 2:', error.message);
                 setShow(true);
+                setIsResetPasswordFormVisible(false);
+                console.log("Hiển thị form nhập mã xác nhận");
             }
         }
     };
@@ -61,28 +79,28 @@ const ResetPass = () => {
     const handleResetPassword = async (event)=> {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/api/users/forgot-password', { password });
+            const response = await axios.post('http://localhost:8000/api/users/reset-password', { emailResetPassword, password });
+            console.log(response.status);
             if (response.status === 200) {
-                setSuccess(true);
-                setError('OK');
-                window.location.href = 'http://localhost:3000/';
+                // setSuccess(true);
+                // setError('OK');
                 console.log('Đặt lại mật khẩu thành công. Chuyển hướng về trang chủ');
+                navigate('/login');
               } else {
                 setSuccess(false);
                 setError(response.data.error || 'Có lỗi xảy ra. Vui lòng thử lại sau.');
-              }
+                console.log('Đặt lại mật khẩu thành công. Chuyển hướng về trang chủ');
+                
+            }
         } catch (error) {
             console.error(`Lỗi yêu cầu đặt lại mật khẩu: ${error.message}`);
             setError('Có lỗi xảy ra. Vui lòng thử lại sau.');
         }
     };
+
     const showResetPassForm = () => {
-        setIsResetPasswordFormVisible(true);
-        console.log("Hiển thị form đặt mật khẩu");
     };
     const showVerificationCodeForm = () => {
-        setIsResetPasswordFormVisible(false);
-        console.log("Hiển thị form nhập mã xác nhận");
     };
 
     return (
@@ -106,8 +124,7 @@ const ResetPass = () => {
                                     <input id="inputVerificationCode" type="text" placeholder="Mã xác nhận" value={verificationCode} onChange={handleCodeChange} required />
                                     {verificationCodeError && <div style={{ color: 'red' }}>{verificationCodeError}</div>}</div>  
                                 <div className="action-form_bottom">
-                                    <button id="submitButton" type="button" className="btn btn-success btn-lg" disabled>Gửi</button>
-                                    <a className="btn btn-outline-secondary" onClick={showResetPassForm}>Hủy</a>
+                                    <input id="submitButton" value="Gửi" type="submit" className="btn btn-success btn-lg" onClick={showResetPassForm} disabled/>
                                 </div>
                             </form>
                         </div>
@@ -124,7 +141,7 @@ const ResetPass = () => {
                                 </div>  
                                 <div className="button-container">
                                     <input type="submit" className="btn" value="Xác nhận"/>
-                                    <a cclassNamelass="btn btn-outline-secondary" onClick={showVerificationCodeForm}>Hủy</a>
+                                    <Link className="btn btn-outline-secondary" onClick={showVerificationCodeForm}>Hủy</Link>
                                 </div>
                             </form>
                         </div>

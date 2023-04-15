@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { useDispatch } from "react-redux";
+import { setEmailResetPassword } from "../../features/userSlice";
+import { useNavigate } from 'react-router-dom';
+
 import "./Login.css";
 const Login=()=>{
     const [email, setEmail] = useState("");
@@ -13,10 +17,12 @@ const Login=()=>{
     const [show, setShow] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleEmailChange = (event) => {
         const emailValue = event.target.value;
-        setEmail(event.target.value);
+        setEmail(emailValue);
         // Kiểm tra tính hợp lệ của email
         const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i; // Regex để kiểm tra email
         if (!emailPattern.test(emailValue)) {
@@ -24,6 +30,9 @@ const Login=()=>{
         } else {
             setEmailError('');
         }
+        console.log('Email đã nhập: ', emailValue);
+        dispatch(setEmailResetPassword(emailValue));
+        console.log(dispatch(setEmailResetPassword(emailValue))?'true':'false');
     };
 
     const handlePasswordChange = (event) => {
@@ -33,11 +42,12 @@ const Login=()=>{
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/api/users/login', {email, password});
+            const response = await axios.post('http://localhost:8000/api/users/login', {email, password});
             if (response.status === 200) {
                 console.log('Đăng nhập thành công:', response.data.message);
                 setShow(false);
-                window.location.href = '/';
+                // window.location.href = '/';
+                navigate("/");
             } else {
                 console.error('Lỗi đăng nhập:', response.data.error);
                 setShow(true);
@@ -56,7 +66,7 @@ const Login=()=>{
     const handleForgotPassword = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:4000/api/users/forgotpassword', { email });
+            const response = await axios.post('http://localhost:8000/api/users/forgot-password', { email });
             if (response.status === 200) {
                 // Nếu yêu cầu đặt lại mật khẩu thành công
                 setSuccess(true);
@@ -118,7 +128,7 @@ const Login=()=>{
                                     </div>
                                     <p>
                                         Bạn quên mật khẩu? 
-                                        <a href="#" className="btn-link-style text-info" onClick={showRecoverPasswordForm}> Lấy lại tại đây</a>
+                                        <Link className="btn-link-style text-info" onClick={showRecoverPasswordForm}> Lấy lại tại đây</Link>
                                     </p>
                                     <p>
                                         Bạn chưa có tài khoản? 
@@ -145,7 +155,7 @@ const Login=()=>{
                                 </div>  
                                 <div className="action-form_bottom">
                                     <button type="button" className="btn btn-success btn-lg" onClick={handleForgotPassword}>Gửi</button>
-                                    <a className="btn btn-outline-secondary" onClick={showLoginForm}>Hủy</a>
+                                    <Link className="btn btn-outline-secondary" onClick={showLoginForm}>Hủy</Link>
                                 </div>
                             </form>
                         </div>
