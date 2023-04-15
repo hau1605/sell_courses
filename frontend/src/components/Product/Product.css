@@ -8,11 +8,21 @@
     }
     .btn-level-normal{
         font-size:10px;
+        margin: auto;
+    }
+    .btn-level-medium{
+        font-size:10px;
+    }
+    .btn-level-hard{
+        font-size:10px;
     }
     .text-des{
         font-size: 14px;
     }
     .text-price-sales{
+        font-size: 10px;
+    }
+    .card-text-date-view{
         font-size: 10px;
     }
   }
@@ -33,6 +43,9 @@
     }
     .text-des{
         font-size: 16px;
+    }
+    .card-text-date-view{
+        font-size: 14px;
     }
   }
   .link{
@@ -118,6 +131,11 @@
     font-weight: 700;
     padding: 0;
     margin-bottom: 0;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient:vertical;
 }
 p.card-text{
     margin: 0;
@@ -147,4 +165,7 @@ p.card-text{
 }
 .product-cart-icon:hover{
     color: red;
+}
+.text-mb-10{
+    margin: 10px 0 0;
 }
