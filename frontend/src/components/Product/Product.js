@@ -52,7 +52,7 @@ const Product = (props) => {
               <p className="card-text-date-view" style={{ margin:'auto 0' }}>{d.toLocaleDateString("vi-VI")}</p>
             </Col>
             <Col onClick={handleClickVariant("success")} style={{ display: 'flex', justifyContent: 'right' }}>
-              <FaCartPlus className="product-cart-icon" style={{ margin: '0 10px 0 0', width: '30px', height: '30px',  cursor: 'pointer' }} onClick={() => dispatch(addToCart(props.product))} />
+              <FaCartPlus className="product-cart-icon" style={{ margin: '0 0px 0 0', width: '30px', height: '30px',  cursor: 'pointer' }} onClick={() => dispatch(addToCart(props.product))} />
             </Col>
           </Row>
         </Card.Body>

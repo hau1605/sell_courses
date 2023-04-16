@@ -38,7 +38,6 @@ const ProductList = (props) => {
     const onchangeSortPrice = e => {
         const _sort = e.target.value
         setSort(_sort);
-
     }
 
     const img = ['https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/breadcrumb_image.png?1676281841878']
