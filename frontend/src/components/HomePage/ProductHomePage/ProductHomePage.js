@@ -22,10 +22,10 @@ import { MdDraw, MdVideoCameraBack, MdDeveloperBoard, MdFamilyRestroom } from 'r
 import { HiOutlineDesktopComputer, HiChip, HiMusicNote } from 'react-icons/hi'
 import { GiSkills } from 'react-icons/gi'
 import { IoIosPeople, } from 'react-icons/io'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const ProductHomePage = () => {
+    const navigate = useNavigate()
     const [Products, setProducts] = useState([]);
-    const [as, setad] = useState("gdg");
     const [newProducts, setnewProducts] = useState([]);
     useEffect(() => {
         let btnnew_List = document.querySelectorAll('.btn_fc');
@@ -101,7 +101,7 @@ const ProductHomePage = () => {
                 <div className='slider-dm'>
                     <Slider {...settings} >
                         <button className='dm-btn'>
-                            <Link to={'/ProductList/Kỹ năng ngoại ngữ'}  style={{ color: '#5b5b5b', textDecoration: 'none' }}>
+                            <Link to={'/ProductList/Kỹ năng ngoại ngữ'} style={{ color: '#5b5b5b', textDecoration: 'none' }}>
                                 <Row >
                                     <Col xs='2'>
                                         <TbLanguage className='homepage-categories-icon' />
@@ -110,7 +110,7 @@ const ProductHomePage = () => {
                                 </Row></Link>
                         </button>
                         <button className='dm-btn'>
-                            <Link to={'/ProductList/Tin học văn phòng'} categories={as} style={{ color: '#5b5b5b', textDecoration: 'none' }}>
+                            <Link to={'/ProductList/Tin học văn phòng'} style={{ color: '#5b5b5b', textDecoration: 'none' }}>
                                 <Row >
                                     <Col xs='2'>
                                         <HiOutlineDesktopComputer className='homepage-categories-icon' />
@@ -133,88 +133,91 @@ const ProductHomePage = () => {
                         </button>
                         <button className='dm-btn'>
                             <Link to={'/ProductList/Phát triển cá nhân'} style={{ color: '#5b5b5b', textDecoration: 'none' }}>
-                            <Row >
-                                <Col xs='2'>
-                                    <GiSkills className='homepage-categories-icon' />
-                                </Col>
-                                <Col><p className='dm-text'>Phát triển cá nhân</p></Col>
-                            </Row>
+                                <Row >
+                                    <Col xs='2'>
+                                        <GiSkills className='homepage-categories-icon' />
+                                    </Col>
+                                    <Col><p className='dm-text'>Phát triển cá nhân</p></Col>
+                                </Row>
                             </Link>
                         </button>
                         <button className='dm-btn'>
                             <Link to={'/ProductList/Thiết kế đồ họa'} style={{ color: '#5b5b5b', textDecoration: 'none' }}>
-                            <Row >
-                                <Col xs='2'>
-                                    <MdDraw className='homepage-categories-icon' />
-                                </Col>
-                                <Col><p className='dm-text'>Thiết kế đồ họa</p></Col>
-                            </Row>
+                                <Row >
+                                    <Col xs='2'>
+                                        <MdDraw className='homepage-categories-icon' />
+                                    </Col>
+                                    <Col><p className='dm-text'>Thiết kế đồ họa</p></Col>
+                                </Row>
                             </Link>
                         </button>
                         <button className='dm-btn'>
                             <Link to={'/ProductList/Kỹ năng mềm'} style={{ color: '#5b5b5b', textDecoration: 'none' }}>
-                            <Row >
-                                <Col xs='2'>
-                                    <IoIosPeople className='homepage-categories-icon' />                                </Col>
-                                <Col><p className='dm-text'>Kỹ năng mềm</p></Col>
-                            </Row>
+                                <Row >
+                                    <Col xs='2'>
+                                        <IoIosPeople className='homepage-categories-icon' />                                </Col>
+                                    <Col><p className='dm-text'>Kỹ năng mềm</p></Col>
+                                </Row>
                             </Link>
                         </button>
                         <button className='dm-btn'>
                             <Link to={'/ProductList/Công nghệ thông tin'} style={{ color: '#5b5b5b', textDecoration: 'none' }}>
-                            <Row >
-                                <Col xs='2'>
-                                    <HiChip className='homepage-categories-icon' />
-                                </Col>
-                                <Col><p className='dm-text'>Công nghệ thông tin</p></Col>
-                            </Row>
+                                <Row >
+                                    <Col xs='2'>
+                                        <HiChip className='homepage-categories-icon' />
+                                    </Col>
+                                    <Col><p className='dm-text'>Công nghệ thông tin</p></Col>
+                                </Row>
                             </Link>
                         </button>
                         <button className='dm-btn'>
-                            <Link to={'/ProductList/Nhiếp ảnh, quay phim'}style={{ color: '#5b5b5b', textDecoration: 'none' }}>
-                            <Row >
-                                <Col xs='2'>
-                                    <MdVideoCameraBack className='homepage-categories-icon' />
-                                </Col>
-                                <Col><p className='dm-text'>Nhiếp ảnh, quay phim</p></Col>
-                            </Row>
+                            <Link to={'/ProductList/Nhiếp ảnh, quay phim'} style={{ color: '#5b5b5b', textDecoration: 'none' }}>
+                                <Row >
+                                    <Col xs='2'>
+                                        <MdVideoCameraBack className='homepage-categories-icon' />
+                                    </Col>
+                                    <Col><p className='dm-text'>Nhiếp ảnh, quay phim</p></Col>
+                                </Row>
                             </Link>
                         </button>
                         <button className='dm-btn'>
                             <Link to={'/ProductList/Marketing'} style={{ color: '#5b5b5b', textDecoration: 'none' }}>
-                            <Row >
-                                <Col xs='2'>
-                                    <MdDeveloperBoard className='homepage-categories-icon' />
-                                </Col>
-                                <Col><p className='dm-text'>Marketing</p></Col>
-                            </Row>
+                                <Row >
+                                    <Col xs='2'>
+                                        <MdDeveloperBoard className='homepage-categories-icon' />
+                                    </Col>
+                                    <Col><p className='dm-text'>Marketing</p></Col>
+                                </Row>
                             </Link>
                         </button>
                         <button className='dm-btn'>
-                            <Link to={'/ProductList/Kinh doanh khởi nghiệp'} style={{ color: '#5b5b5b', textDecoration: 'none' }}>
-                            <Row >
-                                <Col xs='2'>
-                                    <HiMusicNote className='homepage-categories-icon' />                             </Col>
-                                <Col><p className='dm-text'>Kinh doanh khởi nghiệp</p></Col>
-                            </Row>
+                            <Link to={'/ProductList/Âm nhạc'} style={{ color: '#5b5b5b', textDecoration: 'none' }}>
+                                <Row >
+                                    <Col xs='2'>
+                                        <HiMusicNote className='homepage-categories-icon' />
+                                    </Col>
+                                    <Col><p className='dm-text'>Âm nhạc</p></Col>
+                                </Row>
                             </Link>
                         </button>
                         <button className='dm-btn'>
                             <Link to={'/ProductList/Sức khỏe, giới tính'} style={{ color: '#5b5b5b', textDecoration: 'none' }}>
-                            <Row >
-                                <Col xs='2'>
-                                    <FaHeartbeat className='homepage-categories-icon' />                               </Col>
-                                <Col><p className='dm-text'>Sức khỏe, giới tính</p></Col>
-                            </Row>
+                                <Row >
+                                    <Col xs='2'>
+                                        <FaHeartbeat className='homepage-categories-icon' />
+                                    </Col>
+                                    <Col><p className='dm-text'>Sức khỏe, giới tính</p></Col>
+                                </Row>
                             </Link>
                         </button>
                         <button className='dm-btn'>
                             <Link to={'/ProductList/Gia đình'} style={{ color: '#5b5b5b', textDecoration: 'none' }}>
-                            <Row >
-                                <Col xs='2'>
-                                    <MdFamilyRestroom className='homepage-categories-icon' />                           </Col>
-                                <Col><p className='dm-text'>Gia đình</p></Col>
-                            </Row>
+                                <Row >
+                                    <Col xs='2'>
+                                        <MdFamilyRestroom className='homepage-categories-icon' />
+                                    </Col>
+                                    <Col><p className='dm-text'>Gia đình</p></Col>
+                                </Row>
                             </Link>
                         </button>
                     </Slider>
@@ -229,7 +232,7 @@ const ProductHomePage = () => {
                     </div>
                     <Row>
                         <Col style={{ textAlign: 'center' }}>
-                            <button className='btn-all'>Xem tất cả</button>
+                            <button className='btn-all' onClick={() => navigate("/ProductList")}>Xem tất cả</button>
                         </Col>
                     </Row>
                 </div>

@@ -18,7 +18,7 @@ const Product = (props) => {
   const dispatch = useDispatch();
   const [level, setLevel] = useState('');
   const { enqueueSnackbar } = useSnackbar();
-  const handleClickVariant = (variant: VariantType) => () => {
+  const handleClickVariant = (variant) => () => {
     // variant could be success, error, warning, info, or default
     enqueueSnackbar('Thêm vào giỏ hàng thành công', { variant });
   };
@@ -28,8 +28,6 @@ const Product = (props) => {
   let d=new Date(props.product.uploadDate);
   return (
     <div>
-
-
       <Card className="Card">
         <Link to='/ProductDetail' className="link"><Card.Img className="card-img" variant="top" src={props.product.poster} /></Link>
         <Card.Body style={{ textAlign: 'left', padding: '0' }}>

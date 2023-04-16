@@ -4,7 +4,7 @@ class CoursesDataService {
 
     getAll(currentPage, price = null, sort = null,level=null,categories=null) {
 
-        return axios.get(`http://localhost:8000/api/courses?page=${currentPage}&priceRanges=${price}&sort=cost&sortOrder=${sort}&level=${level}&categories=${categories}`)
+        return axios.get(`http://localhost:8000/api/courses?coursePerPage=3&page=${currentPage}&priceRanges=${price}&sort=cost&sortOrder=${sort}&level=${level}&categories=${categories}`)
     }
 
 getHotCourse(){

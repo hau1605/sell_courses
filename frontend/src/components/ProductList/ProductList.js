@@ -7,6 +7,7 @@ import Col from "react-bootstrap/esm/Col";
 import Product from "../Product/Product";
 import Form from 'react-bootstrap/Form';
 import CustomPagination from "../Pagination/Pagination";
+import LinearProgress  from '@mui/material/LinearProgress'
 import './ProductList.css'
 import CoursesDataService from "../../services/CoursesDataService";
 import { FormGroup } from "react-bootstrap";
@@ -28,7 +29,6 @@ const ProductList = (props) => {
     const [filterprice, setfilterprice] = useState(false)
     const [sort, setSort] = useState('asc')
     const [categories, setCategories] = useState(categorie)
-
 
     const handlePageChange = async (pageNumber) => {
         // Xử lý khi người dùng chọn trang mới
@@ -74,11 +74,12 @@ const ProductList = (props) => {
                 console.log("ok");
                 setProducts(response.data.products);
                 setPageCount(response.data.totalPages)
+                
+
             })
             .catch(e => {
                 console.log(e);
             });
-
         // if (filterstring) setFilter({price:filterstring});
         console.log(filterstring)
     }, [currentPage, filterprice, sort, level, categories])
@@ -131,7 +132,7 @@ const ProductList = (props) => {
                                             <li onClick={() => { setCategories('Tin học văn phòng'); setCurrentPage(1); navigate("/ProductList/Tin học văn phòng") }}>
                                                 Tin học văn phòng
                                             </li>
-                                            <li onClick={() => { setCategories('Phát triển cá nhân'); setCurrentPage(1); navigate("Phát triển cá nhân") }}>
+                                            <li onClick={() => { setCategories('Phát triển cá nhân'); setCurrentPage(1); navigate("/ProductList/Phát triển cá nhân") }}>
                                                 Phát triển cá nhân
                                             </li>
                                             <li onClick={() => { setCategories('Gia đình'); setCurrentPage(1); navigate("/ProductList/Gia đình") }}>
@@ -211,17 +212,22 @@ const ProductList = (props) => {
                                     </FormGroup>
                                 </Form>
                             </Col>
+                            {Products.length !== 0 ? <Row style={{ padding: '0 0 0 0' }}>
+                            </Row> : <p>Chưa tìm thấy khóa học phù hợp</p>}
 
-                        </Row>
-                        <Row >
-                            {Products.length === 0 ? null :
+                            {Products.length === 0 ? <Row style={{ padding: '0px 20px 0 0' }}>
+                                <LinearProgress style={{ color: 'red' }} />
+                            </Row> :
                                 <Row >
                                     {Products.map((item) => <Col xs={6} lg={4} md={4} style={{ padding: '8px' }}>
                                         <Product product={item} />
                                     </Col>)}
                                 </Row>
+
                             }
                         </Row>
+
+
                         <CustomPagination className="pagination"
                             pageCount={pageCount}
                             currentPage={currentPage}
