@@ -18,7 +18,7 @@ const Product = (props) => {
   const dispatch = useDispatch();
   const [level, setLevel] = useState('');
   const { enqueueSnackbar } = useSnackbar();
-  const handleClickVariant = (variant: VariantType) => () => {
+  const handleClickVariant = (variant) => () => {
     // variant could be success, error, warning, info, or default
     enqueueSnackbar('Thêm vào giỏ hàng thành công', { variant });
   };
@@ -28,8 +28,6 @@ const Product = (props) => {
   let d=new Date(props.product.uploadDate);
   return (
     <div>
-
-
       <Card className="Card">
         <Link to='/ProductDetail' className="link"><Card.Img className="card-img" variant="top" src={props.product.poster} /></Link>
         <Card.Body style={{ textAlign: 'left', padding: '0' }}>
@@ -48,13 +46,13 @@ const Product = (props) => {
           <Row>
             <Col style={{ display: 'flex', justifyContent: 'left', alignItems:'center' }}>
               <FaEye style={{ margin: '0px 4px 0 0', width: '14px', height: '14px', alignSelf:'left' }} />
-              <p style={{ margin:'auto 0' }}>{props.product.numberOfView}</p>
+              <p className="card-text-date-view" style={{ margin:'auto 0' }}>{props.product.numberOfView}</p>
               <MdOutlineDateRange style={{ margin: '0px 2px 0 10px', width: '14px', alignSelf:'left' ,height: '14px' }} />
               
-              <p style={{ margin:'auto 0' }}>{d.toLocaleDateString("vi-VI")}</p>
+              <p className="card-text-date-view" style={{ margin:'auto 0' }}>{d.toLocaleDateString("vi-VI")}</p>
             </Col>
             <Col onClick={handleClickVariant("success")} style={{ display: 'flex', justifyContent: 'right' }}>
-              <FaCartPlus className="product-cart-icon" style={{ margin: '0 20px 0 0', width: '30px', height: '30px',  cursor: 'pointer' }} onClick={() => dispatch(addToCart(props.product))} />
+              <FaCartPlus className="product-cart-icon" style={{ margin: '0 0px 0 0', width: '30px', height: '30px',  cursor: 'pointer' }} onClick={() => dispatch(addToCart(props.product))} />
             </Col>
           </Row>
         </Card.Body>
