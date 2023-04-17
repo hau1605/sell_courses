@@ -10,6 +10,7 @@ import Register from './Register/Register';
 import ProductList from './ProductList/ProductList';
 import Cart from './Cart/Cart';
 import ResetPass from './ResetPass/ResetPass'
+import User from './User/User'
 import { SnackbarProvider } from 'notistack';
 
 const WebLayout = () => (
@@ -38,6 +39,7 @@ const WebLayout = () => (
           <Route path="/Cart" element={<Cart />} />
           <Route path="/ProductList" element={<ProductList />} />
           <Route path="/reset-password" element={<ResetPass />} />
+          <Route path="/user" element={<User />} />
         </Routes>
       </Layout>
 
