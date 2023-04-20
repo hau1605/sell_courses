@@ -4,8 +4,10 @@ import category from "./category.png"
 import caretRight from "./caretRight.svg"
 import searchIcon from "./searchIcon.png"
 import cartIcon from "./cartIcon.png"
-import {FiShoppingCart} from "react-icons"
+import {FiShoppingCart, FiSearch} from "react-icons/fi"
+import {FaBars, FaSearch} from "react-icons/fa"
 import "./Header.css"
+import MenuDropDown from '../MenuDropDown/MenuDropDown';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 const Header = () => {
@@ -37,7 +39,7 @@ const Header = () => {
               <div className='col-xl-7 col-lg-6 col-12 col-header'>
                 <div className='logo_center'>
                   <div className='logo'>
-                    <Link to='/'>
+                    <Link to='/' className='logo-wrapper'>
                     <img className='icon' src="//bizweb.dktcdn.net/100/453/393/themes/894913/assets/logo.png?1676281841878" alt="logo Template Udemy" />
                     </Link>
                   </div>
@@ -46,7 +48,8 @@ const Header = () => {
                   <div className='menu-bar-mobile menu-bar-h nav-mobile-button'>
                     <div className='menu-bar'>
                       <img className='dropDown_icon' src={category} />
-                      Danh mục
+                      <p className='menu-bar-title'>Danh mục</p>
+                      <FaBars className="bar-mobile" />
                     </div>
                   </div>
                   <div className='wrap_main menu-mobile'>
@@ -101,7 +104,7 @@ const Header = () => {
                 </div>
                 <div className='header_search'>
                   <div className='icon-search'>
-                    
+                    <FiSearch className='search-mobile' />
                   </div>
                   <form action='/search' method='get' className='input-group search-bar' role='search'>
                     <input type='text' name='query' autoComplete='off' placeholder='Tìm kiếm' className='inpit-group-field auto-search' required />
@@ -121,10 +124,11 @@ const Header = () => {
                   </div>
                   <div className='top-cart-contain'>
                     <div className='mini-cart text-xs-center'>
-                      <a className='img_hover_cart' href='/cart' title='Giỏ hàng'>
-                        <img className='cartIcon' src={cartIcon} />
-                        <span className='count_item count_item_pr hidden-count'>0</span>
-                      </a>
+                      <Link className='img_hover_cart' to="/cart" title='Giỏ hàng'>
+                        {/* <img className='cartIcon' src={cartIcon} /> */}
+                        <FiShoppingCart />
+                        <span className='count_item count_item_pr hidden-count'>{totalCount}</span>
+                      </Link>
                     </div>
                   </div>
 
@@ -136,33 +140,6 @@ const Header = () => {
               </div>
             </div>
           </div>
-          {/* <div className='header_left'>
-              <Link to='/'><img className='icon' src={logo} />  </Link>    
-          </div>
-          <div className='header_center'>
-            <ul className='header_menu'>
-              <div className='dropDown_header'>
-                  <div className='dropDown_header_menu'>
-                    <img className='dropDown_icon' src={category} />
-                    <a>Danh mục</a>
-                  </div>
-                    <div className='dropDown_list'>
-                      <a href='#'>Trang chủ</a>
-                      <a href='#'>Danh sách khóa học</a>
-                      <a href='#'>Khóa học tiêu biểu</a>
-                      <a href='#'>Tin tức</a>
-                      <a href='#'>Liên hệ</a>
-                      <a href='#'>Giới thiệu</a>
-                      <a href='#'>Sản phẩm yêu thích</a>
-                    </div>
-              </div>
-              <li><a href='#'>Tất cả khóa học</a></li>
-            </ul>
-          </div>
-          <div className='header_right'>
-            <button>Đăng nhập</button>
-            <button>Đăng ký</button>
-          </div> */}
         </div>
       </header>)
 };
