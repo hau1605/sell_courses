@@ -12,7 +12,7 @@ import "./Typical_Teacher.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'swiper/css';
 import "swiper/css/free-mode";
-
+import facebook_logo from './facebook-logo.png'
 const Typical_Teacher = () => {
   const [lecturers, setTeacher] = useState([]);
 
@@ -28,25 +28,22 @@ const Typical_Teacher = () => {
     });
   }, []);
 
-  const titleStyle = {
-    textAlign: 'left',  
-  };
   const Item = ({ lecturer }) => {
     return (
       <Col>
-        <Card style={{ width: '18rem'}}>
+        <Card className ='lec-card' style={{ width: 'auto', margin:'auto'} } >
           <Link to={"/lecturers/"+lecturer._id}>
-            <Card.Img src={lecturer.avatar}/>
+            <Card.Img src={lecturer.avatar} className='lec-img'/>
             <Card.Body>
-              <Card.Title>{lecturer.name}</Card.Title>
-              <Card.Text>{lecturer.description}</Card.Text>
+              <Card.Title className='lec-name'>{lecturer.name}</Card.Title>
+              <Card.Text className='lec-descrip'>{lecturer.description}</Card.Text>
             </Card.Body>
           </Link>
         </Card>
       </Col>
     );
   }
-  const LecturerList = () => {
+  /*const LecturerList = () => {
     return (
       <Container>
         <Row>
@@ -56,12 +53,14 @@ const Typical_Teacher = () => {
         </Row>
       </Container>
     );
-  }
+  }*/
+  
   function MultiCarousel() {
     return (
       <Carousel
+        
         additionalTransfrom={0}
-        arrows
+        arrows={true}
         autoPlaySpeed={3000}
         centerMode={false}
         className=""
@@ -79,7 +78,7 @@ const Typical_Teacher = () => {
         responsive={{
           desktop: {
             breakpoint: { max: 3000, min: 1024 },
-            items: 3,
+            items: 4,
             partialVisibilityGutter: 40
           },
           mobile: {
@@ -89,21 +88,29 @@ const Typical_Teacher = () => {
           },
           tablet: {
             breakpoint: { max: 1024, min: 464 },
-            items: 2,
+            items: 3,
             partialVisibilityGutter: 30
           }
         }}      
         sliderClass=""
         slidesToSlide={1}
         swipeable>
-        <LecturerList/>  
+        { lecturers.map((lecturer) => (
+            <Item key={lecturer._id} lecturer={lecturer} />
+          ))} 
+        
       </Carousel>
     );
       }
       
   return (
-    <div>
-      <h1 style={titleStyle} >Giảng Viên Tiêu Biểu</h1>
+    <div className='dm-typical'>
+      <div className='line-box'> </div>
+      <Row>
+        <Col xs='3'>
+          <h2 className='header-text' >GIẢNG VIÊN TIÊU BIỂU</h2>
+        </Col>
+      </Row>
       <MultiCarousel />
     </div>
   );
