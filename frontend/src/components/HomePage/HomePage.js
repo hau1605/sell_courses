@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import Typical_Teacher from "../Typical_Teacher/Typical_Teacher";
 import ProductHomePage from "./ProductHomePage/ProductHomePage";
 import CoursesDataService from "../../services/CoursesDataService"
+import Intro from "../Intro/Intro";
 const HomePage=()=>{
     
     const img=
@@ -14,6 +15,7 @@ const HomePage=()=>{
         <Banner imgs={img}/>
         <ProductHomePage/>
         <Typical_Teacher/>
+        <Intro/>
     </div>;
 }
 export default HomePage;
