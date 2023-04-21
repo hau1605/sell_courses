@@ -55,7 +55,7 @@ const Intro = () => {
     return(
         <div>
             <section className='section-abt'>
-                <Container className='container'>
+                <Container className='container_intro'>
                     <Row className='element'>
                         <a href='#' title='banner'>
                             <img className='banner' src={banner}/>
