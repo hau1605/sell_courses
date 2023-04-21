@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 let item = [];
+let _viewedItem=[]
 if (localStorage.getItem("cart") !== null)
   item = JSON.parse(localStorage.getItem("cart"));
-
+  if (localStorage.getItem("viewedItem") !== null)
+  _viewedItem= JSON.parse(localStorage.getItem("viewedItem"));
 let num = 0;
 let price=0;
 for (let i = 0; i < item.length; i++) {
@@ -12,6 +14,7 @@ for (let i = 0; i < item.length; i++) {
 }
 const initialState = {
     cart: item,
+    viewedItem:_viewedItem,
     totalQuantity: num,
     totalPrice: price,
 
@@ -77,8 +80,18 @@ export const cartSlice = createSlice({
         state.cart=state.cart.filter(item=>item._id!==action.payload._id)
         localStorage.setItem("cart", JSON.stringify(state.cart));
 
+    },
+    viewedItem:(state,action)=>{
+        state.viewedItem.filter(item=>item._id!==action.payload._id)    
+        if (state.viewedItem.length>5)
+        {    state.viewedItem.pop()
+            
+        }
+        state.viewedItem.reverse().push(action.payload)
+        state.viewedItem.reverse();
+        localStorage.setItem("viewedItem", JSON.stringify(state.viewedItem));
     }
 }
 })
-export const { addToCart,increaseQuantity,decreaseQuantity,getTotal,removeItem } = cartSlice.actions;
+export const { addToCart,increaseQuantity,decreaseQuantity,getTotal,removeItem ,viewedItem} = cartSlice.actions;
 export default cartSlice.reducer;

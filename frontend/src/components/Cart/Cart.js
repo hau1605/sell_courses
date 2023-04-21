@@ -11,7 +11,7 @@ import { VariantType, useSnackbar } from 'notistack';
 import { increaseQuantity, decreaseQuantity, getTotal, removeItem } from "../../features/cartSlice";
 const Cart = () => {
     const { enqueueSnackbar } = useSnackbar();
-    const handleClickVariant = (variant: VariantType) => () => {
+    const handleClickVariant = (variant) => () => {
         // variant could be success, error, warning, info, or default
         enqueueSnackbar('Đã bỏ khóa học khỏi giỏ hàng', { variant });
     };

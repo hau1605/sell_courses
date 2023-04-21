@@ -2,16 +2,23 @@ import React, { useEffect, useState } from "react";
 import Banner from "../Banner/Banner";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
+
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Product from "../Product/Product";
 import Form from 'react-bootstrap/Form';
 import CustomPagination from "../Pagination/Pagination";
-import LinearProgress  from '@mui/material/LinearProgress'
+import LinearProgress from '@mui/material/LinearProgress'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Scrollbar } from 'swiper';
+
 import './ProductList.css'
 import CoursesDataService from "../../services/CoursesDataService";
 import { FormGroup } from "react-bootstrap";
+import { useSelector } from "react-redux";
 const ProductList = (props) => {
+    const { viewedItem } = useSelector((state) => state.Allcart)
+
     const navigate = useNavigate();
     const { categorie } = useParams();
     const [Products, setProducts] = useState([])
@@ -73,7 +80,7 @@ const ProductList = (props) => {
                 console.log("ok");
                 setProducts(response.data.products);
                 setPageCount(response.data.totalPages)
-                
+
 
             })
             .catch(e => {
@@ -88,9 +95,9 @@ const ProductList = (props) => {
             <p><Link className="text-link-home" to='/'>Trang chủ</Link>/<span className="text-link-loai">Danh sách khóa học</span></p>
             <Row style={{ padding: '15px 0px', margin: '0 -2px' }}>
                 <Col xs={12} sm='6' style={{ padding: '0px 8px' }}>
-                    <img className="img-banner" style={{ width: '100%', borderRadius: '10px',margin:'10px 0 0 0' }} src='https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/banner_featured_1.png?1676281841878' />
+                    <img className="img-banner" style={{ width: '100%', borderRadius: '10px', margin: '10px 0 0 0' }} src='https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/banner_featured_1.png?1676281841878' />
                 </Col>
-                <Col xs={12} sm='6' style={{ padding: '0px 8px' , margin:'10px 0 0 0'}}>
+                <Col xs={12} sm='6' style={{ padding: '0px 8px', margin: '10px 0 0 0' }}>
                     <img className="img-banner" style={{ width: '100%', borderRadius: '10px' }} src='https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/banner_collection_2.png?1676281841878' />
                 </Col>
             </Row>
@@ -137,11 +144,11 @@ const ProductList = (props) => {
                                             <li onClick={() => { setCategories('Gia đình'); setCurrentPage(1); navigate("/ProductList/Gia đình") }}>
                                                 Gia đình
                                             </li>
-                                            <li onClick={() => { setCategories('Sức khỏe giới tính'); setCurrentPage(1); navigate("/ProductList/Sức khỏe giới tính") }}>
-                                                Sức khỏe giới tính
+                                            <li onClick={() => { setCategories('Sức khỏe, giới tính'); setCurrentPage(1); navigate("/ProductList/Sức khỏe, giới tính") }}>
+                                                Sức khỏe, giới tính
                                             </li>
-                                            <li onClick={() => { setCategories('Nhiếp ảnh quay phim'); setCurrentPage(1); navigate("/ProductList/Nhiếp ảnh quay phim") }}>
-                                                Nhiếp ảnh quay phim
+                                            <li onClick={() => { setCategories('Nhiếp ảnh, quay phim'); setCurrentPage(1); navigate("/ProductList/Nhiếp ảnh, quay phim") }}>
+                                                Nhiếp ảnh, quay phim
                                             </li>
 
                                         </ul>
@@ -155,52 +162,52 @@ const ProductList = (props) => {
                             </ul>
                         </div>
                         <Row>
-                        <Col xs='5' md='12'>
-                        <div className={`sb-level  ${opensubCourse ? 'activesubcourse' : 'inactivesubcourse'}`}>
-                            <p className="header-text-sub">TRÌNH ĐỘ</p>
-                            <Form onChange={() => setLevel(!level)}>
-                                <Form.Group className="mb-1" controlId="formBasicCheckboxNormal">
-                                    <Form.Check onChange={() => { setlevelNormal(!levelNormal); setCurrentPage(1) }} type="checkbox" label="Cơ bản" />
-                                </Form.Group>
-                                <Form.Group className="mb-1" controlId="formBasicCheckboxMedium">
-                                    <Form.Check onChange={() => { setlevelMedium(!levelMedium); setCurrentPage(1) }} type="checkbox" label="Mọi cấp độ" />
-                                </Form.Group>
-                                <Form.Group className="mb-1" controlId="formBasicCheckboxHard">
-                                    <Form.Check onChange={() => { setlevelHard(!levelHard); setCurrentPage(1) }} type="checkbox" label="Nâng cao" />
-                                </Form.Group>
-                            </Form>
-                        </div>
-                        </Col>
-                        <Col>
-                        <div xs='7' md='12'>
-                            <p className="header-text-sub">MỨC GIÁ</p>
-                            <Form onChange={() => { setfilterprice(!filterprice); setCurrentPage(1) }}>
-                                <Form.Group className="mb-1" controlId="formBasicCheckboxUnder200">
-                                    <Form.Check type="checkbox" onChange={() => { setPricesUnder200(!priceUnder200) }} label="Giá dưới 200.000đ" />
-                                </Form.Group>
-                                <Form.Group className="mb-1" onChange={() => { setPricesBT200300(!priceBT200300) }} controlId="formBasicCheckboxBetween200300">
-                                    <Form.Check type="checkbox" label="200.000đ - 300.000đ" />
-                                </Form.Group>
-                                <Form.Group className="mb-1" onChange={() => { setPricesBT300400(!priceBT300400) }} controlId="formBasicCheckboxBetween300400">
-                                    <Form.Check type="checkbox" label="300.000đ - 400.000đ" />
-                                </Form.Group>
-                                <Form.Group className="mb-1" onChange={() => { setPricesBT400500(!priceBT400500) }} controlId="formBasicCheckboxBetween400500">
-                                    <Form.Check type="checkbox" label="400.000đ - 500.000đ" />
-                                </Form.Group>
-                                <Form.Group className="mb-1" onChange={() => { setPricesAbove500(!priceAbove500) }} controlId="formBasicCheckboxUp500">
-                                    <Form.Check type="checkbox" label="Giá trên 500.000đ" />
-                                </Form.Group>
-                            </Form>
-                        </div>
-                        </Col>
+                            <Col xs='5' md='12'>
+                                <div className={`sb-level  ${opensubCourse ? 'activesubcourse' : 'inactivesubcourse'}`}>
+                                    <p className="header-text-sub">TRÌNH ĐỘ</p>
+                                    <Form onChange={() => setLevel(!level)}>
+                                        <Form.Group className="mb-1" controlId="formBasicCheckboxNormal">
+                                            <Form.Check onChange={() => { setlevelNormal(!levelNormal); setCurrentPage(1) }} type="checkbox" label="Cơ bản" />
+                                        </Form.Group>
+                                        <Form.Group className="mb-1" controlId="formBasicCheckboxMedium">
+                                            <Form.Check onChange={() => { setlevelMedium(!levelMedium); setCurrentPage(1) }} type="checkbox" label="Mọi cấp độ" />
+                                        </Form.Group>
+                                        <Form.Group className="mb-1" controlId="formBasicCheckboxHard">
+                                            <Form.Check onChange={() => { setlevelHard(!levelHard); setCurrentPage(1) }} type="checkbox" label="Nâng cao" />
+                                        </Form.Group>
+                                    </Form>
+                                </div>
+                            </Col>
+                            <Col>
+                                <div xs='7' md='12'>
+                                    <p className="header-text-sub">MỨC GIÁ</p>
+                                    <Form onChange={() => { setfilterprice(!filterprice); setCurrentPage(1) }}>
+                                        <Form.Group className="mb-1" controlId="formBasicCheckboxUnder200">
+                                            <Form.Check type="checkbox" onChange={() => { setPricesUnder200(!priceUnder200) }} label="Giá dưới 200.000đ" />
+                                        </Form.Group>
+                                        <Form.Group className="mb-1" onChange={() => { setPricesBT200300(!priceBT200300) }} controlId="formBasicCheckboxBetween200300">
+                                            <Form.Check type="checkbox" label="200.000đ - 300.000đ" />
+                                        </Form.Group>
+                                        <Form.Group className="mb-1" onChange={() => { setPricesBT300400(!priceBT300400) }} controlId="formBasicCheckboxBetween300400">
+                                            <Form.Check type="checkbox" label="300.000đ - 400.000đ" />
+                                        </Form.Group>
+                                        <Form.Group className="mb-1" onChange={() => { setPricesBT400500(!priceBT400500) }} controlId="formBasicCheckboxBetween400500">
+                                            <Form.Check type="checkbox" label="400.000đ - 500.000đ" />
+                                        </Form.Group>
+                                        <Form.Group className="mb-1" onChange={() => { setPricesAbove500(!priceAbove500) }} controlId="formBasicCheckboxUp500">
+                                            <Form.Check type="checkbox" label="Giá trên 500.000đ" />
+                                        </Form.Group>
+                                    </Form>
+                                </div>
+                            </Col>
                         </Row>
                         <div className="sb-time">
 
                         </div>
                     </Col>
-                    <Col  dir="rlt" xs='12' md='9' style={{ padding: '0px 0 0 18px', margin: '0 0 0 0px' }}>
+                    <Col dir="rlt" xs='12' md='9' style={{ padding: '0px 0 0 18px', margin: '0 0 0 0px' }}>
                         <Row >
-                            <Col dir="rlt" style={{ display:'flex',margin: '0 18px 0 0',justifyContent:'right' }}>
+                            <Col dir="rlt" style={{ display: 'flex', margin: '0 18px 0 0', justifyContent: 'right' }}>
                                 <Form onChange={() => setCurrentPage(1)}>
                                     <FormGroup>
                                         <Form.Control as="select" onChange={onchangeSortPrice} aria-label="Default select example">
@@ -235,7 +242,46 @@ const ProductList = (props) => {
                     </Col>
                 </Row>
             </div>
+            
         </div>
+        <>
+        <div className="ProductList-ViewedItem">
+                <div className='line-box'></div>
+                    <h2 className='header-text '>KHÓA HỌC BẠN ĐÃ XEM</h2>
+                <Swiper
+                    scrollbar={{
+                        hide: false,
+                    }}
+                    modules={[Scrollbar]}
+                    slidesPerView={4}
+                    className="ProductList-mySwiper"
+                    breakpoints={
+                        {
+                            0: {
+                                slidesPerView: 1,
+                                spaceBetween: 10
+                            }, 200: {
+                                slidesPerView: 2,
+                                spaceBetween: 10
+                            }, 400: {
+                                slidesPerView: 3,
+                                spaceBetween: 15
+                            }, 951: {
+                                slidesPerView: 4,
+                                spaceBetween: 20
+                            }
+
+                        }
+                    }
+                >
+                    {viewedItem.map((item)=>
+                        <SwiperSlide>
+                            <Product product={item}/>
+                        </SwiperSlide>
+                    )}
+                    </Swiper>
+            </div>
+        </>
     </div>);
 }
 export default ProductList;

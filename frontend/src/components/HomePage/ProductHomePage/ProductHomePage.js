@@ -327,7 +327,7 @@ const ProductHomePage = () => {
                 </div>
                 <Row>
                     <Col style={{ textAlign: 'center' }}>
-                        <button className='btn-all'>Xem tất cả</button>
+                        <button className='btn-all' onClick={() => navigate("/ProductList")}>Xem tất cả</button>
                     </Col>
                 </Row>
             </div>
