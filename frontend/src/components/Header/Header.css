@@ -60,7 +60,7 @@
     background-color: white;
 }
 
-.container {
+.container_header {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -415,7 +415,7 @@
 /* Responsive */
 
 @media (min-width: 1400px) {
-    .container {
+    .container_header {
         max-width: 1200px;
     }
 }
