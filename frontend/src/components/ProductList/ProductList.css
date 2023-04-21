@@ -1,6 +1,12 @@
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1228px) {
     .body{
         padding: 30px 20px;
+
+    }
+    div.ProductList-ViewedItem{
+        padding: 1px 20px;
+        margin: 0;
+        background-color: #edfaf1;
 
     }
 }
@@ -12,9 +18,15 @@
       transform: rotate(180deg)
     }
   }
-@media only screen and (min-width: 1251px) {
+@media only screen and (min-width: 1229px) {
     .body{
         padding: 30px 200px;
+    }
+    div.ProductList-ViewedItem{
+        padding: 1px 200px;
+        margin: 0;
+    background-color: #edfaf1;
+
     }
 }
 .arrow-icon{
@@ -172,4 +184,8 @@ select.form-control{
     border-radius: 12px;
     overflow: hidden;
     font-size: 10px;
+}
+
+.ProductList-mySwiper{
+    padding: 10px 15px;
 }
