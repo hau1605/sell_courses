@@ -1,24 +1,22 @@
-module.exports = cartController;
-
 const express = require('express');
 const router = express.Router();
 const cartController = require('../controllers/cartController');
 const authMiddleware = require('../middleware/authMiddleware');
 
 // Routes that require authentication
-router.use(authMiddleware);
+// router.use(authMiddleware);
 
 // GET all cart items
-router.get('/', cartController.getCartItems);
+router.get('/', cartController.getAllCarts);
 
 // POST a new cart item
-router.post('/', cartController.createCartItem);
+// router.post('/', cartController.createCartItem);
 
 // PUT update a cart item
-router.put('/:id', cartController.updateCartItem);
+// router.put('/:id', cartController.updateCartItem);
 
 // DELETE a cart item
-router.delete('/:id', cartController.deleteCartItem);
+router.delete('/:id', cartController.removeItemFromCart);
 
 module.exports = router;
 

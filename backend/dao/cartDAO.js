@@ -4,6 +4,15 @@ const cartDAO = {
   async getCartByUser(userId) {
     return await Cart.findOne({ user: userId }).populate('courses.course');
   },
+// Get all courses
+	async getAllCart() {
+  try {
+    const carts = await Cart.find();
+    return carts;
+  } catch (error) {
+    throw error;
+  }
+},
 
   async addItemToCart(userId, courseId) {
     const cart = await Cart.findOne({ user: userId });

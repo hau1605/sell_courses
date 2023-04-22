@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require('./db/connection');
 const cors = require('cors');
 const coursesRoutes = require('./routes/coursesRoutes');
+const cartRoute = require('./routes/cartRoutes');
 const categoriesRoutes = require('./routes/categoriesRoutes');
 const topicsRoutes = require('./routes/topicsRoutes');
 const usersRoutes = require('./routes/usersRoutes');
@@ -20,6 +21,7 @@ app.use(cors());
 
 // Routes
 app.use('/api/courses', coursesRoutes);
+app.use('/api/cart', cartRoute);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/topics', topicsRoutes);
 app.use('/api/users', usersRoutes);

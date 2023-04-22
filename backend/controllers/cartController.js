@@ -15,18 +15,14 @@ module.exports = {
     }
   },
 
-  async getCartItems(req, res) {
-    try {
-      const { userId } = req.user;
-
-      const items = await cartDAO.getCartItems(userId);
-
-      res.status(200).send({ items });
-    } catch (err) {
-      console.error(err);
-      res.status(500).send({ message: 'Internal server error' });
-    }
-  },
+async getAllCarts(req, res) {
+  try {
+    const carts = await cartDAO.getAllCart();
+    res.status(200).json(carts);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+},
 
   async removeItemFromCart(req, res) {
     try {
