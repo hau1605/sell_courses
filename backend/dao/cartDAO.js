@@ -1,65 +1,54 @@
 const Cart = require('../models/cartModel');
 
-const cartDAO = {
-  async getCartByUser(userId) {
-    return await Cart.findOne({ user: userId }).populate('courses.course');
-  },
-// Get all courses
-	async getAllCart() {
+async function createCart(cartData) {
   try {
-    const carts = await Cart.find();
-    return carts;
+    const newCart = new Cart(cartData);
+    return await newCart.save();
   } catch (error) {
-    throw error;
+    throw new Error(error.message);
   }
-},
+}
 
-  async addItemToCart(userId, courseId) {
-    const cart = await Cart.findOne({ user: userId });
+async function getCartById(cartId) {
+  try {
+    return await Cart.findById(cartId).populate('user courses.course');
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
 
-    if (cart) {
-      // Cart already exists, update it
-      const courseIndex = cart.courses.findIndex(
-        (item) => item.course.toString() === courseId
-      );
-      if (courseIndex === -1) {
-        // Course not found in cart, add it
-        cart.courses.push({ course: courseId });
-      } else {
-        // Course already in cart, increment its quantity
-        cart.courses[courseIndex].quantity += 1;
-      }
-      await cart.save();
-    } else {
-      // Cart does not exist, create it
-      await Cart.create({ user: userId, courses: [{ course: courseId }] });
+async function updateCart(cartId, cartData) {
+  try {
+    const existingCart = await Cart.findById(cartId);
+    if (!existingCart) {
+      throw new Error('Cart not found');
     }
-  },
 
-  async removeItemFromCart(userId, courseId) {
-    const cart = await Cart.findOne({ user: userId });
-    if (cart) {
-      const courseIndex = cart.courses.findIndex(
-        (item) => item.course.toString() === courseId
-      );
-      if (courseIndex !== -1) {
-        if (cart.courses[courseIndex].quantity > 1) {
-          // Course quantity > 1, decrement it
-          cart.courses[courseIndex].quantity -= 1;
-        } else {
-          // Course quantity = 1, remove it from cart
-          cart.courses.splice(courseIndex, 1);
-        }
-        await cart.save();
-      }
+    Object.assign(existingCart, cartData);
+
+    return await existingCart.save();
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+async function deleteCart(cartId) {
+  try {
+    const deletedCart = await Cart.findByIdAndDelete(cartId);
+    if (!deletedCart) {
+      throw new Error('Cart not found');
     }
-  },
 
-  async clearCart(userId) {
-    await Cart.deleteOne({ user: userId });
-  },
+    return deletedCart;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+}
+
+module.exports = {
+  createCart,
+  getCartById,
+  updateCart,
+  deleteCart,
 };
-
-module.exports = cartDAO;
-
 
