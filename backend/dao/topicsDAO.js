@@ -1,5 +1,3 @@
-
-
 const Topic = require('../models/topicModel');
 
 // Create a new topic
