@@ -1,4 +1,4 @@
-const TopWeek = require('./models/topWeekModel');
+const TopWeek = require('../models/topWeekModel');
 
 // Create a new top week
 const createTopWeek = async (topWeekData) => {

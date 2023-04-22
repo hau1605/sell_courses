@@ -1,4 +1,4 @@
-const FacebookUser = require('./facebookUserModel');
+const FacebookUser = require('../models/facebookUserModel');
 
 // Create a new Facebook user
 const createFacebookUser = async (facebookUserData) => {

@@ -1,11 +1,11 @@
-const FacebookUser = require('../models/facebookUserModel');
+const facebookUsersDAO = require('../dao/facebookUsersDAO');
 
 // Controller functions for Facebook users
 
 // Get all Facebook users
 exports.getAllFacebookUsers = async (req, res) => {
   try {
-    const facebookUsers = await FacebookUser.find();
+    const facebookUsers = await facebookUsersDAO.getAllFacebookUsers();
     res.status(200).json(facebookUsers);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -15,7 +15,7 @@ exports.getAllFacebookUsers = async (req, res) => {
 // Get Facebook user by ID
 exports.getFacebookUserById = async (req, res) => {
   try {
-    const facebookUser = await FacebookUser.findById(req.params.id);
+    const facebookUser = await facebookUsersDAO.getFacebookUserById(req.params.id);
     if (!facebookUser) {
       return res.status(404).json({ message: 'Facebook user not found' });
     }
@@ -28,7 +28,7 @@ exports.getFacebookUserById = async (req, res) => {
 // Create a new Facebook user
 exports.createFacebookUser = async (req, res) => {
   try {
-    const facebookUser = new FacebookUser(req.body);
+    const facebookUser = facebookUsersDAO.createFacebookUser(req.body);
     const savedFacebookUser = await facebookUser.save();
     res.status(201).json(savedFacebookUser);
   } catch (err) {
@@ -39,7 +39,7 @@ exports.createFacebookUser = async (req, res) => {
 // Update a Facebook user by ID
 exports.updateFacebookUser = async (req, res) => {
   try {
-    const updatedFacebookUser = await FacebookUser.findByIdAndUpdate(
+    const updatedFacebookUser = await facebookUsersDAO.updateFacebookUser(
       req.params.id,
       req.body,
       { new: true }
