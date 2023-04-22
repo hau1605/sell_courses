@@ -74,8 +74,6 @@
 
 -   `POST /api/cart` - Create a new cart.
 
--   `GET /api/cart` - Retrieve a list of all carts.
-
 -   `GET /api/cart/:id` - Retrieve a single cart by its ID.
 
 -   `PUT /api/cart/:id` - Update a single cart by its ID.
