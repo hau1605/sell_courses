@@ -1,12 +1,8 @@
 const topicsDAO = require('../dao/topicsDAO');
-const Topic = require('../models/topicModel');
-const mongoose = require('mongoose');
-const mongodb= require('mongodb');
-constObjectId = require('mongodb').ObjectID;
 // Controller function to get all topics
 exports.getAllTopics = async (req, res) => {
   try {
-    const topics = await Topic.find();
+    const topics = await topicsDAO.getAllTopics();
     res.status(200).json({ success: true, data: topics });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed to get topics', error: err });
@@ -17,7 +13,7 @@ exports.getAllTopics = async (req, res) => {
 exports.getTopicById = async (req, res) => {
   try {
     console.log(req.params.id)
-    const topic = await Topic.findById(req.params.id);
+    const topic = await topicsDAO.getTopicById(req.params.id);
     console.log(req.params.id)
     if (!topic) {
       return res.status(404).json({ success: false, message: 'Topic not found' });
@@ -31,7 +27,7 @@ exports.getTopicById = async (req, res) => {
 // Controller function to create a new topic
 exports.createTopic = async (req, res) => {
   try {
-    const topic = await Topic.create(req.body);
+    const topic = await topicsDAO.createTopic(req.body);
     res.status(201).json({ success: true, data: topic });
   } catch (err) {
     res.status(500).json({ success: false, message: 'Failed to create topic', error: err });
@@ -41,7 +37,7 @@ exports.createTopic = async (req, res) => {
 // Controller function to update a topic by ID
 exports.updateTopic = async (req, res) => {
   try {
-    const topic = await Topic.findByIdAndUpdate(req.params.id, req.body, {
+    const topic = await topicsDAO.updateTopic(req.params.id, req.body, {
       new: true,
       runValidators: true,
     });
@@ -57,7 +53,7 @@ exports.updateTopic = async (req, res) => {
 // Controller function to delete a topic by ID
 exports.deleteTopic = async (req, res) => {
   try {
-    const topic = await Topic.findByIdAndDelete(req.params.id);
+    const topic = await topicsDAO.deleteTopic(req.params.id);
     if (!topic) {
       return res.status(404).json({ success: false, message: 'Topic not found' });
     }

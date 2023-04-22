@@ -1,7 +1,5 @@
 const userModel = require("../models/userModel");
-const express = require("express");
 const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 dotenv.config();
