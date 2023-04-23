@@ -1,9 +1,9 @@
-const Lecturer = require('../models/lecturerModel');
+const lecturersDAO = require('../dao/lecturersDAO');
 
 // Controller function to get all lecturers
 const getAllLecturers = async (req, res) => {
   try {
-    const lecturers = await Lecturer.find();
+    const lecturers = await lecturersDAO.getAllLecturers();
     res.status(200).json({ success: true, data: lecturers });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -13,7 +13,7 @@ const getAllLecturers = async (req, res) => {
 // Controller function to get a lecturer by ID
 const getLecturerById = async (req, res) => {
   try {
-    const lecturer = await Lecturer.findById(req.params.id);
+    const lecturer = await lecturersDAO.getLecturerById(req.params.id);
     if (!lecturer) {
       return res.status(404).json({ success: false, error: 'Lecturer not found' });
     }
@@ -26,7 +26,7 @@ const getLecturerById = async (req, res) => {
 // Controller function to create a new lecturer
 const createLecturer = async (req, res) => {
   try {
-    const lecturer = await Lecturer.create(req.body);
+    const lecturer = await lecturersDAO.createLecturer(req.body);
     res.status(201).json({ success: true, data: lecturer });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
@@ -36,7 +36,7 @@ const createLecturer = async (req, res) => {
 // Controller function to update a lecturer by ID
 const updateLecturer = async (req, res) => {
   try {
-    const lecturer = await Lecturer.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const lecturer = await lecturersDAO.updateLecturer(req.params.id, req.body);
     if (!lecturer) {
       return res.status(404).json({ success: false, error: 'Lecturer not found' });
     }
@@ -49,7 +49,7 @@ const updateLecturer = async (req, res) => {
 // Controller function to delete a lecturer by ID
 const deleteLecturer = async (req, res) => {
   try {
-    const lecturer = await Lecturer.findByIdAndDelete(req.params.id);
+    const lecturer = await lecturersDAO.deleteLecturer(req.params.id);
     if (!lecturer) {
       return res.status(404).json({ success: false, error: 'Lecturer not found' });
     }

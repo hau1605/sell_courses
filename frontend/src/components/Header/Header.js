@@ -16,7 +16,7 @@ const Header = () => {
   return(
       <header>
         <div className='tophead'>
-          <div className='container'>
+          <div className='container_header'>
             <div className='contact_header'>
               <span>
                 Thời gian làm việc: Từ 
@@ -48,11 +48,11 @@ const Header = () => {
                   <div className='menu-bar-mobile menu-bar-h nav-mobile-button'>
                     <div className='menu-bar'>
                       <img className='dropDown_icon' src={category} />
-                      <p className='menu-bar-title'>Danh mục</p>
+                      Danh mục
                       <FaBars className="bar-mobile" />
                     </div>
                   </div>
-                  <div className='wrap_main menu-mobile'>
+                  <div className='wrap_main menu_mobile'>
                     <nav className='header-nav'>
                       <ul className='item_big'>
                         <li className='nav-item active'>

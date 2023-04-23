@@ -1,9 +1,9 @@
-const Category = require('../models/categoryModel');
+const categoriesDAO = require('../dao/categoriesDAO');
 
 // Controller function to get all categories
 const getAllCategories = async (req, res) => {
   try {
-    const categories = await Category.find();
+    const categories = await categoriesDAO.getAllCategories();
     res.status(200).json(categories);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -13,7 +13,7 @@ const getAllCategories = async (req, res) => {
 // Controller function to get a category by ID
 const getCategoryById = async (req, res) => {
   try {
-    const category = await Category.findById(req.params.id);
+    const category = await categoriesDAO.getCategoryById(req.params.id);
     if (!category) {
       return res.status(404).json({ error: 'Category not found' });
     }
@@ -26,7 +26,7 @@ const getCategoryById = async (req, res) => {
 // Controller function to create a new category
 const createCategory = async (req, res) => {
   try {
-    const category = new Category(req.body);
+    const category = categoriesDAO.createCategory(req.body);
     await category.save();
     res.status(201).json(category);
   } catch (err) {
@@ -37,7 +37,7 @@ const createCategory = async (req, res) => {
 // Controller function to update a category by ID
 const updateCategory = async (req, res) => {
   try {
-    const category = await Category.findByIdAndUpdate(
+    const category = await categoriesDAO.updateCategory(
       req.params.id,
       req.body,
       { new: true }
@@ -54,7 +54,7 @@ const updateCategory = async (req, res) => {
 // Controller function to delete a category by ID
 const deleteCategory = async (req, res) => {
   try {
-    const category = await Category.findByIdAndDelete(req.params.id);
+    const category = await categoriesDAO.deleteCategory(req.params.id);
     if (!category) {
       return res.status(404).json({ error: 'Category not found' });
     }

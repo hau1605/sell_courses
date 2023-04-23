@@ -27,7 +27,7 @@ const adminSchema = new mongoose.Schema({
   gender: {
     type: String
   },
-  roll: {
+  role: {
     type: String,
     required: true
   }

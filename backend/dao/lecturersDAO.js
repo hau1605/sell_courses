@@ -1,4 +1,4 @@
-const Lecturer = require('./lecturerModel');
+const Lecturer = require('../models/lecturerModel');
 
 // Create a new lecturer
 const createLecturer = async (lecturerData) => {
