@@ -1,4 +1,5 @@
 const userModel = require("../models/userModel");
+const usersDAO = require("../dao/usersDAO");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
@@ -7,7 +8,7 @@ dotenv.config();
 // Controller function to get all users
 const getAllUsers = async (req, res) => {
   try {
-    const users = await userModel.find();
+    const users = await usersDAO.getAllUsers();
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -18,7 +19,7 @@ const getAllUsers = async (req, res) => {
 const getUserById = async (req, res) => {
   try {
     const userId = req.params.id;
-    const user = await userModel.getUserById(userId);
+    const user = await usersDAO.getUserById(userId);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -63,7 +64,7 @@ const updateUser = async (req, res) => {
   try {
     const userId = req.params.id;
     const updatedUser = req.body;
-    const result = await userModel.updateUser(userId, updatedUser);
+    const result = await usersDAO.updateUser(userId, updatedUser);
     if (!result) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -77,7 +78,7 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   try {
     const userId = req.params.id;
-    const result = await userModel.deleteUser(userId);
+    const result = await usersDAO.deleteUser(userId);
     if (!result) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -100,7 +101,7 @@ const login = async (req, res) => {
       res.status(401).json({ error: "Tài khoản không tồn tại" });
       console.log("Tài khoản không tồn tại");
     }
-    const isMatch = await bcrypt.compare(passwordR, existingUser.password);
+    const isMatch = bcrypt.compare(passwordR, existingUser.password);
     console.log("Mật khẩu đúng: ", isMatch);
     if (!isMatch) {
       res.status(401).json({ error: "Mật khẩu không chính xác" });
@@ -209,21 +210,6 @@ const resetPassword = async (req, res) => {
     res.status(500).json({ error: "Đã xảy ra lỗi:", err });
   }
 };
-// Update a user's profile
-const updateProfile = async (req, res) => {
-  try {
-    const user = await User.findByIdAndUpdate(
-      req.params.id,
-      { $set: req.body },
-      { new: true }
-    );
-    if (!user) return res.status(404).json({ message: "User not found" });
-    res.status(200).json(user);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Internal server error" });
-  }
-};
 module.exports = {
   getAllUsers,
   getUserById,
@@ -234,5 +220,4 @@ module.exports = {
   forgotPassword,
   confirmOtp,
   resetPassword,
-  updateProfile,
 };

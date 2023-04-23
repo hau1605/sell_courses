@@ -1,0 +1,29 @@
+const keyModel = require('../models/keyModel');
+const crypto = require('crypto');
+
+async function generateKey() {
+  const key = generateRandomKey();
+  const keyDoc = new keyModel({ key });
+  await keyDoc.save();
+  return key;
+}
+
+async function validateKey(key) {
+  const keyDoc = await keyModel.findOne({ key });
+  if (!keyDoc) {
+    return false;
+  }
+  if (keyDoc.remaining_use < 1) {
+    return false;
+  }
+  keyDoc.remaining_use--;
+  await keyDoc.save();
+  return true;
+}
+
+function generateRandomKey() {
+  // Generate a 16 character long random key using a cryptographic library
+  return crypto.randomBytes(8).toString('hex');
+}
+
+module.exports = { generateKey, validateKey };
