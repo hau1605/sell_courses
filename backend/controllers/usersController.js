@@ -4,7 +4,6 @@ const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
 const dotenv = require("dotenv");
 dotenv.config();
-
 // Controller function to get all users
 const getAllUsers = async (req, res) => {
   try {
@@ -95,19 +94,20 @@ const login = async (req, res) => {
     console.log(emailR);
     console.log(passwordR);
     const existingUser = await userModel.findOne({ email: { $eq: emailR } });
-    console.log("Tồn tại user: ", existingUser ? true : false);
+    console.log("Tồn tại user?: ", existingUser ? true : false);
 
     if (!existingUser) {
       res.status(401).json({ error: "Tài khoản không tồn tại" });
       console.log("Tài khoản không tồn tại");
     }
-    const isMatch = bcrypt.compare(passwordR, existingUser.password);
-    console.log("Mật khẩu đúng: ", isMatch);
-    if (!isMatch) {
-      res.status(401).json({ error: "Mật khẩu không chính xác" });
-    } else {
-      res.status(200).json({ message: "Đăng nhập thành công" });
-    }
+    bcrypt.compare(passwordR, existingUser.password, (err, isMatch) => {
+      console.log("Mật khẩu đúng?: ", isMatch);
+      if (!isMatch) {
+        res.status(401).json({ error: "Mật khẩu không chính xác ", err });
+      } else {
+        res.status(200).json({ message: "Đăng nhập thành công" });
+      }
+    });
   } catch (err) {
     console.error("Lỗi đăng nhập:", err);
     res.status(500).json({ error: "Đã xảy ra lỗi" });
@@ -184,7 +184,7 @@ const confirmOtp = async (req, res) => {
       console.log("Otp còn hiệu lực");
       res.status(200).json({ message: "Otp hợp lệ" });
     }
-  } catch {
+  } catch (err) {
     console.error("Lỗi kiểm tra mã xác nhận:", err);
     res.status(500).json({ error: "Đã xảy ra lỗi:", err });
   }
@@ -210,6 +210,19 @@ const resetPassword = async (req, res) => {
     res.status(500).json({ error: "Đã xảy ra lỗi:", err });
   }
 };
+const logout = async (req, res) => {
+  try {
+    req.session.destroy((err) => {
+      res.clearCookie('sessionId');
+      res.status(200).json({ message: "Đã đăng xuất" });
+      console.log("Đã đăng xuất!");
+      res.redirect('/');
+    })
+  } catch (err) {
+    console.log("Lỗi đăng xuất:", err);
+    res.status(500).json({ error: "Đã xảy ra lỗi:", err });
+  }
+};
 module.exports = {
   getAllUsers,
   getUserById,
@@ -220,4 +233,5 @@ module.exports = {
   forgotPassword,
   confirmOtp,
   resetPassword,
+  logout,
 };

@@ -7,6 +7,7 @@ import Modal from 'react-bootstrap/Modal';
 import { useDispatch } from "react-redux";
 import { setEmailResetPassword } from "../../features/userSlice";
 import { useNavigate } from 'react-router-dom';
+import { loginSuccess } from '../../features/userSlice';
 
 import "./Login.css";
 const Login=()=>{
@@ -31,8 +32,6 @@ const Login=()=>{
             setEmailError('');
         }
         console.log('Email đã nhập: ', emailValue);
-        dispatch(setEmailResetPassword(emailValue));
-        console.log(dispatch(setEmailResetPassword(emailValue))?'true':'false');
     };
 
     const handlePasswordChange = (event) => {
@@ -46,7 +45,8 @@ const Login=()=>{
             if (response.status === 200) {
                 console.log('Đăng nhập thành công:', response.data.message);
                 setShow(false);
-                // window.location.href = '/';
+                dispatch(loginSuccess(email));
+                console.log(email);
                 navigate("/");
             } else {
                 console.error('Lỗi đăng nhập:', response.data.error);
@@ -71,7 +71,8 @@ const Login=()=>{
                 // Nếu yêu cầu đặt lại mật khẩu thành công
                 setSuccess(true);
                 setError('');
-                window.location.href = 'http://localhost:3000/reset-password';
+                dispatch(setEmailResetPassword(email));
+                window.location.href = 'http://localhost:3000/account/reset-password';
                 console.log('Đã gửi mail xác nhận');
               } else {
                 // Nếu yêu cầu đặt lại mật khẩu không thành công
@@ -132,7 +133,7 @@ const Login=()=>{
                                     </p>
                                     <p>
                                         Bạn chưa có tài khoản? 
-                                        <Link to="/register" className="btn-link-style text-info"> Đăng ký ngay</Link>
+                                        <Link to="/account/register" className="btn-link-style text-info"> Đăng ký ngay</Link>
                                     </p>
                                 </form>
                             </div>

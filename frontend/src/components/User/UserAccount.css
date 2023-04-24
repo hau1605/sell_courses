@@ -1,0 +1,57 @@
+.container-form_user-account {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 500px;
+}
+.container-form_user-account form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px 40px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.container-form_user-account form label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    opacity: 0.8;
+}
+.container-form_user-account form input {
+    padding: 8px;
+    margin: 20px 0;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+}
+.container-form_user-account table td {
+    /* width: 200px; */
+}
+.container-form_user-account table td:first-child {
+    text-align: end;
+    width: 180px;
+    padding-right: 8px;
+}
+.container-form_user-account table td:last-child {
+    align-items: center;
+}
+.container-form_user-account form button {
+    width: 150px;
+    background-color: #00bc86;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-items: center;
+}
+.container-form_user-account form button:hover {
+    background-color: #008958;
+  }

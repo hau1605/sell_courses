@@ -6,7 +6,8 @@ import './ResetPass.css'
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useSelector } from "react-redux";
+import { setNullEmailResetPassword } from "../../features/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 
 const ResetPass = () => {
@@ -18,6 +19,7 @@ const ResetPass = () => {
     const [success, setSuccess] = useState(false);
     const [verificationCodeError, setVerificationCodeError] = useState('');
     const emailResetPassword = useSelector((state) => state.user.emailResetPassword);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
     const img = ['https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/breadcrumb_image.png?1676281841878']
     
@@ -85,7 +87,9 @@ const ResetPass = () => {
                 // setSuccess(true);
                 // setError('OK');
                 console.log('Đặt lại mật khẩu thành công. Chuyển hướng về trang chủ');
-                navigate('/login');
+                dispatch(setNullEmailResetPassword());
+
+                navigate('/account/login');
               } else {
                 setSuccess(false);
                 setError(response.data.error || 'Có lỗi xảy ra. Vui lòng thử lại sau.');

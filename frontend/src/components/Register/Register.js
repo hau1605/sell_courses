@@ -129,7 +129,7 @@ const Register = () => {
                                     <input className="btn" type="submit" value="Đăng ký"/>
                                 </div>
                                 <p className='or'>
-                                    Bạn đã có tài khoản? Đăng nhập <Link to="/login">tại đây</Link>
+                                    Bạn đã có tài khoản? Đăng nhập <Link to="/account/login">tại đây</Link>
                                 </p>
                             </form>
                         </div>

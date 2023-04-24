@@ -11,6 +11,8 @@ import ProductList from './ProductList/ProductList';
 import Cart from './Cart/Cart';
 import ResetPass from './ResetPass/ResetPass'
 import User from './User/User'
+import UserAccount from "./User/UserAccount";
+import UserPassword from "./User/UserPassword";
 import { SnackbarProvider } from 'notistack';
 
 const WebLayout = () => (
@@ -34,13 +36,15 @@ const WebLayout = () => (
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/ProductDetail" element={<ProductDetail />} />
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Register" element={<Register />} />
           <Route path="/Cart" element={<Cart />} />
           <Route path="/ProductList/:categorie/" element={<ProductList />} />
           <Route path="/ProductList/" element={<ProductList />} />
-          <Route path="/reset-password" element={<ResetPass />} />
-          <Route path="/user" element={<User />} />
+          <Route path="/account/login" element={<Login />} />
+          <Route path="/account/register" element={<Register />} />
+          <Route path="/account/reset-password" element={<ResetPass />} />
+          <Route path="/user" element={<UserAccount />} />
+          <Route path="/user/profile" element={<UserAccount/>} />
+          <Route path="/user/password" element={<UserPassword/>} />
         </Routes>
       </Layout>
 

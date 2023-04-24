@@ -1,0 +1,19 @@
+
+
+.sidebar_user {
+    height: 500px;
+    margin: auto;
+}
+.sidebar_user .container-fluid {
+}
+.sidebar_user .container-fluid a {
+    height: 40px;
+    line-height: 40px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: margin-left .2s ease;
+}
+.sidebar_user .container-fluid a:hover {
+    margin-left: 4px;
+    color: #00bc86;
+}
