@@ -1,81 +1,87 @@
--   `POST /api/users` - Create a new user.
+- `POST /api/users` - Create a new user.
 
--   `GET /api/users` - Retrieve a list of all users.
+- `GET /api/users` - Retrieve a list of all users.
 
--   `GET /api/users/:id` - Retrieve a single user by their ID.
+- `GET /api/users/:id` - Retrieve a single user by their ID.
 
--   `PUT /api/users/:id` - Update a single user by their ID.
+- `PUT /api/users/:id` - Update a single user by their ID.
 
--   `DELETE /api/users/:id` - Delete a single user by their ID.
+- `DELETE /api/users/:id` - Delete a single user by their ID.
 
--   `POST /api/login` - Authenticate a user and generate a JWT token.
+- `POST /api/login` - Authenticate a user and generate a JWT token.
 
--   `GET /api/profile` - Retrieve the authenticated user's profile.
+- `POST /api/logout` - Clear cookies and log out user.
 
--   `POST /api/categories` - Create a new category.
+- `POST /api/forgotPassword` - Authenticate a user and generate a JWT token.
 
--   `GET /api/categories` - Retrieve a list of all categories.
+- `POST /api/reset-password/confirmOtp` - OTP confirmation.
 
--   `GET /api/categories/:id` - Retrieve a single category by its ID.
+- `POST /api/reset-password` - Reset user password.
 
--   `PUT /api/categories/:id` - Update a single category by its ID.
+- `POST /api/categories` - Create a new category.
 
--   `DELETE /api/categories/:id` - Delete a single category by its ID.
+- `GET /api/categories` - Retrieve a list of all categories.
 
--   `POST /api/topics` - Create a new topic.
+- `GET /api/categories/:id` - Retrieve a single category by its ID.
 
--   `GET /api/topics` - Retrieve a list of all topics.
+- `PUT /api/categories/:id` - Update a single category by its ID.
 
--   `GET /api/topics/:id` - Retrieve a single topic by its ID.
+- `DELETE /api/categories/:id` - Delete a single category by its ID.
 
--   `PUT /api/topics/:id` - Update a single topic by its ID.
+- `POST /api/topics` - Create a new topic.
 
--   `DELETE /api/topics/:id` - Delete a single topic by its ID.
+- `GET /api/topics` - Retrieve a list of all topics.
 
--   `POST /api/courses` - Create a new course.
+- `GET /api/topics/:id` - Retrieve a single topic by its ID.
 
--   `GET /api/courses` - Retrieve a list of all courses.
+- `PUT /api/topics/:id` - Update a single topic by its ID.
 
--   `GET /api/courses/:id` - Retrieve a single course by its ID.
+- `DELETE /api/topics/:id` - Delete a single topic by its ID.
 
--   `PUT /api/courses/:id` - Update a single course by its ID.
+- `POST /api/courses` - Create a new course.
 
--   `DELETE /api/courses/:id` - Delete a single course by its ID.
+- `GET /api/courses` - Retrieve a list of all courses.
 
--   `POST /api/lecturers` - Create a new lecturer.
+- `GET /api/courses/:id` - Retrieve a single course by its ID.
 
--   `GET /api/lecturers` - Retrieve a list of all lecturers.
+- `PUT /api/courses/:id` - Update a single course by its ID.
 
--   `GET /api/lecturers/:id` - Retrieve a single lecturer by their ID.
+- `DELETE /api/courses/:id` - Delete a single course by its ID.
 
--   `PUT /api/lecturers/:id` - Update a single lecturer by their ID.
+- `POST /api/lecturers` - Create a new lecturer.
 
--   `DELETE /api/lecturers/:id` - Delete a single lecturer by their ID.
+- `GET /api/lecturers` - Retrieve a list of all lecturers.
 
--   `POST /api/topweeks` - Create a new top week.
+- `GET /api/lecturers/:id` - Retrieve a single lecturer by their ID.
 
--   `GET /api/topweeks` - Retrieve a list of all top weeks.
+- `PUT /api/lecturers/:id` - Update a single lecturer by their ID.
 
--   `GET /api/topweeks/:id` - Retrieve a single top week by its ID.
+- `DELETE /api/lecturers/:id` - Delete a single lecturer by their ID.
 
--   `PUT /api/topweeks/:id` - Update a single top week by its ID.
+- `POST /api/topweeks` - Create a new top week.
 
--   `DELETE /api/topweeks/:id` - Delete a single top week by its ID.
+- `GET /api/topweeks` - Retrieve a list of all top weeks.
 
--   `POST /api/facebookusers` - Create a new Facebook user.
+- `GET /api/topweeks/:id` - Retrieve a single top week by its ID.
 
--   `GET /api/facebookusers` - Retrieve a list of all Facebook users.
+- `PUT /api/topweeks/:id` - Update a single top week by its ID.
 
--   `GET /api/facebookusers/:id` - Retrieve a single Facebook user by their ID.
+- `DELETE /api/topweeks/:id` - Delete a single top week by its ID.
 
--   `PUT /api/facebookusers/:id` - Update a single Facebook user by their ID.
+- `POST /api/facebookusers` - Create a new Facebook user.
 
--   `DELETE /api/facebookusers/:id` - Delete a single Facebook user by their ID.
+- `GET /api/facebookusers` - Retrieve a list of all Facebook users.
 
--   `POST /api/cart` - Create a new cart.
+- `GET /api/facebookusers/:id` - Retrieve a single Facebook user by their ID.
 
--   `GET /api/cart/:id` - Retrieve a single cart by its ID.
+- `PUT /api/facebookusers/:id` - Update a single Facebook user by their ID.
 
--   `PUT /api/cart/:id` - Update a single cart by its ID.
+- `DELETE /api/facebookusers/:id` - Delete a single Facebook user by their ID.
 
--   `DELETE /api/cart/:id` - Delete a single cart by its ID.
+- `POST /api/cart` - Create a new cart.
+
+- `GET /api/cart/:id` - Retrieve a single cart by its ID.
+
+- `PUT /api/cart/:id` - Update a single cart by its ID.
+
+- `DELETE /api/cart/:id` - Delete a single cart by its ID.
