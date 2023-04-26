@@ -29,7 +29,7 @@ function BreadcrumbExample() {
 function AutoLayoutExample() {
   return (
     <Container>
-         <Row>
+        <Row>
         <Col>
             <div className="single-contact clearfix">
                 <div className="contact-icon"><MdLocationPin /></div>
@@ -75,7 +75,7 @@ function AutoLayoutExample() {
 const Contact =() => {
     const img = ['https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/breadcrumb_image.png?1676281841878']
     return (
-        <div className="contact">
+        <div className="contact_page">
             <Banner imgs={img} />
             <div className="body-contact">
                 {/* <p><Link title="text-link-home" to="/">Trang chủ</Link>/<span title="text-link-types">Liên hệ</span></p> */}
