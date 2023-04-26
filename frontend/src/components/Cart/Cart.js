@@ -26,7 +26,7 @@ const Cart = () => {
             <p className="cart-breadcum"><Link className="text-link-home" to='/'>Trang chủ</Link>/<span className="text-link-loai">Giỏ hàng</span></p>
 
             <div style={{ padding: '40px 30px 40px 30px', boxShadow: '0px 4px 30px rgba(19,28,25,0.1)', borderRadius: '25px' }}>
-                <Col className="cart-container-destop">
+                <Col className="cart-container-destop" style={{minWidth:'670px'}}>
                     <Row className="cart-header">
                         <Col xs='2'>
                             <p className="table-text">Hình ảnh</p>

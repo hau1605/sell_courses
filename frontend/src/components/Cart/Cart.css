@@ -1,6 +1,7 @@
 @media only screen and (max-width: 680px) {
     .cart-container-destop{
         display: none;
+        
     }
     .cart-breadcum{
         margin-left: 15px;
@@ -17,6 +18,7 @@
         display: flex;
         align-self: start;
     }
+    
 }
 
 
