@@ -18,12 +18,12 @@ const Product = (props) => {
   const dispatch = useDispatch();
   const [level, setLevel] = useState('');
   const { enqueueSnackbar } = useSnackbar();
+  let product={...props.product};
   const handleClickVariant = (variant) => () => {
     // variant could be success, error, warning, info, or default
     enqueueSnackbar('Thêm vào giỏ hàng thành công', { variant });
   };
   const updateView=()=>{
-    let product={...props.product};
     product.numberOfView++;
     CoursesDataService.updateCourseById(product._id,product)
     .then(
@@ -37,12 +37,12 @@ const Product = (props) => {
   return (
     <div>
       <Card className="Card">
-        <Link to='/ProductDetail' className="link"><Card.Img className="card-img" onClick={()=>{dispatch(viewedItem(props.product));updateView()}} variant="top" src={props.product.poster} /></Link>
+        <Link to='/ProductDetail' className="link"><Card.Img className="card-img" onClick={()=>{updateView();dispatch(viewedItem(product))}} variant="top" src={props.product.poster} /></Link>
         <Card.Body style={{ textAlign: 'left', padding: '0' }}>
           {level === "normal" && <div className="btn-level-normal text-mb-10" >Cơ bản</div>}
           {level === "medium" && <div className="btn-level-medium text-mb-10" >Mọi cấp độ</div>}
           {level === "hard" && <div className="btn-level-hard text-mb-10" >Nâng cao</div>}
-          <Link to='/ProductDetail' className="link"><Card.Title className="text-tittle" onClick={()=>{dispatch(viewedItem(props.product));updateView()}}>{props.product.name}</Card.Title></Link>
+          <Link to='/ProductDetail' className="link"><Card.Title className="text-tittle" onClick={()=>{updateView();dispatch(viewedItem(product))}}>{props.product.name}</Card.Title></Link>
           <Card.Text className="text-des">
             {props.product.categories}
           </Card.Text>
