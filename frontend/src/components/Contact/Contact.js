@@ -24,7 +24,7 @@ function BreadcrumbExample() {
         </Breadcrumb>
     </div>   
     );
-  }
+}
 
 function AutoLayoutExample() {
   return (
@@ -78,7 +78,6 @@ const Contact =() => {
         <div className="contact_page">
             <Banner imgs={img} />
             <div className="body-contact">
-                {/* <p><Link title="text-link-home" to="/">Trang chủ</Link>/<span title="text-link-types">Liên hệ</span></p> */}
                 <BreadcrumbExample className="breadcrumb-contact" tex/>
                 <div className="page-contact page" style={{margin: '20px 0'}}>
                     <div className="container-contact">

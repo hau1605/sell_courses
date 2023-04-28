@@ -74,8 +74,9 @@ const Cart = () => {
                     <Row style={{ display: 'flex', justifyContent: 'right', flexDirection: 'column' }}>
 
                         <Col style={{ display: 'flex', justifyContent: 'right' }}>
-                            <button className='btn-all cart-btn-continue'>TIẾP TỤC MUA HÀNG</button>
-                            <button className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</button></Col>
+                            <Link to='/ProductList' className='btn-all cart-btn-continue'>TIẾP TỤC MUA HÀNG</Link>
+                            <Link to="/oder" className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</Link>
+                        </Col>
                     </Row>
 
                 </Col>
@@ -114,8 +115,9 @@ const Cart = () => {
                     <Row style={{ display: 'flex', justifyContent: 'right', flexDirection: 'row' }}>
 
                         <Row style={{ display: 'flex',justifyContent:'center',margin:'auto' }}>
-                            <button style={{margin:'auto' }} className='btn-all cart-btn-continue'>TIẾP TỤC MUA HÀNG</button>
-                            <button className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</button></Row>
+                            <Link to='/ProductList' style={{margin:'auto' }} className='btn-all cart-btn-continue'>TIẾP TỤC MUA HÀNG</Link>
+                            <Link to="/oder" className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</Link>
+                        </Row>
                     </Row>
                 </Col>
             </div>

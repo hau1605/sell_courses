@@ -128,8 +128,8 @@ const Header = () => {
                   </div>
 
                   <div className='account_header'>
-                    <Link to='/register' className='btns'>Đăng ký</Link>
-                    <Link to='/login'>Đăng nhập</Link>
+                    <Link to='/account/register' className='btns'>Đăng ký</Link>
+                    <Link to='/account/login'>Đăng nhập</Link>
                   </div>
                 </div>
               </div>

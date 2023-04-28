@@ -118,6 +118,9 @@ p.table-text.cart-item-price{
     color: red;
     background-color: white;
 }
+.btn-all {
+    text-decoration: none;
+}
 
 
 .cart-item-mb{

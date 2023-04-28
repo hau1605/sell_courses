@@ -8,6 +8,7 @@ import ProductDetail from './ProductDetail/ProductDetail';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import ProductList from './ProductList/ProductList';
+import CheckOut from './CheckOut/CheckOut';
 import Cart from './Cart/Cart';
 import Contact from './Contact/Contact';
 import ResetPass from './ResetPass/ResetPass'
@@ -40,6 +41,7 @@ const WebLayout = () => (
           <Route path="/Cart" element={<Cart />} />
           <Route path='/Contact' element={<Contact />} />
           <Route path="/ProductList/:categorie/" element={<ProductList />} />
+          <Route path='/oder' element={<CheckOut />} />
           <Route path="/ProductList/" element={<ProductList />} />
           <Route path="/account/login" element={<Login />} />
           <Route path="/account/register" element={<Register />} />
