@@ -143,9 +143,9 @@ const ResetPass = () => {
                                     </label>
                                     <input type="password" name="password" placeholder="Mật khẩu" onChange={handlePasswordChange} required />
                                 </div>  
-                                <div className="button-container">
-                                    <input type="submit" className="btn" value="Xác nhận"/>
-                                    <Link className="btn btn-outline-secondary" onClick={showVerificationCodeForm}>Hủy</Link>
+                                <div className="action-form_bottom">
+                                    <input type="submit" className="btn btn-success btn-lg" value="Xác nhận"/>
+                                    {/* <Link className="btn btn-outline-secondary" onClick={showVerificationCodeForm}>Hủy</Link> */}
                                 </div>
                             </form>
                         </div>

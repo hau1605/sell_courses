@@ -12,27 +12,19 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { logoutSuccess } from '../../features/userSlice';
-
+import {useNavigate} from 'react-router-dom';
 const Header = () => {
   const totalCount = useSelector((state)=>state.Allcart.totalQuantity);
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const email = useSelector((state) => state.user.email);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
-    // try {
-      // const response = await axios.post("http://localhost:8000/api/users/logout");
-      // if(response.status === 200){
         dispatch(logoutSuccess());
         console.log("Đăng xuất thành công!");
-      // } else {
-    //     console.log("Đăng xuất thất bại!");
-    //   }
-    // } catch (err) {
-    //   console.log("Lỗi đăng xuất!");
-    //   console.error(err);
-    // }
-  };
+        navigate('/');
+  }
 
   return(
       <header>

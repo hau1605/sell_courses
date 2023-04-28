@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { setEmailResetPassword } from "../../features/userSlice";
 import { useNavigate } from 'react-router-dom';
 import { loginSuccess } from '../../features/userSlice';
-
+import ClipLoader from 'react-spinners/ClipLoader';
 import "./Login.css";
 const Login=()=>{
     const [email, setEmail] = useState("");
@@ -20,6 +20,7 @@ const Login=()=>{
     const [success, setSuccess] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleEmailChange = (event) => {
         const emailValue = event.target.value;
@@ -40,6 +41,7 @@ const Login=()=>{
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setIsLoading(true);
         try {
             const response = await axios.post('http://localhost:8000/api/users/login', {email, password});
             if (response.status === 200) {
@@ -47,6 +49,7 @@ const Login=()=>{
                 setShow(false);
                 dispatch(loginSuccess(email));
                 console.log(email);
+                setIsLoading(false);
                 navigate("/");
             } else {
                 console.error('Lỗi đăng nhập:', response.data.error);
@@ -65,6 +68,7 @@ const Login=()=>{
     
     const handleForgotPassword = async (event) => {
         event.preventDefault();
+        setIsLoading(true);
         try {
             const response = await axios.post('http://localhost:8000/api/users/forgot-password', { email });
             if (response.status === 200) {
@@ -72,7 +76,8 @@ const Login=()=>{
                 setSuccess(true);
                 setError('');
                 dispatch(setEmailResetPassword(email));
-                window.location.href = 'http://localhost:3000/account/reset-password';
+                setIsLoading(false);
+                navigate('/account/reset-password');
                 console.log('Đã gửi mail xác nhận');
               } else {
                 // Nếu yêu cầu đặt lại mật khẩu không thành công
@@ -84,6 +89,7 @@ const Login=()=>{
             // Xử lý lỗi từ server
             // (ví dụ: hiển thị thông báo lỗi cho người dùng)
             setError('Có lỗi xảy ra. Vui lòng thử lại sau.');
+            setIsLoading(false);
         }
     };
     // Hàm để ẩn form phục hồi mật khẩu
@@ -155,7 +161,11 @@ const Login=()=>{
 
                                 </div>  
                                 <div className="action-form_bottom">
+                                    {!isLoading ? 
                                     <button type="button" className="btn btn-success btn-lg" onClick={handleForgotPassword}>Gửi</button>
+                                    : 
+                                    <button type="button" className="btn btn-success btn-lg" style={{padding:"8.5px 22px"}}><ClipLoader color="white" size={15}/></button>
+                                    }
                                     <Link className="btn btn-outline-secondary" onClick={showLoginForm}>Hủy</Link>
                                 </div>
                             </form>
@@ -170,7 +180,7 @@ const Login=()=>{
                     <Modal.Title>Thông báo</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Email chưa được đăng ký. Vui lòng sử dụng email khác. 
+                    Thông tin tài khoản hoặc mật khẩu chưa chính xác. Vui lòng nhập lại.  
                     Hoặc <Link to='/register'>đăng ký ngay</Link>
                 </Modal.Body>
                 <Modal.Footer>

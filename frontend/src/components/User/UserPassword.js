@@ -6,6 +6,8 @@ import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
 import User from "./User";
 import './UserPassword.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const UserPassword=()=>{
     const [oldPassword, setOldPassword] = useState('');
@@ -13,39 +15,59 @@ const UserPassword=()=>{
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [show, setShow] = useState(false);
+    const email = useSelector((state) => state.user.email);
+    const navigate = useNavigate();
 
     const handleChange = (event) => {
         const { name, value } = event.target;
         if (name === 'oldPassword') {
-        setOldPassword(value);
+            setOldPassword(value);
+            console.log("oldPass: ", value);
         } else if (name === 'newPassword') {
-        setNewPassword(value);
+            setNewPassword(value);
+            console.log("newPass: ", value);
         } else if (name === 'confirmPassword') {
-        setConfirmPassword(value);
+            setConfirmPassword(value);
+            console.log("confirmNewPass: ", value);
         }
+        
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        // try {
-        //     const response = await axios.post('http://localhost:8000/api/change-password', {password});
-            
-        // } catch (err) {
-
-        // }
         if (newPassword !== confirmPassword) {
+            console.log("Mật khẩu nhập lại không trùng khớp");
             setError('Mật khẩu nhập lại không trùng khớp');
             return;
         }
-        axios.put('/api/change-password', { oldPassword, newPassword })
-            .then((response) => {
-                alert(response.data.message);
-            })
-            .catch((error) => {
-                alert(error.response.data.error);
-            });
+        try {
+            console.log("Tài khoản: ",email);
+            console.log(newPassword);
+            console.log(confirmPassword);
+            const response = await axios.put(`http://localhost:8000/api/users/change-password/${email}`, { oldPassword, newPassword });
+            console.log(response.data);
+            if(response.status === 200) {
+                console.log("Đổi mật khẩu thành công");
+                setShow(true);
+                
+            } else if (response.status === 401) {
+                console.log("Mật khẩu cũ không chính xác");
+                setError('Mật khẩu cũ không chính xác');
+            } else {
+                console.log("Đổi mật khẩu không thành công: ", response.data.error );
+                setError('Đổi mật khẩu không thành công');
+            }
+        } catch (err) {
+            console.error("Lỗi yêu cầu đổi mật khẩu: ",error);
+            setShow(false);
+            setError("Lỗi yêu cầu đổi mật khẩu: ", error.response.data.message);
+        }
     }
 
+    const handleModal = async (e) => {
+        setShow(false);
+        navigate("/user/profile");
+    }
     return(
             <Container className="container-user">
                 <Col className="container-user_navbar" md={3}>
@@ -53,26 +75,35 @@ const UserPassword=()=>{
                 </Col>
                 <Col className="container-user_form">
                     <div className="container-form_change-password">
-                        {error && <div>{error}</div>}
                         <form onSubmit={handleSubmit}>
                             <h3>Đổi mật khẩu</h3>
                             <h6>Để bảo mật tài khoản, vui lòng không chia sẻ mật khẩu cho người khác</h6>
                             <table>
                                 <tr>
-                                    <td><label htmlFor="oldPassword">Mật khẩu cũ:</label></td>
-                                    <td><input type="password" id="oldPassword" name="oldPassword" value={oldPassword} onChange={handleChange} /></td>
-                                </tr>
-                                {/* <tr>
-                                    <td><Link to="/forgot-password">Quên mật khẩu</Link></td>
-                                </tr> */}
-                                <tr>
-                                    <td><label htmlFor="newPassword">Mật khẩu mới:</label></td>
-                                    <td><input type="password" id="newPassword" name="newPassword" value={newPassword} onChange={handleChange} /></td>
+                                    <td><label htmlFor="oldPassword">
+                                            Mật khẩu cũ
+                                            <span className="required text-danger">*</span>:
+                                        </label></td>
+                                    <td><input required type="password" id="oldPassword" name="oldPassword" value={oldPassword} onChange={handleChange} /></td>
                                 </tr>
                                 <tr>
-                                    <td><label htmlFor="confirmPassword">Nhập lại mật khẩu mới:</label></td>
-                                    <td><input type="password" id="confirmPassword" name="confirmPassword" value={confirmPassword} onChange={handleChange} /></td>
+                                    <td><label htmlFor="newPassword">
+                                            Mật khẩu mới
+                                            <span className="required text-danger">*</span>: 
+                                        </label></td>
+                                    <td><input required type="password" id="newPassword" name="newPassword" value={newPassword} onChange={handleChange} /></td>
                                 </tr>
+                                <tr>
+                                    <td><label htmlFor="confirmPassword">
+                                            Nhập lại mật khẩu mới
+                                            <span className="required text-danger">*</span>:
+                                        </label></td>
+                                    <td>
+                                        <input required type="password" id="confirmPassword" name="confirmPassword" value={confirmPassword} onChange={handleChange} />
+                                        {error && <div style={{ color: 'red' }}>{error}</div>}
+                                    </td> 
+                                </tr>
+
                                 <tr>
                                     <td><button type="submit">Đổi mật khẩu</button></td>
                                 </tr>
@@ -85,11 +116,10 @@ const UserPassword=()=>{
                         <Modal.Title>Thông báo</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        Email chưa được đăng ký. Vui lòng sử dụng email khác. 
-                        Hoặc <Link to='/register'>đăng ký ngay</Link>
+                        Bạn đã đổi mật khẩu thành công 
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button  variant="success" onClick={()=>setShow(false)}>Đồng ý</Button>
+                        <Button  variant="success" onClick={handleModal}>Đồng ý</Button>
                     </Modal.Footer>
                 </Modal>
             </Container>
