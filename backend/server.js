@@ -24,6 +24,18 @@ AdminJS.registerAdapter({
   Database: AdminJSMongoose.Database,
 });
 
+const DEFAULT_ADMIN = {
+  email: "admin@example.com",
+  password: "password",
+};
+
+const authenticate = async (email, password) => {
+  if (email === DEFAULT_ADMIN.email && password === DEFAULT_ADMIN.password) {
+    return Promise.resolve(DEFAULT_ADMIN);
+  }
+  return null;
+};
+
 const start = async () => {
   const app = express();
   connectDB();
@@ -32,6 +44,7 @@ const start = async () => {
   app.use(express.json());
   app.use(cors());
 
+  // Admin setup
   const adminOptions = {
     resources: [
       models.courseModel,
@@ -47,7 +60,26 @@ const start = async () => {
 
   const admin = new AdminJS(adminOptions);
 
-  const adminRouter = AdminJSExpress.buildRouter(admin);
+  const adminRouter = AdminJSExpress.buildAuthenticatedRouter(
+    admin,
+    {
+      authenticate,
+      cookieName: "adminjs",
+      cookiePassword: "sessionsecret",
+    },
+    null,
+    {
+      resave: true,
+      saveUninitialized: true,
+      secret: "sessionsecret",
+      cookie: {
+        httpOnly: process.env.NODE_ENV === "production",
+        secure: process.env.NODE_ENV === "production",
+      },
+      name: "adminjs",
+    }
+  );
+
   app.use(admin.options.rootPath, adminRouter);
 
   // Routes
@@ -66,6 +98,7 @@ const start = async () => {
     console.log(`Server is running on port ${config.PORT}`);
     console.log(
       `AdminJS started on http://localhost:${PORT}${admin.options.rootPath}`
+	    + "  email: 'admin@example.com',password: 'password',"
     );
   });
 };
