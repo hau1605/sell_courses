@@ -14,8 +14,15 @@ import {
   topWeeksRoutes,
   facebookUsersRoutes,
 } from "./routes/index.js";
+import * as models from "./models/index.js";
 import { PORT } from "./config/config.js";
 import * as config from "./config/config.js";
+import * as AdminJSMongoose from "@adminjs/mongoose";
+
+AdminJS.registerAdapter({
+  Resource: AdminJSMongoose.Resource,
+  Database: AdminJSMongoose.Database,
+});
 
 const start = async () => {
   const app = express();
@@ -25,7 +32,20 @@ const start = async () => {
   app.use(express.json());
   app.use(cors());
 
-  const admin = new AdminJS({});
+  const adminOptions = {
+    resources: [
+      models.courseModel,
+      models.cartModel,
+      models.categoryModel,
+      models.userModel,
+      models.lecturerModel,
+      models.topicModel,
+      models.topWeekModel,
+      models.facebookUserModel,
+    ],
+  };
+
+  const admin = new AdminJS(adminOptions);
 
   const adminRouter = AdminJSExpress.buildRouter(admin);
   app.use(admin.options.rootPath, adminRouter);
