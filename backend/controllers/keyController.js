@@ -1,5 +1,5 @@
-const keyModel = require('../models/keyModel');
-const crypto = require('crypto');
+import * as keyModel from '../models/keyModel.js';
+import crypto from 'crypto';
 
 async function generateKey() {
   const key = generateRandomKey();
@@ -26,4 +26,4 @@ function generateRandomKey() {
   return crypto.randomBytes(8).toString('hex');
 }
 
-module.exports = { generateKey, validateKey };
+export { generateKey, validateKey };

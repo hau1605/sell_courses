@@ -1,4 +1,4 @@
-const TopWeek = require('../models/topWeekModel');
+import TopWeek from '../models/topWeekModel.js';
 
 // Create a new top week
 const createTopWeek = async (topWeekData) => {
@@ -50,7 +50,7 @@ const deleteTopWeek = async (topWeekId) => {
   }
 };
 
-module.exports = {
+export {
   createTopWeek,
   getAllTopWeeks,
   getTopWeekById,

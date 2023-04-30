@@ -1,9 +1,9 @@
-const topWeeksDAO = require('../dao/topWeeksDAO');
+import * as topWeeksDAO from '../dao/topWeeksDAO.js';
 
 // Controller functions for top weeks
 
 // Get all top weeks
-exports.getAllTopWeeks = async (req, res) => {
+const getAllTopWeeks = async (req, res) => {
   try {
     const topWeeks = await topWeeksDAO.getAllTopWeeks();
     res.status(200).json(topWeeks);
@@ -13,7 +13,7 @@ exports.getAllTopWeeks = async (req, res) => {
 };
 
 // Get top week by ID
-exports.getTopWeekById = async (req, res) => {
+const getTopWeekById = async (req, res) => {
   try {
     const topWeek = await topWeeksDAO.getTopWeekById(req.params.id);
     if (!topWeek) {
@@ -26,7 +26,7 @@ exports.getTopWeekById = async (req, res) => {
 };
 
 // Create a new top week
-exports.createTopWeek = async (req, res) => {
+const createTopWeek = async (req, res) => {
   try {
     const topWeek = await topWeeksDAO.createTopWeek(req.body);
     res.status(201).json(topWeek);
@@ -36,7 +36,7 @@ exports.createTopWeek = async (req, res) => {
 };
 
 // Update a top week by ID
-exports.updateTopWeek = async (req, res) => {
+const updateTopWeek = async (req, res) => {
   try {
     const topWeek = await topWeeksDAO.updateTopWeek(req.params.id, req.body);
     if (!topWeek) {
@@ -49,7 +49,7 @@ exports.updateTopWeek = async (req, res) => {
 };
 
 // Delete a top week by ID
-exports.deleteTopWeek = async (req, res) => {
+const deleteTopWeek = async (req, res) => {
   try {
     const topWeek = await topWeeksDAO.deleteTopWeek(req.params.id);
     if (!topWeek) {
@@ -61,3 +61,4 @@ exports.deleteTopWeek = async (req, res) => {
   }
 };
 
+export { deleteTopWeek, updateTopWeek, createTopWeek, getAllTopWeeks, getTopWeekById }

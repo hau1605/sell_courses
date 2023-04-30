@@ -1,4 +1,4 @@
-const FacebookUser = require('../models/facebookUserModel');
+import FacebookUser from '../models/facebookUserModel.js';
 
 // Create a new Facebook user
 const createFacebookUser = async (facebookUserData) => {
@@ -50,7 +50,7 @@ const deleteFacebookUser = async (facebookUserId) => {
   }
 };
 
-module.exports = {
+export {
   createFacebookUser,
   getAllFacebookUsers,
   getFacebookUserById,

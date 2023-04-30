@@ -1,4 +1,4 @@
-const Topic = require('../models/topicModel');
+import Topic from '../models/topicModel.js';
 
 // Create a new topic
 const createTopic = async (topicData) => {
@@ -51,7 +51,7 @@ const deleteTopic = async (topicId) => {
   }
 };
 
-module.exports = {
+export {
   createTopic,
   getAllTopics,
   getTopicById,

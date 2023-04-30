@@ -1,4 +1,4 @@
-const categoriesDAO = require('../dao/categoriesDAO');
+import * as categoriesDAO from '../dao/categoriesDAO.js';
 
 // Controller function to get all categories
 const getAllCategories = async (req, res) => {
@@ -64,7 +64,7 @@ const deleteCategory = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   getAllCategories,
   getCategoryById,
   createCategory,

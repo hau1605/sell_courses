@@ -1,6 +1,6 @@
-const userModel = require("../models/userModel");
-const bcrypt = require("bcryptjs");
-const nodemailer = require("nodemailer");
+import * as userModel from '../models/userModel.js';
+import bcrypt from 'bcryptjs';
+import nodemailer from 'nodemailer';
 
 const login = async (req, res) => {
   try {
@@ -146,7 +146,7 @@ const logout = async (req, res) => {
     res.status(500).json({ error: "Đã xảy ra lỗi:", err });
   }
 };
-module.exports = {
+export {
   login,
   forgotPassword,
   confirmOtp,

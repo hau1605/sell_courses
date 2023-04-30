@@ -1,4 +1,4 @@
-const coursesDAO = require('../dao/coursesDAO');
+import * as coursesDAO from '../dao/coursesDAO.js';
 
 // Create a new course
 async function createCourse(req, res) {
@@ -131,7 +131,7 @@ async function deleteCourse(req, res) {
   }
 }
 
-module.exports = {
+export {
   createCourse,
   getAllCourses,
   getCourses,

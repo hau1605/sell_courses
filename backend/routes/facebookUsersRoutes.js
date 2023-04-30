@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const facebookUsersController = require('../controllers/facebookUsersController');
+
+import * as facebookUsersController from '../controllers/facebookUsersController.js';
 
 // Define routes for Facebook users
 
@@ -19,5 +20,5 @@ router.put('/:id', facebookUsersController.updateFacebookUser);
 // Delete a Facebook user by ID
 router.delete('/:id', facebookUsersController.deleteFacebookUser);
 
-module.exports = router;
+export default router;
 
