@@ -3,18 +3,17 @@ import AdminJSExpress from "@adminjs/express";
 import express from "express";
 import { connectDB } from "./db/connection.js";
 import cors from "cors";
-
-
-import coursesRoutes from './routes/coursesRoutes.js';
-import cartRoutes from './routes/cartRoutes.js';
-import categoriesRoutes from './routes/categoriesRoutes.js';
-import topicsRoutes from './routes/topicsRoutes.js';
-import usersRoutes from './routes/usersRoutes.js';
-import loginRoutes from './routes/loginRoutes.js';
-import lecturersRoutes from './routes/lecturersRoutes.js';
-import topWeeksRoutes from './routes/topWeeksRoutes.js';
-import facebookUsersRoutes from './routes/facebookUsersRoutes.js';
-
+import {
+  coursesRoutes,
+  cartRoutes,
+  categoriesRoutes,
+  topicsRoutes,
+  usersRoutes,
+  loginRoutes,
+  lecturersRoutes,
+  topWeeksRoutes,
+  facebookUsersRoutes,
+} from "./routes/index.js";
 import { PORT } from "./config/config.js";
 import * as config from "./config/config.js";
 
