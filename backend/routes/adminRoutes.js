@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const adminController = require('../controllers/adminController');
+
+import * as adminController from "../controllers/adminController.js";
 
 // Define routes for admin
 router.get('/', adminController.getAllAdmins);
@@ -9,5 +10,5 @@ router.post('/', adminController.createAdmin);
 router.put('/:id', adminController.updateAdmin);
 router.delete('/:id', adminController.deleteAdmin);
 
-module.exports = router;
+export default router;
 

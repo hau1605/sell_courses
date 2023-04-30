@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const topWeeksController = require('../controllers/topWeeksController');
+
+import * as topWeeksController from '../controllers/topWeeksController.js';
 
 // Route handlers for top weeks
 
@@ -19,5 +20,4 @@ router.put('/:id', topWeeksController.updateTopWeek);
 // Delete a top week by ID
 router.delete('/:id', topWeeksController.deleteTopWeek);
 
-module.exports = router;
-
+export default router;

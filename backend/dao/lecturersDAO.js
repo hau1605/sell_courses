@@ -1,4 +1,4 @@
-const Lecturer = require('../models/lecturerModel');
+import Lecturer from '../models/lecturerModel.js';
 
 // Create a new lecturer
 const createLecturer = async (lecturerData) => {
@@ -50,7 +50,7 @@ const deleteLecturer = async (lecturerId) => {
   }
 };
 
-module.exports = {
+export {
   createLecturer,
   getAllLecturers,
   getLecturerById,

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const topicSchema = new mongoose.Schema({
   numberOfView: {
@@ -22,5 +22,5 @@ const topicSchema = new mongoose.Schema({
 
 const Topic = mongoose.model('Topic', topicSchema);
 
-module.exports = Topic;
+export default Topic;
 

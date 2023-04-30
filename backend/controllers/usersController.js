@@ -1,7 +1,7 @@
-const usersDAO = require("../dao/usersDAO");
-const userModel = require("../models/userModel"	);
-const bcrypt = require("bcryptjs");
-const dotenv = require("dotenv");
+import * as usersDAO from "../dao/usersDAO.js";
+import * as userModel from "../models/userModel.js";
+import bcrypt from "bcryptjs";
+import dotenv from "dotenv";
 dotenv.config();
 
 // Controller function to get all users
@@ -86,10 +86,4 @@ const deleteUser = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-module.exports = {
-  getAllUsers,
-  getUserById,
-  createUser,
-  updateUser,
-  deleteUser,
-};
+export { getAllUsers, getUserById, createUser, updateUser, deleteUser };

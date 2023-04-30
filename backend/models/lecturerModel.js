@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const lecturerSchema = new mongoose.Schema({
   date: {
@@ -46,5 +46,5 @@ const lecturerSchema = new mongoose.Schema({
 
 const Lecturer = mongoose.model('Lecturer', lecturerSchema);
 
-module.exports = Lecturer;
+export default Lecturer;
 

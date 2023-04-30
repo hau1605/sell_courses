@@ -1,19 +1,15 @@
-const mongoose = require('mongoose');
-const config = require('../config/config.js');
+import mongoose from "mongoose";
+import { CONNECTION_STRING, DB_OPTIONS } from "../config/config.js";
 
 // Connect to MongoDB Atlas
-const connectDB = async () => {
+export const connectDB = async () => {
   try {
-    await mongoose.connect(config.CONNECTION_STRING, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log('MongoDB connected');
+    await mongoose.connect(CONNECTION_STRING, DB_OPTIONS);
+
+    console.log("MongoDB connected");
   } catch (error) {
-    console.error('Failed to connect to MongoDB:', error);
+    console.error("Failed to connect to MongoDB:", error);
+
     process.exit(1);
   }
 };
-
-module.exports = connectDB;
-
