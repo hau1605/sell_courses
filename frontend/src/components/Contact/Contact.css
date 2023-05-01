@@ -1,0 +1,146 @@
+/* breadcrumb */
+
+.breadcrumb-item.active {
+    color: #474747;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: #00bc86;
+    display: block;
+}
+
+.breadcrumb a:hover {
+    font-weight: 700;
+    color: black;
+}
+
+/* Grid */
+
+.contact_page.col {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+}
+
+/* Contact */
+
+.single-contact .content_contact a {
+    color: black;
+    text-decoration: none;
+    display: block;
+    font-size: 14px;
+}
+
+.body {
+    padding: -1px 200px;
+}
+
+.page-contact .pageTitle {
+    text-align: center;
+    display: block;
+    font-family: "Nunito",serif;
+    font-size: 24px;
+    font-weight: 800;
+    color: #403938;
+    margin: 0 0px 20px;
+    padding: 0px;
+    line-height: 32px;
+}
+
+.single-contact {
+    padding: 30px;
+    background-color: #f5f5f5;
+    position: relative;
+    z-index: 1;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.single-contact .contact-icon {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 24px;
+    color: white;
+    background-color: #00bc86;
+    text-align: center;
+    display: inline-block;
+    transition: all .3s ease-in;
+    border-radius: 50%;
+    float: left;
+}
+
+.single-contact .contact-icon svg {
+    width: 60px;
+    height: 20px;
+    transform: translateY(2px);
+}
+
+.single-contact .content_contact {
+    width: calc(100% - 60px);
+    float: left;
+    padding-left: 10px;
+}
+
+.single-contact h3 {
+    display: block;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 26px;
+    margin: 0 0 5px;
+}
+
+.col-contact-form {
+    flex: 0 0 100%;
+    max-width: 100%;
+    display: block;
+}
+
+.contact_form {
+    background-color: #f5f5f5;
+    border-radius: 5px;
+}
+
+.tittle_form {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.contact_form form {
+    padding: 10px 80px 100px 100px;
+}
+
+.contact_form .contact-submit-button {
+    text-align: center ;
+}
+
+.contact_form .ant-btn {
+    background-color: #00bc86;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 35px;
+    border-color: #00bc86;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-family: "Nunito",serif;
+    font-size: 14px;
+    font-weight: 700;
+    transition: color 300ms ease-in-out 0s, background-color 300ms ease-in-out 0s, background-position 300ms ease-in-out 0s;
+    display: inline-block;
+    position: relative;
+    margin-top: 20px;
+}
+
+.ant-btn-primary:not(:disabled):hover {
+    background-color: #474747;
+    border-color: #474747;
+}
+
+/* responsive */
+
+@media (min-width: 1200px) {
+    .body-contact {
+        background-color: white;
+        padding: 30px 160px;
+    }
+}

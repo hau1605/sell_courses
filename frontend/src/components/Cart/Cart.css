@@ -1,6 +1,7 @@
 @media only screen and (max-width: 680px) {
     .cart-container-destop{
         display: none;
+        
     }
     .cart-breadcum{
         margin-left: 15px;
@@ -17,6 +18,7 @@
         display: flex;
         align-self: start;
     }
+    
 }
 
 
@@ -115,6 +117,9 @@ p.table-text.cart-item-price{
     border-color: red;
     color: red;
     background-color: white;
+}
+.btn-all {
+    text-decoration: none;
 }
 
 

@@ -1,4 +1,4 @@
-const Cart = require('../models/cartModel');
+import Cart from '../models/cartModel.js';
 
 async function createCart(cartData) {
   try {
@@ -45,7 +45,7 @@ async function deleteCart(cartId) {
   }
 }
 
-module.exports = {
+export {
   createCart,
   getCartById,
   updateCart,

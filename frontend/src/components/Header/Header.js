@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+ 
 import logo from "./logo.webp"
 import category from "./category.png"
 import caretRight from "./caretRight.svg"
@@ -6,8 +7,12 @@ import searchIcon from "./searchIcon.png"
 import cartIcon from "./cartIcon.png"
 import {FiShoppingCart, FiSearch} from "react-icons/fi"
 import {FaBars, FaSearch} from "react-icons/fa"
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import "./Header.css"
 import MenuDropDown from '../MenuDropDown/MenuDropDown';
+<<<<<<< HEAD
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
@@ -26,6 +31,13 @@ const Header = () => {
         navigate('/');
   }
 
+=======
+import MenuMobile from '../MenuMobile/MenuMobile';
+
+const Header = () => {
+  const totalCount=useSelector((state)=>state.Allcart.totalQuantity);
+ 
+>>>>>>> 9f6df1cdc173c57997f78c41f5540cfcb703f08a
   return(
       <header>
         <div className='tophead'>
@@ -69,21 +81,14 @@ const Header = () => {
                     <nav className='header-nav'>
                       <ul className='item_big'>
                         <li className='nav-item active'>
-                          <Link className='a-img' to='/' title='Trang chủ'>
+                          <a className='a-img' href='/' title='Trang chủ'>
                             <span>Trang chủ</span>
-                          </Link>
+                          </a>
                         </li>
                         <li className='nav-item level0'>
-                          <Link to='ProductList'>
+                          <Link to='/ProductList'>
                             Danh sách khóa học
-                            <i className='icon-right'></i>
-                            <i class="fa-regular fa-angles-right"></i>
                           </Link>
-                        </li>
-                        <li className='nav-item'>
-                          <a className='a-img' href='/san-pham-noi-bat' title='Khóa học tiêu biểu'>
-                            <span>Khóa học tiêu biểu</span>
-                          </a>
                         </li>
                         <li className='nav-item'>
                           <a className='a-img' href='/tin-tuc' title='Tin tức'>
@@ -91,9 +96,9 @@ const Header = () => {
                           </a>
                         </li>
                         <li className='nav-item'>
-                          <a className='a-img' href='/lien-he' title='Liên hệ'>
+                          <Link to='/Contact'>
                             <span>Liên hệ</span>
-                          </a>
+                          </Link>
                         </li>
                         <li className='nav-item'>
                           <a className='a-img' href='/gioi-thieu' title='Giới thiệu'>
@@ -101,19 +106,17 @@ const Header = () => {
                           </a>
                         </li>
                         <li className='d-lg-none'>
-                          <Link to='/account/login'>Đăng nhập</Link>
+                          <Link to='/login'>Đăng nhập</Link>
                         </li>
                         <li className='d-lg-none'>
-                          <Link to='/account/register'>Đăng ký</Link>
-                        </li>
-                        <li className='wishlist_header'>
-                          <a href='/san-pham-yeu-thich' title='Yêu thích sản phẩm' rel='nofollow'>
-                            Sản phẩm yêu thích 
-                          </a>
+                          <Link to='/register'>Đăng ký</Link>
                         </li>
                       </ul>
                     </nav>
                   </div>
+                  {/* <div className='menu-mobile'>
+                    <MenuMobile />
+                  </div> */}
                 </div>
                 <div className='header_search'>
                   <div className='icon-search'>
@@ -146,38 +149,8 @@ const Header = () => {
                   </div>
 
                   <div className='account_header'>
-                  {isLoggedIn ? (
-                    <div className='header_menu clearfix'>
-                      <div className='menu-bar-mobile menu-bar-h nav-mobile-button'>
-                        <button onClick={handleLogout}>Đăng xuất </button>
-                      </div>
-                      <div className='wrap_main'>
-                        <nav className='header-nav'>
-                          <ul className='item_big'>
-                            ({email})
-                            <li>
-                              <Link to='/user/profile'>
-                                Hồ sơ
-                              </Link>
-                            </li>
-                            <li>
-                              <Link to='ProductList'>
-                                Khóa học của tôi
-                              </Link>
-                            </li>
-                            <li>
-                              <button onClick={handleLogout}>Đăng xuất</button>
-                            </li>
-                          </ul>
-                        </nav>
-                      </div>
-                    </div>
-                  ) : (
-                    <div>
-                      <Link to='/account/register' className='btns'>Đăng ký</Link>
-                      <Link to='/account/login'>Đăng nhập</Link>
-                    </div>
-                  )}
+                    <Link to='/account/register' className='btns'>Đăng ký</Link>
+                    <Link to='/account/login'>Đăng nhập</Link>
                   </div>
                 </div>
               </div>

@@ -1,9 +1,9 @@
-const facebookUsersDAO = require('../dao/facebookUsersDAO');
+import * as facebookUsersDAO from '../dao/facebookUsersDAO.js';
 
 // Controller functions for Facebook users
 
 // Get all Facebook users
-exports.getAllFacebookUsers = async (req, res) => {
+const getAllFacebookUsers = async (req, res) => {
   try {
     const facebookUsers = await facebookUsersDAO.getAllFacebookUsers();
     res.status(200).json(facebookUsers);
@@ -13,7 +13,7 @@ exports.getAllFacebookUsers = async (req, res) => {
 };
 
 // Get Facebook user by ID
-exports.getFacebookUserById = async (req, res) => {
+const getFacebookUserById = async (req, res) => {
   try {
     const facebookUser = await facebookUsersDAO.getFacebookUserById(req.params.id);
     if (!facebookUser) {
@@ -26,7 +26,7 @@ exports.getFacebookUserById = async (req, res) => {
 };
 
 // Create a new Facebook user
-exports.createFacebookUser = async (req, res) => {
+const createFacebookUser = async (req, res) => {
   try {
     const facebookUser = facebookUsersDAO.createFacebookUser(req.body);
     const savedFacebookUser = await facebookUser.save();
@@ -37,7 +37,7 @@ exports.createFacebookUser = async (req, res) => {
 };
 
 // Update a Facebook user by ID
-exports.updateFacebookUser = async (req, res) => {
+const updateFacebookUser = async (req, res) => {
   try {
     const updatedFacebookUser = await facebookUsersDAO.updateFacebookUser(
       req.params.id,
@@ -54,7 +54,7 @@ exports.updateFacebookUser = async (req, res) => {
 };
 
 // Delete a Facebook user by ID
-exports.deleteFacebookUser = async (req, res) => {
+const deleteFacebookUser = async (req, res) => {
   try {
     const deletedFacebookUser = await FacebookUser.findByIdAndDelete(req.params.id);
     if (!deletedFacebookUser) {
@@ -66,3 +66,4 @@ exports.deleteFacebookUser = async (req, res) => {
   }
 };
 
+export { deleteFacebookUser, updateFacebookUser, createFacebookUser, getAllFacebookUsers, getFacebookUserById }

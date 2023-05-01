@@ -1,5 +1,5 @@
-const Course = require('../models/courseModel');
-const Topic = require('../models/topicModel')
+import Course from '../models/courseModel.js';
+
 // Create a new course
 const createCourse = async (courseData) => {
   try {
@@ -66,7 +66,7 @@ const deleteCourse = async (courseId) => {
   }
 };
 
-module.exports = {
+export {
   createCourse,
   getAllCourses,
   getCourses,

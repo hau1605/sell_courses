@@ -36,7 +36,7 @@ const ProductList = (props) => {
     const [filterprice, setfilterprice] = useState(false)
     const [sort, setSort] = useState('asc')
     const [categories, setCategories] = useState(categorie)
-
+    const [isLoading,setisLoading]=useState(true)
     const handlePageChange = async (pageNumber) => {
         // Xử lý khi người dùng chọn trang mới
         setCurrentPage(pageNumber);
@@ -51,6 +51,7 @@ const ProductList = (props) => {
     const [openListcourse, setopenListcourse] = useState(false);
     const [opensubCourse, setopenSubcourse] = useState(false);
     useEffect(() => {
+        setisLoading(true)
         let filtercategories = ''
         if (categories === undefined) { filtercategories = 'TẤT CẢ KHÓA HỌC' }
         console.log('cate', categories)
@@ -80,6 +81,7 @@ const ProductList = (props) => {
                 console.log("ok");
                 setProducts(response.data.products);
                 setPageCount(response.data.totalPages)
+                setisLoading(false)
 
 
             })
@@ -218,34 +220,33 @@ const ProductList = (props) => {
                                     </FormGroup>
                                 </Form>
                             </Col>
-                            {Products.length !== 0 ? <Row style={{ padding: '0 0 0 0' }}>
-                            </Row> : <p>Chưa tìm thấy khóa học phù hợp</p>}
-
-                            {Products.length === 0 ? <Row style={{ padding: '0px 20px 0 0' }}>
-                                <LinearProgress style={{ color: 'red' }} />
-                            </Row> :
-                                <Row >
+                            {Products.length === 0&&isLoading===true ? <div style={{paddingRight:"30px"}}><p>Đang tìm kiếm khóa học phù hợp</p><LinearProgress color="success"/></div>:null}
+                            {Products.length !== 0&&isLoading===true ? (<div style={{paddingRight:"30px"}}><p>Đang tìm kiếm khóa học phù hợp</p><LinearProgress color="success"/></div>):<Row >
                                     {Products.map((item) => <Col xs={6} lg={4} md={4} style={{ padding: '8px' }}>
                                         <Product product={item} />
                                     </Col>)}
-                                </Row>
-
-                            }
-                        </Row>
-
-
-                        <CustomPagination className="pagination"
+                                    <CustomPagination className="pagination"
                             pageCount={pageCount}
                             currentPage={currentPage}
                             handlePageChange={handlePageChange}
                         />
+                                </Row>}
+                            {Products.length === 0&&isLoading===false ? <p>Không tìm thấy khóa học phù hợp</p>:null}
+
+                            
+                                
+
+                            
+                        </Row>
+
+                        
                     </Col>
                 </Row>
             </div>
             
         </div>
         <>
-        <div className="ProductList-ViewedItem">
+        {viewedItem===0?null:<div className="ProductList-ViewedItem">
                 <div className='line-box'></div>
                     <h2 className='header-text '>KHÓA HỌC BẠN ĐÃ XEM</h2>
                 <Swiper
@@ -280,7 +281,7 @@ const ProductList = (props) => {
                         </SwiperSlide>
                     )}
                     </Swiper>
-            </div>
+            </div>}
         </>
     </div>);
 }

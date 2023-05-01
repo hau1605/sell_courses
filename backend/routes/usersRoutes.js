@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const usersController = require('../controllers/usersController');
+
+import * as usersController from '../controllers/usersController.js';
 
 // Route to get all users
 router.get('/', usersController.getAllUsers);
@@ -18,12 +19,4 @@ router.put('/:email', usersController.updateUser);
 // Route to delete a user by ID
 router.delete('/:id', usersController.deleteUser);
 
-router.post('/login', usersController.login);
-router.post('/forgot-password', usersController.forgotPassword);
-router.post('/reset-password/confirmOtp', usersController.confirmOtp);
-router.post('/reset-password', usersController.resetPassword);
-router.post('/logout', usersController.logout);
-router.put('/change-password/:email', usersController.changePassword);
-
-module.exports = router;
-
+export default router;

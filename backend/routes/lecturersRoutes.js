@@ -1,6 +1,7 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
-const lecturersController = require('../controllers/lecturersController');
+
+import * as lecturersController from '../controllers/lecturersController.js';
 
 // Route to get all lecturers
 router.get('/', lecturersController.getAllLecturers);
@@ -17,5 +18,5 @@ router.put('/:id', lecturersController.updateLecturer);
 // Route to delete a lecturer by ID
 router.delete('/:id', lecturersController.deleteLecturer);
 
-module.exports = router;
+export default router;
 
