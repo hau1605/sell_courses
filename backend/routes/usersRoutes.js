@@ -7,14 +7,13 @@ import * as usersController from '../controllers/usersController.js';
 router.get('/', usersController.getAllUsers);
 
 // Route to get a user by ID
-// router.get('/:id', usersController.getUserById);
-router.get('/:email', usersController.getUserByEmail);
+router.get('/:id', usersController.getUserById);
 
 // Route to create a new user
 router.post('/', usersController.createUser);
 
 // Route to update a user by ID
-router.put('/:email', usersController.updateUser);
+router.put('/:id', usersController.updateUser);
 
 // Route to delete a user by ID
 router.delete('/:id', usersController.deleteUser);

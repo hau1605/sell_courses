@@ -12,32 +12,11 @@ import { useSelector } from 'react-redux';
 
 import "./Header.css"
 import MenuDropDown from '../MenuDropDown/MenuDropDown';
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
-import { logoutSuccess } from '../../features/userSlice';
-import {useNavigate} from 'react-router-dom';
-const Header = () => {
-  const totalCount = useSelector((state)=>state.Allcart.totalQuantity);
-  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
-  const email = useSelector((state) => state.user.email);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleLogout = async () => {
-        dispatch(logoutSuccess());
-        console.log("Đăng xuất thành công!");
-        navigate('/');
-  }
-
-=======
 import MenuMobile from '../MenuMobile/MenuMobile';
 
 const Header = () => {
   const totalCount=useSelector((state)=>state.Allcart.totalQuantity);
  
->>>>>>> 9f6df1cdc173c57997f78c41f5540cfcb703f08a
   return(
       <header>
         <div className='tophead'>
