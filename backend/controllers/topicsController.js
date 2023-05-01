@@ -1,7 +1,6 @@
-import * as topicsDAO from '../dao/topicsDAO.js';
-
+const topicsDAO = require('../dao/topicsDAO');
 // Controller function to get all topics
-const getAllTopics = async (req, res) => {
+exports.getAllTopics = async (req, res) => {
   try {
     const topics = await topicsDAO.getAllTopics();
     res.status(200).json({ success: true, data: topics });
@@ -11,7 +10,7 @@ const getAllTopics = async (req, res) => {
 };
 
 // Controller function to get a topic by ID
-const getTopicById = async (req, res) => {
+exports.getTopicById = async (req, res) => {
   try {
     console.log(req.params.id)
     const topic = await topicsDAO.getTopicById(req.params.id);
@@ -26,7 +25,7 @@ const getTopicById = async (req, res) => {
 };
 
 // Controller function to create a new topic
-const createTopic = async (req, res) => {
+exports.createTopic = async (req, res) => {
   try {
     const topic = await topicsDAO.createTopic(req.body);
     res.status(201).json({ success: true, data: topic });
@@ -36,7 +35,7 @@ const createTopic = async (req, res) => {
 };
 
 // Controller function to update a topic by ID
-const updateTopic = async (req, res) => {
+exports.updateTopic = async (req, res) => {
   try {
     const topic = await topicsDAO.updateTopic(req.params.id, req.body, {
       new: true,
@@ -52,7 +51,7 @@ const updateTopic = async (req, res) => {
 };
 
 // Controller function to delete a topic by ID
-const deleteTopic = async (req, res) => {
+exports.deleteTopic = async (req, res) => {
   try {
     const topic = await topicsDAO.deleteTopic(req.params.id);
     if (!topic) {
@@ -64,4 +63,3 @@ const deleteTopic = async (req, res) => {
   }
 };
 
-export { deleteTopic, updateTopic, createTopic, getAllTopics, getTopicById }

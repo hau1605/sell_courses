@@ -1,4 +1,4 @@
-import * as lecturersDAO from '../dao/lecturersDAO.js';
+const lecturersDAO = require('../dao/lecturersDAO');
 
 // Controller function to get all lecturers
 const getAllLecturers = async (req, res) => {
@@ -59,7 +59,7 @@ const deleteLecturer = async (req, res) => {
   }
 };
 
-export {
+module.exports = {
   getAllLecturers,
   getLecturerById,
   createLecturer,

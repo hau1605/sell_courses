@@ -26,10 +26,8 @@ import { Link, useNavigate } from 'react-router-dom';
 const ProductHomePage = () => {
     const navigate = useNavigate()
     const [Products, setProducts] = useState([]);
-    const [hotProducts, sethotProducts] = useState([]);
     const [newProducts, setnewProducts] = useState([]);
     useEffect(() => {
-        
         let btnnew_List = document.querySelectorAll('.btn_fc');
         btnnew_List.forEach(btnnew => {
             btnnew.addEventListener('click', () => {
@@ -53,7 +51,6 @@ const ProductHomePage = () => {
                 console.log(response.data);
                 console.log("ok");
                 setProducts(response.data.products);
-                sethotProducts(response.data.products)
             })
             .catch(e => {
                 console.log(e);
@@ -247,20 +244,20 @@ const ProductHomePage = () => {
                         <h2 className='header-text'>KHÓA HỌC NỔI BẬT</h2>
                     </Col>
                     <Col className='col-new'>
-                        <button className='btn-new btn_fc btn_new_focus' onClick={()=>sethotProducts(Products)} autoFocus={true}>
+                        <button className='btn-new btn_fc btn_new_focus' autoFocus={true}>
                             Tất cả
                         </button>
-                        <button onClick={()=>sethotProducts(Products.filter(item=>item.categories==='Thiết kế đồ họa'))} className='btn-new btn_fc' >
+                        <button className='btn-new btn_fc' >
                             Thiết kế đồ họa
                         </button>
-                        <button className='btn-new btn_fc' onClick={()=>sethotProducts(Products.filter(item=>item.categories==='Sales, bán hàng'))}>
-                            Sales, bán hàng
+                        <button className='btn-new btn_fc' >
+                            Sale, bán hàng
                         </button>
-                        <button className='btn-new btn_fc' onClick={()=>sethotProducts(Products.filter(item=>item.categories==='Âm nhạc'))}>
-                            Âm nhạc
+                        <button className='btn-new btn_fc' >
+                            Gia đình
                         </button>
-                        <button className='btn-new btn_fc' onClick={()=>sethotProducts(Products.filter(item=>item.categories==='Công nghệ thông tin'))}>
-                            Công nghệ thông tin
+                        <button className='btn-new btn_fc' >
+                            Tin học văn phòng
                         </button>
                     </Col>
                 </Row>
@@ -292,20 +289,20 @@ const ProductHomePage = () => {
                                 }
                             }
                         >
-                            <SwiperSlide><button onClick={()=>sethotProducts(Products)} className='btn-new btn_fc btn_new_focus' >
+                            <SwiperSlide><button className='btn-new btn_fc btn_new_focus' autoFocus={true}>
                                 Tất cả
                             </button></SwiperSlide>
-                            <SwiperSlide><button onClick={()=>sethotProducts(Products.filter(item=>item.categories==='Thiết kế đồ họa'))} className='btn-new btn_fc' >
+                            <SwiperSlide><button className='btn-new btn_fc' >
                                 Thiết kế đồ họa
                             </button></SwiperSlide>
-                            <SwiperSlide><button className='btn-new btn_fc' onClick={()=>sethotProducts(Products.filter(item=>item.categories==='Sales, bán hàng'))}>
-                                Sales, bán hàng
+                            <SwiperSlide><button className='btn-new btn_fc' >
+                                Sale, bán hàng
                             </button></SwiperSlide>
-                            <SwiperSlide><button className='btn-new btn_fc' onClick={()=>sethotProducts(Products.filter(item=>item.categories==='Âm nhạc'))}>
-                            Âm nhạc
+                            <SwiperSlide><button className='btn-new btn_fc' >
+                                Gia đình
                             </button></SwiperSlide>
-                            <SwiperSlide><button className='btn-new btn_fc' onClick={()=>sethotProducts(Products.filter(item=>item.categories==='Công nghệ thông tin'))}>
-                            Công nghệ thông tin
+                            <SwiperSlide><button className='btn-new btn_fc' >
+                                Tin học văn phòng
                             </button></SwiperSlide>
                         </Swiper>
                     </Col>
@@ -320,10 +317,10 @@ const ProductHomePage = () => {
 
                         </Col>
                     </Row>
-                    
-                    {hotProducts.length === 0 ? null :
+
+                    {Products.length === 0 ? null :
                         <Row >
-                            {hotProducts.map((item) => <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
+                            {Products.map((item) => <Col xs={6} lg={3} md={4} style={{ padding: '8px' }}>
                                 <Product product={item} />
                             </Col>)}
                         </Row>}

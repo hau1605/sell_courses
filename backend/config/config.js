@@ -1,13 +1,17 @@
-import dotenv from 'dotenv'; // Load environment variables from .env file
+require("dotenv").config(); // Load environment variables from .env file
 
-dotenv.config();
+module.exports = {
+  // Database configuration
+  CONNECTION_STRING: process.env.CONNECTION_STRING,
+  DB_OPTIONS: {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
 
-export const CONNECTION_STRING = process.env.CONNECTION_STRING; // Database configuration
+  //PORT
+  PORT: process.env.PORT,
 
-export const DB_OPTIONS = { useNewUrlParser: true, useUnifiedTopology: true };
-
-export const PORT = process.env.PORT; //PORT
-
-export const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY; // JWT configuration
-
-export const JWT_EXPIRATION_TIME = process.env.JWT_EXPIRATION_TIME;
+  // JWT configuration
+  JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
+  JWT_EXPIRATION_TIME: process.env.JWT_EXPIRATION_TIME,
+};

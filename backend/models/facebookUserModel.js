@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const facebookUserSchema = new mongoose.Schema({
   avatar: {
@@ -46,5 +46,5 @@ const facebookUserSchema = new mongoose.Schema({
 
 const FacebookUser = mongoose.model('FacebookUser', facebookUserSchema);
 
-export default FacebookUser;
+module.exports = FacebookUser;
 

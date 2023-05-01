@@ -1,7 +1,6 @@
-import express from 'express';
+const express = require('express');
 const router = express.Router();
-
-import * as topicsController from '../controllers/topicsController.js';
+const topicsController = require('../controllers/topicsController');
 
 // Route to get all topics
 router.get('/', topicsController.getAllTopics);
@@ -18,4 +17,5 @@ router.put('/:id', topicsController.updateTopic);
 // Route to delete a topic by ID
 router.delete('/:id', topicsController.deleteTopic);
 
-export default router;
+module.exports = router;
+

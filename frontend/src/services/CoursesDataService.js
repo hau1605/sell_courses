@@ -16,9 +16,6 @@ getNewCourse(){
 getCourseById(id) {
     return axios.get(`http://localhost:8000/api/courses/${id}`)
 }
-updateCourseById(id,updateCourse){
-    return axios.put(`http://localhost:8000/api/courses/${id}`,updateCourse);
-}
 }
 
 export default new CoursesDataService();

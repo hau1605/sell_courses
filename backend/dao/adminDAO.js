@@ -1,4 +1,4 @@
-import Admin from '../models/adminModel.js';
+const Admin = require('../models/adminModel');
 
 // Create a new admin
 const createAdmin = async (adminData) => {
@@ -50,7 +50,7 @@ const deleteAdmin = async (adminId) => {
   }
 };
 
-export {
+module.exports = {
   createAdmin,
   getAllAdmins,
   getAdminById,

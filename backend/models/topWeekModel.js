@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const topWeekSchema = new mongoose.Schema({
   nameTopCourses: [{
@@ -26,5 +26,5 @@ const topWeekSchema = new mongoose.Schema({
 
 const TopWeek = mongoose.model('TopWeek', topWeekSchema);
 
-export default TopWeek;
+module.exports = TopWeek;
 

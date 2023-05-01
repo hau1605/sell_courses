@@ -1,4 +1,4 @@
-import * as Admin from '../dao/adminDAO.js';
+const Admin = require('../dao/adminDAO');
 
 // Controller functions for admin
 

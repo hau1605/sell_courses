@@ -1,4 +1,4 @@
-import * as cartDAO from '../dao/cartDAO.js';
+const cartDAO = require('../dao/cartDAO');
 
 async function createCart(req, res, next) {
   try {
@@ -48,7 +48,7 @@ async function deleteCart(req, res, next) {
   }
 }
 
-export {
+module.exports = {
   createCart,
   getCart,
   updateCart,

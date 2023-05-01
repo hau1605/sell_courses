@@ -1,4 +1,4 @@
-import User from '../models/userModel.js';
+const User = require('../models/userModel');
 
 // Create a new user
 const createUser = async (userData) => {
@@ -60,7 +60,7 @@ const deleteUser = async (userId) => {
   }
 };
 
-export {
+module.exports = {
   createUser,
   getAllUsers,
   getUserByEmail,

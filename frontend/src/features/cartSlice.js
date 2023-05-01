@@ -73,18 +73,16 @@ export const cartSlice = createSlice({
         state.totalQuantity--;
         state.cart[action.payload].quantity--;
         localStorage.setItem("cart", JSON.stringify(state.cart));
-        
+
       }
     }  ,
     removeItem:(state,action)=>{
-        state.totalQuantity-=action.payload.quantity;
-        state.totalPrice-=action.payload.price*action.payload.quantity;
         state.cart=state.cart.filter(item=>item._id!==action.payload._id)
         localStorage.setItem("cart", JSON.stringify(state.cart));
 
     },
     viewedItem:(state,action)=>{
-        state.viewedItem=state.viewedItem.filter(item=>item._id!==action.payload._id)    
+        state.viewedItem.filter(item=>item._id!==action.payload._id)    
         if (state.viewedItem.length>5)
         {    state.viewedItem.pop()
             

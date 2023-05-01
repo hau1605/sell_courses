@@ -26,7 +26,7 @@ const Cart = () => {
             <p className="cart-breadcum"><Link className="text-link-home" to='/'>Trang chủ</Link>/<span className="text-link-loai">Giỏ hàng</span></p>
 
             <div style={{ padding: '40px 30px 40px 30px', boxShadow: '0px 4px 30px rgba(19,28,25,0.1)', borderRadius: '25px' }}>
-                <Col className="cart-container-destop" style={{minWidth:'670px'}}>
+                <Col className="cart-container-destop">
                     <Row className="cart-header">
                         <Col xs='2'>
                             <p className="table-text">Hình ảnh</p>
@@ -74,9 +74,8 @@ const Cart = () => {
                     <Row style={{ display: 'flex', justifyContent: 'right', flexDirection: 'column' }}>
 
                         <Col style={{ display: 'flex', justifyContent: 'right' }}>
-                            <Link to='/ProductList' className='btn-all cart-btn-continue'>TIẾP TỤC MUA HÀNG</Link>
-                            <Link to="/oder" className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</Link>
-                        </Col>
+                            <button className='btn-all cart-btn-continue'>TIẾP TỤC MUA HÀNG</button>
+                            <button className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</button></Col>
                     </Row>
 
                 </Col>
@@ -115,9 +114,8 @@ const Cart = () => {
                     <Row style={{ display: 'flex', justifyContent: 'right', flexDirection: 'row' }}>
 
                         <Row style={{ display: 'flex',justifyContent:'center',margin:'auto' }}>
-                            <Link to='/ProductList' style={{margin:'auto' }} className='btn-all cart-btn-continue'>TIẾP TỤC MUA HÀNG</Link>
-                            <Link to="/oder" className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</Link>
-                        </Row>
+                            <button style={{margin:'auto' }} className='btn-all cart-btn-continue'>TIẾP TỤC MUA HÀNG</button>
+                            <button className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</button></Row>
                     </Row>
                 </Col>
             </div>

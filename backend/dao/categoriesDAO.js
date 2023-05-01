@@ -1,4 +1,4 @@
-import Category from '../models/categoryModel.js';
+const Category = require('../models/categoryModel');
 
 // Create a new category
 const createCategory = async (categoryData) => {
@@ -50,7 +50,7 @@ const deleteCategory = async (categoryId) => {
   }
 };
 
-export {
+module.exports = {
   createCategory,
   getAllCategories,
   getCategoryById,
