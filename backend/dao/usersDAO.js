@@ -42,9 +42,9 @@ const getUserById = async (userId) => {
 };
 
 // Update user data
-const updateUser = async (userEmail, userData) => {
+const updateUser = async (userId, userData) => {
   try {
-    const updatedUser = await User.findByIdAndUpdate(userEmail, userData, { new: true });
+    const updatedUser = await User.findByIdAndUpdate(userId, userData, { new: true });
     return updatedUser;
   } catch (error) {
     throw error;

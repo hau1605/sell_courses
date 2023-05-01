@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Banner from "../Banner/Banner";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
@@ -13,14 +13,9 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [phoneNumberError, setPhoneNumberError] = useState('');
     const [emailError, setEmailError] = useState('');
+    const values = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
     const [show, setShow] = useState(false);
-    const [fullName, setFullName] = useState('');
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        setFullName(`${firstName} ${lastName}`);
-    }, [firstName, lastName]);
-
+    
     const handleFirstNameChange = (event) => {
         setFirstName(event.target.value);
     };
@@ -60,11 +55,11 @@ const Register = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8000/api/users/', {email, password, fullName, phoneNumber});
+            const response = await axios.post('http://localhost:8000/api/users/', {email, password});
             if (response.status === 201) {
                 console.log('Đăng ký thành công:', response.data.message);
                 setShow(false);
-                navigate('/account/login');
+                window.location.href = '/';
             } else {
                 console.error('Lỗi đăng ký:', response.data.error);
                 setShow(true);
