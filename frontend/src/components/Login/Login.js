@@ -8,7 +8,8 @@ import { useDispatch } from "react-redux";
 import { setEmailResetPassword } from "../../features/userSlice";
 import { useNavigate } from 'react-router-dom';
 import { loginSuccess } from '../../features/userSlice';
-
+import ClipLoader from 'react-spinners/ClipLoader';
+import FullPageLoader from "../FullPageLoader/FullPageLoader";
 import "./Login.css";
 const Login=()=>{
     const [email, setEmail] = useState("");
@@ -20,12 +21,12 @@ const Login=()=>{
     const [success, setSuccess] = useState(false);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleEmailChange = (event) => {
         const emailValue = event.target.value;
         setEmail(emailValue);
-        // Kiểm tra tính hợp lệ của email
-        const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i; // Regex để kiểm tra email
+        const emailPattern = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
         if (!emailPattern.test(emailValue)) {
             setEmailError('Email không hợp lệ');
         } else {
@@ -40,17 +41,20 @@ const Login=()=>{
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setIsLoading(true);
         try {
-            const response = await axios.post('http://localhost:8000/api/users/login', {email, password});
+            const response = await axios.post('http://localhost:8000/api/login', {email, password});
             if (response.status === 200) {
                 console.log('Đăng nhập thành công:', response.data.message);
                 setShow(false);
                 dispatch(loginSuccess(email));
                 console.log(email);
+                setIsLoading(false);
                 navigate("/");
             } else {
                 console.error('Lỗi đăng nhập:', response.data.error);
                 setShow(true);
+                setIsLoading(false);
             }
         } catch (error) {
             if (error.response) {
@@ -65,33 +69,39 @@ const Login=()=>{
     
     const handleForgotPassword = async (event) => {
         event.preventDefault();
+        setIsLoading(true);
         try {
-            const response = await axios.post('http://localhost:8000/api/users/forgot-password', { email });
+            const response = await axios.post('http://localhost:8000/api/forgot-password', { email });
             if (response.status === 200) {
-                // Nếu yêu cầu đặt lại mật khẩu thành công
                 setSuccess(true);
                 setError('');
                 dispatch(setEmailResetPassword(email));
-                window.location.href = 'http://localhost:3000/account/reset-password';
+                setIsLoading(false);
+                navigate('/account/reset-password');
                 console.log('Đã gửi mail xác nhận');
-              } else {
-                // Nếu yêu cầu đặt lại mật khẩu không thành công
+            } else {
                 setSuccess(false);
+                setIsLoading(false);
                 setError(response.data.error || 'Có lỗi xảy ra. Vui lòng thử lại sau.');
               }
         } catch (error) {
             console.error(`Lỗi yêu cầu đặt lại mật khẩu: ${error.message}`);
-            // Xử lý lỗi từ server
-            // (ví dụ: hiển thị thông báo lỗi cho người dùng)
             setError('Có lỗi xảy ra. Vui lòng thử lại sau.');
+            setIsLoading(false);
         }
     };
-    // Hàm để ẩn form phục hồi mật khẩu
+
+    const handleSubmitModal = async (event) => {
+        setShow(false);
+        setIsLoading(false);
+    }
+
+    // Hàm ẩn form phục hồi mật khẩu
     const showLoginForm = () => {
         setIsRecoverPasswordFormVisible(false);
         console.log("Hiển thị form lấy lại mật khẩu: false")
     };
-    // Hàm để hiển thị form phục hồi mật khẩu
+    // Hàm hiển thị form phục hồi mật khẩu
     const showRecoverPasswordForm = () => {
         setIsRecoverPasswordFormVisible(true);
         console.log("Hiển thị form lấy lại mật khẩu: true")
@@ -101,6 +111,7 @@ const Login=()=>{
         <div>
             <Banner imgs={img} />
             <div className='body'>
+            {isLoading && <FullPageLoader/>}
                 <p><Link className="text-link-home" to='/'>Trang chủ</Link>/<span className="text-link-loai">Đăng nhập</span></p>
                 <section className="section d-flex justify-content-center">
                     {!isRecoverPasswordFormVisible ? (
@@ -164,21 +175,19 @@ const Login=()=>{
                 </section>
             </div>
 
-
             <Modal show={show} onHide={()=>setShow(false)}>
                 <Modal.Header closeButton>
                     <Modal.Title>Thông báo</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Email chưa được đăng ký. Vui lòng sử dụng email khác. 
+                    Thông tin tài khoản hoặc mật khẩu chưa chính xác. Vui lòng nhập lại.  
                     Hoặc <Link to='/register'>đăng ký ngay</Link>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button  variant="success" onClick={()=>setShow(false)}>Đồng ý</Button>
+                    <Button  variant="success" onClick={handleSubmitModal}>Đồng ý</Button>
                 </Modal.Footer>
             </Modal>
         </div>
     );
-
 }
 export default Login;
