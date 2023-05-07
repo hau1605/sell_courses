@@ -121,10 +121,7 @@ button.dm-btn{
 .dm-btn:hover .dm-text {
     color: #ffffff;
 }
-.homepage-categories-icon{
-    color:'#5b5b5b'
 
-}
 .dm-text {
     color: #5B5B5B;
     text-align: left;
