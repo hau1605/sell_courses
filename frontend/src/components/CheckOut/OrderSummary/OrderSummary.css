@@ -1,0 +1,61 @@
+.field_input-btn-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+button:not(:disabled) {
+    margin-left: 0.85714em;
+    width: 55%;
+}
+
+.sidebar_header {
+    border-bottom: 1px solid #e1e1e1;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.order-summary_section~.order-summary_section {
+    border-top: 1px solid rgba(175,175,175,.34);
+}
+
+.edit_checkout {
+    padding: 10px 0 10px 0;
+}
+
+.sidebar_content input {
+    height: 40px;
+}
+
+.order-summary_section {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.sidebar_content table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+    width: 100%;
+    margin: 0;
+}
+
+.sidebar_content tbody {
+    border-bottom: 1px solid rgba(175,175,175,.34);
+}
+
+.sidebar_content tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.total-line th, .total-line td {
+    padding-top: 0.75em;
+}
+
+@media (min-width: 1000px) {
+    /* .sidebar_header, .sidebar_content {
+        padding-left: 2em;
+    } */
+}

@@ -290,7 +290,7 @@
 }
 
 .header .header_search form .input-group-btn button {
-    padding: 0 10px;
+    padding: 0 0px;
     position: absolute;
     top: 0px;
     right: 1px;

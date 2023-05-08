@@ -41,7 +41,7 @@ const WebLayout = () => (
           <Route path="/Cart" element={<Cart />} />
           <Route path='/Contact' element={<Contact />} />
           <Route path="/ProductList/:categorie/" element={<ProductList />} />
-          <Route path='/oder' element={<CheckOut />} />
+          <Route path='/order' element={<CheckOut />} />
           <Route path="/ProductList/" element={<ProductList />} />
           <Route path="/account/login" element={<Login />} />
           <Route path="/account/register" element={<Register />} />

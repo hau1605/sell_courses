@@ -75,7 +75,7 @@ const Cart = () => {
 
                         <Col style={{ display: 'flex', justifyContent: 'right' }}>
                             <Link to='/ProductList' className='btn-all cart-btn-continue'>TIẾP TỤC MUA HÀNG</Link>
-                            <Link to="/oder" className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</Link>
+                            <Link to="/order" className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</Link>
                         </Col>
                     </Row>
 

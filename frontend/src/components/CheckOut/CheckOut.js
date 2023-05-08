@@ -7,6 +7,7 @@ import "./CheckOut.css"
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import OrderSummary from './OrderSummary/OrderSummary'
 
 function BreadcrumbExample() {
     return (
@@ -27,7 +28,7 @@ function ContainerFluidBreakpointExample() {
     return (
       <Container fluid="md">
         <Row>
-          <Col md= {8}>
+          <Col className="main" md= {8}>
             <Row className="title_row">
               <Col>
                   <h3>CARD IMFORMATION</h3>
@@ -35,8 +36,8 @@ function ContainerFluidBreakpointExample() {
             </Row>
             <ResponsiveAutoExample />
           </Col>
-          <Col>
-
+          <Col className="slidebar">
+            <OrderSummary />
           </Col>
         </Row>  
       </Container>
@@ -111,9 +112,6 @@ function ResponsiveAutoExample() {
                         <p>Ngân hàng Vietcombank CN Hùng Vương</p>
                         <p>Số TK: 0441000707892Chủ TK: Phan Tuấn Anh</p>
                         <p>(Nội dung chuyển khoản: Tên + Số ĐT đặt hàng)</p>
-                        
-                        
-                        
                       </div>
                     </div>
                   </div>
@@ -128,7 +126,6 @@ function ResponsiveAutoExample() {
   }
 
 const CheckOut = () => {
-
     return (
         <div className="checkOutPage">
             <div className="">
