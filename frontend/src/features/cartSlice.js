@@ -60,8 +60,8 @@ export const cartSlice = createSlice({
             state.totalPrice=_totalPrice;
         },
     removeItem:(state,action)=>{
-        state.totalQuantity-=action.payload.quantity;
-        state.totalPrice-=action.payload.price*action.payload.quantity;
+        state.totalQuantity--;
+        state.totalPrice-=action.payload.price;
         state.cart=state.cart.filter(item=>item._id!==action.payload._id)
         localStorage.setItem("cart", JSON.stringify(state.cart));
 
