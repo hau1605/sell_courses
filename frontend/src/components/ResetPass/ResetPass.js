@@ -6,6 +6,7 @@ import './ResetPass.css'
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import FullPageLoader from '../FullPageLoader/FullPageLoader';
 import { setNullEmailResetPassword } from "../../features/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
@@ -22,6 +23,7 @@ const ResetPass = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const img = ['https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/breadcrumb_image.png?1676281841878']
+    const [isLoading, setIsLoading] = useState(false);
     
     const handleCodeChange = (event) => {
         const codeValue = event.target.value;
@@ -50,7 +52,7 @@ const ResetPass = () => {
         try {
             console.log(emailResetPassword);
             console.log(verificationCode);
-            const response = await axios.post('http://localhost:8000/api/users/reset-password/confirmOtp', { emailResetPassword,verificationCode });
+            const response = await axios.post('http://localhost:8000/api/reset-password/confirmOtp', { emailResetPassword,verificationCode });
             console.log(response.status);
             if (response.status === 200) {
                 console.log('Mã xác nhận đúng. ', response.data.message);
@@ -80,26 +82,33 @@ const ResetPass = () => {
 
     const handleResetPassword = async (event)=> {
         event.preventDefault();
+        setIsLoading(true);
         try {
-            const response = await axios.post('http://localhost:8000/api/users/reset-password', { emailResetPassword, password });
+            const response = await axios.post('http://localhost:8000/api/reset-password', { emailResetPassword, password });
             console.log(response.status);
             if (response.status === 200) {
                 // setSuccess(true);
                 // setError('OK');
                 console.log('Đặt lại mật khẩu thành công. Chuyển hướng về trang chủ');
                 dispatch(setNullEmailResetPassword());
-
+                setIsLoading(false);
                 navigate('/account/login');
               } else {
                 setSuccess(false);
                 setError(response.data.error || 'Có lỗi xảy ra. Vui lòng thử lại sau.');
                 console.log('Đặt lại mật khẩu thành công. Chuyển hướng về trang chủ');
-                
+                setIsLoading(false); 
             }
         } catch (error) {
             console.error(`Lỗi yêu cầu đặt lại mật khẩu: ${error.message}`);
             setError('Có lỗi xảy ra. Vui lòng thử lại sau.');
+            setIsLoading(false);
         }
+    };
+
+    const handleSubmitModal = async (event) => {
+        setShow(false);
+        setIsLoading(false);
     };
 
     const showResetPassForm = () => {
@@ -111,6 +120,7 @@ const ResetPass = () => {
         <div>
             <Banner imgs={img} />
             <div className='body'>
+            {isLoading && <FullPageLoader/>}
                 <p><Link className="text-link-home" to='/'>Trang chủ</Link>/<span className="text-link-loai">Đặt lại mật khẩu</span></p>
                 <section className="section d-flex justify-content-center">
                     {!isResetPasswordFormVisible ? (
@@ -143,9 +153,9 @@ const ResetPass = () => {
                                     </label>
                                     <input type="password" name="password" placeholder="Mật khẩu" onChange={handlePasswordChange} required />
                                 </div>  
-                                <div className="button-container">
-                                    <input type="submit" className="btn" value="Xác nhận"/>
-                                    <Link className="btn btn-outline-secondary" onClick={showVerificationCodeForm}>Hủy</Link>
+                                <div className="action-form_bottom">
+                                    <input type="submit" className="btn btn-success btn-lg" value="Xác nhận"/>
+                                    {/* <Link className="btn btn-outline-secondary" onClick={showVerificationCodeForm}>Hủy</Link> */}
                                 </div>
                             </form>
                         </div>
@@ -160,10 +170,10 @@ const ResetPass = () => {
                     <Modal.Title>Thông báo</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    Mã xác nhận không chính xác. Vui lòng nhập lại.
+                    Mã xác nhận không chính xác hoặc đã hết hạn. Vui lòng nhập lại hoặc <Link to="/account/login">yêu cầu mã xác nhận mới</Link>.
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button  variant="success" onClick={()=>setShow(false)}>Đồng ý</Button>
+                    <Button  variant="success" onClick={handleSubmitModal}>Đồng ý</Button>
                 </Modal.Footer>
             </Modal>
         </div>

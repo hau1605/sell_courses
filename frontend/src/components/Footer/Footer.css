@@ -1,0 +1,84 @@
+.footer-container{
+    background-color: black;
+    padding: 25px ;
+}
+.footer-logo{
+    margin-bottom: 15px;
+    text-align: center;
+    align-self: center;
+    width: auto;
+}
+.footer-btn-container{
+    margin-bottom: 20px;
+}
+.footer-btn-contact{
+    border-radius: 8px;
+    border: none;
+    background-color: #00bc86;
+    padding: 5px;
+    margin-right: 10px;
+    
+}
+.footer-btn-contact:hover{
+    background-color: white;
+    transition: all ease 0.3s;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: all;
+}
+.footer-btn-contact-icon{
+    color: white;
+    font-size: 25px;
+    padding: 1px;
+
+}
+.footer-btn-contact:hover .footer-btn-contact-icon{
+    color: #00bc86;
+    transition: all ease 0.3s;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    transition-property: all;
+}
+.footer-headertext{
+    font-size: 16px;
+    color: white;
+    margin-bottom: 10px;
+    font-weight: 700;
+    margin-top: 20px;
+}
+.footer-contact-detail{
+    display: flex;
+    
+}
+.footer-contact-detail-icon{
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    align-self: center;
+
+}
+.footer-contact-detail-text{
+    color:white;
+    text-align: center;
+    align-self: center;
+    padding: 5px 10px 5px;
+    margin: 0;
+
+}
+.footer-aboutlink{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.footer-aboutlink-text{
+    padding: 5px 0px 5px;
+}
+.footer-aboutlink-text a{
+    color: white;
+    text-decoration: none;
+}
+.footer-aboutlink-text a:hover{
+    color: #00bc86;
+}

@@ -66,7 +66,7 @@ const Banner = (props) => {
                     }
                 >
                     <SwiperSlide style={{ paddingBottom: '12px' }}>
-                        <Row className='row'>
+                        <Row >
                             <Col className='col-img' xs='3'>
                                 <img className='iconn' src={service_1} />
                             </Col>

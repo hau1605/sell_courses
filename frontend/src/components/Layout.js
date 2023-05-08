@@ -16,6 +16,7 @@ import User from './User/User'
 import UserAccount from "./User/UserAccount";
 import UserPassword from "./User/UserPassword";
 import { SnackbarProvider } from 'notistack';
+import Footer from './Footer/Footer';
 
 const WebLayout = () => (
   <SnackbarProvider maxSnack={4} autoHideDuration={1500}
@@ -50,6 +51,7 @@ const WebLayout = () => (
           <Route path="/user/profile" element={<UserAccount/>} />
           <Route path="/user/password" element={<UserPassword/>} />
         </Routes>
+        <Footer/>
       </Layout>
 
     </Space>

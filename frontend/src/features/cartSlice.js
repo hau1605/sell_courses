@@ -6,16 +6,14 @@ if (localStorage.getItem("cart") !== null)
   item = JSON.parse(localStorage.getItem("cart"));
   if (localStorage.getItem("viewedItem") !== null)
   _viewedItem= JSON.parse(localStorage.getItem("viewedItem"));
-let num = 0;
 let price=0;
 for (let i = 0; i < item.length; i++) {
-    num += item[i].quantity;
     price+=item.cost*item[i].quantity;
 }
 const initialState = {
     cart: item,
     viewedItem:_viewedItem,
-    totalQuantity: num,
+    totalQuantity: item.length,
     totalPrice: price,
 
 };
@@ -24,11 +22,12 @@ export const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action) => {
+            if (state.totalQuantity !== 0&&(state.cart.filter(item=>item._id===action.payload._id).length!==0))
+                return;
             let check = false;
             if (state.totalQuantity === 0) {
                 let cart = {
                     _id: action.payload._id,
-                    quantity: 1,
                     name: action.payload.name,
                     poster: action.payload.poster,
                     cost: action.payload.cost,
@@ -37,14 +36,12 @@ export const cartSlice = createSlice({
             } else {
                 state.cart.map((item, key) => {
                     if (item._id === action.payload._id) {
-                        state.cart[key].quantity++;
                         check = true;
                     }
                 });
                 if (!check) {
                     let _cart = {
                         _id: action.payload._id,
-                        quantity: 1,
                         name: action.payload.name,
                         poster: action.payload.poster,
                         cost: action.payload.cost,
@@ -52,33 +49,19 @@ export const cartSlice = createSlice({
                     state.cart.push(_cart);
                 }
             }
-            state.totalQuantity++;
+            
           localStorage.setItem("cart", JSON.stringify(state.cart));
-
+                state.totalQuantity++;
         },
         getTotal:(state)=>{
             let _totalPrice=0
             for(let i=0;i<state.cart.length;i++)
-                _totalPrice+=(state.cart[i].cost*state.cart[i].quantity);
+                _totalPrice+=state.cart[i].cost;
             state.totalPrice=_totalPrice;
-        },increaseQuantity: (state, action)=>{
-            state.totalQuantity++;
-            state.cart[action.payload].quantity++;
-          localStorage.setItem("cart", JSON.stringify(state.cart));
-
         },
-        decreaseQuantity: (state, action)=>{
-        let quantity = state.cart[action.payload].quantity;
-      if (quantity > 1) {
-        state.totalQuantity--;
-        state.cart[action.payload].quantity--;
-        localStorage.setItem("cart", JSON.stringify(state.cart));
-        
-      }
-    }  ,
     removeItem:(state,action)=>{
-        state.totalQuantity-=action.payload.quantity;
-        state.totalPrice-=action.payload.price*action.payload.quantity;
+        state.totalQuantity--;
+        state.totalPrice-=action.payload.price;
         state.cart=state.cart.filter(item=>item._id!==action.payload._id)
         localStorage.setItem("cart", JSON.stringify(state.cart));
 
@@ -86,7 +69,8 @@ export const cartSlice = createSlice({
     viewedItem:(state,action)=>{
         state.viewedItem=state.viewedItem.filter(item=>item._id!==action.payload._id)    
         if (state.viewedItem.length>5)
-        {    state.viewedItem.pop()
+        {    
+            state.viewedItem.pop()
             
         }
         state.viewedItem.reverse().push(action.payload)
