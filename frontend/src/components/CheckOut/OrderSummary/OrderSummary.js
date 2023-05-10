@@ -3,8 +3,13 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import "./OrderSummary.css";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const OrderSummary = () => {
+
+    const { cart, totalPrice } = useSelector((state) => state.Allcart)
+
     return (
         <aside>
             <div className="sidebar_header">
@@ -15,25 +20,50 @@ const OrderSummary = () => {
                 <div className="order-summary">
                     <div className="order-summary_sections">
                         <div className="order-summary_section product-list">
+                            {cart.map((item, key) =>
+                                <table className="product-table">
+                                    <tbody>
+                                        <tr className="product">
+                                            <td className="product-image">
+                                                <div className="product-thumbnail">
+                                                    <div className="product-thumbnail-wrapper">
+                                                        <img src={item.poster} />
+                                                    </div>
+                                                </div>
+                                            </td>
 
+                                            <th className="product-description">
+                                                <span className="product-description_name">{item.name}</span>
+                                            </th>
+
+                                            <td className="price">
+                                                <p className="table-text product-price">{item.cost.toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            )}
                         </div>
                         <div className="order-summary_section discount-code">
                             <div className="edit_checkout">
                                 <div className="fieldset">
                                     <div className="field_input-btn-wrapper">
                                         <Form.Control type="text" placeholder="Nhập mã giảm giá" />
-                                        <Button variant="primary">Áp dụng</Button>{' '}
+                                        <Button variant="primary">Áp dụng</Button>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                         <div className="order-summary_section total-lines">
                             <table className="total-line-table">
                                 <thead></thead>
                                 <tbody className="total-line-table_tbody">
                                     <tr className="total-line total-line--subtotal">
                                         <th className="total-line_name">Tạm tính</th>
-                                        <td className="total-line_price">x</td>
+                                        <td className="total-line_price">
+                                            <p className="ctotal-line_price">{totalPrice.toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
+                                        </td>
                                     </tr>
                                 </tbody>
                                 <tfoot className="total-line-table_footer">
@@ -42,9 +72,19 @@ const OrderSummary = () => {
                                             <span className="payment-due_label-total">Tổng cộng</span>
                                         </th>
                                         <td className="total-line_price">
-                                            <span className="payment-due_price">x</span>
+                                            <span className="payment-due_price">
+                                                <p className="payment-due_price">{totalPrice.toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
+                                            </span>
                                         </td>
                                     </tr>
+                                    <div className="order-summary_nav">
+                                        <a href="/cart" className="previous-link">
+                                            <span className="previous-link_content">Quay ve gio hang</span>
+                                        </a>
+                                        <div className="order-summary_nav-btn">
+                                            <Button className="complete-order-button">Hoan tat</Button>
+                                        </div> 
+                                    </div>  
                                 </tfoot>
                             </table>
                         </div>

@@ -1,5 +1,5 @@
 .checkOutPage .col {
-    padding: 12px;
+    padding: 20px 12px 20px 12px;
 }
 
 .checkOutPage .container .title_row {
@@ -11,11 +11,11 @@
 }
 
 .checkOutPage .container .col-md-8 {
-    border: 1px solid;
+    border: 1px solid rgba(175,175,175,.34);
 }
 
 input[type="text"] {
-    height: 40px;
+    height: 60px;
 }
 
 .checkOutPage svg {
@@ -48,9 +48,8 @@ input[type="text"] {
     padding-bottom: 10px;
 }
 
-.checkOutPage .slidebar {
+.checkOutPage .sidebar {
     background-color: #fafafa;
-    border-left: 1px solid #717171;
 }
 
 

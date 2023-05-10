@@ -36,7 +36,7 @@ function ContainerFluidBreakpointExample() {
             </Row>
             <ResponsiveAutoExample />
           </Col>
-          <Col className="slidebar">
+          <Col className="sidebar">
             <OrderSummary />
           </Col>
         </Row>  
