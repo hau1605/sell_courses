@@ -20,7 +20,7 @@ const User = (props) => {
                         <Link to="/cart" className="fw-bolder h6" >
                             Giỏ hàng
                         </Link>
-                        <Link to="/orders" className="fw-bolder h6" >
+                        <Link to="/user/my-course" id="user-mycourse" className="fw-bolder h6" >
                             Khoá học đã mua
                         </Link>
                         <Link to="/user/profile" id="user-account" className="fw-bolder h6" >

@@ -115,8 +115,10 @@ const UserPassword=()=>{
                                     </td>
                                     <td>
                                         <input required type="password" id="confirmPassword" name="confirmPassword" value={confirmPassword} onChange={handleChange} />
-                                        {error && <div style={{ color: 'red' }}>{error}</div>}
                                     </td> 
+                                </tr>
+                                <tr>
+                                    <td colspan="2">{error && <div style={{ color: 'red', width:'100%' }}>{error}</div>}</td>
                                 </tr>
                                 <tr>
                                     <td><button type="submit">Đổi mật khẩu</button></td>
