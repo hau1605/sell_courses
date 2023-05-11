@@ -4,6 +4,8 @@
 
 - [API documentation](./backend/API.md)
 
+- [Database documentation](./backend/DATABASE.md)
+
 Sơ đồ component\
     Header\
         ->HomePage\
@@ -11,15 +13,15 @@ Sơ đồ component\
             + ProductHomePage\
                 + Product ->ProductDetail
 
-            + TyphycalTeacher
++ TyphycalTeacher
 
-        ->ProductList\
+->ProductList\
             + Banner\
             + Product ->ProductDetail\
         ->Login\
         ->Logout
 
-    Footer
+Footer
 
 Phân chia công việc:\
 Bình:\
