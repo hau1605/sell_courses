@@ -1,5 +1,5 @@
 import * as usersDAO from "../dao/usersDAO.js";
-import * as userModel from "../models/userModel.js";
+import userModel from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
 dotenv.config();
@@ -28,46 +28,75 @@ const getUserById = async (req, res) => {
   }
 };
 
+// Controller function to get a user by email
+const getUserByEmail = async (req, res) => {
+  try {
+    const emailR = req.params.email;
+    console.log('Thông tin user: ', emailR);
+    const user = await userModel.findOne({ email: { $eq: emailR } }, { password: 0, otpNumber: 0, expiryTime: 0 });
+
+    if (!user) {
+      return res.status(404).json({ message: "Không tìm thấy người dùng!" });
+    }
+    return res.status(200).json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+};
+
 // Controller function to create a new user
 const createUser = async (req, res) => {
   try {
-    const email = req.body.email;
-    const password = req.body.password;
+    const emailR = req.body.email;
+    const passwordR = req.body.password;
+    const nameR = req.body.fullName;
+    const phoneNumberR = req.body.phoneNumber;
     const currentTime = new Date();
-    const existingUser = await userModel.findOne({ email: { $eq: email } });
+    const existingUser = await userModel.findOne({ email: { $eq: emailR } });
 
     if (existingUser) {
+      console.log("Người dùng đã tồn tại");
       return res.status(400).json({ error: "Người dùng đã tồn tại" });
     }
 
     // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
     const salt = await bcrypt.genSalt(10); // Tạo
     console.log(salt);
-    const hashedPassword = await bcrypt.hash(password, salt); // Mã hóa mật khẩu
+    const hashedPassword = await bcrypt.hash(passwordR, salt); // Mã hóa mật khẩu
 
     // Tạo người dùng mới với mật khẩu đã được mã hóa
     const newUser = new userModel({
-      email: email,
+      email: emailR,
       password: hashedPassword,
+      name: nameR,
+      phoneNumber: phoneNumberR,
       date: currentTime,
     });
     await newUser.save();
     res.status(201).json({ message: "Người dùng đã được tạo" });
+    console.log("Tạo người dùng mới thành công");
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 };
 
-// Controller function to update a user by ID
+// Controller function to update a user by email
 const updateUser = async (req, res) => {
   try {
-    const userId = req.params.id;
+    const userEmail = req.params.email;
+    console.log(userEmail)
     const updatedUser = req.body;
-    const result = await usersDAO.updateUser(userId, updatedUser);
+    console.log(updatedUser)
+    const result = await userModel.updateOne({email: userEmail} , 
+                                              {phoneNumber: updatedUser.phoneNumber, 
+                                                name: updatedUser.name,
+                                                gender: updatedUser.gender});
+    console.log(result)
     if (!result) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ message: "Không tìm thấy người dùng" });
     }
-    res.status(200).json({ message: "User updated successfully" });
+    res.status(200).json({ message: "Cập nhật thành công" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -86,4 +115,41 @@ const deleteUser = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
-export { getAllUsers, getUserById, createUser, updateUser, deleteUser };
+
+const changePassword = async (req, res) => {
+  try {
+    const emailR = req.params.email;
+    console.log("Email đổi mk: ", emailR);
+    const oldPasswordR = req.body.oldPassword;
+    console.log("Mật khẩu cũ nhập vào: ", oldPasswordR);
+    const newPasswordR = req.body.newPassword;
+    console.log("Mật khẩu mới nhập vào: ", newPasswordR);
+    const existingUser = await userModel.findOne({ email: { $eq: emailR } });
+    console.log("Tồn tại user?: ", existingUser ? true : false);
+
+    if (!existingUser) {
+      res.status(404).json({ error: "Tài khoản không tồn tại" });
+      console.log("Tài khoản không tồn tại");
+    }
+
+    const isMatch = await bcrypt.compare(oldPasswordR, existingUser.password);
+    console.log("Mật khẩu đúng?: ", isMatch);
+    if (!isMatch) {
+      res.status(401).json({ error: "Mật khẩu cũ không đúng "});
+      console.log("Mật khẩu cũ không đúng ");
+    } else {
+      // Đổi mật khẩu và lưu vào cơ sở dữ liệu
+      const hashedPassword = await bcrypt.hash(newPasswordR, 10);
+      existingUser.password = hashedPassword;
+      await existingUser.save();
+      res.status(200).json({ message: "Đổi mật khẩu thành công" });
+      console.log("hashedPassword: ", hashedPassword);
+      console.log("Đổi mật khẩu thành công");
+    }
+  } catch (error) {
+    console.log("Lỗi đổi mật khẩu:", error);
+    console.error("Lỗi đổi mật khẩu:", error);
+    res.status(500).json({ error: "Đã xảy ra lỗi" });
+  }
+};
+export { getAllUsers, getUserById, getUserByEmail, createUser, updateUser, deleteUser, changePassword };

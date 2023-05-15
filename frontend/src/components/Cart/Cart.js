@@ -17,6 +17,7 @@ const Cart = () => {
     };
 
     const { cart, totalQuantity, totalPrice } = useSelector((state) => state.Allcart)
+    console.log("Gio hang cart: ", cart);
     const dispatch = useDispatch();
 
     useEffect(() => { dispatch(getTotal()) }, [cart])

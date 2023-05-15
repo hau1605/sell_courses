@@ -43,7 +43,9 @@ const Product = (props) => {
   return (
     <div>
       <Card className="Card">
-        <Link to='/ProductDetail' className="link"><Card.Img className="card-img" onClick={()=>{updateView();dispatch(viewedItem(product))}} variant="top" src={props.product.poster} /></Link>
+        {/* <Link to='/ProductDetail' className="link"> */}
+          <Card.Img className="card-img" onClick={()=>{updateView();dispatch(viewedItem(product))}} variant="top" src={props.product.poster} />
+          {/* </Link> */}
         <Card.Body style={{ textAlign: 'left', padding: '0' }}>
           {level === "normal" && <div className="btn-level-normal text-mb-10" >Cơ bản</div>}
           {level === "medium" && <div className="btn-level-medium text-mb-10" >Mọi cấp độ</div>}

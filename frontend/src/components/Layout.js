@@ -11,13 +11,14 @@ import ProductList from './ProductList/ProductList';
 import CheckOut from './CheckOut/CheckOut';
 import Cart from './Cart/Cart';
 import Contact from './Contact/Contact';
-import ResetPass from './ResetPass/ResetPass'
+import ResetPass from './ResetPass/ResetPass';
+import MyProducts from './User/MyProducts/MyProducts';
 import User from './User/User'
 import UserAccount from "./User/UserAccount";
 import UserPassword from "./User/UserPassword";
 import { SnackbarProvider } from 'notistack';
 import Footer from './Footer/Footer';
-
+import VideoPage from './Video/VideoPage';
 const WebLayout = () => (
   <SnackbarProvider maxSnack={4} autoHideDuration={1500}
   iconVariant={{
@@ -50,6 +51,8 @@ const WebLayout = () => (
           <Route path="/user" element={<UserAccount />} />
           <Route path="/user/profile" element={<UserAccount/>} />
           <Route path="/user/password" element={<UserPassword/>} />
+          <Route path="/user/my-course" element={<MyProducts/>} />
+          <Route path="/user/my-course/:id" element={<VideoPage/>} />
         </Routes>
         <Footer/>
       </Layout>

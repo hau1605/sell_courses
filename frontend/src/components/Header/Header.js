@@ -154,7 +154,7 @@ const Header = () => {
                                 </Link>
                               </li>
                               <li>
-                                <Link to='ProductList'>
+                                <Link to='/user/my-course'>
                                   Khóa học của tôi
                                 </Link>
                               </li>
