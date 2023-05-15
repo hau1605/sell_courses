@@ -85,3 +85,13 @@
 - `PUT /api/cart/:id` - Update a single cart by its ID.
 
 - `DELETE /api/cart/:id` - Delete a single cart by its ID.
+
+- `GET /api/billings`: Returns an array of all billing objects in the database.
+
+- `POST /api/billings`: Creates a new billing object in the database.
+
+- `GET /api/billings/:id`: Returns the billing object with the specified ID.
+
+- `PUT /api/billings/:id`: Updates the billing object with the specified ID.
+
+- `DELETE /api/billings/:id`: Deletes the billing object with the specified ID.

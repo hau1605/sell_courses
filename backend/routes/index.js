@@ -7,3 +7,4 @@ export { default as loginRoutes } from './loginRoutes.js';
 export { default as lecturersRoutes } from './lecturersRoutes.js';
 export { default as topWeeksRoutes } from './topWeeksRoutes.js';
 export { default as facebookUsersRoutes } from './facebookUsersRoutes.js';
+export { default as billingRoutes } from './billingRoutes.js';
