@@ -31,6 +31,16 @@ async function deleteById(id) {
   return Billing.findByIdAndDelete(id);
 };
 
+async function userExists(userId){
+  try {
+    const existingBilling = await Billing.findOne({ user_id: userId });
+    return !!existingBilling; // Returns true if the billing document exists, false otherwise
+  } catch (error) {
+    console.error('Failed to check user existence:', error);
+    throw error;
+  }
+};
+
 export {
-  findAll,createBilling,findById,updateById,deleteById
+  findAll,createBilling,findById,updateById,deleteById,userExists
 }
