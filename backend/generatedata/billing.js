@@ -14,12 +14,6 @@ function generateBillingData() {
     user_id: new ObjectId(),
     user_name: faker.person.fullName(),
     email: faker.internet.email(),
-    payment_method: {
-      type: "credit_card",
-      card_number: faker.finance.creditCardNumber(),
-      expiration_date: faker.date.future().toISOString().slice(0, 7),
-      security_code: faker.finance.creditCardCVV(),
-    },
     orders: [],
   };
 
@@ -27,6 +21,12 @@ function generateBillingData() {
   for (let i = 0; i < faker.number.int({ min: 1, max: 5 }); i++) {
     const order = {
       order_id: new ObjectId(),
+      payment_method: {
+      	type: faker.helpers.arrayElement(["credit_card", "momo", "viettel_pay", "paypal", "bank_transfer"]),
+        card_number: faker.finance.creditCardNumber(),
+        expiration_date: faker.date.future().toISOString().slice(0, 7),
+        security_code: faker.finance.creditCardCVV(),
+      },
       date: faker.date.recent(),
       status: faker.helpers.arrayElement(["pending", "shipped", "delivered"]),
       items: [],

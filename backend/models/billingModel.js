@@ -2,55 +2,59 @@ import mongoose from 'mongoose';
 
 const billingSchema = new mongoose.Schema({
   user_id: {
-    type: mongoose.Types.ObjectId,
+    type: mongoose.Schema.Types.ObjectId,
+    required: true
   },
   user_name: {
     type: String,
+    required: true
   },
   email: {
     type: String,
-  },
-  payment_method: {
-    type: {
-      type: String,
-      enum: ['credit_card'],
-    },
-    card_number: {
-      type: String,
-    },
-    expiration_date: {
-      type: String,
-    },
-    security_code: {
-      type: Number,
-    }
+    required: true
   },
   orders: [
     {
       order_id: {
-        type: mongoose.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+      },
+      payment_method: {
+        type: {
+          type: String
+        },
+        card_number: {
+          type: String
+        },
+        expiration_date: {
+          type: String
+        },
+        security_code: {
+          type: Number
+        }
       },
       date: {
-        type: Date,
+        type: Date
       },
       status: {
-        type: String,
+        type: String
       },
       items: [
         {
           course_id: {
-            type: mongoose.Types.ObjectId,
+            type: mongoose.Schema.Types.ObjectId
           },
           course_name: {
-            type: String,
+            type: String
           },
           course_price: {
-            type: Number,
+            type: Number
           }
         }
       ],
       total_amount: {
         type: Number,
+        required: true
       }
     }
   ]

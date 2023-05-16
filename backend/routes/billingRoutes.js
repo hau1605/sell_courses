@@ -1,67 +1,24 @@
 import express from 'express';
 const router = express.Router();
 
-import * as billingDAO from '../dao/billingDAO.js';
+import * as billingController from '../controllers/billingController.js';
 
 // GET /api/billings
-router.get("/", (req, res) => {
-  billingDAO
-    .findAll()
-    .then((billings) => res.status(200).json(billings))
-    .catch((err) => res.status(500).send(err));
-});
+router.get("/", billingController.getBillings);
 
 // POST /api/billings
-router.post("/", (req, res) => {
-  billingDAO
-    .create(req.body)
-    .then((newBilling) => res.status(201).json(newBilling))
-    .catch((err) => res.status(500).send(err));
-});
+router.post("/", billingController.createBilling);
 
 // GET /api/billings/:id
-router.get("/:id", (req, res) => {
-  billingDAO
-    .findById(req.params.id)
-    .then((billing) => {
-      if (!billing) {
-        return res
-          .status(404)
-          .send(`Billing not found with ID: ${req.params.id}`);
-      }
-      return res.status(200).json(billing);
-    })
-    .catch((err) => res.status(500).send(err));
-});
+router.get("/:id", billingController.getBillingById);
 
 // PUT /api/billings/:id
-router.put("/:id", (req, res) => {
-  billingDAO
-    .updateById(req.params.id, req.body)
-    .then((updatedBilling) => {
-      if (!updatedBilling) {
-        return res
-          .status(404)
-          .send(`Billing not found with ID: ${req.params.id}`);
-      }
-      return res.status(200).json(updatedBilling);
-    })
-    .catch((err) => res.status(500).send(err));
-});
+router.put("/:id", billingController.updateBillingById);
 
 // DELETE /api/billings/:id
-router.delete("/:id", (req, res) => {
-  billingDAO
-    .deleteById(req.params.id)
-    .then((deletedBilling) => {
-      if (!deletedBilling) {
-        return res
-          .status(404)
-          .send("Billing not found with ID: ${req.params.id}");
-      }
-      return res.status(200).json(deletedBilling);
-    })
-    .catch((err) => res.status(500).send(err));
-});
+router.delete("/:id", billingController.deleteBillingById);
+
+// purchase
+router.post("/purchase", billingController.purchase);
 
 export default router;

@@ -2,7 +2,7 @@
 
 ### <a id="documentation-body"></a>
 
-![Hackolade image](./Database/image1.png?raw=true)
+![Hackolade image](./DATABASE/image1.png?raw=true)
 
 MongoDB Physical Model
 ----------------------
@@ -19,7 +19,7 @@ File name: sell\_course.hck.json
 
 File path: /home/lordkickass/Documents/sell\_course.hck.json
 
-Printed On: Thu May 11 2023 10:12:28 GMT+0700 (Indochina Time)
+Printed On: Tue May 16 2023 23:04:29 GMT+0700 (Indochina Time)
 
 Created with: [Hackolade](https://hackolade.com/) - Polyglot data modeling for NoSQL databases, storage formats, REST APIs, and JSON in RDBMS
 
@@ -61,7 +61,7 @@ Created with: [Hackolade](https://hackolade.com/) - Polyglot data modeling for N
 
 ##### 1.1.1 **sell\_courses** Entity Relationship Diagram
 
-![Hackolade image](./Database/image2.png?raw=true)
+![Hackolade image](./DATABASE/image2.png?raw=true)
 
 ##### 1.1.2 **sell\_courses** Properties
 
@@ -77,7 +77,7 @@ Created with: [Hackolade](https://hackolade.com/) - Polyglot data modeling for N
 
 ### <a id="56fa4821-fb8a-4925-b373-89733686924a"></a>2.1 Database **BanKhoaHoc**
 
-![Hackolade image](./Database/image3.png?raw=true)
+![Hackolade image](./DATABASE/image3.png?raw=true)
 
 ##### 2.1.1 **BanKhoaHoc** Properties
 
@@ -89,7 +89,7 @@ Created with: [Hackolade](https://hackolade.com/) - Polyglot data modeling for N
 
 ##### 2.1.2.1.1 **billings** Tree Diagram
 
-![Hackolade image](./Database/image4.png?raw=true)
+![Hackolade image](./DATABASE/image4.png?raw=true)
 
 ##### 2.1.2.1.2 **billings** Properties
 
@@ -97,13 +97,13 @@ Created with: [Hackolade](https://hackolade.com/) - Polyglot data modeling for N
 
 ##### 2.1.2.1.3 **billings** Fields
 
-<table><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#b85dd627-f4c6-4312-970c-3c75e62cc3ad class="margin-0">_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>dk</td><td><div class="docs-markdown"><p>ID chi tiết hóa đơn</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#86d31629-427a-41ef-9c83-4338dd46f10e class="margin-0">user_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>ID người dùng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#32015ca7-d719-429e-b805-54c72f6abdb0 class="margin-0">user_name</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Họ tên người mua</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#9edd1e07-f6da-4cc0-b6e8-32b450901ef1 class="margin-0">email</a></td><td class="no-break-word">email</td><td>false</td><td></td><td><div class="docs-markdown"><p>Email người dùng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#0ff296d9-3ad7-4137-9a1f-3ea4ec0a4532 class="margin-0">payment_method</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"><p>Phương thức thanh toán</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#7cf35c2e-5608-4618-8012-f819b9a1fa65 class="margin-5">type</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#b1e0292d-8575-41e2-aafb-2f47c32ea798 class="margin-5">card_number</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#baa1ba09-17fd-47fe-9253-5bc40a7757bf class="margin-5">expiration_date</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#e5e5e5cd-46ef-46d6-ac0a-7cc9c29d7f4b class="margin-5">security_code</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#7dd54342-552d-469e-8284-956f66fec46c class="margin-0">orders</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>hóa đơn</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#8a9bdc9d-dbe2-4400-8dda-b63ad1eed8ea class="margin-5">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#866fe39b-1de1-4d6f-859e-6d7c69717358 class="margin-10">order_id</a></td><td class="no-break-word">objectId</td><td>false</td><td></td><td><div class="docs-markdown"><p>ID mua hàng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#47a345ba-ed34-47dc-bbe0-c879c7d607dc class="margin-10">date</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Ngày mua các khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#7ad03c69-bca6-4f4a-a502-51f9631b847f class="margin-10">status</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Trạng thái hóa đơn</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#944af035-7d66-46c3-9af9-e6bab946d689 class="margin-10">items</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Danh sách các khóa học mua</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#2f1e0eff-8794-4990-b66f-a066348e0915 class="margin-15">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#386052d2-ec30-4e18-985a-603c7487a282 class="margin-20">course_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#1a30ba1f-3963-483f-b123-829156468d75 class="margin-20">course_name</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tên khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#a836d7b6-cc7f-42a4-b131-54836d2978ee class="margin-20">course_price</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>Giá 1 khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#d5aae5bc-e19a-4ab2-bd9d-7be0fe872836 class="margin-10">total_amount</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tổng giá trị của 1 order</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#b85dd627-f4c6-4312-970c-3c75e62cc3ad class="margin-0">_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>dk</td><td><div class="docs-markdown"><p>ID chi tiết hóa đơn</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#86d31629-427a-41ef-9c83-4338dd46f10e class="margin-0">user_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>ID người dùng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#32015ca7-d719-429e-b805-54c72f6abdb0 class="margin-0">user_name</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Họ tên người mua</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#9edd1e07-f6da-4cc0-b6e8-32b450901ef1 class="margin-0">email</a></td><td class="no-break-word">email</td><td>false</td><td></td><td><div class="docs-markdown"><p>Email người dùng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#7dd54342-552d-469e-8284-956f66fec46c class="margin-0">orders</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>hóa đơn</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#8a9bdc9d-dbe2-4400-8dda-b63ad1eed8ea class="margin-5">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#866fe39b-1de1-4d6f-859e-6d7c69717358 class="margin-10">order_id</a></td><td class="no-break-word">objectId</td><td>false</td><td></td><td><div class="docs-markdown"><p>ID mua hàng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#0ff296d9-3ad7-4137-9a1f-3ea4ec0a4532 class="margin-10">payment_method</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"><p>Phương thức thanh toán</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#7cf35c2e-5608-4618-8012-f819b9a1fa65 class="margin-15">type</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#b1e0292d-8575-41e2-aafb-2f47c32ea798 class="margin-15">card_number</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#baa1ba09-17fd-47fe-9253-5bc40a7757bf class="margin-15">expiration_date</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#e5e5e5cd-46ef-46d6-ac0a-7cc9c29d7f4b class="margin-15">security_code</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#47a345ba-ed34-47dc-bbe0-c879c7d607dc class="margin-10">date</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Ngày mua các khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#7ad03c69-bca6-4f4a-a502-51f9631b847f class="margin-10">status</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Trạng thái hóa đơn</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#944af035-7d66-46c3-9af9-e6bab946d689 class="margin-10">items</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Danh sách các khóa học mua</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#2f1e0eff-8794-4990-b66f-a066348e0915 class="margin-15">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#386052d2-ec30-4e18-985a-603c7487a282 class="margin-20">course_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#1a30ba1f-3963-483f-b123-829156468d75 class="margin-20">course_name</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tên khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#a836d7b6-cc7f-42a4-b131-54836d2978ee class="margin-20">course_price</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>Giá 1 khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#d5aae5bc-e19a-4ab2-bd9d-7be0fe872836 class="margin-10">total_amount</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tổng giá trị của 1 order</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
 ### <a id="b85dd627-f4c6-4312-970c-3c75e62cc3ad"></a>2.1.2.1.3.1 Field **\_id**
 
 ##### 2.1.2.1.3.1.1 **\_id** Tree Diagram
 
-![Hackolade image](./Database/image5.png?raw=true)
+![Hackolade image](./DATABASE/image5.png?raw=true)
 
 ##### 2.1.2.1.3.1.2 **\_id** properties
 
@@ -113,7 +113,7 @@ Created with: [Hackolade](https://hackolade.com/) - Polyglot data modeling for N
 
 ##### 2.1.2.1.3.2.1 **user\_id** Tree Diagram
 
-![Hackolade image](./Database/image6.png?raw=true)
+![Hackolade image](./DATABASE/image6.png?raw=true)
 
 ##### 2.1.2.1.3.2.2 **user\_id** properties
 
@@ -123,7 +123,7 @@ Created with: [Hackolade](https://hackolade.com/) - Polyglot data modeling for N
 
 ##### 2.1.2.1.3.3.1 **user\_name** Tree Diagram
 
-![Hackolade image](./Database/image7.png?raw=true)
+![Hackolade image](./DATABASE/image7.png?raw=true)
 
 ##### 2.1.2.1.3.3.2 **user\_name** properties
 
@@ -133,77 +133,19 @@ Created with: [Hackolade](https://hackolade.com/) - Polyglot data modeling for N
 
 ##### 2.1.2.1.3.4.1 **email** Tree Diagram
 
-![Hackolade image](./Database/image8.png?raw=true)
+![Hackolade image](./DATABASE/image8.png?raw=true)
 
 ##### 2.1.2.1.3.4.2 **email** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>email</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Email người dùng</p></div></td></tr><tr><td>Format</td><td>email</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="0ff296d9-3ad7-4137-9a1f-3ea4ec0a4532"></a>2.1.2.1.3.5 Field **payment\_method**
+### <a id="7dd54342-552d-469e-8284-956f66fec46c"></a>2.1.2.1.3.5 Field **orders**
 
-##### 2.1.2.1.3.5.1 **payment\_method** Tree Diagram
+##### 2.1.2.1.3.5.1 **orders** Tree Diagram
 
-![Hackolade image](./Database/image9.png?raw=true)
+![Hackolade image](./DATABASE/image9.png?raw=true)
 
-##### 2.1.2.1.3.5.2 **payment\_method** Hierarchy
-
-Parent field: **billings**
-
-Child field(s):
-
-<table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#7cf35c2e-5608-4618-8012-f819b9a1fa65 class="margin-NaN">type</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#b1e0292d-8575-41e2-aafb-2f47c32ea798 class="margin-NaN">card_number</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#baa1ba09-17fd-47fe-9253-5bc40a7757bf class="margin-NaN">expiration_date</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#e5e5e5cd-46ef-46d6-ac0a-7cc9c29d7f4b class="margin-NaN">security_code</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-##### 2.1.2.1.3.5.3 **payment\_method** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>payment_method</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>document</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Phương thức thanh toán</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>DBRef</td><td></td></tr><tr><td>Min Properties</td><td></td></tr><tr><td>Max Properties</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="7cf35c2e-5608-4618-8012-f819b9a1fa65"></a>2.1.2.1.3.6 Field **type**
-
-##### 2.1.2.1.3.6.1 **type** Tree Diagram
-
-![Hackolade image](./Database/image10.png?raw=true)
-
-##### 2.1.2.1.3.6.2 **type** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>type</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>credit_card</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="b1e0292d-8575-41e2-aafb-2f47c32ea798"></a>2.1.2.1.3.7 Field **card\_number**
-
-##### 2.1.2.1.3.7.1 **card\_number** Tree Diagram
-
-![Hackolade image](./Database/image11.png?raw=true)
-
-##### 2.1.2.1.3.7.2 **card\_number** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>card_number</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>numeric</td></tr><tr><td>Subtype</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Unit</td><td></td></tr><tr><td>Min value</td><td></td></tr><tr><td>Excl min</td><td></td></tr><tr><td>Max value</td><td></td></tr><tr><td>Excl max</td><td></td></tr><tr><td>Multiple of</td><td></td></tr><tr><td>Divisible by</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>1234123412341234</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="baa1ba09-17fd-47fe-9253-5bc40a7757bf"></a>2.1.2.1.3.8 Field **expiration\_date**
-
-##### 2.1.2.1.3.8.1 **expiration\_date** Tree Diagram
-
-![Hackolade image](./Database/image12.png?raw=true)
-
-##### 2.1.2.1.3.8.2 **expiration\_date** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>expiration_date</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>12/23</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="e5e5e5cd-46ef-46d6-ac0a-7cc9c29d7f4b"></a>2.1.2.1.3.9 Field **security\_code**
-
-##### 2.1.2.1.3.9.1 **security\_code** Tree Diagram
-
-![Hackolade image](./Database/image13.png?raw=true)
-
-##### 2.1.2.1.3.9.2 **security\_code** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>security_code</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>numeric</td></tr><tr><td>Subtype</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Unit</td><td></td></tr><tr><td>Min value</td><td></td></tr><tr><td>Excl min</td><td></td></tr><tr><td>Max value</td><td></td></tr><tr><td>Excl max</td><td></td></tr><tr><td>Multiple of</td><td></td></tr><tr><td>Divisible by</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>1234</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="7dd54342-552d-469e-8284-956f66fec46c"></a>2.1.2.1.3.10 Field **orders**
-
-##### 2.1.2.1.3.10.1 **orders** Tree Diagram
-
-![Hackolade image](./Database/image14.png?raw=true)
-
-##### 2.1.2.1.3.10.2 **orders** Hierarchy
+##### 2.1.2.1.3.5.2 **orders** Hierarchy
 
 Parent field: **billings**
 
@@ -211,43 +153,101 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#8a9bdc9d-dbe2-4400-8dda-b63ad1eed8ea class="margin-NaN">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.1.3.10.3 **orders** properties
+##### 2.1.2.1.3.5.3 **orders** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>orders</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>hóa đơn</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="8a9bdc9d-dbe2-4400-8dda-b63ad1eed8ea"></a>2.1.2.1.3.11 Field **\[0\]**
+### <a id="8a9bdc9d-dbe2-4400-8dda-b63ad1eed8ea"></a>2.1.2.1.3.6 Field **\[0\]**
 
-##### 2.1.2.1.3.11.1 **\[0\]** Tree Diagram
+##### 2.1.2.1.3.6.1 **\[0\]** Tree Diagram
 
-![Hackolade image](./Database/image15.png?raw=true)
+![Hackolade image](./DATABASE/image10.png?raw=true)
 
-##### 2.1.2.1.3.11.2 **\[0\]** Hierarchy
+##### 2.1.2.1.3.6.2 **\[0\]** Hierarchy
 
 Parent field: **orders**
 
 Child field(s):
 
-<table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#866fe39b-1de1-4d6f-859e-6d7c69717358 class="margin-NaN">order_id</a></td><td class="no-break-word">objectId</td><td>false</td><td></td><td><div class="docs-markdown"><p>ID mua hàng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#47a345ba-ed34-47dc-bbe0-c879c7d607dc class="margin-NaN">date</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Ngày mua các khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#7ad03c69-bca6-4f4a-a502-51f9631b847f class="margin-NaN">status</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Trạng thái hóa đơn</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#944af035-7d66-46c3-9af9-e6bab946d689 class="margin-NaN">items</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Danh sách các khóa học mua</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#d5aae5bc-e19a-4ab2-bd9d-7be0fe872836 class="margin-NaN">total_amount</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tổng giá trị của 1 order</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#866fe39b-1de1-4d6f-859e-6d7c69717358 class="margin-NaN">order_id</a></td><td class="no-break-word">objectId</td><td>false</td><td></td><td><div class="docs-markdown"><p>ID mua hàng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#0ff296d9-3ad7-4137-9a1f-3ea4ec0a4532 class="margin-NaN">payment_method</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"><p>Phương thức thanh toán</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#47a345ba-ed34-47dc-bbe0-c879c7d607dc class="margin-NaN">date</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Ngày mua các khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#7ad03c69-bca6-4f4a-a502-51f9631b847f class="margin-NaN">status</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Trạng thái hóa đơn</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#944af035-7d66-46c3-9af9-e6bab946d689 class="margin-NaN">items</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Danh sách các khóa học mua</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#d5aae5bc-e19a-4ab2-bd9d-7be0fe872836 class="margin-NaN">total_amount</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tổng giá trị của 1 order</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.1.3.11.3 **\[0\]** properties
+##### 2.1.2.1.3.6.3 **\[0\]** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Display name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>document</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>DBRef</td><td></td></tr><tr><td>Min Properties</td><td></td></tr><tr><td>Max Properties</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="866fe39b-1de1-4d6f-859e-6d7c69717358"></a>2.1.2.1.3.12 Field **order\_id**
+### <a id="866fe39b-1de1-4d6f-859e-6d7c69717358"></a>2.1.2.1.3.7 Field **order\_id**
 
-##### 2.1.2.1.3.12.1 **order\_id** Tree Diagram
+##### 2.1.2.1.3.7.1 **order\_id** Tree Diagram
 
-![Hackolade image](./Database/image16.png?raw=true)
+![Hackolade image](./DATABASE/image11.png?raw=true)
 
-##### 2.1.2.1.3.12.2 **order\_id** properties
+##### 2.1.2.1.3.7.2 **order\_id** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>order_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID mua hàng</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="0ff296d9-3ad7-4137-9a1f-3ea4ec0a4532"></a>2.1.2.1.3.8 Field **payment\_method**
+
+##### 2.1.2.1.3.8.1 **payment\_method** Tree Diagram
+
+![Hackolade image](./DATABASE/image12.png?raw=true)
+
+##### 2.1.2.1.3.8.2 **payment\_method** Hierarchy
+
+Parent field: **\[0\]**
+
+Child field(s):
+
+<table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#7cf35c2e-5608-4618-8012-f819b9a1fa65 class="margin-NaN">type</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#b1e0292d-8575-41e2-aafb-2f47c32ea798 class="margin-NaN">card_number</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#baa1ba09-17fd-47fe-9253-5bc40a7757bf class="margin-NaN">expiration_date</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#e5e5e5cd-46ef-46d6-ac0a-7cc9c29d7f4b class="margin-NaN">security_code</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+##### 2.1.2.1.3.8.3 **payment\_method** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>payment_method</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>document</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Phương thức thanh toán</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>DBRef</td><td></td></tr><tr><td>Min Properties</td><td></td></tr><tr><td>Max Properties</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="7cf35c2e-5608-4618-8012-f819b9a1fa65"></a>2.1.2.1.3.9 Field **type**
+
+##### 2.1.2.1.3.9.1 **type** Tree Diagram
+
+![Hackolade image](./DATABASE/image13.png?raw=true)
+
+##### 2.1.2.1.3.9.2 **type** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>type</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>credit_card</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="b1e0292d-8575-41e2-aafb-2f47c32ea798"></a>2.1.2.1.3.10 Field **card\_number**
+
+##### 2.1.2.1.3.10.1 **card\_number** Tree Diagram
+
+![Hackolade image](./DATABASE/image14.png?raw=true)
+
+##### 2.1.2.1.3.10.2 **card\_number** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>card_number</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>6759-4620-0719-8338</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="baa1ba09-17fd-47fe-9253-5bc40a7757bf"></a>2.1.2.1.3.11 Field **expiration\_date**
+
+##### 2.1.2.1.3.11.1 **expiration\_date** Tree Diagram
+
+![Hackolade image](./DATABASE/image15.png?raw=true)
+
+##### 2.1.2.1.3.11.2 **expiration\_date** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>expiration_date</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>12/23</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="e5e5e5cd-46ef-46d6-ac0a-7cc9c29d7f4b"></a>2.1.2.1.3.12 Field **security\_code**
+
+##### 2.1.2.1.3.12.1 **security\_code** Tree Diagram
+
+![Hackolade image](./DATABASE/image16.png?raw=true)
+
+##### 2.1.2.1.3.12.2 **security\_code** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>security_code</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>numeric</td></tr><tr><td>Subtype</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>loại: thẻ tín dụng, momo, vv</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Unit</td><td></td></tr><tr><td>Min value</td><td></td></tr><tr><td>Excl min</td><td></td></tr><tr><td>Max value</td><td></td></tr><tr><td>Excl max</td><td></td></tr><tr><td>Multiple of</td><td></td></tr><tr><td>Divisible by</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>1234</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
 ### <a id="47a345ba-ed34-47dc-bbe0-c879c7d607dc"></a>2.1.2.1.3.13 Field **date**
 
 ##### 2.1.2.1.3.13.1 **date** Tree Diagram
 
-![Hackolade image](./Database/image17.png?raw=true)
+![Hackolade image](./DATABASE/image17.png?raw=true)
 
 ##### 2.1.2.1.3.13.2 **date** properties
 
@@ -257,7 +257,7 @@ Child field(s):
 
 ##### 2.1.2.1.3.14.1 **status** Tree Diagram
 
-![Hackolade image](./Database/image18.png?raw=true)
+![Hackolade image](./DATABASE/image18.png?raw=true)
 
 ##### 2.1.2.1.3.14.2 **status** properties
 
@@ -267,7 +267,7 @@ Child field(s):
 
 ##### 2.1.2.1.3.15.1 **items** Tree Diagram
 
-![Hackolade image](./Database/image19.png?raw=true)
+![Hackolade image](./DATABASE/image19.png?raw=true)
 
 ##### 2.1.2.1.3.15.2 **items** Hierarchy
 
@@ -285,7 +285,7 @@ Child field(s):
 
 ##### 2.1.2.1.3.16.1 **\[0\]** Tree Diagram
 
-![Hackolade image](./Database/image20.png?raw=true)
+![Hackolade image](./DATABASE/image20.png?raw=true)
 
 ##### 2.1.2.1.3.16.2 **\[0\]** Hierarchy
 
@@ -303,7 +303,7 @@ Child field(s):
 
 ##### 2.1.2.1.3.17.1 **course\_id** Tree Diagram
 
-![Hackolade image](./Database/image21.png?raw=true)
+![Hackolade image](./DATABASE/image21.png?raw=true)
 
 ##### 2.1.2.1.3.17.2 **course\_id** properties
 
@@ -313,7 +313,7 @@ Child field(s):
 
 ##### 2.1.2.1.3.18.1 **course\_name** Tree Diagram
 
-![Hackolade image](./Database/image22.png?raw=true)
+![Hackolade image](./DATABASE/image22.png?raw=true)
 
 ##### 2.1.2.1.3.18.2 **course\_name** properties
 
@@ -323,7 +323,7 @@ Child field(s):
 
 ##### 2.1.2.1.3.19.1 **course\_price** Tree Diagram
 
-![Hackolade image](./Database/image23.png?raw=true)
+![Hackolade image](./DATABASE/image23.png?raw=true)
 
 ##### 2.1.2.1.3.19.2 **course\_price** properties
 
@@ -333,7 +333,7 @@ Child field(s):
 
 ##### 2.1.2.1.3.20.1 **total\_amount** Tree Diagram
 
-![Hackolade image](./Database/image24.png?raw=true)
+![Hackolade image](./DATABASE/image24.png?raw=true)
 
 ##### 2.1.2.1.3.20.2 **total\_amount** properties
 
@@ -367,29 +367,6 @@ Child field(s):
             "description": "Email người dùng",
             "format": "email"
         },
-        "payment_method": {
-            "type": "object",
-            "description": "Phương thức thanh toán",
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "description": "loại: thẻ tín dụng, momo, vv"
-                },
-                "card_number": {
-                    "type": "number",
-                    "description": "loại: thẻ tín dụng, momo, vv"
-                },
-                "expiration_date": {
-                    "type": "string",
-                    "description": "loại: thẻ tín dụng, momo, vv"
-                },
-                "security_code": {
-                    "type": "number",
-                    "description": "loại: thẻ tín dụng, momo, vv"
-                }
-            },
-            "additionalProperties": false
-        },
         "orders": {
             "type": "array",
             "description": "hóa đơn",
@@ -401,6 +378,29 @@ Child field(s):
                         "type": "string",
                         "description": "ID mua hàng",
                         "pattern": "^[a-fA-F0-9]{24}$"
+                    },
+                    "payment_method": {
+                        "type": "object",
+                        "description": "Phương thức thanh toán",
+                        "properties": {
+                            "type": {
+                                "type": "string",
+                                "description": "loại: thẻ tín dụng, momo, vv"
+                            },
+                            "card_number": {
+                                "type": "string",
+                                "description": "loại: thẻ tín dụng, momo, vv"
+                            },
+                            "expiration_date": {
+                                "type": "string",
+                                "description": "loại: thẻ tín dụng, momo, vv"
+                            },
+                            "security_code": {
+                                "type": "number",
+                                "description": "loại: thẻ tín dụng, momo, vv"
+                            }
+                        },
+                        "additionalProperties": false
                     },
                     "date": {
                         "type": "string",
@@ -452,24 +452,24 @@ Child field(s):
 
 ```
 {
-    "_id": ObjectId("deb7dceafcb3372a1f83d7d6"),
-    "user_id": ObjectId("0fa3c25cd7e6aff1ebf0ef6c"),
+    "_id": ObjectId("bb736abef1496cfeb810feb1"),
+    "user_id": ObjectId("ec3e3e1c4c81e7c9fd6ebc42"),
     "user_name": "John Smith",
     "email": "sample@email.com",
-    "payment_method": {
-        "type": "credit_card",
-        "card_number": 1234123412341234,
-        "expiration_date": "12/23",
-        "security_code": 1234
-    },
     "orders": [
         {
-            "order_id": ObjectId("d784c92ef5becb1fcf3b8fdf"),
+            "order_id": ObjectId("c1fc957baedf3e736abf2dde"),
+            "payment_method": {
+                "type": "credit_card",
+                "card_number": "6759-4620-0719-8338",
+                "expiration_date": "12/23",
+                "security_code": 1234
+            },
             "date": ISODate("2016-04-08T15:06:21.595Z"),
             "status": "Đã thanh toán",
             "items": [
                 {
-                    "course_id": ObjectId("28e27cfd4bc6c5c00dccf6e8"),
+                    "course_id": ObjectId("69dbefd7be6927c7f800ee86"),
                     "course_name": "Lorem",
                     "course_price": 200000
                 }
@@ -509,29 +509,6 @@ db.createCollection("billings", {
                     "bsonType": "string",
                     "description": "Email người dùng"
                 },
-                "payment_method": {
-                    "bsonType": "object",
-                    "description": "Phương thức thanh toán",
-                    "properties": {
-                        "type": {
-                            "bsonType": "string",
-                            "description": "loại: thẻ tín dụng, momo, vv"
-                        },
-                        "card_number": {
-                            "bsonType": "number",
-                            "description": "loại: thẻ tín dụng, momo, vv"
-                        },
-                        "expiration_date": {
-                            "bsonType": "string",
-                            "description": "loại: thẻ tín dụng, momo, vv"
-                        },
-                        "security_code": {
-                            "bsonType": "number",
-                            "description": "loại: thẻ tín dụng, momo, vv"
-                        }
-                    },
-                    "additionalProperties": false
-                },
                 "orders": {
                     "bsonType": "array",
                     "description": "hóa đơn",
@@ -542,6 +519,29 @@ db.createCollection("billings", {
                             "order_id": {
                                 "bsonType": "objectId",
                                 "description": "ID mua hàng"
+                            },
+                            "payment_method": {
+                                "bsonType": "object",
+                                "description": "Phương thức thanh toán",
+                                "properties": {
+                                    "type": {
+                                        "bsonType": "string",
+                                        "description": "loại: thẻ tín dụng, momo, vv"
+                                    },
+                                    "card_number": {
+                                        "bsonType": "string",
+                                        "description": "loại: thẻ tín dụng, momo, vv"
+                                    },
+                                    "expiration_date": {
+                                        "bsonType": "string",
+                                        "description": "loại: thẻ tín dụng, momo, vv"
+                                    },
+                                    "security_code": {
+                                        "bsonType": "number",
+                                        "description": "loại: thẻ tín dụng, momo, vv"
+                                    }
+                                },
+                                "additionalProperties": false
                             },
                             "date": {
                                 "bsonType": "date",
@@ -595,7 +595,7 @@ db.createCollection("billings", {
 
 ##### 2.1.2.2.1 **courses** Tree Diagram
 
-![Hackolade image](./Database/image25.png?raw=true)
+![Hackolade image](./DATABASE/image25.png?raw=true)
 
 ##### 2.1.2.2.2 **courses** Properties
 
@@ -609,7 +609,7 @@ db.createCollection("billings", {
 
 ##### 2.1.2.2.3.1.1 **\_id** Tree Diagram
 
-![Hackolade image](./Database/image26.png?raw=true)
+![Hackolade image](./DATABASE/image26.png?raw=true)
 
 ##### 2.1.2.2.3.1.2 **\_id** properties
 
@@ -619,7 +619,7 @@ db.createCollection("billings", {
 
 ##### 2.1.2.2.3.2.1 **name** Tree Diagram
 
-![Hackolade image](./Database/image27.png?raw=true)
+![Hackolade image](./DATABASE/image27.png?raw=true)
 
 ##### 2.1.2.2.3.2.2 **name** properties
 
@@ -629,7 +629,7 @@ db.createCollection("billings", {
 
 ##### 2.1.2.2.3.3.1 **description** Tree Diagram
 
-![Hackolade image](./Database/image28.png?raw=true)
+![Hackolade image](./DATABASE/image28.png?raw=true)
 
 ##### 2.1.2.2.3.3.2 **description** properties
 
@@ -639,7 +639,7 @@ db.createCollection("billings", {
 
 ##### 2.1.2.2.3.4.1 **num\_enrolled** Tree Diagram
 
-![Hackolade image](./Database/image29.png?raw=true)
+![Hackolade image](./DATABASE/image29.png?raw=true)
 
 ##### 2.1.2.2.3.4.2 **num\_enrolled** properties
 
@@ -649,7 +649,7 @@ db.createCollection("billings", {
 
 ##### 2.1.2.2.3.5.1 **learning\_outcome** Tree Diagram
 
-![Hackolade image](./Database/image30.png?raw=true)
+![Hackolade image](./DATABASE/image30.png?raw=true)
 
 ##### 2.1.2.2.3.5.2 **learning\_outcome** Hierarchy
 
@@ -667,7 +667,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.6.1 **\[0\]** Tree Diagram
 
-![Hackolade image](./Database/image31.png?raw=true)
+![Hackolade image](./DATABASE/image31.png?raw=true)
 
 ##### 2.1.2.2.3.6.2 **\[0\]** properties
 
@@ -677,7 +677,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.7.1 **category** Tree Diagram
 
-![Hackolade image](./Database/image32.png?raw=true)
+![Hackolade image](./DATABASE/image32.png?raw=true)
 
 ##### 2.1.2.2.3.7.2 **category** Hierarchy
 
@@ -695,7 +695,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.8.1 **\[0\]** Tree Diagram
 
-![Hackolade image](./Database/image33.png?raw=true)
+![Hackolade image](./DATABASE/image33.png?raw=true)
 
 ##### 2.1.2.2.3.8.2 **\[0\]** properties
 
@@ -705,7 +705,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.9.1 **level** Tree Diagram
 
-![Hackolade image](./Database/image34.png?raw=true)
+![Hackolade image](./DATABASE/image34.png?raw=true)
 
 ##### 2.1.2.2.3.9.2 **level** properties
 
@@ -715,7 +715,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.10.1 **price** Tree Diagram
 
-![Hackolade image](./Database/image35.png?raw=true)
+![Hackolade image](./DATABASE/image35.png?raw=true)
 
 ##### 2.1.2.2.3.10.2 **price** properties
 
@@ -725,7 +725,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.11.1 **poster\_url** Tree Diagram
 
-![Hackolade image](./Database/image36.png?raw=true)
+![Hackolade image](./DATABASE/image36.png?raw=true)
 
 ##### 2.1.2.2.3.11.2 **poster\_url** properties
 
@@ -735,7 +735,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.12.1 **instructors** Tree Diagram
 
-![Hackolade image](./Database/image37.png?raw=true)
+![Hackolade image](./DATABASE/image37.png?raw=true)
 
 ##### 2.1.2.2.3.12.2 **instructors** Hierarchy
 
@@ -753,7 +753,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.13.1 **\[0\] lecturer** Tree Diagram
 
-![Hackolade image](./Database/image38.png?raw=true)
+![Hackolade image](./DATABASE/image38.png?raw=true)
 
 ##### 2.1.2.2.3.13.2 **\[0\] lecturer** Hierarchy
 
@@ -771,7 +771,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.14.1 **User** Tree Diagram
 
-![Hackolade image](./Database/image39.png?raw=true)
+![Hackolade image](./DATABASE/image39.png?raw=true)
 
 ##### 2.1.2.2.3.14.2 **User** Hierarchy
 
@@ -789,7 +789,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.15.1 **user\_id** Tree Diagram
 
-![Hackolade image](./Database/image40.png?raw=true)
+![Hackolade image](./DATABASE/image40.png?raw=true)
 
 ##### 2.1.2.2.3.15.2 **user\_id** properties
 
@@ -799,7 +799,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.16.1 **name** Tree Diagram
 
-![Hackolade image](./Database/image41.png?raw=true)
+![Hackolade image](./DATABASE/image41.png?raw=true)
 
 ##### 2.1.2.2.3.16.2 **name** properties
 
@@ -809,7 +809,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.17.1 **email** Tree Diagram
 
-![Hackolade image](./Database/image42.png?raw=true)
+![Hackolade image](./DATABASE/image42.png?raw=true)
 
 ##### 2.1.2.2.3.17.2 **email** properties
 
@@ -819,7 +819,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.18.1 **gender** Tree Diagram
 
-![Hackolade image](./Database/image43.png?raw=true)
+![Hackolade image](./DATABASE/image43.png?raw=true)
 
 ##### 2.1.2.2.3.18.2 **gender** properties
 
@@ -829,7 +829,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.19.1 **profile\_pic** Tree Diagram
 
-![Hackolade image](./Database/image44.png?raw=true)
+![Hackolade image](./DATABASE/image44.png?raw=true)
 
 ##### 2.1.2.2.3.19.2 **profile\_pic** properties
 
@@ -839,7 +839,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.20.1 **bio** Tree Diagram
 
-![Hackolade image](./Database/image45.png?raw=true)
+![Hackolade image](./DATABASE/image45.png?raw=true)
 
 ##### 2.1.2.2.3.20.2 **bio** properties
 
@@ -849,7 +849,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.21.1 **videos** Tree Diagram
 
-![Hackolade image](./Database/image46.png?raw=true)
+![Hackolade image](./DATABASE/image46.png?raw=true)
 
 ##### 2.1.2.2.3.21.2 **videos** Hierarchy
 
@@ -867,7 +867,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.22.1 **\[0\]** Tree Diagram
 
-![Hackolade image](./Database/image47.png?raw=true)
+![Hackolade image](./DATABASE/image47.png?raw=true)
 
 ##### 2.1.2.2.3.22.2 **\[0\]** Hierarchy
 
@@ -885,7 +885,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.23.1 **video\_title** Tree Diagram
 
-![Hackolade image](./Database/image48.png?raw=true)
+![Hackolade image](./DATABASE/image48.png?raw=true)
 
 ##### 2.1.2.2.3.23.2 **video\_title** properties
 
@@ -895,7 +895,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.24.1 **video\_url** Tree Diagram
 
-![Hackolade image](./Database/image49.png?raw=true)
+![Hackolade image](./DATABASE/image49.png?raw=true)
 
 ##### 2.1.2.2.3.24.2 **video\_url** properties
 
@@ -905,7 +905,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.25.1 **lesson\_note** Tree Diagram
 
-![Hackolade image](./Database/image50.png?raw=true)
+![Hackolade image](./DATABASE/image50.png?raw=true)
 
 ##### 2.1.2.2.3.25.2 **lesson\_note** properties
 
@@ -915,7 +915,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.26.1 **requirements** Tree Diagram
 
-![Hackolade image](./Database/image51.png?raw=true)
+![Hackolade image](./DATABASE/image51.png?raw=true)
 
 ##### 2.1.2.2.3.26.2 **requirements** Hierarchy
 
@@ -933,7 +933,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.27.1 **\[0\]** Tree Diagram
 
-![Hackolade image](./Database/image52.png?raw=true)
+![Hackolade image](./DATABASE/image52.png?raw=true)
 
 ##### 2.1.2.2.3.27.2 **\[0\]** properties
 
@@ -943,7 +943,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.28.1 **students** Tree Diagram
 
-![Hackolade image](./Database/image53.png?raw=true)
+![Hackolade image](./DATABASE/image53.png?raw=true)
 
 ##### 2.1.2.2.3.28.2 **students** Hierarchy
 
@@ -961,7 +961,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.29.1 **\[0\] User** Tree Diagram
 
-![Hackolade image](./Database/image54.png?raw=true)
+![Hackolade image](./DATABASE/image54.png?raw=true)
 
 ##### 2.1.2.2.3.29.2 **\[0\] User** Hierarchy
 
@@ -979,7 +979,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.30.1 **user\_id** Tree Diagram
 
-![Hackolade image](./Database/image55.png?raw=true)
+![Hackolade image](./DATABASE/image55.png?raw=true)
 
 ##### 2.1.2.2.3.30.2 **user\_id** properties
 
@@ -989,7 +989,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.31.1 **course\_review** Tree Diagram
 
-![Hackolade image](./Database/image56.png?raw=true)
+![Hackolade image](./DATABASE/image56.png?raw=true)
 
 ##### 2.1.2.2.3.31.2 **course\_review** Hierarchy
 
@@ -1007,7 +1007,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.32.1 **\[0\]** Tree Diagram
 
-![Hackolade image](./Database/image57.png?raw=true)
+![Hackolade image](./DATABASE/image57.png?raw=true)
 
 ##### 2.1.2.2.3.32.2 **\[0\]** Hierarchy
 
@@ -1025,7 +1025,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.33.1 **user\_id** Tree Diagram
 
-![Hackolade image](./Database/image58.png?raw=true)
+![Hackolade image](./DATABASE/image58.png?raw=true)
 
 ##### 2.1.2.2.3.33.2 **user\_id** properties
 
@@ -1035,7 +1035,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.34.1 **rating** Tree Diagram
 
-![Hackolade image](./Database/image59.png?raw=true)
+![Hackolade image](./DATABASE/image59.png?raw=true)
 
 ##### 2.1.2.2.3.34.2 **rating** properties
 
@@ -1045,7 +1045,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.35.1 **comment** Tree Diagram
 
-![Hackolade image](./Database/image60.png?raw=true)
+![Hackolade image](./DATABASE/image60.png?raw=true)
 
 ##### 2.1.2.2.3.35.2 **comment** properties
 
@@ -1055,7 +1055,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.36.1 **created\_at** Tree Diagram
 
-![Hackolade image](./Database/image61.png?raw=true)
+![Hackolade image](./DATABASE/image61.png?raw=true)
 
 ##### 2.1.2.2.3.36.2 **created\_at** properties
 
@@ -1065,7 +1065,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.37.1 **updated\_at** Tree Diagram
 
-![Hackolade image](./Database/image62.png?raw=true)
+![Hackolade image](./DATABASE/image62.png?raw=true)
 
 ##### 2.1.2.2.3.37.2 **updated\_at** properties
 
@@ -1075,7 +1075,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.38.1 **created\_at** Tree Diagram
 
-![Hackolade image](./Database/image63.png?raw=true)
+![Hackolade image](./DATABASE/image63.png?raw=true)
 
 ##### 2.1.2.2.3.38.2 **created\_at** properties
 
@@ -1085,7 +1085,7 @@ Child field(s):
 
 ##### 2.1.2.2.3.39.1 **updated\_at** Tree Diagram
 
-![Hackolade image](./Database/image64.png?raw=true)
+![Hackolade image](./DATABASE/image64.png?raw=true)
 
 ##### 2.1.2.2.3.39.2 **updated\_at** properties
 
@@ -1294,7 +1294,7 @@ Child field(s):
 
 ```
 {
-    "_id": ObjectId("3a8af62df6eb08022966a7d1"),
+    "_id": ObjectId("fe8b5c2a8dc0e5aaaaffe67b"),
     "name": "Lorem",
     "description": "Lorem",
     "num_enrolled": -66,
@@ -1310,7 +1310,7 @@ Child field(s):
     "instructors": [
         {
             "User": {
-                "user_id": ObjectId("3f7f97247ebc0beeedec7b37"),
+                "user_id": ObjectId("3cbd5aae55a8e560d7ee4dd6"),
                 "name": "Lorem",
                 "email": "sample@email.com",
                 "gender": "Lorem",
@@ -1331,12 +1331,12 @@ Child field(s):
     ],
     "students": [
         {
-            "user_id": ObjectId("66a8ae9fdbf2dd4da0ee85df")
+            "user_id": ObjectId("bdc6a4acf2b0bc2baa5da4dd")
         }
     ],
     "course_review": [
         {
-            "user_id": ObjectId("74debfad4ae7c670ceabbbae"),
+            "user_id": ObjectId("5d0e12ab135ec343e8e2df1d"),
             "rating": 3.5,
             "comment": "Lorem",
             "created_at": ISODate("2016-04-08T15:06:21.595Z"),
@@ -1547,7 +1547,7 @@ db.createCollection("courses", {
 
 ##### 2.1.2.3.1 **lecturer** Tree Diagram
 
-![Hackolade image](./Database/image65.png?raw=true)
+![Hackolade image](./DATABASE/image65.png?raw=true)
 
 ##### 2.1.2.3.2 **lecturer** Properties
 
@@ -1561,7 +1561,7 @@ db.createCollection("courses", {
 
 ##### 2.1.2.3.3.1.1 **User** Tree Diagram
 
-![Hackolade image](./Database/image66.png?raw=true)
+![Hackolade image](./DATABASE/image66.png?raw=true)
 
 ##### 2.1.2.3.3.1.2 **User** Hierarchy
 
@@ -1579,7 +1579,7 @@ Child field(s):
 
 ##### 2.1.2.3.3.2.1 **user\_id** Tree Diagram
 
-![Hackolade image](./Database/image67.png?raw=true)
+![Hackolade image](./DATABASE/image67.png?raw=true)
 
 ##### 2.1.2.3.3.2.2 **user\_id** properties
 
@@ -1589,7 +1589,7 @@ Child field(s):
 
 ##### 2.1.2.3.3.3.1 **name** Tree Diagram
 
-![Hackolade image](./Database/image68.png?raw=true)
+![Hackolade image](./DATABASE/image68.png?raw=true)
 
 ##### 2.1.2.3.3.3.2 **name** properties
 
@@ -1599,7 +1599,7 @@ Child field(s):
 
 ##### 2.1.2.3.3.4.1 **email** Tree Diagram
 
-![Hackolade image](./Database/image69.png?raw=true)
+![Hackolade image](./DATABASE/image69.png?raw=true)
 
 ##### 2.1.2.3.3.4.2 **email** properties
 
@@ -1609,7 +1609,7 @@ Child field(s):
 
 ##### 2.1.2.3.3.5.1 **gender** Tree Diagram
 
-![Hackolade image](./Database/image70.png?raw=true)
+![Hackolade image](./DATABASE/image70.png?raw=true)
 
 ##### 2.1.2.3.3.5.2 **gender** properties
 
@@ -1619,7 +1619,7 @@ Child field(s):
 
 ##### 2.1.2.3.3.6.1 **profile\_pic** Tree Diagram
 
-![Hackolade image](./Database/image71.png?raw=true)
+![Hackolade image](./DATABASE/image71.png?raw=true)
 
 ##### 2.1.2.3.3.6.2 **profile\_pic** properties
 
@@ -1629,7 +1629,7 @@ Child field(s):
 
 ##### 2.1.2.3.3.7.1 **bio** Tree Diagram
 
-![Hackolade image](./Database/image72.png?raw=true)
+![Hackolade image](./DATABASE/image72.png?raw=true)
 
 ##### 2.1.2.3.3.7.2 **bio** properties
 
@@ -1639,7 +1639,7 @@ Child field(s):
 
 ##### 2.1.2.3.3.8.1 **lecturer\_courses** Tree Diagram
 
-![Hackolade image](./Database/image73.png?raw=true)
+![Hackolade image](./DATABASE/image73.png?raw=true)
 
 ##### 2.1.2.3.3.8.2 **lecturer\_courses** Hierarchy
 
@@ -1657,7 +1657,7 @@ Child field(s):
 
 ##### 2.1.2.3.3.9.1 **\[0\] course** Tree Diagram
 
-![Hackolade image](./Database/image74.png?raw=true)
+![Hackolade image](./DATABASE/image74.png?raw=true)
 
 ##### 2.1.2.3.3.9.2 **\[0\] course** Hierarchy
 
@@ -1675,7 +1675,7 @@ Child field(s):
 
 ##### 2.1.2.3.3.10.1 **course\_id** Tree Diagram
 
-![Hackolade image](./Database/image75.png?raw=true)
+![Hackolade image](./DATABASE/image75.png?raw=true)
 
 ##### 2.1.2.3.3.10.2 **course\_id** properties
 
@@ -1743,7 +1743,7 @@ Child field(s):
 ```
 {
     "User": {
-        "user_id": ObjectId("03db535c7cb9e58ae9866aa7"),
+        "user_id": ObjectId("70adcc27b1196abd58dbdaae"),
         "name": "Lorem",
         "email": "sample@email.com",
         "gender": "Lorem",
@@ -1752,7 +1752,7 @@ Child field(s):
     "bio": "Siêu giáo viên, tác giả của hơn 300 framwork nổi tiếng của Javascript, C#, ..., 30 năm kinh nghiệp giảng dạy các trường đại học danh tiếng",
     "lecturer_courses": [
         {
-            "course_id": ObjectId("6d4eebecdf55f9380b021eff")
+            "course_id": ObjectId("13005aac57ebe5dae69be8c8")
         }
     ]
 }
@@ -1826,7 +1826,7 @@ db.createCollection("lecturer", {
 
 ##### 2.1.2.4.1 **users** Tree Diagram
 
-![Hackolade image](./Database/image76.png?raw=true)
+![Hackolade image](./DATABASE/image76.png?raw=true)
 
 ##### 2.1.2.4.2 **users** Properties
 
@@ -1840,7 +1840,7 @@ db.createCollection("lecturer", {
 
 ##### 2.1.2.4.3.1.1 **\_id** Tree Diagram
 
-![Hackolade image](./Database/image77.png?raw=true)
+![Hackolade image](./DATABASE/image77.png?raw=true)
 
 ##### 2.1.2.4.3.1.2 **\_id** properties
 
@@ -1850,7 +1850,7 @@ db.createCollection("lecturer", {
 
 ##### 2.1.2.4.3.2.1 **username** Tree Diagram
 
-![Hackolade image](./Database/image78.png?raw=true)
+![Hackolade image](./DATABASE/image78.png?raw=true)
 
 ##### 2.1.2.4.3.2.2 **username** properties
 
@@ -1860,7 +1860,7 @@ db.createCollection("lecturer", {
 
 ##### 2.1.2.4.3.3.1 **full name** Tree Diagram
 
-![Hackolade image](./Database/image79.png?raw=true)
+![Hackolade image](./DATABASE/image79.png?raw=true)
 
 ##### 2.1.2.4.3.3.2 **full name** properties
 
@@ -1870,7 +1870,7 @@ db.createCollection("lecturer", {
 
 ##### 2.1.2.4.3.4.1 **email** Tree Diagram
 
-![Hackolade image](./Database/image80.png?raw=true)
+![Hackolade image](./DATABASE/image80.png?raw=true)
 
 ##### 2.1.2.4.3.4.2 **email** properties
 
@@ -1880,7 +1880,7 @@ db.createCollection("lecturer", {
 
 ##### 2.1.2.4.3.5.1 **password** Tree Diagram
 
-![Hackolade image](./Database/image81.png?raw=true)
+![Hackolade image](./DATABASE/image81.png?raw=true)
 
 ##### 2.1.2.4.3.5.2 **password** properties
 
@@ -1890,7 +1890,7 @@ db.createCollection("lecturer", {
 
 ##### 2.1.2.4.3.6.1 **role** Tree Diagram
 
-![Hackolade image](./Database/image82.png?raw=true)
+![Hackolade image](./DATABASE/image82.png?raw=true)
 
 ##### 2.1.2.4.3.6.2 **role** properties
 
@@ -1900,7 +1900,7 @@ db.createCollection("lecturer", {
 
 ##### 2.1.2.4.3.7.1 **profile\_pic** Tree Diagram
 
-![Hackolade image](./Database/image83.png?raw=true)
+![Hackolade image](./DATABASE/image83.png?raw=true)
 
 ##### 2.1.2.4.3.7.2 **profile\_pic** properties
 
@@ -1910,7 +1910,7 @@ db.createCollection("lecturer", {
 
 ##### 2.1.2.4.3.8.1 **gender** Tree Diagram
 
-![Hackolade image](./Database/image84.png?raw=true)
+![Hackolade image](./DATABASE/image84.png?raw=true)
 
 ##### 2.1.2.4.3.8.2 **gender** properties
 
@@ -1920,7 +1920,7 @@ db.createCollection("lecturer", {
 
 ##### 2.1.2.4.3.9.1 **wishlist** Tree Diagram
 
-![Hackolade image](./Database/image85.png?raw=true)
+![Hackolade image](./DATABASE/image85.png?raw=true)
 
 ##### 2.1.2.4.3.9.2 **wishlist** Hierarchy
 
@@ -1938,7 +1938,7 @@ Child field(s):
 
 ##### 2.1.2.4.3.10.1 **\[0\] course** Tree Diagram
 
-![Hackolade image](./Database/image86.png?raw=true)
+![Hackolade image](./DATABASE/image86.png?raw=true)
 
 ##### 2.1.2.4.3.10.2 **\[0\] course** Hierarchy
 
@@ -1956,7 +1956,7 @@ Child field(s):
 
 ##### 2.1.2.4.3.11.1 **course\_id** Tree Diagram
 
-![Hackolade image](./Database/image87.png?raw=true)
+![Hackolade image](./DATABASE/image87.png?raw=true)
 
 ##### 2.1.2.4.3.11.2 **course\_id** properties
 
@@ -1966,7 +1966,7 @@ Child field(s):
 
 ##### 2.1.2.4.3.12.1 **owned\_courses** Tree Diagram
 
-![Hackolade image](./Database/image88.png?raw=true)
+![Hackolade image](./DATABASE/image88.png?raw=true)
 
 ##### 2.1.2.4.3.12.2 **owned\_courses** Hierarchy
 
@@ -1984,7 +1984,7 @@ Child field(s):
 
 ##### 2.1.2.4.3.13.1 **\[0\]** Tree Diagram
 
-![Hackolade image](./Database/image89.png?raw=true)
+![Hackolade image](./DATABASE/image89.png?raw=true)
 
 ##### 2.1.2.4.3.13.2 **\[0\]** Hierarchy
 
@@ -2002,7 +2002,7 @@ Child field(s):
 
 ##### 2.1.2.4.3.14.1 **course\_id** Tree Diagram
 
-![Hackolade image](./Database/image90.png?raw=true)
+![Hackolade image](./DATABASE/image90.png?raw=true)
 
 ##### 2.1.2.4.3.14.2 **course\_id** properties
 
@@ -2012,7 +2012,7 @@ Child field(s):
 
 ##### 2.1.2.4.3.15.1 **purchased\_at** Tree Diagram
 
-![Hackolade image](./Database/image91.png?raw=true)
+![Hackolade image](./DATABASE/image91.png?raw=true)
 
 ##### 2.1.2.4.3.15.2 **purchased\_at** properties
 
@@ -2022,7 +2022,7 @@ Child field(s):
 
 ##### 2.1.2.4.3.16.1 **billings\_id** Tree Diagram
 
-![Hackolade image](./Database/image92.png?raw=true)
+![Hackolade image](./DATABASE/image92.png?raw=true)
 
 ##### 2.1.2.4.3.16.2 **billings\_id** properties
 
@@ -2032,7 +2032,7 @@ Child field(s):
 
 ##### 2.1.2.4.3.17.1 **fb\_id** Tree Diagram
 
-![Hackolade image](./Database/image93.png?raw=true)
+![Hackolade image](./DATABASE/image93.png?raw=true)
 
 ##### 2.1.2.4.3.17.2 **fb\_id** properties
 
@@ -2042,7 +2042,7 @@ Child field(s):
 
 ##### 2.1.2.4.3.18.1 **fb\_token** Tree Diagram
 
-![Hackolade image](./Database/image94.png?raw=true)
+![Hackolade image](./DATABASE/image94.png?raw=true)
 
 ##### 2.1.2.4.3.18.2 **fb\_token** properties
 
@@ -2052,7 +2052,7 @@ Child field(s):
 
 ##### 2.1.2.4.3.19.1 **google\_id** Tree Diagram
 
-![Hackolade image](./Database/image95.png?raw=true)
+![Hackolade image](./DATABASE/image95.png?raw=true)
 
 ##### 2.1.2.4.3.19.2 **google\_id** properties
 
@@ -2062,7 +2062,7 @@ Child field(s):
 
 ##### 2.1.2.4.3.20.1 **created\_at** Tree Diagram
 
-![Hackolade image](./Database/image96.png?raw=true)
+![Hackolade image](./DATABASE/image96.png?raw=true)
 
 ##### 2.1.2.4.3.20.2 **created\_at** properties
 
@@ -2072,7 +2072,7 @@ Child field(s):
 
 ##### 2.1.2.4.3.21.1 **updated\_at** Tree Diagram
 
-![Hackolade image](./Database/image97.png?raw=true)
+![Hackolade image](./DATABASE/image97.png?raw=true)
 
 ##### 2.1.2.4.3.21.2 **updated\_at** properties
 
@@ -2199,7 +2199,7 @@ Child field(s):
 
 ```
 {
-    "_id": ObjectId("5cfafeeb0f2fbf4d9eef9a6c"),
+    "_id": ObjectId("e0fe6beccee4ed3ff55ba23a"),
     "username": "Lorem",
     "full name": "Lorem",
     "email": "sample@email.com",
@@ -2209,16 +2209,16 @@ Child field(s):
     "gender": "nam",
     "wishlist": [
         {
-            "course_id": ObjectId("6cdfffbafb4f69b42003a6a1")
+            "course_id": ObjectId("440a5bd7e38fafdafe30a12c")
         }
     ],
     "owned_courses": [
         {
-            "course_id": ObjectId("aa7cd6affafb8672ac3a2660"),
+            "course_id": ObjectId("93ed5e2edc031f1ab16f1ae8"),
             "purchased_at": ISODate("2016-04-08T15:06:21.595Z")
         }
     ],
-    "billings_id": ObjectId("da5c280a9a5ce8dd63c2fbb0"),
+    "billings_id": ObjectId("2cf4f9d39a68cc8f40b9c99a"),
     "fb_id": "Lorem",
     "fb_token": "Lorem",
     "google_id": "Lorem",
@@ -2353,7 +2353,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./Database/image98.png?raw=true)![Hackolade image](./Database/image99.png?raw=true)
+![Hackolade image](./DATABASE/image98.png?raw=true)![Hackolade image](./DATABASE/image99.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#dd398e23-e65c-4d6f-b4a1-985e080b2b4b>billings</a></td><td><a href=#386052d2-ec30-4e18-985a-603c7487a282>orders.[-1].items.[-1].course_id</a></td></tr></tbody></table>
 
@@ -2367,7 +2367,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./Database/image100.png?raw=true)![Hackolade image](./Database/image101.png?raw=true)
+![Hackolade image](./DATABASE/image100.png?raw=true)![Hackolade image](./DATABASE/image101.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#dd398e23-e65c-4d6f-b4a1-985e080b2b4b>billings</a></td><td><a href=#86d31629-427a-41ef-9c83-4338dd46f10e>user_id</a></td></tr></tbody></table>
 
@@ -2381,7 +2381,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./Database/image102.png?raw=true)![Hackolade image](./Database/image103.png?raw=true)
+![Hackolade image](./DATABASE/image102.png?raw=true)![Hackolade image](./DATABASE/image103.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#a9d37e6c-9455-4669-9c7a-27cdc0e867e3>course_review.[-1].[-1]</a></td></tr></tbody></table>
 
@@ -2395,7 +2395,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./Database/image104.png?raw=true)![Hackolade image](./Database/image105.png?raw=true)
+![Hackolade image](./DATABASE/image104.png?raw=true)![Hackolade image](./DATABASE/image105.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#c2b86c74-5fbc-4750-943a-ab9319ffc328>instructors.[-1].User.user_id</a></td></tr></tbody></table>
 
@@ -2409,7 +2409,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#7763d428-db9e-4464-ae2f-19edd261c592>lecturer</a></td><td><a href=#e91fa04c-ca90-42c8-aa64-0cb5235c16f0>bio</a></td></tr></tbody></table>
 
-![Hackolade image](./Database/image106.png?raw=true)![Hackolade image](./Database/image107.png?raw=true)
+![Hackolade image](./DATABASE/image106.png?raw=true)![Hackolade image](./DATABASE/image107.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#4ea5071e-544d-49aa-9415-c52eb2b38901>instructors.[-1].bio</a></td></tr></tbody></table>
 
@@ -2423,7 +2423,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./Database/image108.png?raw=true)![Hackolade image](./Database/image109.png?raw=true)
+![Hackolade image](./DATABASE/image108.png?raw=true)![Hackolade image](./DATABASE/image109.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#d1ce568b-196c-4688-b768-656232a9c33a>students.[-1].user_id</a></td></tr></tbody></table>
 
@@ -2437,7 +2437,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./Database/image110.png?raw=true)![Hackolade image](./Database/image111.png?raw=true)
+![Hackolade image](./DATABASE/image110.png?raw=true)![Hackolade image](./DATABASE/image111.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#7763d428-db9e-4464-ae2f-19edd261c592>lecturer</a></td><td><a href=#be59b29d-b720-4080-9962-6444a170aae5>User.user_id</a></td></tr></tbody></table>
 
@@ -2451,7 +2451,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./Database/image112.png?raw=true)![Hackolade image](./Database/image113.png?raw=true)
+![Hackolade image](./DATABASE/image112.png?raw=true)![Hackolade image](./DATABASE/image113.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#7763d428-db9e-4464-ae2f-19edd261c592>lecturer</a></td><td><a href=#72b9a15e-d6b2-49c1-8e1e-1c60b7a6206c>lecturer_courses.[-1].course_id</a></td></tr></tbody></table>
 
@@ -2465,7 +2465,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#dd398e23-e65c-4d6f-b4a1-985e080b2b4b>billings</a></td><td><a href=#b85dd627-f4c6-4312-970c-3c75e62cc3ad>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./Database/image114.png?raw=true)![Hackolade image](./Database/image115.png?raw=true)
+![Hackolade image](./DATABASE/image114.png?raw=true)![Hackolade image](./DATABASE/image115.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#9094c875-a394-4efa-92e8-ebcfd99e2e16>billings_id</a></td></tr></tbody></table>
 
@@ -2479,7 +2479,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./Database/image116.png?raw=true)![Hackolade image](./Database/image117.png?raw=true)
+![Hackolade image](./DATABASE/image116.png?raw=true)![Hackolade image](./DATABASE/image117.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#5b3113c0-37b6-4567-b338-c625e98f9860>owned_courses.[-1].course_id</a></td></tr></tbody></table>
 
@@ -2493,7 +2493,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./Database/image118.png?raw=true)![Hackolade image](./Database/image119.png?raw=true)
+![Hackolade image](./DATABASE/image118.png?raw=true)![Hackolade image](./DATABASE/image119.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#ea2e59d4-81ac-41f9-a051-bc67f48dd1c5>wishlist.[-1].[-1]</a></td></tr></tbody></table>
 
