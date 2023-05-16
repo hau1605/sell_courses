@@ -1,5 +1,4 @@
 import * as billingDAO from "../dao/billingsDAO.js";
-import { getUserById } from "../dao/usersDAO.js";
 import mongoose from "mongoose";
 
 // GET /api/billings

@@ -95,3 +95,30 @@
 - `PUT /api/billings/:id`: Updates the billing object with the specified ID.
 
 - `DELETE /api/billings/:id`: Deletes the billing object with the specified ID.
+
+- `POST /api/billings/purchase`: Purchases the specified billing object. Send json object like the following example: \
+  {\
+      "email": "example@gmail.com",\
+      "orders": {\
+          "items": [\
+              {\
+                  "course_id": "64621e807e8afdc6899cecf8",\
+                  "course_name": "Course 1",\
+                  "course_price": 9.99\
+              },\
+              {\
+                  "course_id": "64621e807e8afdc6899cecf9",\
+                  "course_name": "Course 2",\
+                  "course_price": 19.99\
+              }\
+          ],\
+          "payment_method": {\
+              "card_number": "1234567890",\
+              "expiration_date": "12/23",\
+              "security_code": 123,\
+              "type": "credit_card"\
+          }\
+      },\
+      "user_id": "646364b5aef93cf257f8dddd",\
+      "user_name": "Phuc Hoang"\
+  }

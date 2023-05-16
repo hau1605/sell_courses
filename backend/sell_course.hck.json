@@ -1,0 +1,1996 @@
+{
+    "modelName": "sell_courses",
+    "collections": [
+        {
+            "collectionName": "users",
+            "type": "object",
+            "properties": [
+                {
+                    "name": "_id",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "objectId",
+                    "GUID": "6f9602ee-7272-44dd-8c1b-bbe20fb6255c",
+                    "required": true,
+                    "primaryKey": true,
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "childRelationships": [
+                        "9c4de11c-3531-4e67-8395-d732fd56d371",
+                        "1fa088c1-d98e-4288-bb16-d35df76f8baf",
+                        "51211563-d260-4743-9dae-e4c9f5c3719c",
+                        "08548243-1b42-47f2-b095-172e566bf03e",
+                        "00eeb596-86e2-497d-a673-4c67d0dd1d52"
+                    ],
+                    "description": "ID người dùng",
+                    "error": {}
+                },
+                {
+                    "name": "username",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "b5e75e8b-48c7-41e0-9d14-3827822a3fac",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "description": "Tên người dùng",
+                    "error": {}
+                },
+                {
+                    "name": "full name",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "f3637504-476e-48ee-bd6f-d338ea072a35",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "description": "Họ tên đầy đủ",
+                    "error": {}
+                },
+                {
+                    "name": "email",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "ff66539b-fb70-4f66-8223-b79dba828350",
+                    "format": "email",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "description": "email",
+                    "error": {}
+                },
+                {
+                    "name": "password",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "9c74715c-dd97-4be2-852a-12463db3fe34",
+                    "description": "mật khẩu đã được băm",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "error": {}
+                },
+                {
+                    "name": "role",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "a1f657f0-a79d-4acc-90eb-14429e8bde45",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "description": "Vai trò: học viên, giảng viên, admin",
+                    "sample": "học viên",
+                    "error": {}
+                },
+                {
+                    "name": "profile_pic",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "1ed64ca6-2ea9-43be-b0f6-42974a25281f",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "format": "uri",
+                    "description": "URL hình đại diện",
+                    "error": {}
+                },
+                {
+                    "name": "gender",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "c4508f3d-bc6f-4413-8c8e-c88d47e4b9f4",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "description": "Giới tính",
+                    "sample": "nam",
+                    "error": {}
+                },
+                {
+                    "name": "wishlist",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "array",
+                    "properties": [
+                        {
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "document",
+                            "properties": [
+                                {
+                                    "name": "course_id",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "objectId",
+                                    "GUID": "ea2e59d4-81ac-41f9-a051-bc67f48dd1c5",
+                                    "relationshipType": "Foreign Key",
+                                    "foreignCollection": "34fb3d70-57d0-4028-b679-efc879f2836e",
+                                    "foreignField": [
+                                        "34fb3d70-57d0-4028-b679-efc879f2836e",
+                                        "4c2b9f63-a48c-482b-973f-6f8877d75b58"
+                                    ],
+                                    "parentRelationship": "6b0bd35e-3dea-45b3-95fd-f1471eba130e",
+                                    "description": "ID khóa học",
+                                    "error": {}
+                                }
+                            ],
+                            "additionalProperties": false,
+                            "GUID": "d77bc556-9a07-4dcd-a3f5-5f2cda3834e2",
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "error": {
+                                "name": false,
+                                "code": false
+                            },
+                            "displayName": "course",
+                            "arrayItem": true
+                        }
+                    ],
+                    "additionalItems": true,
+                    "GUID": "ee21f4f1-c36b-406b-8378-456e9b278760",
+                    "description": "Giỏ hàng",
+                    "error": {}
+                },
+                {
+                    "name": "owned_courses",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "array",
+                    "properties": [
+                        {
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "document",
+                            "properties": [
+                                {
+                                    "name": "course_id",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "objectId",
+                                    "GUID": "5b3113c0-37b6-4567-b338-c625e98f9860",
+                                    "relationshipType": "Foreign Key",
+                                    "foreignCollection": "34fb3d70-57d0-4028-b679-efc879f2836e",
+                                    "foreignField": [
+                                        "34fb3d70-57d0-4028-b679-efc879f2836e",
+                                        "4c2b9f63-a48c-482b-973f-6f8877d75b58"
+                                    ],
+                                    "parentRelationship": "dd62e73f-6ef7-45b8-8940-baea4332cb83",
+                                    "description": "ID khóa học",
+                                    "error": {}
+                                },
+                                {
+                                    "name": "purchased_at",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "date",
+                                    "primaryKey": false,
+                                    "GUID": "69946891-1d58-4955-a196-9595bd871305",
+                                    "description": "Ngày mua khóa học",
+                                    "error": {}
+                                }
+                            ],
+                            "additionalProperties": false,
+                            "GUID": "be050d9d-85c0-46d0-8786-e2b0bec3117f",
+                            "arrayItem": true,
+                            "arrayParentType": "array"
+                        }
+                    ],
+                    "additionalItems": true,
+                    "primaryKey": false,
+                    "required": true,
+                    "GUID": "caa99901-95fa-4b1b-ba8e-b10c7d03f942",
+                    "parentRelationship": "",
+                    "childRelationships": [],
+                    "description": "Khóa học đã mua",
+                    "error": {}
+                },
+                {
+                    "name": "billings_id",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "objectId",
+                    "description": "ID thanh toán của người dùng",
+                    "GUID": "9094c875-a394-4efa-92e8-ebcfd99e2e16",
+                    "error": {},
+                    "relationshipType": "Foreign Key",
+                    "foreignCollection": "dd398e23-e65c-4d6f-b4a1-985e080b2b4b",
+                    "foreignField": [
+                        "dd398e23-e65c-4d6f-b4a1-985e080b2b4b",
+                        "b85dd627-f4c6-4312-970c-3c75e62cc3ad"
+                    ],
+                    "parentRelationship": "5a22d3a9-a07a-4408-bb82-cbebe362d9f0"
+                },
+                {
+                    "name": "fb_id",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "c22cf015-6e65-4e71-af60-9e66a41adbc6",
+                    "description": "ID đăng nhập facebook",
+                    "error": {}
+                },
+                {
+                    "name": "fb_token",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "7bcf4a40-4914-41a4-9729-0c3e1fc47148",
+                    "description": "Token đăng nhập facebook",
+                    "error": {}
+                },
+                {
+                    "name": "google_id",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "21737f9b-f405-4e07-b032-4619cf3e752e",
+                    "description": "ID đăng nhập google",
+                    "error": {}
+                },
+                {
+                    "name": "created_at",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "date",
+                    "primaryKey": false,
+                    "GUID": "4504dad5-839c-4a64-9f42-0b56bb41b0e2",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "description": "Được tạo vào ngày",
+                    "error": {}
+                },
+                {
+                    "name": "updated_at",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "date",
+                    "primaryKey": false,
+                    "GUID": "cd4eb72f-fab1-4ce2-a3ec-6c760d6c7cba",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "description": "Được cập nhật vào ngày",
+                    "error": {}
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "bb4b5e48-831d-4814-9f5e-2c7ec9779345"
+            },
+            "isActivated": true,
+            "additionalProperties": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "unique": true,
+                "collation": "null"
+            },
+            "GUID": "5caea1b9-171f-48a0-9410-077677c63b7e",
+            "bucketId": "56fa4821-fb8a-4925-b373-89733686924a",
+            "description": "Bảng thông tin chi tiết gnười dùng"
+        },
+        {
+            "collectionName": "courses",
+            "type": "object",
+            "properties": [
+                {
+                    "name": "_id",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "objectId",
+                    "GUID": "4c2b9f63-a48c-482b-973f-6f8877d75b58",
+                    "required": true,
+                    "primaryKey": true,
+                    "childRelationships": [
+                        "322752c6-7dbd-4cc6-b431-2a796727e906",
+                        "6b0bd35e-3dea-45b3-95fd-f1471eba130e",
+                        "dd62e73f-6ef7-45b8-8940-baea4332cb83",
+                        "fa072c5a-c321-49f8-8ce9-11e25c07206e"
+                    ],
+                    "description": "ID khóa học",
+                    "error": {}
+                },
+                {
+                    "name": "name",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "3cc6e9be-137f-4737-83d3-2e6f2e993e0e",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "description": "Tên khóa học",
+                    "error": {}
+                },
+                {
+                    "name": "description",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "90434fd0-8597-47b3-a900-38f2d842f2d6",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "description": "Mô tả khóa học",
+                    "error": {}
+                },
+                {
+                    "name": "num_enrolled",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "numeric",
+                    "GUID": "ba42e273-92fe-43aa-ab95-d117de4ec519",
+                    "description": "Số người đăng ký",
+                    "error": {}
+                },
+                {
+                    "name": "learning_outcome",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "array",
+                    "properties": [
+                        {
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "string",
+                            "GUID": "477c50c5-13bc-4707-9cb4-0847a911b6bd",
+                            "arrayItem": true,
+                            "arrayParentType": "array"
+                        }
+                    ],
+                    "additionalItems": true,
+                    "GUID": "9e7294c3-527a-4bf8-8797-29490235e9c8",
+                    "description": "Những kỹ năng có được sau khi học",
+                    "error": {}
+                },
+                {
+                    "name": "category",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "array",
+                    "properties": [
+                        {
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "string",
+                            "GUID": "05c21c76-cfbd-4f86-9064-06f35a434f33",
+                            "arrayItem": true,
+                            "arrayParentType": "array"
+                        }
+                    ],
+                    "additionalItems": true,
+                    "GUID": "6f8af114-cda9-45c8-a1a5-55e6398ba5e2",
+                    "description": "Những chủ đề khóa học",
+                    "error": {}
+                },
+                {
+                    "name": "level",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "498c989b-408d-4968-a5fb-a351deade22b",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "description": "Trình độ: Cơ bản, chuyên sâu, chuyên ngành,...",
+                    "error": {}
+                },
+                {
+                    "name": "price",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "numeric",
+                    "GUID": "8ecd4939-cfec-405d-b68b-c5e0d60db5ea",
+                    "description": "Giá tiền khóa học",
+                    "error": {}
+                },
+                {
+                    "name": "poster_url",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "40357f5f-e990-403f-aa10-4793befeef89",
+                    "format": "uri",
+                    "description": "Poster khóa học",
+                    "error": {}
+                },
+                {
+                    "name": "instructors",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "array",
+                    "properties": [
+                        {
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "document",
+                            "properties": [
+                                {
+                                    "name": "User",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "document",
+                                    "properties": [
+                                        {
+                                            "name": "user_id",
+                                            "hackoladeMeta": {},
+                                            "isActivated": true,
+                                            "type": "objectId",
+                                            "GUID": "c2b86c74-5fbc-4750-943a-ab9319ffc328",
+                                            "relationshipType": "Foreign Key",
+                                            "foreignCollection": "5caea1b9-171f-48a0-9410-077677c63b7e",
+                                            "foreignField": [
+                                                "5caea1b9-171f-48a0-9410-077677c63b7e",
+                                                "6f9602ee-7272-44dd-8c1b-bbe20fb6255c"
+                                            ],
+                                            "parentRelationship": "08548243-1b42-47f2-b095-172e566bf03e",
+                                            "description": "ID người dùng giảng viên",
+                                            "error": {}
+                                        },
+                                        {
+                                            "name": "name",
+                                            "hackoladeMeta": {},
+                                            "isActivated": true,
+                                            "type": "string",
+                                            "GUID": "8293cdcb-0438-49c8-b0e3-d9026843760d",
+                                            "description": "Tên giảng viên",
+                                            "error": {}
+                                        },
+                                        {
+                                            "name": "email",
+                                            "hackoladeMeta": {},
+                                            "isActivated": true,
+                                            "type": "string",
+                                            "GUID": "31df3720-0754-4692-a45d-cac87eecb397",
+                                            "format": "email",
+                                            "foreignCollection": "",
+                                            "foreignField": [],
+                                            "description": "email giảng viên",
+                                            "error": {}
+                                        },
+                                        {
+                                            "name": "gender",
+                                            "hackoladeMeta": {},
+                                            "isActivated": true,
+                                            "type": "string",
+                                            "GUID": "c29f6118-687d-4fb3-b9f1-96b484b0bc87",
+                                            "foreignCollection": "",
+                                            "foreignField": [],
+                                            "description": "giới tính giảng viên",
+                                            "error": {}
+                                        },
+                                        {
+                                            "name": "profile_pic",
+                                            "hackoladeMeta": {},
+                                            "isActivated": true,
+                                            "type": "string",
+                                            "GUID": "27560c7b-9c59-4aa8-b910-56982141af56",
+                                            "foreignCollection": "",
+                                            "foreignField": [],
+                                            "format": "uri",
+                                            "description": "hình giảng viên",
+                                            "error": {}
+                                        }
+                                    ],
+                                    "additionalProperties": false,
+                                    "GUID": "e2a0d2e2-f771-4316-b401-3e303b816661",
+                                    "foreignCollection": "",
+                                    "foreignField": [],
+                                    "error": {
+                                        "name": false,
+                                        "code": false
+                                    }
+                                },
+                                {
+                                    "name": "bio",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "string",
+                                    "GUID": "4ea5071e-544d-49aa-9415-c52eb2b38901",
+                                    "relationshipType": "Foreign Key",
+                                    "foreignCollection": "7763d428-db9e-4464-ae2f-19edd261c592",
+                                    "foreignField": [
+                                        "7763d428-db9e-4464-ae2f-19edd261c592",
+                                        "e91fa04c-ca90-42c8-aa64-0cb5235c16f0"
+                                    ],
+                                    "parentRelationship": "2533f787-3102-4221-b095-59a9619e617e",
+                                    "description": "Mô tả giảng viên ",
+                                    "error": {}
+                                }
+                            ],
+                            "additionalProperties": false,
+                            "GUID": "1eba1bef-0de2-429a-b188-41c8f7c06b9f",
+                            "arrayItem": true,
+                            "arrayParentType": "array",
+                            "displayName": "lecturer",
+                            "foreignCollection": "7763d428-db9e-4464-ae2f-19edd261c592",
+                            "error": {}
+                        }
+                    ],
+                    "additionalItems": true,
+                    "GUID": "47fd4bb1-160a-4753-8348-0306369b5042",
+                    "description": "Danh sách giảng viên",
+                    "error": {}
+                },
+                {
+                    "name": "videos",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "array",
+                    "properties": [
+                        {
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "document",
+                            "properties": [
+                                {
+                                    "name": "video_title",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "string",
+                                    "GUID": "25304610-d381-4e70-ad50-8295ffaefbad",
+                                    "description": "Tiêu đề video",
+                                    "error": {}
+                                },
+                                {
+                                    "name": "video_url",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "string",
+                                    "GUID": "2cc46f6f-5f25-42e9-9662-b4ec81e6369d",
+                                    "format": "uri",
+                                    "description": "Liên kết video",
+                                    "error": {}
+                                },
+                                {
+                                    "name": "lesson_note",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "string",
+                                    "GUID": "dfafc443-ad85-4355-811c-2d131c788b6e",
+                                    "description": "Ghi chú bài giảng\n",
+                                    "error": {}
+                                }
+                            ],
+                            "additionalProperties": false,
+                            "GUID": "07f9c1b7-3e11-4f6c-be78-42f67cdd1802",
+                            "arrayItem": true,
+                            "arrayParentType": "array"
+                        }
+                    ],
+                    "additionalItems": true,
+                    "GUID": "6b7717ca-adce-4be9-a79b-508188f68117",
+                    "description": "Danh sách video khóa học\n",
+                    "error": {}
+                },
+                {
+                    "name": "requirements",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "array",
+                    "properties": [
+                        {
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "string",
+                            "GUID": "9adc298c-404c-413d-8731-ed09c617e113",
+                            "arrayItem": true,
+                            "arrayParentType": "array"
+                        }
+                    ],
+                    "additionalItems": true,
+                    "GUID": "0a672927-1452-4e8e-a8b7-c3788afd7935",
+                    "description": "Yêu cầu kiến thức",
+                    "error": {}
+                },
+                {
+                    "name": "students",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "array",
+                    "properties": [
+                        {
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "document",
+                            "properties": [
+                                {
+                                    "name": "user_id",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "objectId",
+                                    "GUID": "d1ce568b-196c-4688-b768-656232a9c33a",
+                                    "relationshipType": "Foreign Key",
+                                    "foreignCollection": "5caea1b9-171f-48a0-9410-077677c63b7e",
+                                    "foreignField": [
+                                        "5caea1b9-171f-48a0-9410-077677c63b7e",
+                                        "6f9602ee-7272-44dd-8c1b-bbe20fb6255c"
+                                    ],
+                                    "parentRelationship": "1fa088c1-d98e-4288-bb16-d35df76f8baf",
+                                    "description": "id học viên",
+                                    "error": {}
+                                }
+                            ],
+                            "additionalProperties": false,
+                            "GUID": "153b2036-bd47-4491-a144-79adbc27177a",
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "displayName": "User",
+                            "arrayItem": true,
+                            "description": "Liên kết với bảng users",
+                            "error": {}
+                        }
+                    ],
+                    "additionalItems": true,
+                    "GUID": "a759e0af-b9a4-4204-ba96-59302ad6909d",
+                    "description": "Danh sách học viên",
+                    "error": {}
+                },
+                {
+                    "name": "course_review",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "array",
+                    "properties": [
+                        {
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "document",
+                            "properties": [
+                                {
+                                    "name": "user_id",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "objectId",
+                                    "GUID": "a9d37e6c-9455-4669-9c7a-27cdc0e867e3",
+                                    "relationshipType": "Foreign Key",
+                                    "foreignCollection": "5caea1b9-171f-48a0-9410-077677c63b7e",
+                                    "foreignField": [
+                                        "5caea1b9-171f-48a0-9410-077677c63b7e",
+                                        "6f9602ee-7272-44dd-8c1b-bbe20fb6255c"
+                                    ],
+                                    "parentRelationship": "51211563-d260-4743-9dae-e4c9f5c3719c",
+                                    "description": "id học viên đánh giá",
+                                    "error": {}
+                                },
+                                {
+                                    "name": "rating",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "numeric",
+                                    "GUID": "6b51e40d-61dc-42ad-ab1e-0ea144180bf4",
+                                    "foreignCollection": "",
+                                    "foreignField": [],
+                                    "sample": 3.5,
+                                    "description": "Đánh giá từ 1 -> 5 sao",
+                                    "error": {}
+                                },
+                                {
+                                    "name": "comment",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "string",
+                                    "GUID": "56bf8f13-51e8-4573-9fb5-ca47133d44cf",
+                                    "foreignCollection": "",
+                                    "foreignField": [],
+                                    "description": "Bình luận",
+                                    "error": {}
+                                },
+                                {
+                                    "name": "created_at",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "date",
+                                    "primaryKey": false,
+                                    "GUID": "c4f2249f-0a41-47b5-a70f-7997441cffed",
+                                    "foreignCollection": "",
+                                    "foreignField": [],
+                                    "description": "ngày tạo bình luận",
+                                    "error": {}
+                                },
+                                {
+                                    "name": "updated_at",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "date",
+                                    "primaryKey": false,
+                                    "GUID": "0e65c959-b46c-485b-b55d-f900e78d33c2",
+                                    "foreignCollection": "",
+                                    "foreignField": [],
+                                    "error": {}
+                                }
+                            ],
+                            "additionalProperties": false,
+                            "GUID": "feb22285-77d2-45f0-bddf-4d086ebfe2d7",
+                            "arrayItem": true,
+                            "arrayParentType": "array",
+                            "error": {}
+                        }
+                    ],
+                    "additionalItems": true,
+                    "GUID": "210ebaf0-907e-4809-9052-3c609c7ebff4",
+                    "description": "Review khóa học",
+                    "error": {}
+                },
+                {
+                    "name": "created_at",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "date",
+                    "primaryKey": false,
+                    "GUID": "f22d4509-0b95-4927-b9fd-7b5d18fce13d",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "description": "Được tạo vào ngày",
+                    "error": {}
+                },
+                {
+                    "name": "updated_at",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "date",
+                    "primaryKey": false,
+                    "GUID": "fff46fea-5382-4e80-969a-987732b4d596",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "description": "Được cập nhật vào ngày",
+                    "error": {}
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "59abc50d-d3db-4912-abfc-9fd6c8966a22"
+            },
+            "isActivated": true,
+            "additionalProperties": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "unique": true,
+                "collation": "null"
+            },
+            "GUID": "34fb3d70-57d0-4028-b679-efc879f2836e",
+            "description": "Bảng thông tin khóa học",
+            "bucketId": "56fa4821-fb8a-4925-b373-89733686924a"
+        },
+        {
+            "collectionName": "lecturer",
+            "type": "object",
+            "properties": [
+                {
+                    "name": "User",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "document",
+                    "properties": [
+                        {
+                            "name": "user_id",
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "objectId",
+                            "GUID": "be59b29d-b720-4080-9962-6444a170aae5",
+                            "error": {},
+                            "relationshipType": "Foreign Key",
+                            "foreignCollection": "5caea1b9-171f-48a0-9410-077677c63b7e",
+                            "foreignField": [
+                                "5caea1b9-171f-48a0-9410-077677c63b7e",
+                                "6f9602ee-7272-44dd-8c1b-bbe20fb6255c"
+                            ],
+                            "parentRelationship": "9c4de11c-3531-4e67-8395-d732fd56d371"
+                        },
+                        {
+                            "name": "name",
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "string",
+                            "GUID": "ab2a6165-4a95-4555-bab2-ab1aed75ecd2",
+                            "error": {}
+                        },
+                        {
+                            "name": "email",
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "string",
+                            "GUID": "7146d843-accf-494f-88fd-4acddb0c4ecc",
+                            "format": "email",
+                            "error": {},
+                            "foreignCollection": "",
+                            "foreignField": []
+                        },
+                        {
+                            "name": "gender",
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "string",
+                            "GUID": "d257387a-5101-4ff8-8552-70801527ec81",
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "error": {}
+                        },
+                        {
+                            "name": "profile_pic",
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "string",
+                            "GUID": "c16e98a6-8747-4a46-ae54-bc6f42813393",
+                            "foreignCollection": "",
+                            "foreignField": [],
+                            "format": "uri",
+                            "error": {}
+                        }
+                    ],
+                    "additionalProperties": false,
+                    "GUID": "f603d220-29bf-401e-86ec-66b54f47d4e4",
+                    "error": {},
+                    "foreignCollection": "",
+                    "foreignField": []
+                },
+                {
+                    "name": "bio",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "e91fa04c-ca90-42c8-aa64-0cb5235c16f0",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "childRelationships": [
+                        "2533f787-3102-4221-b095-59a9619e617e"
+                    ],
+                    "description": "Mô tả giảng viên",
+                    "sample": "Siêu giáo viên, tác giả của hơn 300 framwork nổi tiếng của Javascript, C#, ..., 30 năm kinh nghiệp giảng dạy các trường đại học danh tiếng",
+                    "error": {}
+                },
+                {
+                    "name": "lecturer_courses",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "array",
+                    "properties": [
+                        {
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "document",
+                            "properties": [
+                                {
+                                    "name": "course_id",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "objectId",
+                                    "GUID": "72b9a15e-d6b2-49c1-8e1e-1c60b7a6206c",
+                                    "error": {},
+                                    "relationshipType": "Foreign Key",
+                                    "foreignCollection": "34fb3d70-57d0-4028-b679-efc879f2836e",
+                                    "foreignField": [
+                                        "34fb3d70-57d0-4028-b679-efc879f2836e",
+                                        "4c2b9f63-a48c-482b-973f-6f8877d75b58"
+                                    ],
+                                    "parentRelationship": "322752c6-7dbd-4cc6-b431-2a796727e906"
+                                }
+                            ],
+                            "additionalProperties": false,
+                            "GUID": "c9b022c4-2a45-4d89-9f38-681081e0b84b",
+                            "arrayItem": true,
+                            "arrayParentType": "array",
+                            "error": {},
+                            "displayName": "course"
+                        }
+                    ],
+                    "additionalItems": true,
+                    "GUID": "5ef33f10-453f-4ae2-a029-152d8d7cd3a1",
+                    "description": "Khóa học phụ trách",
+                    "error": {}
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "8615da90-d46e-4992-907a-ee91b20eca76"
+            },
+            "isActivated": true,
+            "additionalProperties": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "unique": true,
+                "collation": "null"
+            },
+            "GUID": "7763d428-db9e-4464-ae2f-19edd261c592",
+            "bucketId": "56fa4821-fb8a-4925-b373-89733686924a",
+            "description": "Bảng thông tin giảng viên, giảng viên là một người dùng đặc biệt"
+        },
+        {
+            "collectionName": "billings",
+            "type": "object",
+            "properties": [
+                {
+                    "name": "_id",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "objectId",
+                    "GUID": "b85dd627-f4c6-4312-970c-3c75e62cc3ad",
+                    "description": "ID chi tiết hóa đơn",
+                    "error": {},
+                    "childRelationships": [
+                        "5a22d3a9-a07a-4408-bb82-cbebe362d9f0"
+                    ]
+                },
+                {
+                    "name": "user_id",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "objectId",
+                    "GUID": "86d31629-427a-41ef-9c83-4338dd46f10e",
+                    "relationshipType": "Foreign Key",
+                    "foreignCollection": "5caea1b9-171f-48a0-9410-077677c63b7e",
+                    "foreignField": [
+                        "5caea1b9-171f-48a0-9410-077677c63b7e",
+                        "6f9602ee-7272-44dd-8c1b-bbe20fb6255c"
+                    ],
+                    "parentRelationship": "00eeb596-86e2-497d-a673-4c67d0dd1d52",
+                    "description": "ID người dùng",
+                    "error": {}
+                },
+                {
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "32015ca7-d719-429e-b805-54c72f6abdb0",
+                    "name": "user_name",
+                    "sample": "John Smith",
+                    "description": "Họ tên người mua",
+                    "error": {}
+                },
+                {
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "string",
+                    "GUID": "9edd1e07-f6da-4cc0-b6e8-32b450901ef1",
+                    "name": "email",
+                    "format": "email",
+                    "description": "Email người dùng",
+                    "error": {}
+                },
+                {
+                    "name": "orders",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "array",
+                    "properties": [
+                        {
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "document",
+                            "properties": [
+                                {
+                                    "name": "order_id",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "objectId",
+                                    "GUID": "866fe39b-1de1-4d6f-859e-6d7c69717358",
+                                    "description": "ID mua hàng",
+                                    "error": {}
+                                },
+                                {
+                                    "name": "payment_method",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "document",
+                                    "properties": [
+                                        {
+                                            "name": "type",
+                                            "hackoladeMeta": {},
+                                            "isActivated": true,
+                                            "type": "string",
+                                            "GUID": "7cf35c2e-5608-4618-8012-f819b9a1fa65",
+                                            "description": "loại: thẻ tín dụng, momo, vv",
+                                            "sample": "credit_card",
+                                            "error": {}
+                                        },
+                                        {
+                                            "name": "card_number",
+                                            "hackoladeMeta": {},
+                                            "isActivated": true,
+                                            "type": "string",
+                                            "description": "loại: thẻ tín dụng, momo, vv",
+                                            "GUID": "b1e0292d-8575-41e2-aafb-2f47c32ea798",
+                                            "sample": "6759-4620-0719-8338",
+                                            "error": {}
+                                        },
+                                        {
+                                            "name": "expiration_date",
+                                            "hackoladeMeta": {},
+                                            "isActivated": true,
+                                            "type": "string",
+                                            "primaryKey": false,
+                                            "description": "loại: thẻ tín dụng, momo, vv",
+                                            "GUID": "baa1ba09-17fd-47fe-9253-5bc40a7757bf",
+                                            "sample": "12/23",
+                                            "error": {}
+                                        },
+                                        {
+                                            "name": "security_code",
+                                            "hackoladeMeta": {},
+                                            "isActivated": true,
+                                            "type": "numeric",
+                                            "description": "loại: thẻ tín dụng, momo, vv",
+                                            "GUID": "e5e5e5cd-46ef-46d6-ac0a-7cc9c29d7f4b",
+                                            "sample": 1234,
+                                            "error": {}
+                                        }
+                                    ],
+                                    "additionalProperties": false,
+                                    "GUID": "0ff296d9-3ad7-4137-9a1f-3ea4ec0a4532",
+                                    "description": "Phương thức thanh toán",
+                                    "error": {}
+                                },
+                                {
+                                    "name": "date",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "date",
+                                    "primaryKey": false,
+                                    "GUID": "47a345ba-ed34-47dc-bbe0-c879c7d607dc",
+                                    "description": "Ngày mua các khóa học",
+                                    "error": {}
+                                },
+                                {
+                                    "name": "status",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "string",
+                                    "GUID": "7ad03c69-bca6-4f4a-a502-51f9631b847f",
+                                    "description": "Trạng thái hóa đơn",
+                                    "sample": "Đã thanh toán",
+                                    "error": {}
+                                },
+                                {
+                                    "name": "items",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "array",
+                                    "properties": [
+                                        {
+                                            "hackoladeMeta": {},
+                                            "isActivated": true,
+                                            "type": "document",
+                                            "properties": [
+                                                {
+                                                    "name": "course_id",
+                                                    "hackoladeMeta": {},
+                                                    "isActivated": true,
+                                                    "type": "objectId",
+                                                    "GUID": "386052d2-ec30-4e18-985a-603c7487a282",
+                                                    "relationshipType": "Foreign Key",
+                                                    "foreignCollection": "34fb3d70-57d0-4028-b679-efc879f2836e",
+                                                    "foreignField": [
+                                                        "34fb3d70-57d0-4028-b679-efc879f2836e",
+                                                        "4c2b9f63-a48c-482b-973f-6f8877d75b58"
+                                                    ],
+                                                    "parentRelationship": "fa072c5a-c321-49f8-8ce9-11e25c07206e",
+                                                    "description": "ID khóa học",
+                                                    "error": {}
+                                                },
+                                                {
+                                                    "name": "course_name",
+                                                    "hackoladeMeta": {},
+                                                    "isActivated": true,
+                                                    "type": "string",
+                                                    "description": "Tên khóa học",
+                                                    "GUID": "1a30ba1f-3963-483f-b123-829156468d75",
+                                                    "error": {}
+                                                },
+                                                {
+                                                    "name": "course_price",
+                                                    "hackoladeMeta": {},
+                                                    "isActivated": true,
+                                                    "type": "numeric",
+                                                    "description": "Giá 1 khóa học",
+                                                    "GUID": "a836d7b6-cc7f-42a4-b131-54836d2978ee",
+                                                    "sample": 200000,
+                                                    "error": {}
+                                                }
+                                            ],
+                                            "additionalProperties": false,
+                                            "GUID": "2f1e0eff-8794-4990-b66f-a066348e0915",
+                                            "arrayItem": true,
+                                            "arrayParentType": "array"
+                                        }
+                                    ],
+                                    "additionalItems": true,
+                                    "GUID": "944af035-7d66-46c3-9af9-e6bab946d689",
+                                    "description": "Danh sách các khóa học mua",
+                                    "error": {}
+                                },
+                                {
+                                    "name": "total_amount",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "numeric",
+                                    "GUID": "d5aae5bc-e19a-4ab2-bd9d-7be0fe872836",
+                                    "sample": 150000,
+                                    "description": "Tổng giá trị của 1 order",
+                                    "error": {}
+                                }
+                            ],
+                            "additionalProperties": false,
+                            "GUID": "8a9bdc9d-dbe2-4400-8dda-b63ad1eed8ea",
+                            "arrayItem": true,
+                            "arrayParentType": "array"
+                        }
+                    ],
+                    "additionalItems": true,
+                    "GUID": "7dd54342-552d-469e-8284-956f66fec46c",
+                    "description": "hóa đơn",
+                    "error": {}
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "6ae89ef2-7527-4674-916c-005527ac5df2"
+            },
+            "isActivated": true,
+            "additionalProperties": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "unique": true,
+                "collation": "null"
+            },
+            "GUID": "dd398e23-e65c-4d6f-b4a1-985e080b2b4b",
+            "bucketId": "56fa4821-fb8a-4925-b373-89733686924a",
+            "description": "Bảng chi tiết hóa đơn & thanh toán"
+        }
+    ],
+    "buckets": [
+        {
+            "name": "BanKhoaHoc",
+            "type": "bucket",
+            "collectionIds": [
+                "7763d428-db9e-4464-ae2f-19edd261c592",
+                "34fb3d70-57d0-4028-b679-efc879f2836e",
+                "5caea1b9-171f-48a0-9410-077677c63b7e",
+                "dd398e23-e65c-4d6f-b4a1-985e080b2b4b"
+            ],
+            "backgroundColor": {
+                "r": 254,
+                "g": 193,
+                "b": 7,
+                "a": 1
+            },
+            "show": true,
+            "isActivated": true,
+            "GUID": "56fa4821-fb8a-4925-b373-89733686924a"
+        }
+    ],
+    "views": [],
+    "relationships": [
+        {
+            "name": "fk lecturer.User.user_id to users._id",
+            "relationshipType": "Foreign Key",
+            "parentField": [
+                [
+                    "5caea1b9-171f-48a0-9410-077677c63b7e",
+                    "6f9602ee-7272-44dd-8c1b-bbe20fb6255c"
+                ]
+            ],
+            "parentCardinality": "1",
+            "childField": [
+                [
+                    "7763d428-db9e-4464-ae2f-19edd261c592",
+                    "f603d220-29bf-401e-86ec-66b54f47d4e4",
+                    "be59b29d-b720-4080-9962-6444a170aae5"
+                ]
+            ],
+            "childCardinality": "1",
+            "parentCollection": "5caea1b9-171f-48a0-9410-077677c63b7e",
+            "childCollection": "7763d428-db9e-4464-ae2f-19edd261c592",
+            "GUID": "9c4de11c-3531-4e67-8395-d732fd56d371",
+            "hackoladeStyles": {
+                "GUID": "d0959d14-a54e-4efe-a3a5-63e2a252158e",
+                "autoPositioning": true,
+                "type": "Orthogonal",
+                "thickness": 2,
+                "color": "#79c4ff",
+                "dataType": "",
+                "shape": [
+                    {
+                        "x": 1802.1206007642854,
+                        "y": 855.4049667060862
+                    },
+                    {
+                        "x": 1802.1206007642854,
+                        "y": 956.1867127378323
+                    },
+                    {
+                        "x": 1802.7623241202944,
+                        "y": 956.1867127378323
+                    },
+                    {
+                        "x": 1802.7623241202944,
+                        "y": 1056.9684587695783
+                    }
+                ],
+                "sides": [
+                    "bottom",
+                    "top"
+                ]
+            }
+        },
+        {
+            "name": "fk lecturer.lecturer_courses.[0].course_id to courses._id",
+            "relationshipType": "Foreign Key",
+            "parentField": [
+                [
+                    "34fb3d70-57d0-4028-b679-efc879f2836e",
+                    "4c2b9f63-a48c-482b-973f-6f8877d75b58"
+                ]
+            ],
+            "parentCardinality": "1",
+            "childField": [
+                [
+                    "7763d428-db9e-4464-ae2f-19edd261c592",
+                    "5ef33f10-453f-4ae2-a029-152d8d7cd3a1",
+                    "c9b022c4-2a45-4d89-9f38-681081e0b84b",
+                    "72b9a15e-d6b2-49c1-8e1e-1c60b7a6206c"
+                ]
+            ],
+            "childCardinality": "1",
+            "parentCollection": "34fb3d70-57d0-4028-b679-efc879f2836e",
+            "childCollection": "7763d428-db9e-4464-ae2f-19edd261c592",
+            "GUID": "322752c6-7dbd-4cc6-b431-2a796727e906",
+            "hackoladeStyles": {
+                "GUID": "f37e945a-a5dd-49de-b60b-2009a7039b17",
+                "autoPositioning": false,
+                "type": "Orthogonal",
+                "thickness": 2,
+                "color": "#79c4ff",
+                "dataType": "",
+                "shape": [
+                    {
+                        "x": 1916.1206007642854,
+                        "y": 836.2768487922538
+                    },
+                    {
+                        "x": 2278.9301245738106,
+                        "y": 836.2768487922538
+                    },
+                    {
+                        "x": 2278.9301245738106,
+                        "y": 672.5648306516637
+                    },
+                    {
+                        "x": 2403.8122107416075,
+                        "y": 672.5648306516637
+                    }
+                ],
+                "sides": [
+                    "right",
+                    "left"
+                ]
+            },
+            "description": "ID khóa học"
+        },
+        {
+            "name": "fk users.wishlist.[0].course_id to courses._id",
+            "relationshipType": "Foreign Key",
+            "parentField": [
+                [
+                    "34fb3d70-57d0-4028-b679-efc879f2836e",
+                    "4c2b9f63-a48c-482b-973f-6f8877d75b58"
+                ]
+            ],
+            "parentCardinality": "1",
+            "childField": [
+                [
+                    "5caea1b9-171f-48a0-9410-077677c63b7e",
+                    "ee21f4f1-c36b-406b-8378-456e9b278760",
+                    "d77bc556-9a07-4dcd-a3f5-5f2cda3834e2",
+                    "ea2e59d4-81ac-41f9-a051-bc67f48dd1c5"
+                ]
+            ],
+            "childCardinality": "1",
+            "parentCollection": "34fb3d70-57d0-4028-b679-efc879f2836e",
+            "childCollection": "5caea1b9-171f-48a0-9410-077677c63b7e",
+            "GUID": "6b0bd35e-3dea-45b3-95fd-f1471eba130e",
+            "hackoladeStyles": {
+                "GUID": "8c32b4ef-00ab-49b5-aebe-dbef8fa2f3af",
+                "autoPositioning": true,
+                "type": "Orthogonal",
+                "thickness": 2,
+                "color": "#79c4ff",
+                "dataType": "",
+                "shape": [
+                    {
+                        "x": 1940.2623241202944,
+                        "y": 1262.4684587695783
+                    },
+                    {
+                        "x": 2172.037267430951,
+                        "y": 1262.4684587695783
+                    },
+                    {
+                        "x": 2172.037267430951,
+                        "y": 1130.93217759044
+                    },
+                    {
+                        "x": 2403.8122107416075,
+                        "y": 1130.93217759044
+                    }
+                ],
+                "sides": [
+                    "right",
+                    "left"
+                ]
+            }
+        },
+        {
+            "name": "fk users.owned_courses.[0].course_id to courses._id",
+            "relationshipType": "Foreign Key",
+            "parentField": [
+                [
+                    "34fb3d70-57d0-4028-b679-efc879f2836e",
+                    "4c2b9f63-a48c-482b-973f-6f8877d75b58"
+                ]
+            ],
+            "parentCardinality": "1",
+            "childField": [
+                [
+                    "5caea1b9-171f-48a0-9410-077677c63b7e",
+                    "caa99901-95fa-4b1b-ba8e-b10c7d03f942",
+                    "be050d9d-85c0-46d0-8786-e2b0bec3117f",
+                    "5b3113c0-37b6-4567-b338-c625e98f9860"
+                ]
+            ],
+            "childCardinality": "1",
+            "parentCollection": "34fb3d70-57d0-4028-b679-efc879f2836e",
+            "childCollection": "5caea1b9-171f-48a0-9410-077677c63b7e",
+            "GUID": "dd62e73f-6ef7-45b8-8940-baea4332cb83",
+            "hackoladeStyles": {
+                "GUID": "1b25a383-b4a0-434c-a85a-abbbbc2f198d",
+                "autoPositioning": true,
+                "type": "Orthogonal",
+                "thickness": 2,
+                "color": "#79c4ff",
+                "dataType": "",
+                "shape": [
+                    {
+                        "x": 1940.2623241202944,
+                        "y": 1313.8434587695783
+                    },
+                    {
+                        "x": 2172.037267430951,
+                        "y": 1313.8434587695783
+                    },
+                    {
+                        "x": 2172.037267430951,
+                        "y": 1253.43217759044
+                    },
+                    {
+                        "x": 2403.8122107416075,
+                        "y": 1253.43217759044
+                    }
+                ],
+                "sides": [
+                    "right",
+                    "left"
+                ]
+            }
+        },
+        {
+            "name": "fk courses.students.[0].user_id to users._id",
+            "relationshipType": "Foreign Key",
+            "parentField": [
+                [
+                    "5caea1b9-171f-48a0-9410-077677c63b7e",
+                    "6f9602ee-7272-44dd-8c1b-bbe20fb6255c"
+                ]
+            ],
+            "parentCardinality": "1",
+            "childField": [
+                [
+                    "34fb3d70-57d0-4028-b679-efc879f2836e",
+                    "a759e0af-b9a4-4204-ba96-59302ad6909d",
+                    "153b2036-bd47-4491-a144-79adbc27177a",
+                    "d1ce568b-196c-4688-b768-656232a9c33a"
+                ]
+            ],
+            "childCardinality": "1",
+            "parentCollection": "5caea1b9-171f-48a0-9410-077677c63b7e",
+            "childCollection": "34fb3d70-57d0-4028-b679-efc879f2836e",
+            "GUID": "1fa088c1-d98e-4288-bb16-d35df76f8baf",
+            "hackoladeStyles": {
+                "GUID": "278bb316-fad3-4016-926c-ca76aa6fb961",
+                "autoPositioning": true,
+                "type": "Orthogonal",
+                "thickness": 2,
+                "color": "#79c4ff",
+                "dataType": "",
+                "shape": [
+                    {
+                        "x": 2403.8122107416075,
+                        "y": 885.9321775904401
+                    },
+                    {
+                        "x": 2172.037267430951,
+                        "y": 885.9321775904401
+                    },
+                    {
+                        "x": 2172.037267430951,
+                        "y": 1159.7184587695783
+                    },
+                    {
+                        "x": 1940.2623241202944,
+                        "y": 1159.7184587695783
+                    }
+                ],
+                "sides": [
+                    "left",
+                    "right"
+                ]
+            }
+        },
+        {
+            "name": "fk courses.course_review.[0].user_id to users._id",
+            "relationshipType": "Foreign Key",
+            "parentField": [
+                [
+                    "5caea1b9-171f-48a0-9410-077677c63b7e",
+                    "6f9602ee-7272-44dd-8c1b-bbe20fb6255c"
+                ]
+            ],
+            "parentCardinality": "1",
+            "childField": [
+                [
+                    "34fb3d70-57d0-4028-b679-efc879f2836e",
+                    "210ebaf0-907e-4809-9052-3c609c7ebff4",
+                    "feb22285-77d2-45f0-bddf-4d086ebfe2d7",
+                    "a9d37e6c-9455-4669-9c7a-27cdc0e867e3"
+                ]
+            ],
+            "childCardinality": "1",
+            "parentCollection": "5caea1b9-171f-48a0-9410-077677c63b7e",
+            "childCollection": "34fb3d70-57d0-4028-b679-efc879f2836e",
+            "GUID": "51211563-d260-4743-9dae-e4c9f5c3719c",
+            "hackoladeStyles": {
+                "GUID": "b9f1c24b-a4cb-4484-b566-6654c0436794",
+                "autoPositioning": true,
+                "type": "Orthogonal",
+                "thickness": 2,
+                "color": "#79c4ff",
+                "dataType": "",
+                "shape": [
+                    {
+                        "x": 2403.8122107416075,
+                        "y": 1008.4321775904401
+                    },
+                    {
+                        "x": 2172.037267430951,
+                        "y": 1008.4321775904401
+                    },
+                    {
+                        "x": 2172.037267430951,
+                        "y": 1211.0934587695783
+                    },
+                    {
+                        "x": 1940.2623241202944,
+                        "y": 1211.0934587695783
+                    }
+                ],
+                "sides": [
+                    "left",
+                    "right"
+                ]
+            }
+        },
+        {
+            "name": "fk courses.instructors.[0].User.user_id to users._id",
+            "relationshipType": "Foreign Key",
+            "parentField": [
+                [
+                    "5caea1b9-171f-48a0-9410-077677c63b7e",
+                    "6f9602ee-7272-44dd-8c1b-bbe20fb6255c"
+                ]
+            ],
+            "parentCardinality": "1",
+            "childField": [
+                [
+                    "34fb3d70-57d0-4028-b679-efc879f2836e",
+                    "47fd4bb1-160a-4753-8348-0306369b5042",
+                    "1eba1bef-0de2-429a-b188-41c8f7c06b9f",
+                    "e2a0d2e2-f771-4316-b401-3e303b816661",
+                    "c2b86c74-5fbc-4750-943a-ab9319ffc328"
+                ]
+            ],
+            "childCardinality": "1",
+            "parentCollection": "5caea1b9-171f-48a0-9410-077677c63b7e",
+            "childCollection": "34fb3d70-57d0-4028-b679-efc879f2836e",
+            "GUID": "08548243-1b42-47f2-b095-172e566bf03e",
+            "hackoladeStyles": {
+                "GUID": "0f35ac72-cc1a-4ca2-ad6e-654b2950fc70",
+                "autoPositioning": true,
+                "type": "Orthogonal",
+                "thickness": 2,
+                "color": "#79c4ff",
+                "dataType": "",
+                "shape": [
+                    {
+                        "x": 2403.8122107416075,
+                        "y": 763.4321775904401
+                    },
+                    {
+                        "x": 2172.037267430951,
+                        "y": 763.4321775904401
+                    },
+                    {
+                        "x": 2172.037267430951,
+                        "y": 1108.3434587695783
+                    },
+                    {
+                        "x": 1940.2623241202944,
+                        "y": 1108.3434587695783
+                    }
+                ],
+                "sides": [
+                    "left",
+                    "right"
+                ]
+            }
+        },
+        {
+            "name": "fk courses.instructors.[0].bio to lecturer.bio",
+            "relationshipType": "Foreign Key",
+            "parentField": [
+                [
+                    "7763d428-db9e-4464-ae2f-19edd261c592",
+                    "e91fa04c-ca90-42c8-aa64-0cb5235c16f0"
+                ]
+            ],
+            "parentCardinality": "1",
+            "childField": [
+                [
+                    "34fb3d70-57d0-4028-b679-efc879f2836e",
+                    "47fd4bb1-160a-4753-8348-0306369b5042",
+                    "1eba1bef-0de2-429a-b188-41c8f7c06b9f",
+                    "4ea5071e-544d-49aa-9415-c52eb2b38901"
+                ]
+            ],
+            "childCardinality": "1",
+            "parentCollection": "7763d428-db9e-4464-ae2f-19edd261c592",
+            "childCollection": "34fb3d70-57d0-4028-b679-efc879f2836e",
+            "GUID": "2533f787-3102-4221-b095-59a9619e617e",
+            "hackoladeStyles": {
+                "GUID": "f34d97ae-6640-4953-8336-bb98a0223239",
+                "autoPositioning": true,
+                "type": "Orthogonal",
+                "thickness": 2,
+                "color": "#79c4ff",
+                "dataType": "",
+                "shape": [
+                    {
+                        "x": 2403.8122107416075,
+                        "y": 745.9321775904401
+                    },
+                    {
+                        "x": 2159.9664057529462,
+                        "y": 745.9321775904401
+                    },
+                    {
+                        "x": 2159.9664057529462,
+                        "y": 748.9049667060862
+                    },
+                    {
+                        "x": 1916.1206007642854,
+                        "y": 748.9049667060862
+                    }
+                ],
+                "sides": [
+                    "left",
+                    "right"
+                ]
+            }
+        },
+        {
+            "name": "fk billings.user_id to users._id",
+            "relationshipType": "Foreign Key",
+            "parentField": [
+                [
+                    "5caea1b9-171f-48a0-9410-077677c63b7e",
+                    "6f9602ee-7272-44dd-8c1b-bbe20fb6255c"
+                ]
+            ],
+            "parentCardinality": "1",
+            "childField": [
+                [
+                    "dd398e23-e65c-4d6f-b4a1-985e080b2b4b",
+                    "86d31629-427a-41ef-9c83-4338dd46f10e"
+                ]
+            ],
+            "childCardinality": "1",
+            "parentCollection": "5caea1b9-171f-48a0-9410-077677c63b7e",
+            "childCollection": "dd398e23-e65c-4d6f-b4a1-985e080b2b4b",
+            "GUID": "00eeb596-86e2-497d-a673-4c67d0dd1d52",
+            "hackoladeStyles": {
+                "GUID": "a2b42729-78a2-44f5-ae5d-4efd72e18834",
+                "autoPositioning": true,
+                "type": "Orthogonal",
+                "thickness": 2,
+                "color": "#79c4ff",
+                "dataType": "",
+                "shape": [
+                    {
+                        "x": 2084.4131762362863,
+                        "y": 1622.2501672456137
+                    },
+                    {
+                        "x": 2012.3377501782902,
+                        "y": 1622.2501672456137
+                    },
+                    {
+                        "x": 2012.3377501782902,
+                        "y": 1365.2184587695783
+                    },
+                    {
+                        "x": 1940.2623241202944,
+                        "y": 1365.2184587695783
+                    }
+                ],
+                "sides": [
+                    "left",
+                    "right"
+                ]
+            }
+        },
+        {
+            "name": "fk billings.orders.[0].items.[0].course_id to courses._id",
+            "relationshipType": "Foreign Key",
+            "parentField": [
+                [
+                    "34fb3d70-57d0-4028-b679-efc879f2836e",
+                    "4c2b9f63-a48c-482b-973f-6f8877d75b58"
+                ]
+            ],
+            "parentCardinality": "1",
+            "childField": [
+                [
+                    "dd398e23-e65c-4d6f-b4a1-985e080b2b4b",
+                    "7dd54342-552d-469e-8284-956f66fec46c",
+                    "8a9bdc9d-dbe2-4400-8dda-b63ad1eed8ea",
+                    "944af035-7d66-46c3-9af9-e6bab946d689",
+                    "2f1e0eff-8794-4990-b66f-a066348e0915",
+                    "386052d2-ec30-4e18-985a-603c7487a282"
+                ]
+            ],
+            "childCardinality": "1",
+            "parentCollection": "34fb3d70-57d0-4028-b679-efc879f2836e",
+            "childCollection": "dd398e23-e65c-4d6f-b4a1-985e080b2b4b",
+            "GUID": "fa072c5a-c321-49f8-8ce9-11e25c07206e",
+            "hackoladeStyles": {
+                "GUID": "160e00bc-033e-43d4-8c06-58681a0c1406",
+                "autoPositioning": true,
+                "type": "Orthogonal",
+                "thickness": 2,
+                "color": "#79c4ff",
+                "dataType": "",
+                "shape": [
+                    {
+                        "x": 2224.9131762362863,
+                        "y": 1515.2501672456137
+                    },
+                    {
+                        "x": 2224.9131762362863,
+                        "y": 1445.5911724180269
+                    },
+                    {
+                        "x": 2542.3122107416075,
+                        "y": 1445.5911724180269
+                    },
+                    {
+                        "x": 2542.3122107416075,
+                        "y": 1375.93217759044
+                    }
+                ],
+                "sides": [
+                    "top",
+                    "bottom"
+                ]
+            }
+        },
+        {
+            "name": "fk users.billings_id to billings._id",
+            "relationshipType": "Foreign Key",
+            "parentField": [
+                [
+                    "dd398e23-e65c-4d6f-b4a1-985e080b2b4b",
+                    "b85dd627-f4c6-4312-970c-3c75e62cc3ad"
+                ]
+            ],
+            "parentCardinality": "1",
+            "childField": [
+                [
+                    "5caea1b9-171f-48a0-9410-077677c63b7e",
+                    "9094c875-a394-4efa-92e8-ebcfd99e2e16"
+                ]
+            ],
+            "childCardinality": "1",
+            "parentCollection": "dd398e23-e65c-4d6f-b4a1-985e080b2b4b",
+            "childCollection": "5caea1b9-171f-48a0-9410-077677c63b7e",
+            "GUID": "5a22d3a9-a07a-4408-bb82-cbebe362d9f0",
+            "hackoladeStyles": {
+                "GUID": "8b4a9854-d795-4439-a84d-a770cb25e483",
+                "autoPositioning": true,
+                "type": "Orthogonal",
+                "thickness": 2,
+                "color": "#79c4ff",
+                "dataType": "",
+                "shape": [
+                    {
+                        "x": 1940.2623241202944,
+                        "y": 1416.5934587695783
+                    },
+                    {
+                        "x": 2012.3377501782902,
+                        "y": 1416.5934587695783
+                    },
+                    {
+                        "x": 2012.3377501782902,
+                        "y": 1729.2501672456137
+                    },
+                    {
+                        "x": 2084.4131762362863,
+                        "y": 1729.2501672456137
+                    }
+                ],
+                "sides": [
+                    "right",
+                    "left"
+                ]
+            }
+        }
+    ],
+    "users": [],
+    "diagramViews": [],
+    "idToNameHashTable": {
+        "6f9602ee-7272-44dd-8c1b-bbe20fb6255c": "_id",
+        "b5e75e8b-48c7-41e0-9d14-3827822a3fac": "username",
+        "ff66539b-fb70-4f66-8223-b79dba828350": "email",
+        "9c74715c-dd97-4be2-852a-12463db3fe34": "password",
+        "a1f657f0-a79d-4acc-90eb-14429e8bde45": "role",
+        "ee21f4f1-c36b-406b-8378-456e9b278760": "wishlist",
+        "5caea1b9-171f-48a0-9410-077677c63b7e": "users",
+        "4504dad5-839c-4a64-9f42-0b56bb41b0e2": "created_at",
+        "cd4eb72f-fab1-4ce2-a3ec-6c760d6c7cba": "updated_at",
+        "caa99901-95fa-4b1b-ba8e-b10c7d03f942": "owned_courses",
+        "34fb3d70-57d0-4028-b679-efc879f2836e": "courses",
+        "4c2b9f63-a48c-482b-973f-6f8877d75b58": "_id",
+        "3cc6e9be-137f-4737-83d3-2e6f2e993e0e": "name",
+        "90434fd0-8597-47b3-a900-38f2d842f2d6": "description",
+        "6f8af114-cda9-45c8-a1a5-55e6398ba5e2": "category",
+        "498c989b-408d-4968-a5fb-a351deade22b": "level",
+        "47fd4bb1-160a-4753-8348-0306369b5042": "instructors",
+        "cde4b00d-b17b-481d-b794-2e3f635526d0": "name",
+        "42ff6126-42b4-4972-b914-28c737eb7d93": "bio",
+        "2cc2aa92-9d4e-4842-a393-fd53ae069273": "image_url",
+        "8ecd4939-cfec-405d-b68b-c5e0d60db5ea": "price",
+        "6b7717ca-adce-4be9-a79b-508188f68117": "videos",
+        "0a672927-1452-4e8e-a8b7-c3788afd7935": "requirements",
+        "f22d4509-0b95-4927-b9fd-7b5d18fce13d": "created_at",
+        "fff46fea-5382-4e80-969a-987732b4d596": "updated_at",
+        "a759e0af-b9a4-4204-ba96-59302ad6909d": "students",
+        "f603d220-29bf-401e-86ec-66b54f47d4e4": "User",
+        "be59b29d-b720-4080-9962-6444a170aae5": "user_id",
+        "ab2a6165-4a95-4555-bab2-ab1aed75ecd2": "name",
+        "7146d843-accf-494f-88fd-4acddb0c4ecc": "email",
+        "e91fa04c-ca90-42c8-aa64-0cb5235c16f0": "bio",
+        "7763d428-db9e-4464-ae2f-19edd261c592": "lecturer",
+        "5ef33f10-453f-4ae2-a029-152d8d7cd3a1": "lecturer_courses",
+        "495956a2-46f7-4cd0-bc5e-459a7538b584": "Course",
+        "5b3113c0-37b6-4567-b338-c625e98f9860": "course_id",
+        "69946891-1d58-4955-a196-9595bd871305": "purchased_at",
+        "f3637504-476e-48ee-bd6f-d338ea072a35": "full name",
+        "1ed64ca6-2ea9-43be-b0f6-42974a25281f": "profile_pic",
+        "2cc46f6f-5f25-42e9-9662-b4ec81e6369d": "video_url",
+        "ba42e273-92fe-43aa-ab95-d117de4ec519": "num_enrolled",
+        "9e7294c3-527a-4bf8-8797-29490235e9c8": "learning_outcome",
+        "dfafc443-ad85-4355-811c-2d131c788b6e": "lesson_note",
+        "25304610-d381-4e70-ad50-8295ffaefbad": "video_title",
+        "c16e98a6-8747-4a46-ae54-bc6f42813393": "profile_pic",
+        "c22cf015-6e65-4e71-af60-9e66a41adbc6": "fb_id",
+        "21737f9b-f405-4e07-b032-4619cf3e752e": "google_id",
+        "7bcf4a40-4914-41a4-9729-0c3e1fc47148": "fb_token",
+        "c4508f3d-bc6f-4413-8c8e-c88d47e4b9f4": "gender",
+        "d257387a-5101-4ff8-8552-70801527ec81": "gender",
+        "e2a0d2e2-f771-4316-b401-3e303b816661": "User",
+        "c2b86c74-5fbc-4750-943a-ab9319ffc328": "user_id",
+        "8293cdcb-0438-49c8-b0e3-d9026843760d": "name",
+        "31df3720-0754-4692-a45d-cac87eecb397": "email",
+        "c29f6118-687d-4fb3-b9f1-96b484b0bc87": "gender",
+        "27560c7b-9c59-4aa8-b910-56982141af56": "profile_pic",
+        "4ea5071e-544d-49aa-9415-c52eb2b38901": "bio",
+        "72b9a15e-d6b2-49c1-8e1e-1c60b7a6206c": "course_id",
+        "d1ce568b-196c-4688-b768-656232a9c33a": "user_id",
+        "9c4de11c-3531-4e67-8395-d732fd56d371": "fk lecturer.User.user_id to users._id",
+        "322752c6-7dbd-4cc6-b431-2a796727e906": "fk lecturer.lecturer_courses.[0].course_id to courses._id",
+        "6b0bd35e-3dea-45b3-95fd-f1471eba130e": "fk users.wishlist.[0].course_id to courses._id",
+        "dd62e73f-6ef7-45b8-8940-baea4332cb83": "fk users.owned_courses.[0].course_id to courses._id",
+        "1fa088c1-d98e-4288-bb16-d35df76f8baf": "fk courses.students.[0].user_id to users._id",
+        "51211563-d260-4743-9dae-e4c9f5c3719c": "fk courses.course_review.[0].user_id to users._id",
+        "08548243-1b42-47f2-b095-172e566bf03e": "fk courses.instructors.[0].User.user_id to users._id",
+        "2533f787-3102-4221-b095-59a9619e617e": "fk courses.instructors.[0].bio to lecturer.bio",
+        "40357f5f-e990-403f-aa10-4793befeef89": "poster_url",
+        "210ebaf0-907e-4809-9052-3c609c7ebff4": "course_review",
+        "56fa4821-fb8a-4925-b373-89733686924a": "BanKhoaHoc",
+        "dd398e23-e65c-4d6f-b4a1-985e080b2b4b": "billings",
+        "b85dd627-f4c6-4312-970c-3c75e62cc3ad": "_id",
+        "86d31629-427a-41ef-9c83-4338dd46f10e": "user_id",
+        "32015ca7-d719-429e-b805-54c72f6abdb0": "user_name",
+        "9edd1e07-f6da-4cc0-b6e8-32b450901ef1": "email",
+        "7dd54342-552d-469e-8284-956f66fec46c": "orders",
+        "866fe39b-1de1-4d6f-859e-6d7c69717358": "order_id",
+        "47a345ba-ed34-47dc-bbe0-c879c7d607dc": "date",
+        "7ad03c69-bca6-4f4a-a502-51f9631b847f": "status",
+        "944af035-7d66-46c3-9af9-e6bab946d689": "items",
+        "386052d2-ec30-4e18-985a-603c7487a282": "course_id",
+        "1a30ba1f-3963-483f-b123-829156468d75": "course_name",
+        "a836d7b6-cc7f-42a4-b131-54836d2978ee": "course_price",
+        "d5aae5bc-e19a-4ab2-bd9d-7be0fe872836": "total_amount",
+        "00eeb596-86e2-497d-a673-4c67d0dd1d52": "fk billings.user_id to users._id",
+        "fa072c5a-c321-49f8-8ce9-11e25c07206e": "fk billings.orders.[0].items.[0].course_id to courses._id",
+        "9094c875-a394-4efa-92e8-ebcfd99e2e16": "billings_id",
+        "5a22d3a9-a07a-4408-bb82-cbebe362d9f0": "fk users.billings_id to billings._id",
+        "0ff296d9-3ad7-4137-9a1f-3ea4ec0a4532": "payment_method"
+    },
+    "definitions": {
+        "type": "definitions",
+        "properties": [],
+        "GUID": "7d4e1bcb-1de0-4fea-9fd1-fff6f66f2549"
+    },
+    "polyglotDefinitions": {
+        "type": "polyglotDefinitions",
+        "properties": [],
+        "GUID": "0798292f-4551-4543-b9e6-7f75ee98c6f0"
+    },
+    "externalDefinitions": {
+        "type": "externalDefinitions",
+        "properties": [],
+        "GUID": "c1046543-3c21-40de-a69f-49c2a5e8efad"
+    },
+    "sources": [],
+    "decorativeSymbols": [],
+    "dbVersion": "v5.0",
+    "dbVendor": "MongoDB",
+    "appTarget": "MONGODB",
+    "creationTS": "2023-05-08T14:07:07.094Z",
+    "GUID": "5f09e31a-15f4-46c8-bf5c-345dff041acb",
+    "isLineageEnabled": false,
+    "lastModifTS": "2023-05-16T16:01:57.162Z",
+    "persistenceSchemaVersion": "6",
+    "isCreatedByPlugin": true,
+    "pluginInformation": {
+        "pluginEngineVersion": "1.0.0"
+    },
+    "applicationInformation": {
+        "version": "6.10.0"
+    },
+    "hackoladeMeta": {
+        "validationErrors": {
+            "modelName": false
+        }
+    },
+    "author": "Phuc Hoang",
+    "settings": {
+        "centralPane": {
+            "dbLevel": {
+                "erd": [
+                    {
+                        "GUID": "5caea1b9-171f-48a0-9410-077677c63b7e",
+                        "x": 1665.2623241202944,
+                        "y": 1056.9684587695783,
+                        "width": 275,
+                        "height": 411,
+                        "color": {}
+                    },
+                    {
+                        "GUID": "34fb3d70-57d0-4028-b679-efc879f2836e",
+                        "x": 2403.8122107416075,
+                        "y": 640.9321775904401,
+                        "width": 277,
+                        "height": 735,
+                        "color": {}
+                    },
+                    {
+                        "GUID": "7763d428-db9e-4464-ae2f-19edd261c592",
+                        "x": 1688.1206007642854,
+                        "y": 642.4049667060862,
+                        "width": 228,
+                        "height": 213,
+                        "color": {}
+                    },
+                    {
+                        "GUID": "dd398e23-e65c-4d6f-b4a1-985e080b2b4b",
+                        "x": 2084.4131762362863,
+                        "y": 1515.2501672456137,
+                        "width": 282,
+                        "height": 321,
+                        "color": {}
+                    }
+                ],
+                "erdDefinitions": {
+                    "erd": [],
+                    "rootPath": [],
+                    "entities": [],
+                    "decorativeSymbols": []
+                },
+                "buckets": [
+                    {
+                        "x": 1625.2623241202944,
+                        "y": 600.9321775904401,
+                        "GUID": "56fa4821-fb8a-4925-b373-89733686924a"
+                    }
+                ],
+                "collapsedNodes": [
+                    "dd398e23-e65c-4d6f-b4a1-985e080b2b4b7dd54342-552d-469e-8284-956f66fec46c8a9bdc9d-dbe2-4400-8dda-b63ad1eed8ea944af035-7d66-46c3-9af9-e6bab946d689"
+                ],
+                "activeRelationship": "",
+                "activeRelationshipFields": {
+                    "childField": [],
+                    "parentField": []
+                },
+                "selectedCollections": [],
+                "displayColorPicker": false,
+                "graphView": {
+                    "erd": [],
+                    "buckets": [],
+                    "decorativeSymbols": [],
+                    "forceLayout": true,
+                    "defaultLinkLength": 300
+                },
+                "diagramViews": [],
+                "decorativeSymbols": [],
+                "nestedCollectionsLayout": "horizontal",
+                "options": [],
+                "relationshipUpdateDisabled": false
+            },
+            "collectionLevel": {},
+            "changed": false
+        },
+        "dtDiagram": {
+            "collapsedNodes": [],
+            "shouldDistributeCollections": false
+        }
+    }
+}
