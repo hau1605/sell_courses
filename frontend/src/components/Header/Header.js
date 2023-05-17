@@ -4,8 +4,14 @@ import category from "./category.png"
 import caretRight from "./caretRight.svg"
 import searchIcon from "./searchIcon.png"
 import cartIcon from "./cartIcon.png"
+<<<<<<< HEAD
+import { FiShoppingCart, FiSearch } from "react-icons/fi"
+import { HiUserCircle } from "react-icons/hi"
+import { FaBars, FaSearch } from "react-icons/fa"
+=======
 import {FiShoppingCart, FiSearch} from "react-icons/fi"
 import {FaBars, FaUserCircle, FaRegUserCircle} from "react-icons/fa"
+>>>>>>> 979101835748f6c5a52429d2a0258f684bc51617
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -19,6 +25,7 @@ const Header = () => {
   const totalCount = useSelector((state) => state.Allcart.totalQuantity);
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const email = useSelector((state) => state.user.email);
+  const name = useSelector((state) => state.user.name);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -116,9 +123,6 @@ const Header = () => {
                       </ul>
                     </nav>
                   </div>
-                  {/* <div className='menu-mobile'>
-                    <MenuMobile />
-                  </div> */}
                 </div>
                 <div className='header_search'>
                   <div className='icon-search'>
@@ -143,7 +147,6 @@ const Header = () => {
                   <div className='top-cart-contain'>
                     <div className='mini-cart text-xs-center'>
                       <Link className='img_hover_cart' to="/cart" title='Giỏ hàng'>
-                        {/* <img className='cartIcon' src={cartIcon} /> */}
                         <FiShoppingCart />
                         <span className='count_item count_item_pr hidden-count'>{totalCount}</span>
                       </Link>
@@ -152,6 +155,17 @@ const Header = () => {
 
                   <div className='account_header'>
                     {isLoggedIn ? (
+<<<<<<< HEAD
+                      <div className='header_menu clearfix' style={{display:"flex", alignItems: "center"}}>
+                        <div className='btns'>
+                          <a href='/user/profile' className='user-account'><HiUserCircle /> Le Binh</a>
+                        </div>
+                        <div className='account-action'>
+                                <Link className='user-profile' to='/user/profile'>
+                                  Tài khoản
+                                </Link>
+                                <a className='logout-action' onClick={handleLogout}>Đăng xuất</a>
+=======
                       <div className='header_menu clearfix'>
                         <FaRegUserCircle className='fa-user-cicle'/>
                         <div className='wrap_main'>
@@ -172,6 +186,7 @@ const Header = () => {
                               </li>
                             </ul>
                           </nav>
+>>>>>>> 979101835748f6c5a52429d2a0258f684bc51617
                         </div>
                       </div>
                     ) : (

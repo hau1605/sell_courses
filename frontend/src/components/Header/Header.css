@@ -443,11 +443,73 @@
     color: #00bc86;
 }
 
+.header .logout-btn {
+    border: none;
+    background-color: white;
+    line-height: initial;
+    color: #929292;
+    line-height: 20px;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.header .logout-btn:hover {
+    color: #00bc86;
+}
+
+.header .account_header .user-account {
+    color: #00bc86;
+}
+
+.header .account_header .user-account svg {
+    height: 35px;
+    width: 35px;
+}
+
+.header .account_header a.user-profile::before {
+    display: none;
+}
+
+.header .account_header a.logout-action::before {
+    display: none;
+}
+
+.header .account_header .account-action {
+    position: absolute;
+    background: white;
+    border-radius: 5px;
+    color: #fff;
+    transition-duration: .3s;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0;
+    visibility: hidden;
+    text-align: left;
+    left: 50%;
+    transform: translateX(-50%);
+    top: calc(100% + 10px);
+    width: 95px;
+}
+
+.header .account_header:hover .account-action {
+    opacity: 1;
+    visibility: visible;
+}
+
+.header .account_header .account-action a {
+    padding: 14px 11px !important;
+    text-align: center;
+}
+
+
 /* Responsive */
 
 @media (min-width: 1400px) {
     .container_header {
         max-width: 1200px;
+    }
+    .header .menu-bar-h {
+        margin-right: 55px;
     }
 }
 
@@ -462,7 +524,7 @@
 }
 
 
-@media (min-width: 991px) {
+@media (min-width: 992px) {
     .header .menu-bar-h .menu-bar .bar-mobile {
         display: none;
     }
@@ -499,7 +561,7 @@
     }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 992px) {
 
     .header {
         text-align: center;
