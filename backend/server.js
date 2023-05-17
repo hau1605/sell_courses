@@ -94,7 +94,7 @@ const start = async () => {
   app.use("/api/lecturers", lecturersRoutes);
   app.use("/api/topWeeks", topWeeksRoutes);
   app.use("/api/facebookUsers", facebookUsersRoutes);
-  app.use("/api/billing", billingRoutes);
+  app.use("/api/billings", billingRoutes);
 
   // Start server
   app.listen(config.PORT, () => {
