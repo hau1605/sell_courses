@@ -10,6 +10,7 @@ import * as coursesController from '../controllers/coursesController.js';
 router.get('/',coursesController.getCourses);
 // Get course by ID
 router.get('/:id', coursesController.getCourseById);
+router.get('/name/:name', coursesController.getCourseByName);
 
 // Create a new course
 router.post('/', coursesController.createCourse);
