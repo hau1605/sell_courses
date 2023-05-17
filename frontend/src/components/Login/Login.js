@@ -60,9 +60,11 @@ const Login=()=>{
             if (error.response) {
                 console.error('Lỗi đăng nhập có res:', error.response.data.error);
                 setShow(true);
+                setIsLoading(false);
             } else {
                 console.error('Lỗi đăng nhập không có res:', error.message);
                 setShow(true);
+                setIsLoading(false);
             }
         }
     };

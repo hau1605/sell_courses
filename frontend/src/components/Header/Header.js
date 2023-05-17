@@ -5,7 +5,7 @@ import caretRight from "./caretRight.svg"
 import searchIcon from "./searchIcon.png"
 import cartIcon from "./cartIcon.png"
 import {FiShoppingCart, FiSearch} from "react-icons/fi"
-import {FaBars, FaSearch} from "react-icons/fa"
+import {FaBars, FaUserCircle, FaRegUserCircle} from "react-icons/fa"
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -95,12 +95,24 @@ const Header = () => {
                             <span>Giới thiệu</span>
                           </Link>
                         </li>
+                        {isLoggedIn ? (<>
                         <li className='d-lg-none'>
-                          <Link to='/login'>Đăng nhập</Link>
+                          <Link to='/user/profile'>Hồ sơ</Link>
                         </li>
                         <li className='d-lg-none'>
-                          <Link to='/register'>Đăng ký</Link>
+                          <Link to='/user/my-course'>Khóa học của tôi</Link>
                         </li>
+                        <li className='d-lg-none'>
+                          <a style={{color:'red',}} id="btn_logout" onClick={handleLogout}>Đăng xuất</a>
+                        </li>
+                        </>) : (<>
+                          <li className='d-lg-none'>
+                            <Link to='/login'>Đăng nhập</Link>
+                          </li>
+                          <li className='d-lg-none'>
+                            <Link to='/register'>Đăng ký</Link>
+                          </li>
+                        </>)}
                       </ul>
                     </nav>
                   </div>
@@ -141,13 +153,10 @@ const Header = () => {
                   <div className='account_header'>
                     {isLoggedIn ? (
                       <div className='header_menu clearfix'>
-                        <div className='menu-bar-mobile menu-bar-h nav-mobile-button'>
-                          <button onClick={handleLogout}>Đăng xuất </button>
-                        </div>
+                        <FaRegUserCircle className='fa-user-cicle'/>
                         <div className='wrap_main'>
                           <nav className='header-nav'>
                             <ul className='item_big'>
-                              ({email})
                               <li>
                                 <Link to='/user/profile'>
                                   Hồ sơ
@@ -159,14 +168,14 @@ const Header = () => {
                                 </Link>
                               </li>
                               <li>
-                                <button onClick={handleLogout}>Đăng xuất</button>
+                                <a id="btn_logout" onClick={handleLogout}>Đăng xuất</a>
                               </li>
                             </ul>
                           </nav>
                         </div>
                       </div>
                     ) : (
-                      <div>
+                      <div className='account_header-none'>
                         <Link to='/account/register' className='btns'>Đăng ký</Link>
                         <Link to='/account/login'>Đăng nhập</Link>
                       </div>

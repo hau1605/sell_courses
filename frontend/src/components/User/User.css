@@ -27,6 +27,7 @@
     margin: 30px auto;
     display: flex;
     flex-wrap: wrap;
+    flex: 1;
 }
 .container-user_navbar {
     flex-basis: 30%;

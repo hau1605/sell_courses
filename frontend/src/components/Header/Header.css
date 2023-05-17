@@ -206,7 +206,7 @@
 }
 
 .header-nav>ul.item_big>li.nav-item:hover>a {
-    color: #f76758;
+    color: #00bc86;
 }
 
 .header_menu .wishlist_header {
@@ -325,7 +325,9 @@
     font-size: 15px;
     color: #5b5b5b;
 }
-
+.header .header-right .text_header a:hover {
+    color: #00bc86;
+}
 .header .header-right .top-cart-contain {
     display: inline-block;
 }
@@ -370,7 +372,41 @@
     margin-left: 15px;
 }
 
-.header .account_header a:last-child:before {
+.header .account_header #btn_logout {
+    border: none;
+    background-color: transparent;
+}
+.header .account_header #btn_logout:hover {
+    color: red;
+}
+.header .account_header .header_menu {
+    font-size: 32px;
+    transition: all 0.35s ease;
+}
+.header .account_header .header_menu:hover {
+    color: #00bc86;
+}
+.header .account_header .header-nav li {
+    line-height: 48px;
+}
+.header .account_header .header-nav a {
+    text-decoration: none;
+    font-size: 15px;
+    font-family: "Nunito",serif;
+    color: #929292;
+    padding: 10px 30px;
+    line-height: 20px;
+    font-weight: 600;
+    position: relative;
+}
+.header .account_header .header-nav a:hover {
+    color: #00bc86;
+}
+.header .account_header ul.item_big {
+    left: -160px;
+}
+
+.header .account_header-none a:last-child:before {
     content: "";
     width: 1px;
     height: 31px;
@@ -381,18 +417,13 @@
     background: #929292;
 }
 
-.header .account_header a.btns {
+.header .account_header-none a.btns {
     background: rgba(0,188,134,0.22);
     color: #00bc86;
 }
 
-.header .account_header a {
-    padding: 10px 25px;
+.header .account_header-none a {
     text-decoration: none;
-}
-
-.header .account_header a {
-    padding: 10px 25px;
     font-size: 15px;
     font-family: "Nunito",serif;
     color: #929292;
@@ -404,11 +435,11 @@
     position: relative;
 }
 
-.header .account_header a.btns:hover {
+.header .account_header-none a.btns:hover {
     color: white;
 }
 
-.header .account_header a:hover {
+.header .account_header-none a:hover {
     color: #00bc86;
 }
 
@@ -597,16 +628,19 @@
         transform: translateX(-280px);
     }
 
-    .header-nav>ul.item_big>li.nav-item>a {
+    .header-nav>ul.item_big>li.nav-item a {
         color: white;
     }
-
+    .header-nav>ul.item_big>li.nav-item:hover a,
+    .header-nav>ul.item_big>li:hover a {
+        color: #5B5B5B;
+    }
     .header-nav>ul.item_big>li.none>a {
         color: white;
     }
 
     .menu_mobile .item_big li a {
-        padding: 0 30px 0px 25px;
+        padding: 0 30px 0px 32px;
         font-size: 14px;
         line-height: 36px;
         display: block;
