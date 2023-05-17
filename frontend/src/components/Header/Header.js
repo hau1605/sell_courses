@@ -4,9 +4,14 @@ import category from "./category.png"
 import caretRight from "./caretRight.svg"
 import searchIcon from "./searchIcon.png"
 import cartIcon from "./cartIcon.png"
+<<<<<<< HEAD
 import { FiShoppingCart, FiSearch } from "react-icons/fi"
 import { HiUserCircle } from "react-icons/hi"
 import { FaBars, FaSearch } from "react-icons/fa"
+=======
+import {FiShoppingCart, FiSearch} from "react-icons/fi"
+import {FaBars, FaUserCircle, FaRegUserCircle} from "react-icons/fa"
+>>>>>>> 979101835748f6c5a52429d2a0258f684bc51617
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -97,12 +102,24 @@ const Header = () => {
                             <span>Giới thiệu</span>
                           </Link>
                         </li>
+                        {isLoggedIn ? (<>
                         <li className='d-lg-none'>
-                          <Link to='/login'>Đăng nhập</Link>
+                          <Link to='/user/profile'>Hồ sơ</Link>
                         </li>
                         <li className='d-lg-none'>
-                          <Link to='/register'>Đăng ký</Link>
+                          <Link to='/user/my-course'>Khóa học của tôi</Link>
                         </li>
+                        <li className='d-lg-none'>
+                          <a style={{color:'red',}} id="btn_logout" onClick={handleLogout}>Đăng xuất</a>
+                        </li>
+                        </>) : (<>
+                          <li className='d-lg-none'>
+                            <Link to='/login'>Đăng nhập</Link>
+                          </li>
+                          <li className='d-lg-none'>
+                            <Link to='/register'>Đăng ký</Link>
+                          </li>
+                        </>)}
                       </ul>
                     </nav>
                   </div>
@@ -138,6 +155,7 @@ const Header = () => {
 
                   <div className='account_header'>
                     {isLoggedIn ? (
+<<<<<<< HEAD
                       <div className='header_menu clearfix' style={{display:"flex", alignItems: "center"}}>
                         <div className='btns'>
                           <a href='/user/profile' className='user-account'><HiUserCircle /> Le Binh</a>
@@ -147,10 +165,32 @@ const Header = () => {
                                   Tài khoản
                                 </Link>
                                 <a className='logout-action' onClick={handleLogout}>Đăng xuất</a>
+=======
+                      <div className='header_menu clearfix'>
+                        <FaRegUserCircle className='fa-user-cicle'/>
+                        <div className='wrap_main'>
+                          <nav className='header-nav'>
+                            <ul className='item_big'>
+                              <li>
+                                <Link to='/user/profile'>
+                                  Hồ sơ
+                                </Link>
+                              </li>
+                              <li>
+                                <Link to='/user/my-course'>
+                                  Khóa học của tôi
+                                </Link>
+                              </li>
+                              <li>
+                                <a id="btn_logout" onClick={handleLogout}>Đăng xuất</a>
+                              </li>
+                            </ul>
+                          </nav>
+>>>>>>> 979101835748f6c5a52429d2a0258f684bc51617
                         </div>
                       </div>
                     ) : (
-                      <div>
+                      <div className='account_header-none'>
                         <Link to='/account/register' className='btns'>Đăng ký</Link>
                         <Link to='/account/login'>Đăng nhập</Link>
                       </div>

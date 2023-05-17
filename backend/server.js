@@ -13,6 +13,7 @@ import {
   lecturersRoutes,
   topWeeksRoutes,
   facebookUsersRoutes,
+  billingRoutes,
 } from "./routes/index.js";
 import * as models from "./models/index.js";
 import { PORT } from "./config/config.js";
@@ -55,6 +56,7 @@ const start = async () => {
       models.topicModel,
       models.topWeekModel,
       models.facebookUserModel,
+      models.billingModel,
     ],
   };
 
@@ -92,13 +94,14 @@ const start = async () => {
   app.use("/api/lecturers", lecturersRoutes);
   app.use("/api/topWeeks", topWeeksRoutes);
   app.use("/api/facebookUsers", facebookUsersRoutes);
+  app.use("/api/billings", billingRoutes);
 
   // Start server
   app.listen(config.PORT, () => {
     console.log(`Server is running on port ${config.PORT}`);
     console.log(
-      `AdminJS started on http://localhost:${PORT}${admin.options.rootPath}`
-	    + "  email: 'admin@example.com',password: 'password',"
+      `AdminJS started on http://localhost:${PORT}${admin.options.rootPath}` +
+        "  email: 'admin@example.com',password: 'password',"
     );
   });
 };

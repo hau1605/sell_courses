@@ -95,7 +95,7 @@ const UserAccount=()=>{
     }
     return(
             <Container className="container-user">
-                <Col md={3}>
+                <Col md={3} className="container-user_navbar">
                     <User page="user-account"></User>
                 </Col>
                 <Col>

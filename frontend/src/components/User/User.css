@@ -1,5 +1,37 @@
+@media only screen and (max-width: 767px) {
+    .container-user {
+        margin: 8px !important;
+        max-width: 760px;
+    }
+    .container-user .container-user_navbar {
+        display: none;
+    }
+    .container-user .div_my-product {
 
+    }
+}
+@media(min-width: 768px) and (max-width: 1023px) {
+    .container-user {
+        margin: 16px 4px;
+        max-width: 1023px;
+        width: 100%;
+    }
+}
 
+@media only screen and (min-width: 1024px) {
+    .container-user {
+        max-width: 1200px;
+    }
+}
+.container-user {
+    margin: 30px auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+}
+.container-user_navbar {
+    flex-basis: 30%;
+}
 .sidebar_user {
     height: 500px;
     margin: auto;
