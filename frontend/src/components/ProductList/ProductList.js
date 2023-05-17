@@ -83,7 +83,6 @@ const ProductList = (props) => {
                 setPageCount(response.data.totalPages)
                 setisLoading(false)
 
-
             })
             .catch(e => {
                 console.log(e);

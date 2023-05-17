@@ -4,14 +4,8 @@ import category from "./category.png"
 import caretRight from "./caretRight.svg"
 import searchIcon from "./searchIcon.png"
 import cartIcon from "./cartIcon.png"
-<<<<<<< HEAD
-import { FiShoppingCart, FiSearch } from "react-icons/fi"
-import { HiUserCircle } from "react-icons/hi"
-import { FaBars, FaSearch } from "react-icons/fa"
-=======
 import {FiShoppingCart, FiSearch} from "react-icons/fi"
 import {FaBars, FaUserCircle, FaRegUserCircle} from "react-icons/fa"
->>>>>>> 979101835748f6c5a52429d2a0258f684bc51617
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -26,6 +20,7 @@ const Header = () => {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const email = useSelector((state) => state.user.email);
   const name = useSelector((state) => state.user.name);
+  const [_searchName,_setSearchName] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -34,7 +29,10 @@ const Header = () => {
         console.log("Đăng xuất thành công!");
         navigate('/');
   }
-
+  const handleInputChange = (event) => {
+    _setSearchName(event.target.value);
+    console.log(_searchName)
+  };
   return(
       <header>
         <div className='tophead'>
@@ -129,11 +127,14 @@ const Header = () => {
                     <FiSearch className='search-mobile' />
                   </div>
                   <form action='/search' method='get' className='input-group search-bar' role='search'>
-                    <input type='text' name='query' autoComplete='off' placeholder='Tìm kiếm' className='inpit-group-field auto-search' required />
+                    <input type='text' name='query' onChange={handleInputChange} autoComplete='off' placeholder='Tìm kiếm' className='inpit-group-field auto-search' required />
                     <span className='input-group-btn'>
+                      <Link to={'/SearchPage/'+_searchName}
+                       >
                       <button type='submit' className='btn icon-fallback-text'>
                         <img className='searchIcon' src={searchIcon}/>
                       </button>
+                      </Link>
                     </span>
                   </form>
                 </div>
@@ -155,17 +156,6 @@ const Header = () => {
 
                   <div className='account_header'>
                     {isLoggedIn ? (
-<<<<<<< HEAD
-                      <div className='header_menu clearfix' style={{display:"flex", alignItems: "center"}}>
-                        <div className='btns'>
-                          <a href='/user/profile' className='user-account'><HiUserCircle /> Le Binh</a>
-                        </div>
-                        <div className='account-action'>
-                                <Link className='user-profile' to='/user/profile'>
-                                  Tài khoản
-                                </Link>
-                                <a className='logout-action' onClick={handleLogout}>Đăng xuất</a>
-=======
                       <div className='header_menu clearfix'>
                         <FaRegUserCircle className='fa-user-cicle'/>
                         <div className='wrap_main'>
@@ -186,7 +176,6 @@ const Header = () => {
                               </li>
                             </ul>
                           </nav>
->>>>>>> 979101835748f6c5a52429d2a0258f684bc51617
                         </div>
                       </div>
                     ) : (

@@ -18,6 +18,7 @@ import UserPassword from "./User/UserPassword";
 import { SnackbarProvider } from 'notistack';
 import Footer from './Footer/Footer';
 import VideoPage from './Video/VideoPage';
+import SearchPage from './SearchPage/SearchPage';
 const WebLayout = () => {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
@@ -47,6 +48,8 @@ const WebLayout = () => {
             <Route path="/ProductDetail" element={<ProductDetail />} />
             <Route path="/Cart" element={<Cart />} />
             <Route path='/Contact' element={<Contact />} />
+            <Route path='/SearchPage/:_searchName' element={<SearchPage />} />
+
             <Route path="/ProductList/:categorie/" element={<ProductList />} />
             <Route path='/order' element={!isLoggedIn? <Navigate to={'/account/login'} replace /> : <CheckOut />} />
             <Route path="/ProductList/" element={<ProductList />} />
