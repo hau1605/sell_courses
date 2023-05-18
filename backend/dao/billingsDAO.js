@@ -5,6 +5,27 @@ async function findAll() {
   return Billing.find();
 }
 
+async function getItemsForUser(user_id) {
+  try {
+    const billingDocument = await Billing.findOne({ user_id }).exec();
+    if (!billingDocument) {
+      return []; // User not found or has no billing document
+    }
+
+    const orders = billingDocument.orders;
+    const userItems = [];
+
+    orders.forEach((order) => {
+      const items = order.items;
+      userItems.push(...items);
+    });
+
+    return userItems;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function createBilling(newBilling) {
   try {
     const billing = new Billing(newBilling);
@@ -59,4 +80,5 @@ export {
   deleteById,
   userExists,
   findBillingDocumentByUserId,
+  getItemsForUser
 };

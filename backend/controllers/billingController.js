@@ -4,10 +4,16 @@ import mongoose from "mongoose";
 // GET /api/billings
 async function getBillings(req, res) {
   try {
-    const billings = await billingDAO.findAll();
-    return res.status(200).json(billings);
-  } catch (err) {
-    return res.status(500).send(err);
+    if (req.body.user_id) {
+      const items = await billingDAO.getItemsForUser(req.body.user_id);
+      return res.status(200).json(items);
+    } else {
+      const billings = await billingDAO.findAll();
+      return res.status(200).json(billings);
+    }
+  } catch (error) {
+    console.error("Failed to retrieve billings:", error);
+    return res.status(500).send(error);
   }
 }
 
@@ -99,14 +105,14 @@ function createOrder(orders) {
 
 async function createBillingDocument(user_id, user_name, email, orders) {
   const billingData = {
-    user_id: user_id,
+    user_id: new mongoose.Types.ObjectId(user_id),
     user_name: user_name,
     email: email,
     orders: [],
   };
 
   const order = createOrder(orders);
-  billingData.orders.push(order);
+  billingData.orders.append(order);
 
   await billingDAO.createBilling(billingData, (err) => {
     if (err) {
