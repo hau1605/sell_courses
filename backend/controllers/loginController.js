@@ -58,7 +58,7 @@ const forgotPassword = async (req, res) => {
       secure: false,
       auth: {
         user: "minhhau.uit@gmail.com",
-        pass: "tpkkllokrqcejpgs",
+        pass: "vyzgpxblasanronc",
       },
     });
 
