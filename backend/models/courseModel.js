@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import Topic from './topicModel.js';
+import Lecturer from './lecturerModel.js';
 
 const courseSchema = new mongoose.Schema({
   poster: {
@@ -63,7 +65,6 @@ const courseSchema = new mongoose.Schema({
   }],
   userEvaluations: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'UserEvaluation'
   }],
   numberOfVideo: {
     type: Number,
@@ -71,7 +72,6 @@ const courseSchema = new mongoose.Schema({
   },
   userReviews: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'UserReview'
   }]
 });
 
