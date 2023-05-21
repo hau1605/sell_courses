@@ -309,7 +309,8 @@
                         "322752c6-7dbd-4cc6-b431-2a796727e906",
                         "6b0bd35e-3dea-45b3-95fd-f1471eba130e",
                         "dd62e73f-6ef7-45b8-8940-baea4332cb83",
-                        "fa072c5a-c321-49f8-8ce9-11e25c07206e"
+                        "fa072c5a-c321-49f8-8ce9-11e25c07206e",
+                        "cb21947e-a9bd-4998-a5c4-a4ff57167343"
                     ],
                     "description": "ID khóa học",
                     "error": {}
@@ -531,57 +532,6 @@
                     "additionalItems": true,
                     "GUID": "47fd4bb1-160a-4753-8348-0306369b5042",
                     "description": "Danh sách giảng viên",
-                    "error": {}
-                },
-                {
-                    "name": "videos",
-                    "hackoladeMeta": {},
-                    "isActivated": true,
-                    "type": "array",
-                    "properties": [
-                        {
-                            "hackoladeMeta": {},
-                            "isActivated": true,
-                            "type": "document",
-                            "properties": [
-                                {
-                                    "name": "video_title",
-                                    "hackoladeMeta": {},
-                                    "isActivated": true,
-                                    "type": "string",
-                                    "GUID": "25304610-d381-4e70-ad50-8295ffaefbad",
-                                    "description": "Tiêu đề video",
-                                    "error": {}
-                                },
-                                {
-                                    "name": "video_url",
-                                    "hackoladeMeta": {},
-                                    "isActivated": true,
-                                    "type": "string",
-                                    "GUID": "2cc46f6f-5f25-42e9-9662-b4ec81e6369d",
-                                    "format": "uri",
-                                    "description": "Liên kết video",
-                                    "error": {}
-                                },
-                                {
-                                    "name": "lesson_note",
-                                    "hackoladeMeta": {},
-                                    "isActivated": true,
-                                    "type": "string",
-                                    "GUID": "dfafc443-ad85-4355-811c-2d131c788b6e",
-                                    "description": "Ghi chú bài giảng\n",
-                                    "error": {}
-                                }
-                            ],
-                            "additionalProperties": false,
-                            "GUID": "07f9c1b7-3e11-4f6c-be78-42f67cdd1802",
-                            "arrayItem": true,
-                            "arrayParentType": "array"
-                        }
-                    ],
-                    "additionalItems": true,
-                    "GUID": "6b7717ca-adce-4be9-a79b-508188f68117",
-                    "description": "Danh sách video khóa học\n",
                     "error": {}
                 },
                 {
@@ -1174,6 +1124,120 @@
             "GUID": "dd398e23-e65c-4d6f-b4a1-985e080b2b4b",
             "bucketId": "56fa4821-fb8a-4925-b373-89733686924a",
             "description": "Bảng chi tiết hóa đơn & thanh toán"
+        },
+        {
+            "collectionName": "course_content",
+            "type": "object",
+            "properties": [
+                {
+                    "name": "course_id",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "objectId",
+                    "GUID": "6ff66ff7-b659-4397-b6cf-881cdcad3815",
+                    "relationshipType": "Foreign Key",
+                    "foreignCollection": "34fb3d70-57d0-4028-b679-efc879f2836e",
+                    "foreignField": [
+                        "34fb3d70-57d0-4028-b679-efc879f2836e",
+                        "4c2b9f63-a48c-482b-973f-6f8877d75b58"
+                    ],
+                    "parentRelationship": "cb21947e-a9bd-4998-a5c4-a4ff57167343",
+                    "description": "ID khóa học",
+                    "error": {}
+                },
+                {
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "numeric",
+                    "GUID": "6b36b3f2-4250-472a-9b88-c93429f9987e",
+                    "name": "lesson_count",
+                    "sample": 20,
+                    "description": "Số lượng khóa học",
+                    "error": {}
+                },
+                {
+                    "name": "content",
+                    "hackoladeMeta": {},
+                    "isActivated": true,
+                    "type": "array",
+                    "properties": [
+                        {
+                            "hackoladeMeta": {},
+                            "isActivated": true,
+                            "type": "document",
+                            "properties": [
+                                {
+                                    "name": "title",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "string",
+                                    "GUID": "4a4ab4ae-1ff3-4645-bf6d-476d1caa1892",
+                                    "description": "Tiêu đề video",
+                                    "error": {}
+                                },
+                                {
+                                    "name": "video_url",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "string",
+                                    "GUID": "a5cb1b07-d8d5-410e-86be-6109167891a9",
+                                    "format": "uri",
+                                    "description": "Liên kết video",
+                                    "error": {}
+                                },
+                                {
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "string",
+                                    "GUID": "ee680782-8950-490c-870b-3b2c49019d06",
+                                    "format": "uri",
+                                    "description": "Thumbnail của video",
+                                    "name": "thumbnail_url",
+                                    "error": {}
+                                },
+                                {
+                                    "name": "lesson_note",
+                                    "hackoladeMeta": {},
+                                    "isActivated": true,
+                                    "type": "string",
+                                    "GUID": "62b90c62-5bc3-47f6-ad24-943db1170dcb",
+                                    "description": "Ghi chú bài giảng\n",
+                                    "error": {}
+                                }
+                            ],
+                            "additionalProperties": false,
+                            "GUID": "d7266c69-8eaa-403f-9efa-0331b0b84e61",
+                            "arrayItem": true,
+                            "arrayParentType": "array"
+                        }
+                    ],
+                    "additionalItems": true,
+                    "GUID": "294ee18a-6489-44df-9112-7ee26b5fea2c",
+                    "description": "Nội dung khóa học\n",
+                    "foreignCollection": "",
+                    "foreignField": [],
+                    "error": {}
+                }
+            ],
+            "definitions": {
+                "type": "definitions",
+                "properties": [],
+                "GUID": "68198df5-0510-443f-8c0c-1df357ba60fe"
+            },
+            "isActivated": true,
+            "additionalProperties": false,
+            "validationLevel": "Off",
+            "validationAction": "Warn",
+            "storageEngineName": "WiredTiger",
+            "collectionUsers": [],
+            "indexes": [],
+            "collation": {},
+            "sharding": {
+                "unique": true,
+                "collation": "null"
+            },
+            "GUID": "632fa453-d974-45e5-896e-39f17cd9c627",
+            "bucketId": "56fa4821-fb8a-4925-b373-89733686924a"
         }
     ],
     "buckets": [
@@ -1184,7 +1248,8 @@
                 "7763d428-db9e-4464-ae2f-19edd261c592",
                 "34fb3d70-57d0-4028-b679-efc879f2836e",
                 "5caea1b9-171f-48a0-9410-077677c63b7e",
-                "dd398e23-e65c-4d6f-b4a1-985e080b2b4b"
+                "dd398e23-e65c-4d6f-b4a1-985e080b2b4b",
+                "632fa453-d974-45e5-896e-39f17cd9c627"
             ],
             "backgroundColor": {
                 "r": 254,
@@ -1194,7 +1259,8 @@
             },
             "show": true,
             "isActivated": true,
-            "GUID": "56fa4821-fb8a-4925-b373-89733686924a"
+            "GUID": "56fa4821-fb8a-4925-b373-89733686924a",
+            "description": "Cơ sở dữ liệu của trang bán khóa học"
         }
     ],
     "views": [],
@@ -1229,19 +1295,19 @@
                 "dataType": "",
                 "shape": [
                     {
-                        "x": 1802.1206007642854,
+                        "x": 1802.9206007642854,
                         "y": 855.4049667060862
                     },
                     {
-                        "x": 1802.1206007642854,
+                        "x": 1802.9206007642854,
                         "y": 956.1867127378323
                     },
                     {
-                        "x": 1802.7623241202944,
+                        "x": 1803.5623241202943,
                         "y": 956.1867127378323
                     },
                     {
-                        "x": 1802.7623241202944,
+                        "x": 1803.5623241202943,
                         "y": 1056.9684587695783
                     }
                 ],
@@ -1249,7 +1315,8 @@
                     "bottom",
                     "top"
                 ]
-            }
+            },
+            "isActivated": true
         },
         {
             "name": "fk lecturer.lecturer_courses.[0].course_id to courses._id",
@@ -1275,27 +1342,27 @@
             "GUID": "322752c6-7dbd-4cc6-b431-2a796727e906",
             "hackoladeStyles": {
                 "GUID": "f37e945a-a5dd-49de-b60b-2009a7039b17",
-                "autoPositioning": false,
+                "autoPositioning": true,
                 "type": "Orthogonal",
                 "thickness": 2,
                 "color": "#79c4ff",
                 "dataType": "",
                 "shape": [
                     {
-                        "x": 1916.1206007642854,
-                        "y": 836.2768487922538
+                        "x": 1916.9206007642854,
+                        "y": 784.4049667060862
                     },
                     {
-                        "x": 2278.9301245738106,
-                        "y": 836.2768487922538
+                        "x": 2160.7664057529464,
+                        "y": 784.4049667060862
                     },
                     {
-                        "x": 2278.9301245738106,
-                        "y": 672.5648306516637
+                        "x": 2160.7664057529464,
+                        "y": 779.6821775904401
                     },
                     {
-                        "x": 2403.8122107416075,
-                        "y": 672.5648306516637
+                        "x": 2404.6122107416077,
+                        "y": 779.6821775904401
                     }
                 ],
                 "sides": [
@@ -1303,7 +1370,8 @@
                     "left"
                 ]
             },
-            "description": "ID khóa học"
+            "description": "ID khóa học",
+            "isActivated": true
         },
         {
             "name": "fk users.wishlist.[0].course_id to courses._id",
@@ -1336,27 +1404,28 @@
                 "dataType": "",
                 "shape": [
                     {
-                        "x": 1940.2623241202944,
+                        "x": 1941.0623241202943,
                         "y": 1262.4684587695783
                     },
                     {
-                        "x": 2172.037267430951,
+                        "x": 2172.837267430951,
                         "y": 1262.4684587695783
                     },
                     {
-                        "x": 2172.037267430951,
-                        "y": 1130.93217759044
+                        "x": 2172.837267430951,
+                        "y": 1057.18217759044
                     },
                     {
-                        "x": 2403.8122107416075,
-                        "y": 1130.93217759044
+                        "x": 2404.6122107416077,
+                        "y": 1057.18217759044
                     }
                 ],
                 "sides": [
                     "right",
                     "left"
                 ]
-            }
+            },
+            "isActivated": true
         },
         {
             "name": "fk users.owned_courses.[0].course_id to courses._id",
@@ -1389,27 +1458,28 @@
                 "dataType": "",
                 "shape": [
                     {
-                        "x": 1940.2623241202944,
+                        "x": 1941.0623241202943,
                         "y": 1313.8434587695783
                     },
                     {
-                        "x": 2172.037267430951,
+                        "x": 2172.837267430951,
                         "y": 1313.8434587695783
                     },
                     {
-                        "x": 2172.037267430951,
-                        "y": 1253.43217759044
+                        "x": 2172.837267430951,
+                        "y": 1126.55717759044
                     },
                     {
-                        "x": 2403.8122107416075,
-                        "y": 1253.43217759044
+                        "x": 2404.6122107416077,
+                        "y": 1126.55717759044
                     }
                 ],
                 "sides": [
                     "right",
                     "left"
                 ]
-            }
+            },
+            "isActivated": true
         },
         {
             "name": "fk courses.students.[0].user_id to users._id",
@@ -1442,19 +1512,19 @@
                 "dataType": "",
                 "shape": [
                     {
-                        "x": 2403.8122107416075,
-                        "y": 885.9321775904401
+                        "x": 2404.6122107416077,
+                        "y": 918.4321775904401
                     },
                     {
-                        "x": 2172.037267430951,
-                        "y": 885.9321775904401
+                        "x": 2172.837267430951,
+                        "y": 918.4321775904401
                     },
                     {
-                        "x": 2172.037267430951,
+                        "x": 2172.837267430951,
                         "y": 1159.7184587695783
                     },
                     {
-                        "x": 1940.2623241202944,
+                        "x": 1941.0623241202943,
                         "y": 1159.7184587695783
                     }
                 ],
@@ -1462,7 +1532,8 @@
                     "left",
                     "right"
                 ]
-            }
+            },
+            "isActivated": true
         },
         {
             "name": "fk courses.course_review.[0].user_id to users._id",
@@ -1495,19 +1566,19 @@
                 "dataType": "",
                 "shape": [
                     {
-                        "x": 2403.8122107416075,
-                        "y": 1008.4321775904401
+                        "x": 2404.6122107416077,
+                        "y": 987.8071775904401
                     },
                     {
-                        "x": 2172.037267430951,
-                        "y": 1008.4321775904401
+                        "x": 2172.837267430951,
+                        "y": 987.8071775904401
                     },
                     {
-                        "x": 2172.037267430951,
+                        "x": 2172.837267430951,
                         "y": 1211.0934587695783
                     },
                     {
-                        "x": 1940.2623241202944,
+                        "x": 1941.0623241202943,
                         "y": 1211.0934587695783
                     }
                 ],
@@ -1515,7 +1586,8 @@
                     "left",
                     "right"
                 ]
-            }
+            },
+            "isActivated": true
         },
         {
             "name": "fk courses.instructors.[0].User.user_id to users._id",
@@ -1549,19 +1621,19 @@
                 "dataType": "",
                 "shape": [
                     {
-                        "x": 2403.8122107416075,
-                        "y": 763.4321775904401
+                        "x": 2404.6122107416077,
+                        "y": 849.0571775904401
                     },
                     {
-                        "x": 2172.037267430951,
-                        "y": 763.4321775904401
+                        "x": 2172.837267430951,
+                        "y": 849.0571775904401
                     },
                     {
-                        "x": 2172.037267430951,
+                        "x": 2172.837267430951,
                         "y": 1108.3434587695783
                     },
                     {
-                        "x": 1940.2623241202944,
+                        "x": 1941.0623241202943,
                         "y": 1108.3434587695783
                     }
                 ],
@@ -1569,7 +1641,8 @@
                     "left",
                     "right"
                 ]
-            }
+            },
+            "isActivated": true
         },
         {
             "name": "fk courses.instructors.[0].bio to lecturer.bio",
@@ -1602,27 +1675,28 @@
                 "dataType": "",
                 "shape": [
                     {
-                        "x": 2403.8122107416075,
-                        "y": 745.9321775904401
+                        "x": 2404.6122107416077,
+                        "y": 710.3071775904401
                     },
                     {
-                        "x": 2159.9664057529462,
-                        "y": 745.9321775904401
+                        "x": 2160.7664057529464,
+                        "y": 710.3071775904401
                     },
                     {
-                        "x": 2159.9664057529462,
-                        "y": 748.9049667060862
+                        "x": 2160.7664057529464,
+                        "y": 713.4049667060862
                     },
                     {
-                        "x": 1916.1206007642854,
-                        "y": 748.9049667060862
+                        "x": 1916.9206007642854,
+                        "y": 713.4049667060862
                     }
                 ],
                 "sides": [
                     "left",
                     "right"
                 ]
-            }
+            },
+            "isActivated": true
         },
         {
             "name": "fk billings.user_id to users._id",
@@ -1653,19 +1727,19 @@
                 "dataType": "",
                 "shape": [
                     {
-                        "x": 2084.4131762362863,
+                        "x": 2085.213176236286,
                         "y": 1622.2501672456137
                     },
                     {
-                        "x": 2012.3377501782902,
+                        "x": 2013.1377501782902,
                         "y": 1622.2501672456137
                     },
                     {
-                        "x": 2012.3377501782902,
+                        "x": 2013.1377501782902,
                         "y": 1365.2184587695783
                     },
                     {
-                        "x": 1940.2623241202944,
+                        "x": 1941.0623241202943,
                         "y": 1365.2184587695783
                     }
                 ],
@@ -1673,7 +1747,8 @@
                     "left",
                     "right"
                 ]
-            }
+            },
+            "isActivated": true
         },
         {
             "name": "fk billings.orders.[0].items.[0].course_id to courses._id",
@@ -1708,27 +1783,28 @@
                 "dataType": "",
                 "shape": [
                     {
-                        "x": 2224.9131762362863,
+                        "x": 2226.213176236286,
                         "y": 1515.2501672456137
                     },
                     {
-                        "x": 2224.9131762362863,
-                        "y": 1445.5911724180269
+                        "x": 2226.213176236286,
+                        "y": 1355.5911724180269
                     },
                     {
-                        "x": 2542.3122107416075,
-                        "y": 1445.5911724180269
+                        "x": 2536.1122107416077,
+                        "y": 1355.5911724180269
                     },
                     {
-                        "x": 2542.3122107416075,
-                        "y": 1375.93217759044
+                        "x": 2536.1122107416077,
+                        "y": 1195.93217759044
                     }
                 ],
                 "sides": [
                     "top",
                     "bottom"
                 ]
-            }
+            },
+            "isActivated": true
         },
         {
             "name": "fk users.billings_id to billings._id",
@@ -1759,25 +1835,78 @@
                 "dataType": "",
                 "shape": [
                     {
-                        "x": 1940.2623241202944,
+                        "x": 1941.0623241202943,
                         "y": 1416.5934587695783
                     },
                     {
-                        "x": 2012.3377501782902,
+                        "x": 2013.1377501782902,
                         "y": 1416.5934587695783
                     },
                     {
-                        "x": 2012.3377501782902,
+                        "x": 2013.1377501782902,
                         "y": 1729.2501672456137
                     },
                     {
-                        "x": 2084.4131762362863,
+                        "x": 2085.213176236286,
                         "y": 1729.2501672456137
                     }
                 ],
                 "sides": [
                     "right",
                     "left"
+                ]
+            },
+            "isActivated": true
+        },
+        {
+            "name": "fk users.owned_courses.[0].course_id to courses._id",
+            "relationshipType": "Foreign Key",
+            "parentField": [
+                [
+                    "34fb3d70-57d0-4028-b679-efc879f2836e",
+                    "4c2b9f63-a48c-482b-973f-6f8877d75b58"
+                ]
+            ],
+            "parentCardinality": "1",
+            "childField": [
+                [
+                    "632fa453-d974-45e5-896e-39f17cd9c627",
+                    "6ff66ff7-b659-4397-b6cf-881cdcad3815"
+                ]
+            ],
+            "isActivated": true,
+            "childCardinality": "1",
+            "GUID": "cb21947e-a9bd-4998-a5c4-a4ff57167343",
+            "parentCollection": "34fb3d70-57d0-4028-b679-efc879f2836e",
+            "childCollection": "632fa453-d974-45e5-896e-39f17cd9c627",
+            "hackoladeStyles": {
+                "GUID": "1b25a383-b4a0-434c-a85a-abbbbc2f198d",
+                "autoPositioning": true,
+                "type": "Orthogonal",
+                "thickness": 2,
+                "color": "#79c4ff",
+                "dataType": "",
+                "shape": [
+                    {
+                        "x": 2920.478735221116,
+                        "y": 1340.7250342549694
+                    },
+                    {
+                        "x": 2794.045472981362,
+                        "y": 1340.7250342549694
+                    },
+                    {
+                        "x": 2794.045472981362,
+                        "y": 918.4321775904401
+                    },
+                    {
+                        "x": 2667.6122107416077,
+                        "y": 918.4321775904401
+                    }
+                ],
+                "sides": [
+                    "left",
+                    "right"
                 ]
             }
         }
@@ -1806,7 +1935,6 @@
         "42ff6126-42b4-4972-b914-28c737eb7d93": "bio",
         "2cc2aa92-9d4e-4842-a393-fd53ae069273": "image_url",
         "8ecd4939-cfec-405d-b68b-c5e0d60db5ea": "price",
-        "6b7717ca-adce-4be9-a79b-508188f68117": "videos",
         "0a672927-1452-4e8e-a8b7-c3788afd7935": "requirements",
         "f22d4509-0b95-4927-b9fd-7b5d18fce13d": "created_at",
         "fff46fea-5382-4e80-969a-987732b4d596": "updated_at",
@@ -1823,11 +1951,8 @@
         "69946891-1d58-4955-a196-9595bd871305": "purchased_at",
         "f3637504-476e-48ee-bd6f-d338ea072a35": "full name",
         "1ed64ca6-2ea9-43be-b0f6-42974a25281f": "profile_pic",
-        "2cc46f6f-5f25-42e9-9662-b4ec81e6369d": "video_url",
         "ba42e273-92fe-43aa-ab95-d117de4ec519": "num_enrolled",
         "9e7294c3-527a-4bf8-8797-29490235e9c8": "learning_outcome",
-        "dfafc443-ad85-4355-811c-2d131c788b6e": "lesson_note",
-        "25304610-d381-4e70-ad50-8295ffaefbad": "video_title",
         "c16e98a6-8747-4a46-ae54-bc6f42813393": "profile_pic",
         "c22cf015-6e65-4e71-af60-9e66a41adbc6": "fb_id",
         "21737f9b-f405-4e07-b032-4619cf3e752e": "google_id",
@@ -1872,7 +1997,16 @@
         "fa072c5a-c321-49f8-8ce9-11e25c07206e": "fk billings.orders.[0].items.[0].course_id to courses._id",
         "9094c875-a394-4efa-92e8-ebcfd99e2e16": "billings_id",
         "5a22d3a9-a07a-4408-bb82-cbebe362d9f0": "fk users.billings_id to billings._id",
-        "0ff296d9-3ad7-4137-9a1f-3ea4ec0a4532": "payment_method"
+        "0ff296d9-3ad7-4137-9a1f-3ea4ec0a4532": "payment_method",
+        "632fa453-d974-45e5-896e-39f17cd9c627": "course_content",
+        "294ee18a-6489-44df-9112-7ee26b5fea2c": "content",
+        "4a4ab4ae-1ff3-4645-bf6d-476d1caa1892": "title",
+        "a5cb1b07-d8d5-410e-86be-6109167891a9": "video_url",
+        "62b90c62-5bc3-47f6-ad24-943db1170dcb": "lesson_note",
+        "cb21947e-a9bd-4998-a5c4-a4ff57167343": "fk users.owned_courses.[0].course_id to courses._id",
+        "6ff66ff7-b659-4397-b6cf-881cdcad3815": "course_id",
+        "6b36b3f2-4250-472a-9b88-c93429f9987e": "lesson_count",
+        "ee680782-8950-490c-870b-3b2c49019d06": "thumbnail_url"
     },
     "definitions": {
         "type": "definitions",
@@ -1897,14 +2031,14 @@
     "creationTS": "2023-05-08T14:07:07.094Z",
     "GUID": "5f09e31a-15f4-46c8-bf5c-345dff041acb",
     "isLineageEnabled": false,
-    "lastModifTS": "2023-05-16T16:01:57.162Z",
+    "lastModifTS": "2023-05-21T15:28:17.984Z",
     "persistenceSchemaVersion": "6",
     "isCreatedByPlugin": true,
     "pluginInformation": {
         "pluginEngineVersion": "1.0.0"
     },
     "applicationInformation": {
-        "version": "6.10.0"
+        "version": "6.10.2"
     },
     "hackoladeMeta": {
         "validationErrors": {
@@ -1918,7 +2052,7 @@
                 "erd": [
                     {
                         "GUID": "5caea1b9-171f-48a0-9410-077677c63b7e",
-                        "x": 1665.2623241202944,
+                        "x": 1666.0623241202943,
                         "y": 1056.9684587695783,
                         "width": 275,
                         "height": 411,
@@ -1926,15 +2060,15 @@
                     },
                     {
                         "GUID": "34fb3d70-57d0-4028-b679-efc879f2836e",
-                        "x": 2403.8122107416075,
+                        "x": 2404.6122107416077,
                         "y": 640.9321775904401,
-                        "width": 277,
-                        "height": 735,
+                        "width": 263,
+                        "height": 555,
                         "color": {}
                     },
                     {
                         "GUID": "7763d428-db9e-4464-ae2f-19edd261c592",
-                        "x": 1688.1206007642854,
+                        "x": 1688.9206007642854,
                         "y": 642.4049667060862,
                         "width": 228,
                         "height": 213,
@@ -1942,10 +2076,18 @@
                     },
                     {
                         "GUID": "dd398e23-e65c-4d6f-b4a1-985e080b2b4b",
-                        "x": 2084.4131762362863,
+                        "x": 2085.213176236286,
                         "y": 1515.2501672456137,
                         "width": 282,
                         "height": 321,
+                        "color": {}
+                    },
+                    {
+                        "GUID": "632fa453-d974-45e5-896e-39f17cd9c627",
+                        "x": 2920.478735221116,
+                        "y": 1252.2250342549694,
+                        "width": 240,
+                        "height": 177,
                         "color": {}
                     }
                 ],
@@ -1957,13 +2099,14 @@
                 },
                 "buckets": [
                     {
-                        "x": 1625.2623241202944,
+                        "x": 1626.0623241202943,
                         "y": 600.9321775904401,
                         "GUID": "56fa4821-fb8a-4925-b373-89733686924a"
                     }
                 ],
                 "collapsedNodes": [
-                    "dd398e23-e65c-4d6f-b4a1-985e080b2b4b7dd54342-552d-469e-8284-956f66fec46c8a9bdc9d-dbe2-4400-8dda-b63ad1eed8ea944af035-7d66-46c3-9af9-e6bab946d689"
+                    "dd398e23-e65c-4d6f-b4a1-985e080b2b4b7dd54342-552d-469e-8284-956f66fec46c8a9bdc9d-dbe2-4400-8dda-b63ad1eed8ea944af035-7d66-46c3-9af9-e6bab946d689",
+                    "34fb3d70-57d0-4028-b679-efc879f2836e47fd4bb1-160a-4753-8348-0306369b50421eba1bef-0de2-429a-b188-41c8f7c06b9fe2a0d2e2-f771-4316-b401-3e303b816661"
                 ],
                 "activeRelationship": "",
                 "activeRelationshipFields": {

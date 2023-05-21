@@ -5,6 +5,7 @@ import { connectDB } from "./db/connection.js";
 import cors from "cors";
 import {
   coursesRoutes,
+  courseContentRoutes,
   cartRoutes,
   categoriesRoutes,
   topicsRoutes,
@@ -57,6 +58,7 @@ const start = async () => {
       models.topWeekModel,
       models.facebookUserModel,
       models.billingModel,
+      models.courseContentModel,
     ],
   };
 
@@ -95,6 +97,7 @@ const start = async () => {
   app.use("/api/topWeeks", topWeeksRoutes);
   app.use("/api/facebookUsers", facebookUsersRoutes);
   app.use("/api/billings", billingRoutes);
+  app.use("/api/course-content", courseContentRoutes);
 
   // Start server
   app.listen(config.PORT, () => {

@@ -9,3 +9,4 @@ export { default as topicModel } from './topicModel.js';
 export { default as topWeekModel } from './topWeekModel.js';
 export { default as userModel } from './userModel.js';
 export { default as billingModel } from './billingModel.js';
+export { default as courseContentModel } from './courseContentModel.js';
