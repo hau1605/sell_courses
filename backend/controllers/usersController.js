@@ -1,8 +1,8 @@
 import * as usersDAO from "../dao/usersDAO.js";
 import userModel from "../models/userModel.js";
 import bcrypt from "bcryptjs";
-import dotenv from "dotenv";
-dotenv.config();
+import jwt from 'jsonwebtoken';
+import { JWT_SECRET_KEY } from "../config/config.js";
 
 // Controller function to get all users
 const getAllUsers = async (req, res) => {
@@ -62,8 +62,11 @@ const createUser = async (req, res) => {
 
     // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
     const salt = await bcrypt.genSalt(10); // Tạo
-    console.log(salt);
+    console.log("Salt: ", salt);
     const hashedPassword = await bcrypt.hash(passwordR, salt); // Mã hóa mật khẩu
+
+    const refreshToken = jwt.sign({ emailR }, JWT_SECRET_KEY, { expiresIn: '30d' });
+    console.log("refreshToken: ", refreshToken);
 
     // Tạo người dùng mới với mật khẩu đã được mã hóa
     const newUser = new userModel({
@@ -72,6 +75,7 @@ const createUser = async (req, res) => {
       name: nameR,
       phoneNumber: phoneNumberR,
       date: currentTime,
+      refreshToken: refreshToken,
     });
     await newUser.save();
     res.status(201).json({ message: "Người dùng đã được tạo" });
