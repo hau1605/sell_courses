@@ -19,6 +19,7 @@ import { SnackbarProvider } from 'notistack';
 import Footer from './Footer/Footer';
 import VideoPage from './Video/VideoPage';
 import SearchPage from './SearchPage/SearchPage';
+import TokenExpirationChecker from '../TokenExpirationChecker/TokenExpirationChecker';
 const WebLayout = () => {
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
 
@@ -31,6 +32,7 @@ const WebLayout = () => {
       info: 'ℹ️',
     }}
     >
+      <TokenExpirationChecker/>
       <Space
         direction="vertical"
         style={{

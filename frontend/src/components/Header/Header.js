@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import logo from "./logo.webp"
 import category from "./category.png"
-import caretRight from "./caretRight.svg"
 import searchIcon from "./searchIcon.png"
-import cartIcon from "./cartIcon.png"
 import {FiShoppingCart, FiSearch} from "react-icons/fi"
 import {FaBars, FaUserCircle, FaRegUserCircle} from "react-icons/fa"
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
 import "./Header.css"
-import MenuDropDown from '../MenuDropDown/MenuDropDown';
-import MenuMobile from '../MenuMobile/MenuMobile';
 import { useNavigate} from 'react-router-dom';
-import axios from 'axios';
 import { logoutSuccess } from '../../features/userSlice';
+import Cookies from 'js-cookie';
+
 const Header = () => {
   const totalCount = useSelector((state) => state.Allcart.totalQuantity);
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
@@ -27,6 +22,7 @@ const Header = () => {
   const handleLogout = async () => {
         dispatch(logoutSuccess());
         console.log("Đăng xuất thành công!");
+        Cookies.remove('token');
         navigate('/');
   }
   const handleInputChange = (event) => {

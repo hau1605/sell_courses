@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import FullPageLoader from "../FullPageLoader/FullPageLoader";
 import './Register.css'
 const Register = () => {
     const [firstName, setFirstName] = useState('');
@@ -15,6 +16,7 @@ const Register = () => {
     const [emailError, setEmailError] = useState('');
     const [show, setShow] = useState(false);
     const [fullName, setFullName] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -59,27 +61,36 @@ const Register = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setIsLoading(true);
         try {
             const response = await axios.post('http://localhost:8000/api/users/', {email, password, fullName, phoneNumber});
             if (response.status === 201) {
                 console.log('Đăng ký thành công:', response.data.message);
                 setShow(false);
+                setIsLoading(false);
                 navigate('/account/login');
             } else {
                 console.error('Lỗi đăng ký:', response.data.error);
                 setShow(true);
+                setIsLoading(false);
             }
         } catch (error) {
             if (error.response) {
                 console.error('Lỗi đăng ký có res:', error.response.data.error);
                 setShow(true);
+                setIsLoading(false);
             } else {
                 console.error('Lỗi đăng ký không có res:', error.message);
                 setShow(true);
+                setIsLoading(false);
             }
         }
     };
 
+    const handleSubmitModal = async () => {
+        setShow(false); 
+        setIsLoading(false);
+    }
     
     const img = ['https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/breadcrumb_image.png?1676281841878']
 
@@ -87,6 +98,7 @@ const Register = () => {
     <div>
         <Banner imgs={img} />
             <div className='body'>
+            {isLoading && <FullPageLoader/>}
                 <p><Link className="text-link-home" to='/'>Trang chủ</Link>/<span className="text-link-loai">Đăng ký</span></p>
                 <section className="section d-flex justify-content-center">
                     <div className="container-form-register">
@@ -151,7 +163,7 @@ const Register = () => {
                     Hoặc <Link to='/login'>đăng nhập ngay</Link>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button  variant="success" onClick={()=>setShow(false)}>Đồng ý</Button>
+                    <Button  variant="success" onClick={handleSubmitModal}>Đồng ý</Button>
                 </Modal.Footer>
             </Modal>
         </div>
