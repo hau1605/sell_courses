@@ -73,8 +73,9 @@ async function deleteBillingById(req, res) {
   });
 }
 
-function createOrder(orders) {
+async function createOrder(orders) {
   let total_amount = 0;
+  let orderStatus = await verifyOrders(orders);
   const order = {
     order_id: new mongoose.Types.ObjectId(),
     payment_method: {
@@ -84,7 +85,7 @@ function createOrder(orders) {
       security_code: orders.payment_method.security_code,
     },
     date: Date.now(),
-    status: "pending",
+    status: orderStatus,
     items: [],
     total_amount: 0,
   };
@@ -111,7 +112,7 @@ async function createBillingDocument(user_id, user_name, email, orders) {
     orders: [],
   };
 
-  const order = createOrder(orders);
+  const order = await createOrder(orders);
   billingData.orders.append(order);
 
   await billingDAO.createBilling(billingData, (err) => {
@@ -124,7 +125,7 @@ async function createBillingDocument(user_id, user_name, email, orders) {
 async function updateBillingDocument(user_id, orders) {
   const userBillingDoc = await billingDAO.findBillingDocumentByUserId(user_id);
 
-  const order = createOrder(orders);
+  const order = await createOrder(orders);
   userBillingDoc.orders.push(order);
   const id = { user_id: userBillingDoc.user_id };
 
@@ -137,16 +138,32 @@ async function updateBillingDocument(user_id, orders) {
 
 async function purchase(req, res) {
   const { user_id, user_name, email, orders } = req.body;
-  // Check if user_id exists in the billing collection
-  const exists = await billingDAO.userExists(user_id);
-  if (exists) {
-    // User exists in billing collection -> update orders array
-    updateBillingDocument(user_id, orders);
-  } else {
-    // User does not exist in billing collection -> create a new billing document
-    createBillingDocument(user_id, user_name, email, orders);
+  try {
+    // Check if user_id exists in the billing collection
+    const exists = await billingDAO.userExists(user_id);
+    if (exists) {
+      // User exists in billing collection -> update orders array
+      await updateBillingDocument(user_id, orders);
+    } else {
+      // User does not exist in billing collection -> create a new billing document
+      await createBillingDocument(user_id, user_name, email, orders);
+    }
+    // Return HTTP OK if the operation is successful
+    res.status(200).send("Success");
+    //send thank you for purchasing email
+  } catch (error) {
+    // Return HTTP error message if there is a failure
+    console.error(error);
+    res.status(500).send("Internal Server Error");
   }
-  return res.status(200).send({ message: "Purchase Success" });
+}
+
+async function verifyOrders(orders) {
+  //pseudo verify payment function
+  if (orders.length === 0) {
+    return "failed";
+  }
+  return "success";
 }
 
 export {
