@@ -90,7 +90,7 @@
 
 - `POST /api/billings`: Creates a new billing object in the database.
 
-- `GET /api/billings/:id`: Returns the billing object with the specified ID.
+- `GET /api/billings/:id`: Returns the billing object with the specified ID. Support get billings by user_id (http GET :8000/api/billings user_id=646364b5aef83cf257fddddd)
 
 - `PUT /api/billings/:id`: Updates the billing object with the specified ID.
 
