@@ -130,10 +130,11 @@ HTTPie example:
 
 ```sh
 http POST http://localhost:8000/api/billings/purchase \
-user_id=646364b5aef93cf257f809dd \
-user_name="Phuc Hoang" \
-email="example@gmail.com" \
+user_id=645c4faf42558eb2b718900d \
+user_name="a b" \
+email="20520412@gm.uit.edu.vn" \
 orders[payment_method]:='{"type": "credit_card", "card_number": "1234567890", "expiration_date": "12/23", "security_code": 123}' \
-orders[items]:='[{"course_id": "64621e807e8afdc6899cecf8", "course_name": "Course 1", "course_price": 9.99}, {"course_id": "64621e807e8afdc6899cecf9", "course_name": "Course 2", "course_price": 19.99}]'
+orders[items]:='[{"course_id": "5ff2e3b37d305e09608a1deb", "course_name": "Course 1", "course_price": 9.99}, {"course_id": "5ff2e3b37d305e09608a1de6", "course_name": "Course 2", "course_price": 19.99}]'
 ```
 
+- `GET /api/users/:id/purchased` - Get a list of user's purchased courses.

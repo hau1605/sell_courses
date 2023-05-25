@@ -1,4 +1,4 @@
-import User from '../models/userModel.js';
+import User from "../models/userModel.js";
 
 // Create a new user
 const createUser = async (userData) => {
@@ -44,7 +44,9 @@ const getUserById = async (userId) => {
 // Update user data
 const updateUser = async (userEmail, userData) => {
   try {
-    const updatedUser = await User.findByIdAndUpdate(userEmail, userData, { new: true });
+    const updatedUser = await User.findByIdAndUpdate(userEmail, userData, {
+      new: true,
+    });
     return updatedUser;
   } catch (error) {
     throw error;
@@ -59,6 +61,20 @@ const deleteUser = async (userId) => {
     throw error;
   }
 };
+const addtopurchasedCourses = async (user_id, items) => {
+  try {
+    const user = await User.findById(user_id);
+    if (!user) {
+      throw new Error("User not found"); // Throw an error if user is null or undefined
+    }
+    for (let i = 0; i < items.length; i++) {
+      user.purchasedCourses.push(items[i].course_id);
+    }
+    user.save();
+  } catch (error) {
+    throw error;
+  }
+};
 
 export {
   createUser,
@@ -66,6 +82,6 @@ export {
   getUserByEmail,
   getUserById,
   updateUser,
-  deleteUser
+  deleteUser,
+  addtopurchasedCourses,
 };
-
