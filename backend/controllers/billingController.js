@@ -1,4 +1,5 @@
 import * as billingDAO from "../dao/billingsDAO.js";
+import * as userDAO from "../dao/usersDAO.js";
 import mongoose from "mongoose";
 
 // GET /api/billings
@@ -113,7 +114,7 @@ async function createBillingDocument(user_id, user_name, email, orders) {
   };
 
   const order = await createOrder(orders);
-  billingData.orders.append(order);
+  billingData.orders.push(order);
 
   await billingDAO.createBilling(billingData, (err) => {
     if (err) {
@@ -150,7 +151,11 @@ async function purchase(req, res) {
     }
     // Return HTTP OK if the operation is successful
     res.status(200).send("Success");
-    //send thank you for purchasing email
+
+    // add purchased course to user.purchasedCourses
+    userDAO.addtopurchasedCourses(user_id, orders.items);
+
+    //TODO: send thank you for purchasing email
   } catch (error) {
     // Return HTTP error message if there is a failure
     console.error(error);
@@ -160,7 +165,7 @@ async function purchase(req, res) {
 
 async function verifyOrders(orders) {
   //pseudo verify payment function
-  if (orders.length === 0) {
+  if (orders.items.length === 0) {
     return "failed";
   }
   return "success";
