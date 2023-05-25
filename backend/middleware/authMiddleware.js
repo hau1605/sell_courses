@@ -1,5 +1,5 @@
-const jwt = require('jsonwebtoken');
-const { SECRET_KEY } = require('../config/config.js'); // Import the secret key from config or environment variable
+import jwt from 'jsonwebtoken';
+import { JWT_SECRET_KEY } from '../config/config.js'; // Import the secret key from config or environment variable
 
 // Middleware function to verify JWT token
 const authenticateJWT = (req, res, next) => {
@@ -9,7 +9,7 @@ const authenticateJWT = (req, res, next) => {
     return res.status(401).json({ message: 'No token provided' });
   }
 
-  jwt.verify(token, SECRET_KEY, (err, user) => {
+  jwt.verify(token, JWT_SECRET_KEY, (err, user) => {
     if (err) {
       return res.status(403).json({ message: 'Failed to authenticate token' });
     }
@@ -19,5 +19,4 @@ const authenticateJWT = (req, res, next) => {
   });
 };
 
-module.exports = authenticateJWT;
-
+export default authenticateJWT;

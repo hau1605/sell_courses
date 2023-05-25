@@ -69,7 +69,7 @@ input[type="submit"]:hover {
 .button-container {
   display: flex;
   justify-content: center;
-  margin: 10px;
+  margin: 10px 0;
 }
 
 .login-form {
@@ -92,7 +92,6 @@ input[type="submit"]:hover {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin: 10px;
   font-weight: bold;
   padding-bottom: 4px;
 }
@@ -110,10 +109,12 @@ input[type="submit"]:hover {
   background: #00bc86;
   border: #00bc86;
   color: #fff;
-  margin: 0 10px;;
 }
 .action-form_bottom .btn-success:hover {
   background: #008958;
   border: #008958;
   color: #fff;
+}
+.container-form-recover-pass .btn-success {
+  margin: 10px 10px 10px 0;
 }

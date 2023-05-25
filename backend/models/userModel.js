@@ -32,6 +32,9 @@ const userSchema = new mongoose.Schema({
   expiryTime: {
     type: Date
   },
+  refreshToken: {
+    type: String
+  },
   __v: {
     type: Number,
     default: 0
