@@ -1,8 +1,9 @@
 import * as usersDAO from "../dao/usersDAO.js";
 import userModel from "../models/userModel.js";
+import Course from "../models/courseModel.js";
 import bcrypt from "bcryptjs";
-import dotenv from "dotenv";
-dotenv.config();
+import jwt from 'jsonwebtoken';
+import { JWT_SECRET_KEY } from "../config/config.js";
 
 // Controller function to get all users
 const getAllUsers = async (req, res) => {
@@ -32,8 +33,11 @@ const getUserById = async (req, res) => {
 const getUserByEmail = async (req, res) => {
   try {
     const emailR = req.params.email;
-    console.log('Thông tin user: ', emailR);
-    const user = await userModel.findOne({ email: { $eq: emailR } }, { password: 0, otpNumber: 0, expiryTime: 0 });
+    console.log("Thông tin user: ", emailR);
+    const user = await userModel.findOne(
+      { email: { $eq: emailR } },
+      { password: 0, otpNumber: 0, expiryTime: 0 }
+    );
 
     if (!user) {
       return res.status(404).json({ message: "Không tìm thấy người dùng!" });
@@ -62,8 +66,11 @@ const createUser = async (req, res) => {
 
     // Mã hóa mật khẩu trước khi lưu vào cơ sở dữ liệu
     const salt = await bcrypt.genSalt(10); // Tạo
-    console.log(salt);
+    console.log("Salt: ", salt);
     const hashedPassword = await bcrypt.hash(passwordR, salt); // Mã hóa mật khẩu
+
+    const refreshToken = jwt.sign({ emailR }, JWT_SECRET_KEY, { expiresIn: '30d' });
+    console.log("refreshToken: ", refreshToken);
 
     // Tạo người dùng mới với mật khẩu đã được mã hóa
     const newUser = new userModel({
@@ -72,6 +79,7 @@ const createUser = async (req, res) => {
       name: nameR,
       phoneNumber: phoneNumberR,
       date: currentTime,
+      refreshToken: refreshToken,
     });
     await newUser.save();
     res.status(201).json({ message: "Người dùng đã được tạo" });
@@ -85,14 +93,18 @@ const createUser = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const userEmail = req.params.email;
-    console.log(userEmail)
+    console.log(userEmail);
     const updatedUser = req.body;
-    console.log(updatedUser)
-    const result = await userModel.updateOne({email: userEmail} , 
-                                              {phoneNumber: updatedUser.phoneNumber, 
-                                                name: updatedUser.name,
-                                                gender: updatedUser.gender});
-    console.log(result)
+    console.log(updatedUser);
+    const result = await userModel.updateOne(
+      { email: userEmail },
+      {
+        phoneNumber: updatedUser.phoneNumber,
+        name: updatedUser.name,
+        gender: updatedUser.gender,
+      }
+    );
+    console.log(result);
     if (!result) {
       return res.status(404).json({ message: "Không tìm thấy người dùng" });
     }
@@ -132,10 +144,10 @@ const changePassword = async (req, res) => {
       console.log("Tài khoản không tồn tại");
     }
 
-    const isMatch = await bcrypt.compare(oldPasswordR, existingUser.password);
+    const isMatch = bcrypt.compare(oldPasswordR, existingUser.password);
     console.log("Mật khẩu đúng?: ", isMatch);
     if (!isMatch) {
-      res.status(401).json({ error: "Mật khẩu cũ không đúng "});
+      res.status(401).json({ error: "Mật khẩu cũ không đúng " });
       console.log("Mật khẩu cũ không đúng ");
     } else {
       // Đổi mật khẩu và lưu vào cơ sở dữ liệu
@@ -152,4 +164,26 @@ const changePassword = async (req, res) => {
     res.status(500).json({ error: "Đã xảy ra lỗi" });
   }
 };
-export { getAllUsers, getUserById, getUserByEmail, createUser, updateUser, deleteUser, changePassword };
+const getPurchasedCourses = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const user = await userModel.findById(userId).populate("purchasedCourses");
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    const purchasedCourses = user.purchasedCourses;
+    res.json({ purchasedCourses });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+export {
+  getAllUsers,
+  getUserById,
+  getUserByEmail,
+  createUser,
+  updateUser,
+  deleteUser,
+  changePassword,
+  getPurchasedCourses,
+};

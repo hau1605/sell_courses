@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import Course from './courseModel.js';
 
 const userSchema = new mongoose.Schema({
   gender: {
@@ -30,6 +31,9 @@ const userSchema = new mongoose.Schema({
   },
   expiryTime: {
     type: Date
+  },
+  refreshToken: {
+    type: String
   },
   __v: {
     type: Number,

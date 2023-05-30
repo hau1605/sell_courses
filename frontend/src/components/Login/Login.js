@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { loginSuccess } from '../../features/userSlice';
 import ClipLoader from 'react-spinners/ClipLoader';
 import FullPageLoader from "../FullPageLoader/FullPageLoader";
+import Cookies from 'js-cookie';
 import "./Login.css";
 const Login=()=>{
     const [email, setEmail] = useState("");
@@ -43,9 +44,18 @@ const Login=()=>{
         event.preventDefault();
         setIsLoading(true);
         try {
-            const response = await axios.post('http://localhost:8000/api/login', {email, password});
+            const cookieValue = Cookies.get('token');
+            const response = await axios.post('http://localhost:8000/api/login', {email, password}, {
+                headers: {
+                    Authorization: cookieValue,
+                }
+            });
             if (response.status === 200) {
                 console.log('Đăng nhập thành công:', response.data.message);
+                const expirationDate = new Date();
+                expirationDate.setTime(expirationDate.getTime() + (10 * 60 * 1000)); // 10 phút
+                Cookies.set('token', response.data.token, { expires: expirationDate });
+
                 setShow(false);
                 dispatch(loginSuccess(email));
                 console.log(email);

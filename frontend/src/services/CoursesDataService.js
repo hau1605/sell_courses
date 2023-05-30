@@ -1,3 +1,4 @@
+import { getAccordionUtilityClass } from "@mui/material";
 import axios from "axios";
 
 class CoursesDataService {
@@ -6,7 +7,9 @@ class CoursesDataService {
 
         return axios.get(`http://52.74.237.230:8000/api/courses?coursePerPage=6&page=${currentPage}&priceRanges=${price}&sort=cost&sortOrder=${sort}&level=${level}&categories=${categories}`)
     }
-
+getCourseByName(Name){
+    return axios.get(`http://localhost:8000/api/courses/name/${Name}`)
+}
 getHotCourse(){
     return axios.get(`http://52.74.237.230:8000/api/courses?coursePerPage=8&sort=numberOfView&sortOrder=dsc`)
 }

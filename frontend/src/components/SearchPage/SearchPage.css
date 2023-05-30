@@ -1,0 +1,23 @@
+.search-page{
+    background-color: white;
+
+}
+.SearchPage-text-link-home{
+    text-decoration: none;
+    color: #00bc86;
+    margin-right: 5px;
+}.SearchPage-text-link-home:hover{
+    font-weight: 700;
+    color: black;
+}
+.SearchPage-text-link-loai{
+    font-weight: 700;
+    margin-left: 5px;
+}
+.SearchPage-container{
+    margin-top: 25px;
+}
+.SearchPage-text-result{
+    margin-top: 40px;
+    font-size: 22px;
+}

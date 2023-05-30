@@ -5,6 +5,7 @@ import { connectDB } from "./db/connection.js";
 import cors from "cors";
 import {
   coursesRoutes,
+  courseContentRoutes,
   cartRoutes,
   categoriesRoutes,
   topicsRoutes,
@@ -57,6 +58,7 @@ const start = async () => {
       models.topWeekModel,
       models.facebookUserModel,
       models.billingModel,
+      models.courseContentModel,
     ],
   };
 
@@ -95,7 +97,33 @@ const start = async () => {
   app.use("/api/topWeeks", topWeeksRoutes);
   app.use("/api/facebookUsers", facebookUsersRoutes);
   app.use("/api/billings", billingRoutes);
-
+  app.use("/api/course-content", courseContentRoutes);
+  app.get("/api/check-token", (req, res) => {
+    const token = req.headers.authorization;
+    console.log("Token: ", token);
+    if (token) {
+      try {
+        const decoded = jwt.verify(token, JWT_SECRET_KEY);
+        if (decoded.exp < Math.floor(Date.now() / 1000)) {
+          // Token đã hết hạn, gửi thông báo cho client
+          res.status(200).json({ type: 'tokenExpired' });
+          console.log("Token hết hạn. Status 200");
+        } else {
+          // Token còn hạn, không có thông báo
+          res.status(204).end();
+          console.log("Token còn hạn. Status 204");
+        }
+      } catch (error) {
+        // Lỗi khi giải mã token, xem như token hết hạn
+        res.status(200).json({ type: 'tokenExpired' });
+        console.log("Catch: Token hết hạn. Status 200");
+      }
+    } else {
+      // Không có token, không có thông báo
+      res.status(203).json({error: "Không có token"});
+      console.log("Không có Token. Status 203");
+    }
+  })
   // Start server
   app.listen(config.PORT, () => {
     console.log(`Server is running on port ${config.PORT}`);

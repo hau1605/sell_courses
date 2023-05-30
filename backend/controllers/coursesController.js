@@ -103,6 +103,19 @@ async function getCourseById(req, res) {
     res.status(500).json({ error: error.message });
   }
 }
+async function getCourseByName(req, res) {
+  try {
+    const name = req.params.name;
+    const course = await coursesDAO.getCourseByName(name);
+    if (course) {
+      res.status(200).json(course);
+    } else {
+      res.status(404).json({ error: 'Course not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+}
 
 // Update a course by ID
 async function updateCourse(req, res) {
@@ -136,6 +149,7 @@ export {
   getAllCourses,
   getCourses,
   getCourseById,
+  getCourseByName,
   updateCourse,
   deleteCourse
 };

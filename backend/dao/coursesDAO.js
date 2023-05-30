@@ -46,7 +46,14 @@ const getCourseById = async (courseId) => {
     throw error;
   }
 };
-
+const getCourseByName = async (Name) => {
+  try {
+    const course = await Course.find({name: { $regex: Name, $options: "i" }});
+    return course;
+  } catch (error) {
+    throw error;
+  }
+};
 // Update course data
 const updateCourse = async (courseId, courseData) => {
   try {
@@ -71,6 +78,7 @@ export {
   getAllCourses,
   getCourses,
   getCourseById,
+  getCourseByName,
   updateCourse,
   deleteCourse
 };

@@ -1,34 +1,38 @@
 import React, { useState, useEffect } from 'react';
-import logo from "./logo.webp"
 import category from "./category.png"
-import caretRight from "./caretRight.svg"
 import searchIcon from "./searchIcon.png"
+<<<<<<< HEAD
 import cartIcon from "./cartIcon.png"
+=======
+>>>>>>> 346b798cb53cc95d9655a8aa8c4dfa1f16f7cc2b
 import {FiShoppingCart, FiSearch} from "react-icons/fi"
 import {FaBars, FaUserCircle, FaRegUserCircle} from "react-icons/fa"
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-
 import "./Header.css"
-import MenuDropDown from '../MenuDropDown/MenuDropDown';
-import MenuMobile from '../MenuMobile/MenuMobile';
 import { useNavigate} from 'react-router-dom';
-import axios from 'axios';
 import { logoutSuccess } from '../../features/userSlice';
+import Cookies from 'js-cookie';
+
 const Header = () => {
   const totalCount = useSelector((state) => state.Allcart.totalQuantity);
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
   const email = useSelector((state) => state.user.email);
   const name = useSelector((state) => state.user.name);
+  const [_searchName,_setSearchName] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogout = async () => {
         dispatch(logoutSuccess());
         console.log("Đăng xuất thành công!");
+        Cookies.remove('token');
         navigate('/');
   }
-
+  const handleInputChange = (event) => {
+    _setSearchName(event.target.value);
+    console.log(_searchName)
+  };
   return(
       <header>
         <div className='tophead'>
@@ -123,11 +127,14 @@ const Header = () => {
                     <FiSearch className='search-mobile' />
                   </div>
                   <form action='/search' method='get' className='input-group search-bar' role='search'>
-                    <input type='text' name='query' autoComplete='off' placeholder='Tìm kiếm' className='inpit-group-field auto-search' required />
+                    <input type='text' name='query' onChange={handleInputChange} autoComplete='off' placeholder='Tìm kiếm' className='inpit-group-field auto-search' required />
                     <span className='input-group-btn'>
+                      <Link to={'/SearchPage/'+_searchName}
+                       >
                       <button type='submit' className='btn icon-fallback-text'>
                         <img className='searchIcon' src={searchIcon}/>
                       </button>
+                      </Link>
                     </span>
                   </form>
                 </div>
