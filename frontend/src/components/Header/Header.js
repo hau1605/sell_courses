@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import category from "./category.png"
 import searchIcon from "./searchIcon.png"
-<<<<<<< HEAD
 import cartIcon from "./cartIcon.png"
-=======
->>>>>>> 346b798cb53cc95d9655a8aa8c4dfa1f16f7cc2b
 import {FiShoppingCart, FiSearch} from "react-icons/fi"
 import {FaBars, FaUserCircle, FaRegUserCircle} from "react-icons/fa"
 import { Link } from 'react-router-dom';
