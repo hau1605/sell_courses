@@ -5,7 +5,46 @@ import videoData from './VideoData';
 import VideoPlayer from './VideoPlayer';
 import VideoList from './VideoList';
 import './Video.css';
+import axios from 'axios'
+import Form from 'react-bootstrap/esm/Form'
+import Button from 'react-bootstrap/Button'
 const VideoPage = (props) => {
+	//Chat GPT
+		const [question, setQuestion] = useState('');
+		const [answer, setAnswer] = useState('');
+	  
+		const apiUrl = 'https://api.openai.com/v1/engines/text-davinci-003/completions';
+	  
+		const handleQuestionChange = (e) => {
+		  setQuestion(e.target.value);
+		};
+	  
+		const handleQuestionSubmit = async (e) => {
+		  e.preventDefault();
+	  
+		  if (question.trim() === '') return;
+		  setAnswer('Đang trả lời...');
+	  
+		  try {
+			const response = await axios.post(apiUrl, {
+			  prompt: `Question: ${question}\nAnswer:`,
+			  max_tokens: 500,
+			  temperature: 0.6,
+			  top_p: 1,
+			}, {
+			  headers: {
+				'Content-Type': 'application/json',
+				'Authorization': 'Bearer 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',
+			  },
+			});
+	  
+			const answer = response.data.choices[0].text.trim();
+			setAnswer(answer);
+		  } catch (error) {
+			console.error('Error:', error);
+		  }
+		};
+
     const [selectedVideo, setSelectedVideo] = useState(videoData[0]);
     const location = useLocation();
 	console.log("Khoá học đang xem: ", location.state.course);
@@ -25,6 +64,24 @@ const VideoPage = (props) => {
 				<h3 className='name'>{location.state.course.name}</h3>
 				<h6 className='cost'>Giá: <span className='text-price'>{location.state.course.cost} ₫</span></h6>
 			</div>
+			<div>
+      <Form onSubmit={handleQuestionSubmit} className="video-content">
+		<Form.Label style={{fontWeight:'600',fontSize:'20px', border:'none', marginTop:'10px',marginBottom:'10px'}}>
+			Giải đáp cùng AI
+		</Form.Label>
+        <Form.Control
+          type="text"
+          value={question}
+          onChange={handleQuestionChange}
+        />
+        <Button type="submit" style={{backgroundColor:'#00bc86', border:'none', marginTop:'10px',marginBottom:'10px'}}>Đặt câu hỏi</Button>
+		<Form.Control
+          as="textarea" style={{minHeight:'100px'}}
+		  value={answer}
+       readOnly/>
+      </Form>
+      
+    </div>
 		</div>
     );
   }
