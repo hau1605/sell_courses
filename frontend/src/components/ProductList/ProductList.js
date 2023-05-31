@@ -247,7 +247,7 @@ const ProductList = (props) => {
         <>
         {viewedItem===0?null:<div className="ProductList-ViewedItem">
                 <div className='line-box'></div>
-                    <h2 className='header-text '>KHÓA HỌC BẠN ĐÃ XEM</h2>
+                    <h2 className='header-text'>KHÓA HỌC BẠN ĐÃ XEM</h2>
                 <Swiper
                     scrollbar={{
                         hide: false,
@@ -259,18 +259,17 @@ const ProductList = (props) => {
                         {
                             0: {
                                 slidesPerView: 1,
-                                spaceBetween: 10
-                            }, 200: {
+                                spaceBetween: 35
+                            }, 300: {
                                 slidesPerView: 2,
                                 spaceBetween: 10
-                            }, 400: {
+                            }, 600: {
                                 slidesPerView: 3,
                                 spaceBetween: 15
                             }, 951: {
                                 slidesPerView: 4,
                                 spaceBetween: 20
                             }
-
                         }
                     }
                 >

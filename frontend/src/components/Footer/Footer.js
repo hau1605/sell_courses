@@ -18,7 +18,7 @@ const Footer = () => {
             <Container >
                 <Row style={{display:"flex"}} >
                     <Col lg='4' sm='6' style={{justifySelf:'center'}}>
-                        <img className="footer-logo"  src='https://bizweb.dktcdn.net/100/453/393/themes/894913/assets/logo-footer.png?1676281841878' />
+                        <img className="footer-logo"  src='https://res.cloudinary.com/ktpthtw/image/upload/v1684669330/Logo/lord_white_wkvuld.png' />
                         <div className="footer-btn-container">
                             <button className="footer-btn-contact">
                                 <MdCall className="footer-btn-contact-icon"/>
