@@ -1,15 +1,46 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import BillingDataService from "../../../services/BillingDataService";
+
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-
 import "./OrderSummary.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 
 const OrderSummary = () => {
-
+    const [billing, setBilling] = useState({
+        email: "example@gmail.com",
+        orders: {
+            items: [
+            {
+                course_id: "64621e807e8afdc6899cecf8",
+                course_name: "Course 1",
+                course_price: 9.99
+            },
+            {
+                course_id: "64621e807e8afdc6899cecf9",
+                course_name: "Course 2",
+                course_price: 19.99
+            }
+            ],
+            payment_method: {
+            card_number: "1234567890",
+            expiration_date: "12/23",
+            security_code: 123,
+            type: "credit_card"
+            }
+        },
+        user_id: "646364b5aef93cf257f8dddd",
+        user_name: "Phuc Hoang",   
+    } );
     const { cart, totalPrice } = useSelector((state) => state.Allcart)
-
+    const handlesubmit = async(e)=>{
+        e.preventDefault();
+        console.log("1");
+        const response = await BillingDataService.postBilling(billing);
+        console.log(response);
+    }
+    
     return (
         <aside>
             <div className="sidebar_header">
@@ -82,7 +113,7 @@ const OrderSummary = () => {
                                             <span className="previous-link_content">Quay ve gio hang</span>
                                         </a>
                                         <div className="order-summary_nav-btn">
-                                            <Button className="complete-order-button">Hoan tat</Button>
+                                            <Button className="complete-order-button" onClick={handlesubmit}>Hoan tat</Button>
                                         </div> 
                                     </div>  
                                 </tfoot>
