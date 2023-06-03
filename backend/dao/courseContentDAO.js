@@ -32,14 +32,6 @@ class CourseContentDAO {
       throw error;
     }
   }
-
-  static async delete(courseContentId) {
-    try {
-      await CourseContent.findByIdAndDelete(courseContentId);
-    } catch (error) {
-      throw error;
-    }
-  }
 }
 
 export default CourseContentDAO;

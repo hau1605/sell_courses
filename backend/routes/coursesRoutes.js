@@ -2,6 +2,8 @@ import express from 'express';
 const router = express.Router();
 
 import * as coursesController from '../controllers/coursesController.js';
+import { createCourseContent, getCourseContentByCourseId, updateCourseContentByCourseId } from '../controllers/courseContentController.js';
+  
 
 // Define routes for courses
 
@@ -20,5 +22,17 @@ router.put('/:id', coursesController.updateCourse);
 
 // Delete a course by ID
 router.delete('/:id', coursesController.deleteCourse);
+
+// Route: POST /api/course-content
+// Create a new course content
+router.post('/content', createCourseContent);
+
+// Route: GET /api/course-content/:courseContentId
+// Get course content by ID
+router.get('/content/:courseId', getCourseContentByCourseId);
+
+// Route: PUT /api/course-content/:courseContentId
+// Update course content by ID
+router.put('/content/:courseId', updateCourseContentByCourseId);
 
 export default router;
