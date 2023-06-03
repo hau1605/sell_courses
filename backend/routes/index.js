@@ -8,4 +8,3 @@ export { default as lecturersRoutes } from './lecturersRoutes.js';
 export { default as topWeeksRoutes } from './topWeeksRoutes.js';
 export { default as facebookUsersRoutes } from './facebookUsersRoutes.js';
 export { default as billingRoutes } from './billingRoutes.js';
-export { default as courseContentRoutes } from './courseContentRoutes.js';
