@@ -1,4 +1,4 @@
-import CourseContentDAO from "../dao/courseContentDAO.js";
+import * as CourseContentDAO from "../dao/courseContentDAO.js";
 import CourseContent from "../models/courseContentModel.js";
 
 // Create new course_content
@@ -12,7 +12,9 @@ async function createCourseContent(req, res) {
       content,
     });
 
-    const savedCourseContent = await CourseContentDAO.create(newCourseContent);
+    const savedCourseContent = await CourseContentDAO.createCourseContent(
+      newCourseContent
+    );
 
     res.status(201).json(savedCourseContent);
   } catch (error) {
@@ -23,9 +25,10 @@ async function createCourseContent(req, res) {
 // Get course_content by course_id
 async function getCourseContentByCourseId(req, res) {
   try {
-    const { course_id } = req.params;
+    const course_id = req.params['courseId'];
 
-    const courseContent = CourseContentDAO.getCourseContentByCourseId(course_id);
+    const courseContent = await
+      CourseContentDAO.getCourseContentByCourseId(course_id);
 
     if (!courseContent) {
       return res.status(404).json({ error: "Course content not found" });
@@ -43,12 +46,11 @@ async function updateCourseContentByCourseId(req, res) {
     const { course_id } = req.params;
     const { lesson_count, content } = req.body;
 
-    const updatedCourseContent = await CourseContent.findOneAndUpdate(
-      { course_id },
-      { lesson_count, content },
-      { new: true }
+    const updatedCourseContent = await CourseContentDAO.updateCourseContentByCourseId(
+      course_id,
+      lesson_count,
+      content
     );
-
     if (!updatedCourseContent) {
       return res.status(404).json({ error: "Course content not found" });
     }
