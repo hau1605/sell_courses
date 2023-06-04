@@ -17,9 +17,9 @@ Version:
 
 File name: sell\_course.hck.json
 
-File path: /home/lordkickass/Documents/sell\_course.hck.json
+File path: /home/lordkickass/sell\_courses/backend/sell\_course.hck.json
 
-Printed On: Tue May 16 2023 23:04:29 GMT+0700 (Indochina Time)
+Printed On: Sun Jun 04 2023 10:46:08 GMT+0700 (Indochina Time)
 
 Created with: [Hackolade](https://hackolade.com/) - Polyglot data modeling for NoSQL databases, storage formats, REST APIs, and JSON in RDBMS
 
@@ -34,11 +34,13 @@ Created with: [Hackolade](https://hackolade.com/) - Polyglot data modeling for N
         
         [2.1.2.1 billings](#dd398e23-e65c-4d6f-b4a1-985e080b2b4b)
         
-        [2.1.2.2 courses](#34fb3d70-57d0-4028-b679-efc879f2836e)
+        [2.1.2.2 course\_content](#632fa453-d974-45e5-896e-39f17cd9c627)
         
-        [2.1.2.3 lecturer](#7763d428-db9e-4464-ae2f-19edd261c592)
+        [2.1.2.3 courses](#34fb3d70-57d0-4028-b679-efc879f2836e)
         
-        [2.1.2.4 users](#5caea1b9-171f-48a0-9410-077677c63b7e)
+        [2.1.2.4 lecturer](#7763d428-db9e-4464-ae2f-19edd261c592)
+        
+        [2.1.2.5 users](#5caea1b9-171f-48a0-9410-077677c63b7e)
         
 *   [3\. Relationships](#relationships)
     *   [3.1 fk billings.orders.\[0\].items.\[0\].course\_id to courses.\_id](#fa072c5a-c321-49f8-8ce9-11e25c07206e)
@@ -51,7 +53,8 @@ Created with: [Hackolade](https://hackolade.com/) - Polyglot data modeling for N
     *   [3.8 fk lecturer.lecturer\_courses.\[0\].course\_id to courses.\_id](#322752c6-7dbd-4cc6-b431-2a796727e906)
     *   [3.9 fk users.billings\_id to billings.\_id](#5a22d3a9-a07a-4408-bb82-cbebe362d9f0)
     *   [3.10 fk users.owned\_courses.\[0\].course\_id to courses.\_id](#dd62e73f-6ef7-45b8-8940-baea4332cb83)
-    *   [3.11 fk users.wishlist.\[0\].course\_id to courses.\_id](#6b0bd35e-3dea-45b3-95fd-f1471eba130e)
+    *   [3.11 fk users.owned\_courses.\[0\].course\_id to courses.\_id](#cb21947e-a9bd-4998-a5c4-a4ff57167343)
+    *   [3.12 fk users.wishlist.\[0\].course\_id to courses.\_id](#6b0bd35e-3dea-45b3-95fd-f1471eba130e)
 
 ### <a id="model"></a>
 
@@ -81,7 +84,7 @@ Created with: [Hackolade](https://hackolade.com/) - Polyglot data modeling for N
 
 ##### 2.1.1 **BanKhoaHoc** Properties
 
-<table class="collection-properties-table"><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Database name</td><td>BanKhoaHoc</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Enable sharding</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table class="collection-properties-table"><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Database name</td><td>BanKhoaHoc</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Enable sharding</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Cơ sở dữ liệu của trang bán khóa học</p></div></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
 ### <a id="56fa4821-fb8a-4925-b373-89733686924a-children"></a>2.1.2 **BanKhoaHoc** Collections
 
@@ -93,7 +96,7 @@ Created with: [Hackolade](https://hackolade.com/) - Polyglot data modeling for N
 
 ##### 2.1.2.1.2 **billings** Properties
 
-<table class="collection-properties-table"><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Collection name</td><td>billings</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>$ref</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Bảng chi tiết hóa đơn &amp; thanh toán</p></div></td></tr><tr><td>Database</td><td><a href=#56fa4821-fb8a-4925-b373-89733686924a><span class="name-container">BanKhoaHoc</span></a></td></tr><tr><td>Capped</td><td></td></tr><tr><td>Time series</td><td></td></tr><tr><td>Size</td><td></td></tr><tr><td>Max</td><td></td></tr><tr><td>Storage engine</td><td>WiredTiger</td></tr><tr><td>Config String</td><td></td></tr><tr><td>Validation level</td><td>Off</td></tr><tr><td>Validation action</td><td>Warn</td></tr><tr><td>Encryption metadata</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table class="collection-properties-table"><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Collection name</td><td>billings</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>$ref</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Bảng chi tiết hóa đơn &amp; thanh toán</p></div></td></tr><tr><td>Database</td><td><a href=#56fa4821-fb8a-4925-b373-89733686924a><span class="name-container">BanKhoaHoc</span></a></td></tr><tr><td>Capped</td><td></td></tr><tr><td>Time series</td><td></td></tr><tr><td>Size</td><td></td></tr><tr><td>Max</td><td></td></tr><tr><td>Storage engine</td><td>WiredTiger</td></tr><tr><td>Config String</td><td></td></tr><tr><td>Validation level</td><td>Off</td></tr><tr><td>Validation action</td><td>Warn</td></tr><tr><td>Encryption metadata</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td colspan="2"><b>Workload analysis</b></td></tr><tr><td>[1] Actor</td><td></td></tr><tr><td>Description</td><td></td></tr><tr><td>Number of documents</td><td></td></tr><tr><td>Avg document size (Bytes)</td><td></td></tr><tr><td>Read-to-Write ratio</td><td></td></tr><tr><td>Keep forever</td><td></td></tr><tr><td>Retention (months)</td><td></td></tr><tr><td>Write operations</td><td></td></tr><tr><td>Read operations</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
 ##### 2.1.2.1.3 **billings** Fields
 
@@ -155,7 +158,7 @@ Child field(s):
 
 ##### 2.1.2.1.3.5.3 **orders** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>orders</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>hóa đơn</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>orders</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>hóa đơn</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td><span>Quantification</span></td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
 ### <a id="8a9bdc9d-dbe2-4400-8dda-b63ad1eed8ea"></a>2.1.2.1.3.6 Field **\[0\]**
 
@@ -279,7 +282,7 @@ Child field(s):
 
 ##### 2.1.2.1.3.15.3 **items** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>items</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Danh sách các khóa học mua</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>items</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Danh sách các khóa học mua</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td><span>Quantification</span></td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
 ### <a id="2f1e0eff-8794-4990-b66f-a066348e0915"></a>2.1.2.1.3.16 Field **\[0\]**
 
@@ -452,13 +455,13 @@ Child field(s):
 
 ```
 {
-    "_id": ObjectId("bb736abef1496cfeb810feb1"),
-    "user_id": ObjectId("ec3e3e1c4c81e7c9fd6ebc42"),
+    "_id": ObjectId("ba8f09f6cfeb8ea1eeea5ff6"),
+    "user_id": ObjectId("4e4a445fcbb3ab2a2dbfd04d"),
     "user_name": "John Smith",
     "email": "sample@email.com",
     "orders": [
         {
-            "order_id": ObjectId("c1fc957baedf3e736abf2dde"),
+            "order_id": ObjectId("f3ec9a032ca1dfbed7afebc8"),
             "payment_method": {
                 "type": "credit_card",
                 "card_number": "6759-4620-0719-8338",
@@ -469,7 +472,7 @@ Child field(s):
             "status": "Đã thanh toán",
             "items": [
                 {
-                    "course_id": ObjectId("69dbefd7be6927c7f800ee86"),
+                    "course_id": ObjectId("cbbb66a0f4ddbd50fcbda4a2"),
                     "course_name": "Lorem",
                     "course_price": 200000
                 }
@@ -591,67 +594,304 @@ db.createCollection("billings", {
 });
 ```
 
-### <a id="34fb3d70-57d0-4028-b679-efc879f2836e"></a>2.1.2.2 Collection **courses**
+### <a id="632fa453-d974-45e5-896e-39f17cd9c627"></a>2.1.2.2 Collection **course\_content**
 
-##### 2.1.2.2.1 **courses** Tree Diagram
+##### 2.1.2.2.1 **course\_content** Tree Diagram
 
 ![Hackolade image](./DATABASE/image25.png?raw=true)
 
-##### 2.1.2.2.2 **courses** Properties
+##### 2.1.2.2.2 **course\_content** Properties
 
-<table class="collection-properties-table"><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Collection name</td><td>courses</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>$ref</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Bảng thông tin khóa học</p></div></td></tr><tr><td>Database</td><td><a href=#56fa4821-fb8a-4925-b373-89733686924a><span class="name-container">BanKhoaHoc</span></a></td></tr><tr><td>Capped</td><td></td></tr><tr><td>Time series</td><td></td></tr><tr><td>Size</td><td></td></tr><tr><td>Max</td><td></td></tr><tr><td>Storage engine</td><td>WiredTiger</td></tr><tr><td>Config String</td><td></td></tr><tr><td>Validation level</td><td>Off</td></tr><tr><td>Validation action</td><td>Warn</td></tr><tr><td>Encryption metadata</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table class="collection-properties-table"><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Collection name</td><td>course_content</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>$ref</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Database</td><td><a href=#56fa4821-fb8a-4925-b373-89733686924a><span class="name-container">BanKhoaHoc</span></a></td></tr><tr><td>Capped</td><td></td></tr><tr><td>Time series</td><td></td></tr><tr><td>Size</td><td></td></tr><tr><td>Max</td><td></td></tr><tr><td>Storage engine</td><td>WiredTiger</td></tr><tr><td>Config String</td><td></td></tr><tr><td>Validation level</td><td>Off</td></tr><tr><td>Validation action</td><td>Warn</td></tr><tr><td>Encryption metadata</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td colspan="2"><b>Workload analysis</b></td></tr><tr><td>[1] Actor</td><td></td></tr><tr><td>Description</td><td></td></tr><tr><td>Number of documents</td><td></td></tr><tr><td>Avg document size (Bytes)</td><td></td></tr><tr><td>Read-to-Write ratio</td><td></td></tr><tr><td>Keep forever</td><td></td></tr><tr><td>Retention (months)</td><td></td></tr><tr><td>Write operations</td><td></td></tr><tr><td>Read operations</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.2.3 **courses** Fields
+##### 2.1.2.2.3 **course\_content** Fields
 
-<table><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58 class="margin-0">_id</a></td><td class="no-break-word">objectId</td><td>true</td><td>pk, dk</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#3cc6e9be-137f-4737-83d3-2e6f2e993e0e class="margin-0">name</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tên khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#90434fd0-8597-47b3-a900-38f2d842f2d6 class="margin-0">description</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Mô tả khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#ba42e273-92fe-43aa-ab95-d117de4ec519 class="margin-0">num_enrolled</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>Số người đăng ký</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#9e7294c3-527a-4bf8-8797-29490235e9c8 class="margin-0">learning_outcome</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Những kỹ năng có được sau khi học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#477c50c5-13bc-4707-9cb4-0847a911b6bd class="margin-5">[0]</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#6f8af114-cda9-45c8-a1a5-55e6398ba5e2 class="margin-0">category</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Những chủ đề khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#05c21c76-cfbd-4f86-9064-06f35a434f33 class="margin-5">[0]</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#498c989b-408d-4968-a5fb-a351deade22b class="margin-0">level</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Trình độ: Cơ bản, chuyên sâu, chuyên ngành,...</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#8ecd4939-cfec-405d-b68b-c5e0d60db5ea class="margin-0">price</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>Giá tiền khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#40357f5f-e990-403f-aa10-4793befeef89 class="margin-0">poster_url</a></td><td class="no-break-word">uri</td><td>false</td><td></td><td><div class="docs-markdown"><p>Poster khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#47fd4bb1-160a-4753-8348-0306369b5042 class="margin-0">instructors</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Danh sách giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#1eba1bef-0de2-429a-b188-41c8f7c06b9f class="margin-5">[0]&nbsp;lecturer</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#e2a0d2e2-f771-4316-b401-3e303b816661 class="margin-10">User</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c2b86c74-5fbc-4750-943a-ab9319ffc328 class="margin-15">user_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>ID người dùng giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#8293cdcb-0438-49c8-b0e3-d9026843760d class="margin-15">name</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tên giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#31df3720-0754-4692-a45d-cac87eecb397 class="margin-15">email</a></td><td class="no-break-word">email</td><td>false</td><td></td><td><div class="docs-markdown"><p>email giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c29f6118-687d-4fb3-b9f1-96b484b0bc87 class="margin-15">gender</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>giới tính giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#27560c7b-9c59-4aa8-b910-56982141af56 class="margin-15">profile_pic</a></td><td class="no-break-word">uri</td><td>false</td><td></td><td><div class="docs-markdown"><p>hình giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#4ea5071e-544d-49aa-9415-c52eb2b38901 class="margin-10">bio</a></td><td class="no-break-word">string</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>Mô tả giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#6b7717ca-adce-4be9-a79b-508188f68117 class="margin-0">videos</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Danh sách video khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#07f9c1b7-3e11-4f6c-be78-42f67cdd1802 class="margin-5">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#25304610-d381-4e70-ad50-8295ffaefbad class="margin-10">video_title</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tiêu đề video</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#2cc46f6f-5f25-42e9-9662-b4ec81e6369d class="margin-10">video_url</a></td><td class="no-break-word">uri</td><td>false</td><td></td><td><div class="docs-markdown"><p>Liên kết video</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#dfafc443-ad85-4355-811c-2d131c788b6e class="margin-10">lesson_note</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Ghi chú bài giảng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#0a672927-1452-4e8e-a8b7-c3788afd7935 class="margin-0">requirements</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Yêu cầu kiến thức</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#9adc298c-404c-413d-8731-ed09c617e113 class="margin-5">[0]</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#a759e0af-b9a4-4204-ba96-59302ad6909d class="margin-0">students</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Danh sách học viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#153b2036-bd47-4491-a144-79adbc27177a class="margin-5">[0]&nbsp;User</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"><p>Liên kết với bảng users</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#d1ce568b-196c-4688-b768-656232a9c33a class="margin-10">user_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>id học viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#210ebaf0-907e-4809-9052-3c609c7ebff4 class="margin-0">course_review</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Review khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#feb22285-77d2-45f0-bddf-4d086ebfe2d7 class="margin-5">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#a9d37e6c-9455-4669-9c7a-27cdc0e867e3 class="margin-10">user_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>id học viên đánh giá</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#6b51e40d-61dc-42ad-ab1e-0ea144180bf4 class="margin-10">rating</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>Đánh giá từ 1 -&gt; 5 sao</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#56bf8f13-51e8-4573-9fb5-ca47133d44cf class="margin-10">comment</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Bình luận</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c4f2249f-0a41-47b5-a70f-7997441cffed class="margin-10">created_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>ngày tạo bình luận</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#0e65c959-b46c-485b-b55d-f900e78d33c2 class="margin-10">updated_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#f22d4509-0b95-4927-b9fd-7b5d18fce13d class="margin-0">created_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Được tạo vào ngày</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#fff46fea-5382-4e80-969a-987732b4d596 class="margin-0">updated_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Được cập nhật vào ngày</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#6ff66ff7-b659-4397-b6cf-881cdcad3815 class="margin-0">course_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#6b36b3f2-4250-472a-9b88-c93429f9987e class="margin-0">lesson_count</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>Số lượng khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#294ee18a-6489-44df-9112-7ee26b5fea2c class="margin-0">content</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Nội dung khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#d7266c69-8eaa-403f-9efa-0331b0b84e61 class="margin-5">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#4a4ab4ae-1ff3-4645-bf6d-476d1caa1892 class="margin-10">title</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tiêu đề video</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#a5cb1b07-d8d5-410e-86be-6109167891a9 class="margin-10">video_url</a></td><td class="no-break-word">uri</td><td>false</td><td></td><td><div class="docs-markdown"><p>Liên kết video</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#ee680782-8950-490c-870b-3b2c49019d06 class="margin-10">thumbnail_url</a></td><td class="no-break-word">uri</td><td>false</td><td></td><td><div class="docs-markdown"><p>Thumbnail của video</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#62b90c62-5bc3-47f6-ad24-943db1170dcb class="margin-10">lesson_note</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Ghi chú bài giảng</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="4c2b9f63-a48c-482b-973f-6f8877d75b58"></a>2.1.2.2.3.1 Field **\_id**
+### <a id="6ff66ff7-b659-4397-b6cf-881cdcad3815"></a>2.1.2.2.3.1 Field **course\_id**
 
-##### 2.1.2.2.3.1.1 **\_id** Tree Diagram
+##### 2.1.2.2.3.1.1 **course\_id** Tree Diagram
 
 ![Hackolade image](./DATABASE/image26.png?raw=true)
 
-##### 2.1.2.2.3.1.2 **\_id** properties
+##### 2.1.2.2.3.1.2 **course\_id** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td>true</td></tr><tr><td>Primary key</td><td>true</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>course_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td></tr><tr><td>Foreign field</td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk users.owned_courses.[0].course_id to courses._id</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="3cc6e9be-137f-4737-83d3-2e6f2e993e0e"></a>2.1.2.2.3.2 Field **name**
+### <a id="6b36b3f2-4250-472a-9b88-c93429f9987e"></a>2.1.2.2.3.2 Field **lesson\_count**
 
-##### 2.1.2.2.3.2.1 **name** Tree Diagram
+##### 2.1.2.2.3.2.1 **lesson\_count** Tree Diagram
 
 ![Hackolade image](./DATABASE/image27.png?raw=true)
 
-##### 2.1.2.2.3.2.2 **name** properties
+##### 2.1.2.2.3.2.2 **lesson\_count** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>name</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Tên khóa học</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>lesson_count</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>numeric</td></tr><tr><td>Subtype</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Số lượng khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Unit</td><td></td></tr><tr><td>Min value</td><td></td></tr><tr><td>Excl min</td><td></td></tr><tr><td>Max value</td><td></td></tr><tr><td>Excl max</td><td></td></tr><tr><td>Multiple of</td><td></td></tr><tr><td>Divisible by</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>20</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="90434fd0-8597-47b3-a900-38f2d842f2d6"></a>2.1.2.2.3.3 Field **description**
+### <a id="294ee18a-6489-44df-9112-7ee26b5fea2c"></a>2.1.2.2.3.3 Field **content**
 
-##### 2.1.2.2.3.3.1 **description** Tree Diagram
+##### 2.1.2.2.3.3.1 **content** Tree Diagram
 
 ![Hackolade image](./DATABASE/image28.png?raw=true)
 
-##### 2.1.2.2.3.3.2 **description** properties
+##### 2.1.2.2.3.3.2 **content** Hierarchy
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>description</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Mô tả khóa học</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+Parent field: **course\_content**
 
-### <a id="ba42e273-92fe-43aa-ab95-d117de4ec519"></a>2.1.2.2.3.4 Field **num\_enrolled**
+Child field(s):
 
-##### 2.1.2.2.3.4.1 **num\_enrolled** Tree Diagram
+<table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#d7266c69-8eaa-403f-9efa-0331b0b84e61 class="margin-NaN">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+##### 2.1.2.2.3.3.3 **content** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>content</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Nội dung khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td><span>Quantification</span></td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="d7266c69-8eaa-403f-9efa-0331b0b84e61"></a>2.1.2.2.3.4 Field **\[0\]**
+
+##### 2.1.2.2.3.4.1 **\[0\]** Tree Diagram
 
 ![Hackolade image](./DATABASE/image29.png?raw=true)
 
-##### 2.1.2.2.3.4.2 **num\_enrolled** properties
+##### 2.1.2.2.3.4.2 **\[0\]** Hierarchy
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>num_enrolled</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>numeric</td></tr><tr><td>Subtype</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Số người đăng ký</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Unit</td><td></td></tr><tr><td>Min value</td><td></td></tr><tr><td>Excl min</td><td></td></tr><tr><td>Max value</td><td></td></tr><tr><td>Excl max</td><td></td></tr><tr><td>Multiple of</td><td></td></tr><tr><td>Divisible by</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+Parent field: **content**
 
-### <a id="9e7294c3-527a-4bf8-8797-29490235e9c8"></a>2.1.2.2.3.5 Field **learning\_outcome**
+Child field(s):
 
-##### 2.1.2.2.3.5.1 **learning\_outcome** Tree Diagram
+<table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#4a4ab4ae-1ff3-4645-bf6d-476d1caa1892 class="margin-NaN">title</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tiêu đề video</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#a5cb1b07-d8d5-410e-86be-6109167891a9 class="margin-NaN">video_url</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Liên kết video</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#ee680782-8950-490c-870b-3b2c49019d06 class="margin-NaN">thumbnail_url</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Thumbnail của video</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#62b90c62-5bc3-47f6-ad24-943db1170dcb class="margin-NaN">lesson_note</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Ghi chú bài giảng</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+##### 2.1.2.2.3.4.3 **\[0\]** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Display name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>document</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>DBRef</td><td></td></tr><tr><td>Min Properties</td><td></td></tr><tr><td>Max Properties</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="4a4ab4ae-1ff3-4645-bf6d-476d1caa1892"></a>2.1.2.2.3.5 Field **title**
+
+##### 2.1.2.2.3.5.1 **title** Tree Diagram
 
 ![Hackolade image](./DATABASE/image30.png?raw=true)
 
-##### 2.1.2.2.3.5.2 **learning\_outcome** Hierarchy
+##### 2.1.2.2.3.5.2 **title** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>title</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Tiêu đề video</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="a5cb1b07-d8d5-410e-86be-6109167891a9"></a>2.1.2.2.3.6 Field **video\_url**
+
+##### 2.1.2.2.3.6.1 **video\_url** Tree Diagram
+
+![Hackolade image](./DATABASE/image31.png?raw=true)
+
+##### 2.1.2.2.3.6.2 **video\_url** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>video_url</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Liên kết video</p></div></td></tr><tr><td>Format</td><td>uri</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="ee680782-8950-490c-870b-3b2c49019d06"></a>2.1.2.2.3.7 Field **thumbnail\_url**
+
+##### 2.1.2.2.3.7.1 **thumbnail\_url** Tree Diagram
+
+![Hackolade image](./DATABASE/image32.png?raw=true)
+
+##### 2.1.2.2.3.7.2 **thumbnail\_url** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>thumbnail_url</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Thumbnail của video</p></div></td></tr><tr><td>Format</td><td>uri</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="62b90c62-5bc3-47f6-ad24-943db1170dcb"></a>2.1.2.2.3.8 Field **lesson\_note**
+
+##### 2.1.2.2.3.8.1 **lesson\_note** Tree Diagram
+
+![Hackolade image](./DATABASE/image33.png?raw=true)
+
+##### 2.1.2.2.3.8.2 **lesson\_note** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>lesson_note</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Ghi chú bài giảng</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+##### 2.1.2.2.4 **course\_content** JSON Schema
+
+```
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "course_content",
+    "properties": {
+        "course_id": {
+            "type": "string",
+            "description": "ID khóa học",
+            "pattern": "^[a-fA-F0-9]{24}$"
+        },
+        "lesson_count": {
+            "type": "number",
+            "description": "Số lượng khóa học"
+        },
+        "content": {
+            "type": "array",
+            "description": "Nội dung khóa học\n",
+            "additionalItems": true,
+            "items": {
+                "type": "object",
+                "properties": {
+                    "title": {
+                        "type": "string",
+                        "description": "Tiêu đề video"
+                    },
+                    "video_url": {
+                        "type": "string",
+                        "description": "Liên kết video",
+                        "format": "uri"
+                    },
+                    "thumbnail_url": {
+                        "type": "string",
+                        "description": "Thumbnail của video",
+                        "format": "uri"
+                    },
+                    "lesson_note": {
+                        "type": "string",
+                        "description": "Ghi chú bài giảng\n"
+                    }
+                },
+                "additionalProperties": false
+            }
+        }
+    },
+    "additionalProperties": false
+}
+```
+
+##### 2.1.2.2.5 **course\_content** JSON data
+
+```
+{
+    "course_id": ObjectId("d5b80addcd0da5ecb2c5c589"),
+    "lesson_count": 20,
+    "content": [
+        {
+            "title": "Lorem",
+            "video_url": "./resource.txt#frag01",
+            "thumbnail_url": "./resource.txt#frag01",
+            "lesson_note": "Lorem"
+        }
+    ]
+}
+```
+
+##### 2.1.2.2.6 **course\_content** Target Script
+
+```
+use BanKhoaHoc;
+
+db.createCollection("course_content", {
+    "capped": false,
+    "validator": {
+        "$jsonSchema": {
+            "bsonType": "object",
+            "title": "course_content",
+            "properties": {
+                "_id": {
+                    "bsonType": "objectId"
+                },
+                "course_id": {
+                    "bsonType": "objectId",
+                    "description": "ID khóa học"
+                },
+                "lesson_count": {
+                    "bsonType": "number",
+                    "description": "Số lượng khóa học"
+                },
+                "content": {
+                    "bsonType": "array",
+                    "description": "Nội dung khóa học\n",
+                    "additionalItems": true,
+                    "items": {
+                        "bsonType": "object",
+                        "properties": {
+                            "title": {
+                                "bsonType": "string",
+                                "description": "Tiêu đề video"
+                            },
+                            "video_url": {
+                                "bsonType": "string",
+                                "description": "Liên kết video"
+                            },
+                            "thumbnail_url": {
+                                "bsonType": "string",
+                                "description": "Thumbnail của video"
+                            },
+                            "lesson_note": {
+                                "bsonType": "string",
+                                "description": "Ghi chú bài giảng\n"
+                            }
+                        },
+                        "additionalProperties": false
+                    }
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "validationLevel": "off",
+    "validationAction": "warn"
+});
+```
+
+### <a id="34fb3d70-57d0-4028-b679-efc879f2836e"></a>2.1.2.3 Collection **courses**
+
+##### 2.1.2.3.1 **courses** Tree Diagram
+
+![Hackolade image](./DATABASE/image34.png?raw=true)
+
+##### 2.1.2.3.2 **courses** Properties
+
+<table class="collection-properties-table"><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Collection name</td><td>courses</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>$ref</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Bảng thông tin khóa học</p></div></td></tr><tr><td>Database</td><td><a href=#56fa4821-fb8a-4925-b373-89733686924a><span class="name-container">BanKhoaHoc</span></a></td></tr><tr><td>Capped</td><td></td></tr><tr><td>Time series</td><td></td></tr><tr><td>Size</td><td></td></tr><tr><td>Max</td><td></td></tr><tr><td>Storage engine</td><td>WiredTiger</td></tr><tr><td>Config String</td><td></td></tr><tr><td>Validation level</td><td>Off</td></tr><tr><td>Validation action</td><td>Warn</td></tr><tr><td>Encryption metadata</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td colspan="2"><b>Workload analysis</b></td></tr><tr><td>[1] Actor</td><td></td></tr><tr><td>Description</td><td></td></tr><tr><td>Number of documents</td><td></td></tr><tr><td>Avg document size (Bytes)</td><td></td></tr><tr><td>Read-to-Write ratio</td><td></td></tr><tr><td>Keep forever</td><td></td></tr><tr><td>Retention (months)</td><td></td></tr><tr><td>Write operations</td><td></td></tr><tr><td>Read operations</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+##### 2.1.2.3.3 **courses** Fields
+
+<table><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58 class="margin-0">_id</a></td><td class="no-break-word">objectId</td><td>true</td><td>pk, dk</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#3cc6e9be-137f-4737-83d3-2e6f2e993e0e class="margin-0">name</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tên khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#90434fd0-8597-47b3-a900-38f2d842f2d6 class="margin-0">description</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Mô tả khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#ba42e273-92fe-43aa-ab95-d117de4ec519 class="margin-0">num_enrolled</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>Số người đăng ký</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#9e7294c3-527a-4bf8-8797-29490235e9c8 class="margin-0">learning_outcome</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Những kỹ năng có được sau khi học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#477c50c5-13bc-4707-9cb4-0847a911b6bd class="margin-5">[0]</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#6f8af114-cda9-45c8-a1a5-55e6398ba5e2 class="margin-0">category</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Những chủ đề khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#05c21c76-cfbd-4f86-9064-06f35a434f33 class="margin-5">[0]</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#498c989b-408d-4968-a5fb-a351deade22b class="margin-0">level</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Trình độ: Cơ bản, chuyên sâu, chuyên ngành,...</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#8ecd4939-cfec-405d-b68b-c5e0d60db5ea class="margin-0">price</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>Giá tiền khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#40357f5f-e990-403f-aa10-4793befeef89 class="margin-0">poster_url</a></td><td class="no-break-word">uri</td><td>false</td><td></td><td><div class="docs-markdown"><p>Poster khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#47fd4bb1-160a-4753-8348-0306369b5042 class="margin-0">instructors</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Danh sách giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#1eba1bef-0de2-429a-b188-41c8f7c06b9f class="margin-5">[0]&nbsp;lecturer</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#e2a0d2e2-f771-4316-b401-3e303b816661 class="margin-10">User</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c2b86c74-5fbc-4750-943a-ab9319ffc328 class="margin-15">user_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>ID người dùng giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#8293cdcb-0438-49c8-b0e3-d9026843760d class="margin-15">name</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tên giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#31df3720-0754-4692-a45d-cac87eecb397 class="margin-15">email</a></td><td class="no-break-word">email</td><td>false</td><td></td><td><div class="docs-markdown"><p>email giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c29f6118-687d-4fb3-b9f1-96b484b0bc87 class="margin-15">gender</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>giới tính giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#27560c7b-9c59-4aa8-b910-56982141af56 class="margin-15">profile_pic</a></td><td class="no-break-word">uri</td><td>false</td><td></td><td><div class="docs-markdown"><p>hình giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#4ea5071e-544d-49aa-9415-c52eb2b38901 class="margin-10">bio</a></td><td class="no-break-word">string</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>Mô tả giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#0a672927-1452-4e8e-a8b7-c3788afd7935 class="margin-0">requirements</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Yêu cầu kiến thức</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#9adc298c-404c-413d-8731-ed09c617e113 class="margin-5">[0]</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#a759e0af-b9a4-4204-ba96-59302ad6909d class="margin-0">students</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Danh sách học viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#153b2036-bd47-4491-a144-79adbc27177a class="margin-5">[0]&nbsp;User</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"><p>Liên kết với bảng users</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#d1ce568b-196c-4688-b768-656232a9c33a class="margin-10">user_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>id học viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#210ebaf0-907e-4809-9052-3c609c7ebff4 class="margin-0">course_review</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Review khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#feb22285-77d2-45f0-bddf-4d086ebfe2d7 class="margin-5">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#a9d37e6c-9455-4669-9c7a-27cdc0e867e3 class="margin-10">user_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>id học viên đánh giá</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#6b51e40d-61dc-42ad-ab1e-0ea144180bf4 class="margin-10">rating</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>Đánh giá từ 1 -&gt; 5 sao</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#56bf8f13-51e8-4573-9fb5-ca47133d44cf class="margin-10">comment</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Bình luận</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c4f2249f-0a41-47b5-a70f-7997441cffed class="margin-10">created_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>ngày tạo bình luận</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#0e65c959-b46c-485b-b55d-f900e78d33c2 class="margin-10">updated_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#f22d4509-0b95-4927-b9fd-7b5d18fce13d class="margin-0">created_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Được tạo vào ngày</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#fff46fea-5382-4e80-969a-987732b4d596 class="margin-0">updated_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Được cập nhật vào ngày</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="4c2b9f63-a48c-482b-973f-6f8877d75b58"></a>2.1.2.3.3.1 Field **\_id**
+
+##### 2.1.2.3.3.1.1 **\_id** Tree Diagram
+
+![Hackolade image](./DATABASE/image35.png?raw=true)
+
+##### 2.1.2.3.3.1.2 **\_id** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td>true</td></tr><tr><td>Primary key</td><td>true</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="3cc6e9be-137f-4737-83d3-2e6f2e993e0e"></a>2.1.2.3.3.2 Field **name**
+
+##### 2.1.2.3.3.2.1 **name** Tree Diagram
+
+![Hackolade image](./DATABASE/image36.png?raw=true)
+
+##### 2.1.2.3.3.2.2 **name** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>name</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Tên khóa học</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="90434fd0-8597-47b3-a900-38f2d842f2d6"></a>2.1.2.3.3.3 Field **description**
+
+##### 2.1.2.3.3.3.1 **description** Tree Diagram
+
+![Hackolade image](./DATABASE/image37.png?raw=true)
+
+##### 2.1.2.3.3.3.2 **description** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>description</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Mô tả khóa học</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="ba42e273-92fe-43aa-ab95-d117de4ec519"></a>2.1.2.3.3.4 Field **num\_enrolled**
+
+##### 2.1.2.3.3.4.1 **num\_enrolled** Tree Diagram
+
+![Hackolade image](./DATABASE/image38.png?raw=true)
+
+##### 2.1.2.3.3.4.2 **num\_enrolled** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>num_enrolled</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>numeric</td></tr><tr><td>Subtype</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Số người đăng ký</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Unit</td><td></td></tr><tr><td>Min value</td><td></td></tr><tr><td>Excl min</td><td></td></tr><tr><td>Max value</td><td></td></tr><tr><td>Excl max</td><td></td></tr><tr><td>Multiple of</td><td></td></tr><tr><td>Divisible by</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="9e7294c3-527a-4bf8-8797-29490235e9c8"></a>2.1.2.3.3.5 Field **learning\_outcome**
+
+##### 2.1.2.3.3.5.1 **learning\_outcome** Tree Diagram
+
+![Hackolade image](./DATABASE/image39.png?raw=true)
+
+##### 2.1.2.3.3.5.2 **learning\_outcome** Hierarchy
 
 Parent field: **courses**
 
@@ -659,27 +899,27 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#477c50c5-13bc-4707-9cb4-0847a911b6bd class="margin-NaN">[0]</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.2.3.5.3 **learning\_outcome** properties
+##### 2.1.2.3.3.5.3 **learning\_outcome** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>learning_outcome</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Những kỹ năng có được sau khi học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>learning_outcome</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Những kỹ năng có được sau khi học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td><span>Quantification</span></td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="477c50c5-13bc-4707-9cb4-0847a911b6bd"></a>2.1.2.2.3.6 Field **\[0\]**
+### <a id="477c50c5-13bc-4707-9cb4-0847a911b6bd"></a>2.1.2.3.3.6 Field **\[0\]**
 
-##### 2.1.2.2.3.6.1 **\[0\]** Tree Diagram
+##### 2.1.2.3.3.6.1 **\[0\]** Tree Diagram
 
-![Hackolade image](./DATABASE/image31.png?raw=true)
+![Hackolade image](./DATABASE/image40.png?raw=true)
 
-##### 2.1.2.2.3.6.2 **\[0\]** properties
+##### 2.1.2.3.3.6.2 **\[0\]** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Display name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="6f8af114-cda9-45c8-a1a5-55e6398ba5e2"></a>2.1.2.2.3.7 Field **category**
+### <a id="6f8af114-cda9-45c8-a1a5-55e6398ba5e2"></a>2.1.2.3.3.7 Field **category**
 
-##### 2.1.2.2.3.7.1 **category** Tree Diagram
+##### 2.1.2.3.3.7.1 **category** Tree Diagram
 
-![Hackolade image](./DATABASE/image32.png?raw=true)
+![Hackolade image](./DATABASE/image41.png?raw=true)
 
-##### 2.1.2.2.3.7.2 **category** Hierarchy
+##### 2.1.2.3.3.7.2 **category** Hierarchy
 
 Parent field: **courses**
 
@@ -687,57 +927,57 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#05c21c76-cfbd-4f86-9064-06f35a434f33 class="margin-NaN">[0]</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.2.3.7.3 **category** properties
+##### 2.1.2.3.3.7.3 **category** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>category</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Những chủ đề khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>category</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Những chủ đề khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td><span>Quantification</span></td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="05c21c76-cfbd-4f86-9064-06f35a434f33"></a>2.1.2.2.3.8 Field **\[0\]**
+### <a id="05c21c76-cfbd-4f86-9064-06f35a434f33"></a>2.1.2.3.3.8 Field **\[0\]**
 
-##### 2.1.2.2.3.8.1 **\[0\]** Tree Diagram
+##### 2.1.2.3.3.8.1 **\[0\]** Tree Diagram
 
-![Hackolade image](./DATABASE/image33.png?raw=true)
+![Hackolade image](./DATABASE/image42.png?raw=true)
 
-##### 2.1.2.2.3.8.2 **\[0\]** properties
+##### 2.1.2.3.3.8.2 **\[0\]** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Display name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="498c989b-408d-4968-a5fb-a351deade22b"></a>2.1.2.2.3.9 Field **level**
+### <a id="498c989b-408d-4968-a5fb-a351deade22b"></a>2.1.2.3.3.9 Field **level**
 
-##### 2.1.2.2.3.9.1 **level** Tree Diagram
+##### 2.1.2.3.3.9.1 **level** Tree Diagram
 
-![Hackolade image](./DATABASE/image34.png?raw=true)
+![Hackolade image](./DATABASE/image43.png?raw=true)
 
-##### 2.1.2.2.3.9.2 **level** properties
+##### 2.1.2.3.3.9.2 **level** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>level</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Trình độ: Cơ bản, chuyên sâu, chuyên ngành,...</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="8ecd4939-cfec-405d-b68b-c5e0d60db5ea"></a>2.1.2.2.3.10 Field **price**
+### <a id="8ecd4939-cfec-405d-b68b-c5e0d60db5ea"></a>2.1.2.3.3.10 Field **price**
 
-##### 2.1.2.2.3.10.1 **price** Tree Diagram
+##### 2.1.2.3.3.10.1 **price** Tree Diagram
 
-![Hackolade image](./DATABASE/image35.png?raw=true)
+![Hackolade image](./DATABASE/image44.png?raw=true)
 
-##### 2.1.2.2.3.10.2 **price** properties
+##### 2.1.2.3.3.10.2 **price** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>price</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>numeric</td></tr><tr><td>Subtype</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Giá tiền khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Unit</td><td></td></tr><tr><td>Min value</td><td></td></tr><tr><td>Excl min</td><td></td></tr><tr><td>Max value</td><td></td></tr><tr><td>Excl max</td><td></td></tr><tr><td>Multiple of</td><td></td></tr><tr><td>Divisible by</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="40357f5f-e990-403f-aa10-4793befeef89"></a>2.1.2.2.3.11 Field **poster\_url**
+### <a id="40357f5f-e990-403f-aa10-4793befeef89"></a>2.1.2.3.3.11 Field **poster\_url**
 
-##### 2.1.2.2.3.11.1 **poster\_url** Tree Diagram
+##### 2.1.2.3.3.11.1 **poster\_url** Tree Diagram
 
-![Hackolade image](./DATABASE/image36.png?raw=true)
+![Hackolade image](./DATABASE/image45.png?raw=true)
 
-##### 2.1.2.2.3.11.2 **poster\_url** properties
+##### 2.1.2.3.3.11.2 **poster\_url** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>poster_url</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Poster khóa học</p></div></td></tr><tr><td>Format</td><td>uri</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="47fd4bb1-160a-4753-8348-0306369b5042"></a>2.1.2.2.3.12 Field **instructors**
+### <a id="47fd4bb1-160a-4753-8348-0306369b5042"></a>2.1.2.3.3.12 Field **instructors**
 
-##### 2.1.2.2.3.12.1 **instructors** Tree Diagram
+##### 2.1.2.3.3.12.1 **instructors** Tree Diagram
 
-![Hackolade image](./DATABASE/image37.png?raw=true)
+![Hackolade image](./DATABASE/image46.png?raw=true)
 
-##### 2.1.2.2.3.12.2 **instructors** Hierarchy
+##### 2.1.2.3.3.12.2 **instructors** Hierarchy
 
 Parent field: **courses**
 
@@ -745,17 +985,17 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#1eba1bef-0de2-429a-b188-41c8f7c06b9f class="margin-NaN">[0]&nbsp;lecturer</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.2.3.12.3 **instructors** properties
+##### 2.1.2.3.3.12.3 **instructors** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>instructors</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Danh sách giảng viên</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>instructors</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Danh sách giảng viên</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td><span>Quantification</span></td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="1eba1bef-0de2-429a-b188-41c8f7c06b9f"></a>2.1.2.2.3.13 Field **\[0\] lecturer**
+### <a id="1eba1bef-0de2-429a-b188-41c8f7c06b9f"></a>2.1.2.3.3.13 Field **\[0\] lecturer**
 
-##### 2.1.2.2.3.13.1 **\[0\] lecturer** Tree Diagram
+##### 2.1.2.3.3.13.1 **\[0\] lecturer** Tree Diagram
 
-![Hackolade image](./DATABASE/image38.png?raw=true)
+![Hackolade image](./DATABASE/image47.png?raw=true)
 
-##### 2.1.2.2.3.13.2 **\[0\] lecturer** Hierarchy
+##### 2.1.2.3.3.13.2 **\[0\] lecturer** Hierarchy
 
 Parent field: **instructors**
 
@@ -763,17 +1003,17 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#e2a0d2e2-f771-4316-b401-3e303b816661 class="margin-NaN">User</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#4ea5071e-544d-49aa-9415-c52eb2b38901 class="margin-NaN">bio</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Mô tả giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.2.3.13.3 **\[0\] lecturer** properties
+##### 2.1.2.3.3.13.3 **\[0\] lecturer** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Display name</td><td>lecturer</td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>document</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#7763d428-db9e-4464-ae2f-19edd261c592>lecturer</a></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>DBRef</td><td></td></tr><tr><td>Min Properties</td><td></td></tr><tr><td>Max Properties</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="e2a0d2e2-f771-4316-b401-3e303b816661"></a>2.1.2.2.3.14 Field **User**
+### <a id="e2a0d2e2-f771-4316-b401-3e303b816661"></a>2.1.2.3.3.14 Field **User**
 
-##### 2.1.2.2.3.14.1 **User** Tree Diagram
+##### 2.1.2.3.3.14.1 **User** Tree Diagram
 
-![Hackolade image](./DATABASE/image39.png?raw=true)
+![Hackolade image](./DATABASE/image48.png?raw=true)
 
-##### 2.1.2.2.3.14.2 **User** Hierarchy
+##### 2.1.2.3.3.14.2 **User** Hierarchy
 
 Parent field: **\[0\] lecturer**
 
@@ -781,143 +1021,77 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#c2b86c74-5fbc-4750-943a-ab9319ffc328 class="margin-NaN">user_id</a></td><td class="no-break-word">objectId</td><td>false</td><td></td><td><div class="docs-markdown"><p>ID người dùng giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#8293cdcb-0438-49c8-b0e3-d9026843760d class="margin-NaN">name</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tên giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#31df3720-0754-4692-a45d-cac87eecb397 class="margin-NaN">email</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>email giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c29f6118-687d-4fb3-b9f1-96b484b0bc87 class="margin-NaN">gender</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>giới tính giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#27560c7b-9c59-4aa8-b910-56982141af56 class="margin-NaN">profile_pic</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>hình giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.2.3.14.3 **User** properties
+##### 2.1.2.3.3.14.3 **User** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>User</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>document</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>DBRef</td><td></td></tr><tr><td>Min Properties</td><td></td></tr><tr><td>Max Properties</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="c2b86c74-5fbc-4750-943a-ab9319ffc328"></a>2.1.2.2.3.15 Field **user\_id**
+### <a id="c2b86c74-5fbc-4750-943a-ab9319ffc328"></a>2.1.2.3.3.15 Field **user\_id**
 
-##### 2.1.2.2.3.15.1 **user\_id** Tree Diagram
-
-![Hackolade image](./DATABASE/image40.png?raw=true)
-
-##### 2.1.2.2.3.15.2 **user\_id** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>user_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID người dùng giảng viên</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td></tr><tr><td>Foreign field</td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk courses.instructors.[0].User.user_id to users._id</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="8293cdcb-0438-49c8-b0e3-d9026843760d"></a>2.1.2.2.3.16 Field **name**
-
-##### 2.1.2.2.3.16.1 **name** Tree Diagram
-
-![Hackolade image](./DATABASE/image41.png?raw=true)
-
-##### 2.1.2.2.3.16.2 **name** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>name</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Tên giảng viên</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="31df3720-0754-4692-a45d-cac87eecb397"></a>2.1.2.2.3.17 Field **email**
-
-##### 2.1.2.2.3.17.1 **email** Tree Diagram
-
-![Hackolade image](./DATABASE/image42.png?raw=true)
-
-##### 2.1.2.2.3.17.2 **email** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>email</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>email giảng viên</p></div></td></tr><tr><td>Format</td><td>email</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="c29f6118-687d-4fb3-b9f1-96b484b0bc87"></a>2.1.2.2.3.18 Field **gender**
-
-##### 2.1.2.2.3.18.1 **gender** Tree Diagram
-
-![Hackolade image](./DATABASE/image43.png?raw=true)
-
-##### 2.1.2.2.3.18.2 **gender** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>gender</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>giới tính giảng viên</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="27560c7b-9c59-4aa8-b910-56982141af56"></a>2.1.2.2.3.19 Field **profile\_pic**
-
-##### 2.1.2.2.3.19.1 **profile\_pic** Tree Diagram
-
-![Hackolade image](./DATABASE/image44.png?raw=true)
-
-##### 2.1.2.2.3.19.2 **profile\_pic** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>profile_pic</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>hình giảng viên</p></div></td></tr><tr><td>Format</td><td>uri</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="4ea5071e-544d-49aa-9415-c52eb2b38901"></a>2.1.2.2.3.20 Field **bio**
-
-##### 2.1.2.2.3.20.1 **bio** Tree Diagram
-
-![Hackolade image](./DATABASE/image45.png?raw=true)
-
-##### 2.1.2.2.3.20.2 **bio** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>bio</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Mô tả giảng viên</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#7763d428-db9e-4464-ae2f-19edd261c592>lecturer</a></td></tr><tr><td>Foreign field</td><td><a href=#e91fa04c-ca90-42c8-aa64-0cb5235c16f0>bio</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk courses.instructors.[0].bio to lecturer.bio</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="6b7717ca-adce-4be9-a79b-508188f68117"></a>2.1.2.2.3.21 Field **videos**
-
-##### 2.1.2.2.3.21.1 **videos** Tree Diagram
-
-![Hackolade image](./DATABASE/image46.png?raw=true)
-
-##### 2.1.2.2.3.21.2 **videos** Hierarchy
-
-Parent field: **courses**
-
-Child field(s):
-
-<table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#07f9c1b7-3e11-4f6c-be78-42f67cdd1802 class="margin-NaN">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-##### 2.1.2.2.3.21.3 **videos** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>videos</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Danh sách video khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="07f9c1b7-3e11-4f6c-be78-42f67cdd1802"></a>2.1.2.2.3.22 Field **\[0\]**
-
-##### 2.1.2.2.3.22.1 **\[0\]** Tree Diagram
-
-![Hackolade image](./DATABASE/image47.png?raw=true)
-
-##### 2.1.2.2.3.22.2 **\[0\]** Hierarchy
-
-Parent field: **videos**
-
-Child field(s):
-
-<table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#25304610-d381-4e70-ad50-8295ffaefbad class="margin-NaN">video_title</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tiêu đề video</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#2cc46f6f-5f25-42e9-9662-b4ec81e6369d class="margin-NaN">video_url</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Liên kết video</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#dfafc443-ad85-4355-811c-2d131c788b6e class="margin-NaN">lesson_note</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Ghi chú bài giảng</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-##### 2.1.2.2.3.22.3 **\[0\]** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Display name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>document</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>DBRef</td><td></td></tr><tr><td>Min Properties</td><td></td></tr><tr><td>Max Properties</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="25304610-d381-4e70-ad50-8295ffaefbad"></a>2.1.2.2.3.23 Field **video\_title**
-
-##### 2.1.2.2.3.23.1 **video\_title** Tree Diagram
-
-![Hackolade image](./DATABASE/image48.png?raw=true)
-
-##### 2.1.2.2.3.23.2 **video\_title** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>video_title</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Tiêu đề video</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="2cc46f6f-5f25-42e9-9662-b4ec81e6369d"></a>2.1.2.2.3.24 Field **video\_url**
-
-##### 2.1.2.2.3.24.1 **video\_url** Tree Diagram
+##### 2.1.2.3.3.15.1 **user\_id** Tree Diagram
 
 ![Hackolade image](./DATABASE/image49.png?raw=true)
 
-##### 2.1.2.2.3.24.2 **video\_url** properties
+##### 2.1.2.3.3.15.2 **user\_id** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>video_url</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Liên kết video</p></div></td></tr><tr><td>Format</td><td>uri</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>user_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID người dùng giảng viên</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td></tr><tr><td>Foreign field</td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk courses.instructors.[0].User.user_id to users._id</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="dfafc443-ad85-4355-811c-2d131c788b6e"></a>2.1.2.2.3.25 Field **lesson\_note**
+### <a id="8293cdcb-0438-49c8-b0e3-d9026843760d"></a>2.1.2.3.3.16 Field **name**
 
-##### 2.1.2.2.3.25.1 **lesson\_note** Tree Diagram
+##### 2.1.2.3.3.16.1 **name** Tree Diagram
 
 ![Hackolade image](./DATABASE/image50.png?raw=true)
 
-##### 2.1.2.2.3.25.2 **lesson\_note** properties
+##### 2.1.2.3.3.16.2 **name** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>lesson_note</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Ghi chú bài giảng</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>name</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Tên giảng viên</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="0a672927-1452-4e8e-a8b7-c3788afd7935"></a>2.1.2.2.3.26 Field **requirements**
+### <a id="31df3720-0754-4692-a45d-cac87eecb397"></a>2.1.2.3.3.17 Field **email**
 
-##### 2.1.2.2.3.26.1 **requirements** Tree Diagram
+##### 2.1.2.3.3.17.1 **email** Tree Diagram
 
 ![Hackolade image](./DATABASE/image51.png?raw=true)
 
-##### 2.1.2.2.3.26.2 **requirements** Hierarchy
+##### 2.1.2.3.3.17.2 **email** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>email</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>email giảng viên</p></div></td></tr><tr><td>Format</td><td>email</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="c29f6118-687d-4fb3-b9f1-96b484b0bc87"></a>2.1.2.3.3.18 Field **gender**
+
+##### 2.1.2.3.3.18.1 **gender** Tree Diagram
+
+![Hackolade image](./DATABASE/image52.png?raw=true)
+
+##### 2.1.2.3.3.18.2 **gender** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>gender</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>giới tính giảng viên</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="27560c7b-9c59-4aa8-b910-56982141af56"></a>2.1.2.3.3.19 Field **profile\_pic**
+
+##### 2.1.2.3.3.19.1 **profile\_pic** Tree Diagram
+
+![Hackolade image](./DATABASE/image53.png?raw=true)
+
+##### 2.1.2.3.3.19.2 **profile\_pic** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>profile_pic</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>hình giảng viên</p></div></td></tr><tr><td>Format</td><td>uri</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="4ea5071e-544d-49aa-9415-c52eb2b38901"></a>2.1.2.3.3.20 Field **bio**
+
+##### 2.1.2.3.3.20.1 **bio** Tree Diagram
+
+![Hackolade image](./DATABASE/image54.png?raw=true)
+
+##### 2.1.2.3.3.20.2 **bio** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>bio</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Mô tả giảng viên</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#7763d428-db9e-4464-ae2f-19edd261c592>lecturer</a></td></tr><tr><td>Foreign field</td><td><a href=#e91fa04c-ca90-42c8-aa64-0cb5235c16f0>bio</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk courses.instructors.[0].bio to lecturer.bio</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="0a672927-1452-4e8e-a8b7-c3788afd7935"></a>2.1.2.3.3.21 Field **requirements**
+
+##### 2.1.2.3.3.21.1 **requirements** Tree Diagram
+
+![Hackolade image](./DATABASE/image55.png?raw=true)
+
+##### 2.1.2.3.3.21.2 **requirements** Hierarchy
 
 Parent field: **courses**
 
@@ -925,27 +1099,27 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#9adc298c-404c-413d-8731-ed09c617e113 class="margin-NaN">[0]</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.2.3.26.3 **requirements** properties
+##### 2.1.2.3.3.21.3 **requirements** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>requirements</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Yêu cầu kiến thức</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>requirements</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Yêu cầu kiến thức</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td><span>Quantification</span></td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="9adc298c-404c-413d-8731-ed09c617e113"></a>2.1.2.2.3.27 Field **\[0\]**
+### <a id="9adc298c-404c-413d-8731-ed09c617e113"></a>2.1.2.3.3.22 Field **\[0\]**
 
-##### 2.1.2.2.3.27.1 **\[0\]** Tree Diagram
+##### 2.1.2.3.3.22.1 **\[0\]** Tree Diagram
 
-![Hackolade image](./DATABASE/image52.png?raw=true)
+![Hackolade image](./DATABASE/image56.png?raw=true)
 
-##### 2.1.2.2.3.27.2 **\[0\]** properties
+##### 2.1.2.3.3.22.2 **\[0\]** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Display name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="a759e0af-b9a4-4204-ba96-59302ad6909d"></a>2.1.2.2.3.28 Field **students**
+### <a id="a759e0af-b9a4-4204-ba96-59302ad6909d"></a>2.1.2.3.3.23 Field **students**
 
-##### 2.1.2.2.3.28.1 **students** Tree Diagram
+##### 2.1.2.3.3.23.1 **students** Tree Diagram
 
-![Hackolade image](./DATABASE/image53.png?raw=true)
+![Hackolade image](./DATABASE/image57.png?raw=true)
 
-##### 2.1.2.2.3.28.2 **students** Hierarchy
+##### 2.1.2.3.3.23.2 **students** Hierarchy
 
 Parent field: **courses**
 
@@ -953,17 +1127,17 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#153b2036-bd47-4491-a144-79adbc27177a class="margin-NaN">[0]&nbsp;User</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"><p>Liên kết với bảng users</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.2.3.28.3 **students** properties
+##### 2.1.2.3.3.23.3 **students** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>students</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Danh sách học viên</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>students</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Danh sách học viên</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td><span>Quantification</span></td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="153b2036-bd47-4491-a144-79adbc27177a"></a>2.1.2.2.3.29 Field **\[0\] User**
+### <a id="153b2036-bd47-4491-a144-79adbc27177a"></a>2.1.2.3.3.24 Field **\[0\] User**
 
-##### 2.1.2.2.3.29.1 **\[0\] User** Tree Diagram
+##### 2.1.2.3.3.24.1 **\[0\] User** Tree Diagram
 
-![Hackolade image](./DATABASE/image54.png?raw=true)
+![Hackolade image](./DATABASE/image58.png?raw=true)
 
-##### 2.1.2.2.3.29.2 **\[0\] User** Hierarchy
+##### 2.1.2.3.3.24.2 **\[0\] User** Hierarchy
 
 Parent field: **students**
 
@@ -971,27 +1145,27 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#d1ce568b-196c-4688-b768-656232a9c33a class="margin-NaN">user_id</a></td><td class="no-break-word">objectId</td><td>false</td><td></td><td><div class="docs-markdown"><p>id học viên</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.2.3.29.3 **\[0\] User** properties
+##### 2.1.2.3.3.24.3 **\[0\] User** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Display name</td><td>User</td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>document</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Liên kết với bảng users</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>DBRef</td><td></td></tr><tr><td>Min Properties</td><td></td></tr><tr><td>Max Properties</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="d1ce568b-196c-4688-b768-656232a9c33a"></a>2.1.2.2.3.30 Field **user\_id**
+### <a id="d1ce568b-196c-4688-b768-656232a9c33a"></a>2.1.2.3.3.25 Field **user\_id**
 
-##### 2.1.2.2.3.30.1 **user\_id** Tree Diagram
+##### 2.1.2.3.3.25.1 **user\_id** Tree Diagram
 
-![Hackolade image](./DATABASE/image55.png?raw=true)
+![Hackolade image](./DATABASE/image59.png?raw=true)
 
-##### 2.1.2.2.3.30.2 **user\_id** properties
+##### 2.1.2.3.3.25.2 **user\_id** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>user_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>id học viên</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td></tr><tr><td>Foreign field</td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk courses.students.[0].user_id to users._id</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="210ebaf0-907e-4809-9052-3c609c7ebff4"></a>2.1.2.2.3.31 Field **course\_review**
+### <a id="210ebaf0-907e-4809-9052-3c609c7ebff4"></a>2.1.2.3.3.26 Field **course\_review**
 
-##### 2.1.2.2.3.31.1 **course\_review** Tree Diagram
+##### 2.1.2.3.3.26.1 **course\_review** Tree Diagram
 
-![Hackolade image](./DATABASE/image56.png?raw=true)
+![Hackolade image](./DATABASE/image60.png?raw=true)
 
-##### 2.1.2.2.3.31.2 **course\_review** Hierarchy
+##### 2.1.2.3.3.26.2 **course\_review** Hierarchy
 
 Parent field: **courses**
 
@@ -999,17 +1173,17 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#feb22285-77d2-45f0-bddf-4d086ebfe2d7 class="margin-NaN">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.2.3.31.3 **course\_review** properties
+##### 2.1.2.3.3.26.3 **course\_review** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>course_review</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Review khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>course_review</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Review khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td><span>Quantification</span></td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="feb22285-77d2-45f0-bddf-4d086ebfe2d7"></a>2.1.2.2.3.32 Field **\[0\]**
+### <a id="feb22285-77d2-45f0-bddf-4d086ebfe2d7"></a>2.1.2.3.3.27 Field **\[0\]**
 
-##### 2.1.2.2.3.32.1 **\[0\]** Tree Diagram
+##### 2.1.2.3.3.27.1 **\[0\]** Tree Diagram
 
-![Hackolade image](./DATABASE/image57.png?raw=true)
+![Hackolade image](./DATABASE/image61.png?raw=true)
 
-##### 2.1.2.2.3.32.2 **\[0\]** Hierarchy
+##### 2.1.2.3.3.27.2 **\[0\]** Hierarchy
 
 Parent field: **course\_review**
 
@@ -1017,81 +1191,81 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#a9d37e6c-9455-4669-9c7a-27cdc0e867e3 class="margin-NaN">user_id</a></td><td class="no-break-word">objectId</td><td>false</td><td></td><td><div class="docs-markdown"><p>id học viên đánh giá</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#6b51e40d-61dc-42ad-ab1e-0ea144180bf4 class="margin-NaN">rating</a></td><td class="no-break-word">numeric</td><td>false</td><td></td><td><div class="docs-markdown"><p>Đánh giá từ 1 -&gt; 5 sao</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#56bf8f13-51e8-4573-9fb5-ca47133d44cf class="margin-NaN">comment</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Bình luận</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c4f2249f-0a41-47b5-a70f-7997441cffed class="margin-NaN">created_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>ngày tạo bình luận</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#0e65c959-b46c-485b-b55d-f900e78d33c2 class="margin-NaN">updated_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.2.3.32.3 **\[0\]** properties
+##### 2.1.2.3.3.27.3 **\[0\]** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Display name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>document</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>DBRef</td><td></td></tr><tr><td>Min Properties</td><td></td></tr><tr><td>Max Properties</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="a9d37e6c-9455-4669-9c7a-27cdc0e867e3"></a>2.1.2.2.3.33 Field **user\_id**
+### <a id="a9d37e6c-9455-4669-9c7a-27cdc0e867e3"></a>2.1.2.3.3.28 Field **user\_id**
 
-##### 2.1.2.2.3.33.1 **user\_id** Tree Diagram
-
-![Hackolade image](./DATABASE/image58.png?raw=true)
-
-##### 2.1.2.2.3.33.2 **user\_id** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>user_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>id học viên đánh giá</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td></tr><tr><td>Foreign field</td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk courses.course_review.[0].user_id to users._id</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="6b51e40d-61dc-42ad-ab1e-0ea144180bf4"></a>2.1.2.2.3.34 Field **rating**
-
-##### 2.1.2.2.3.34.1 **rating** Tree Diagram
-
-![Hackolade image](./DATABASE/image59.png?raw=true)
-
-##### 2.1.2.2.3.34.2 **rating** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>rating</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>numeric</td></tr><tr><td>Subtype</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Đánh giá từ 1 -&gt; 5 sao</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Unit</td><td></td></tr><tr><td>Min value</td><td></td></tr><tr><td>Excl min</td><td></td></tr><tr><td>Max value</td><td></td></tr><tr><td>Excl max</td><td></td></tr><tr><td>Multiple of</td><td></td></tr><tr><td>Divisible by</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>3.5</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="56bf8f13-51e8-4573-9fb5-ca47133d44cf"></a>2.1.2.2.3.35 Field **comment**
-
-##### 2.1.2.2.3.35.1 **comment** Tree Diagram
-
-![Hackolade image](./DATABASE/image60.png?raw=true)
-
-##### 2.1.2.2.3.35.2 **comment** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>comment</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Bình luận</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="c4f2249f-0a41-47b5-a70f-7997441cffed"></a>2.1.2.2.3.36 Field **created\_at**
-
-##### 2.1.2.2.3.36.1 **created\_at** Tree Diagram
-
-![Hackolade image](./DATABASE/image61.png?raw=true)
-
-##### 2.1.2.2.3.36.2 **created\_at** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>created_at</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>date</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ngày tạo bình luận</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Now</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="0e65c959-b46c-485b-b55d-f900e78d33c2"></a>2.1.2.2.3.37 Field **updated\_at**
-
-##### 2.1.2.2.3.37.1 **updated\_at** Tree Diagram
+##### 2.1.2.3.3.28.1 **user\_id** Tree Diagram
 
 ![Hackolade image](./DATABASE/image62.png?raw=true)
 
-##### 2.1.2.2.3.37.2 **updated\_at** properties
+##### 2.1.2.3.3.28.2 **user\_id** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>updated_at</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>date</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Now</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>user_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>id học viên đánh giá</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td></tr><tr><td>Foreign field</td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk courses.course_review.[0].user_id to users._id</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="f22d4509-0b95-4927-b9fd-7b5d18fce13d"></a>2.1.2.2.3.38 Field **created\_at**
+### <a id="6b51e40d-61dc-42ad-ab1e-0ea144180bf4"></a>2.1.2.3.3.29 Field **rating**
 
-##### 2.1.2.2.3.38.1 **created\_at** Tree Diagram
+##### 2.1.2.3.3.29.1 **rating** Tree Diagram
 
 ![Hackolade image](./DATABASE/image63.png?raw=true)
 
-##### 2.1.2.2.3.38.2 **created\_at** properties
+##### 2.1.2.3.3.29.2 **rating** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>created_at</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>date</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Được tạo vào ngày</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Now</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>rating</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>numeric</td></tr><tr><td>Subtype</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Đánh giá từ 1 -&gt; 5 sao</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Unit</td><td></td></tr><tr><td>Min value</td><td></td></tr><tr><td>Excl min</td><td></td></tr><tr><td>Max value</td><td></td></tr><tr><td>Excl max</td><td></td></tr><tr><td>Multiple of</td><td></td></tr><tr><td>Divisible by</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>3.5</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="fff46fea-5382-4e80-969a-987732b4d596"></a>2.1.2.2.3.39 Field **updated\_at**
+### <a id="56bf8f13-51e8-4573-9fb5-ca47133d44cf"></a>2.1.2.3.3.30 Field **comment**
 
-##### 2.1.2.2.3.39.1 **updated\_at** Tree Diagram
+##### 2.1.2.3.3.30.1 **comment** Tree Diagram
 
 ![Hackolade image](./DATABASE/image64.png?raw=true)
 
-##### 2.1.2.2.3.39.2 **updated\_at** properties
+##### 2.1.2.3.3.30.2 **comment** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>comment</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Bình luận</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="c4f2249f-0a41-47b5-a70f-7997441cffed"></a>2.1.2.3.3.31 Field **created\_at**
+
+##### 2.1.2.3.3.31.1 **created\_at** Tree Diagram
+
+![Hackolade image](./DATABASE/image65.png?raw=true)
+
+##### 2.1.2.3.3.31.2 **created\_at** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>created_at</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>date</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ngày tạo bình luận</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Now</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="0e65c959-b46c-485b-b55d-f900e78d33c2"></a>2.1.2.3.3.32 Field **updated\_at**
+
+##### 2.1.2.3.3.32.1 **updated\_at** Tree Diagram
+
+![Hackolade image](./DATABASE/image66.png?raw=true)
+
+##### 2.1.2.3.3.32.2 **updated\_at** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>updated_at</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>date</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Now</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="f22d4509-0b95-4927-b9fd-7b5d18fce13d"></a>2.1.2.3.3.33 Field **created\_at**
+
+##### 2.1.2.3.3.33.1 **created\_at** Tree Diagram
+
+![Hackolade image](./DATABASE/image67.png?raw=true)
+
+##### 2.1.2.3.3.33.2 **created\_at** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>created_at</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>date</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Được tạo vào ngày</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Now</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="fff46fea-5382-4e80-969a-987732b4d596"></a>2.1.2.3.3.34 Field **updated\_at**
+
+##### 2.1.2.3.3.34.1 **updated\_at** Tree Diagram
+
+![Hackolade image](./DATABASE/image68.png?raw=true)
+
+##### 2.1.2.3.3.34.2 **updated\_at** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>updated_at</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>date</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Được cập nhật vào ngày</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Now</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.2.4 **courses** JSON Schema
+##### 2.1.2.3.4 **courses** JSON Schema
 
 ```
 {
@@ -1190,30 +1364,6 @@ Child field(s):
                 "additionalProperties": false
             }
         },
-        "videos": {
-            "type": "array",
-            "description": "Danh sách video khóa học\n",
-            "additionalItems": true,
-            "items": {
-                "type": "object",
-                "properties": {
-                    "video_title": {
-                        "type": "string",
-                        "description": "Tiêu đề video"
-                    },
-                    "video_url": {
-                        "type": "string",
-                        "description": "Liên kết video",
-                        "format": "uri"
-                    },
-                    "lesson_note": {
-                        "type": "string",
-                        "description": "Ghi chú bài giảng\n"
-                    }
-                },
-                "additionalProperties": false
-            }
-        },
         "requirements": {
             "type": "array",
             "description": "Yêu cầu kiến thức",
@@ -1290,11 +1440,11 @@ Child field(s):
 }
 ```
 
-##### 2.1.2.2.5 **courses** JSON data
+##### 2.1.2.3.5 **courses** JSON data
 
 ```
 {
-    "_id": ObjectId("fe8b5c2a8dc0e5aaaaffe67b"),
+    "_id": ObjectId("3eec7e1fd5e7bb7daceba4bf"),
     "name": "Lorem",
     "description": "Lorem",
     "num_enrolled": -66,
@@ -1310,7 +1460,7 @@ Child field(s):
     "instructors": [
         {
             "User": {
-                "user_id": ObjectId("3cbd5aae55a8e560d7ee4dd6"),
+                "user_id": ObjectId("44a2ea4bcef27ae6eb134eca"),
                 "name": "Lorem",
                 "email": "sample@email.com",
                 "gender": "Lorem",
@@ -1319,24 +1469,17 @@ Child field(s):
             "bio": "Lorem"
         }
     ],
-    "videos": [
-        {
-            "video_title": "Lorem",
-            "video_url": "./resource.txt#frag01",
-            "lesson_note": "Lorem"
-        }
-    ],
     "requirements": [
         "Lorem"
     ],
     "students": [
         {
-            "user_id": ObjectId("bdc6a4acf2b0bc2baa5da4dd")
+            "user_id": ObjectId("d3baf750d21aca1f2b4e1cae")
         }
     ],
     "course_review": [
         {
-            "user_id": ObjectId("5d0e12ab135ec343e8e2df1d"),
+            "user_id": ObjectId("fc3c0eda7afbf5f6ebbf49eb"),
             "rating": 3.5,
             "comment": "Lorem",
             "created_at": ISODate("2016-04-08T15:06:21.595Z"),
@@ -1348,7 +1491,7 @@ Child field(s):
 }
 ```
 
-##### 2.1.2.2.6 **courses** Target Script
+##### 2.1.2.3.6 **courses** Target Script
 
 ```
 use BanKhoaHoc;
@@ -1446,29 +1589,6 @@ db.createCollection("courses", {
                         "additionalProperties": false
                     }
                 },
-                "videos": {
-                    "bsonType": "array",
-                    "description": "Danh sách video khóa học\n",
-                    "additionalItems": true,
-                    "items": {
-                        "bsonType": "object",
-                        "properties": {
-                            "video_title": {
-                                "bsonType": "string",
-                                "description": "Tiêu đề video"
-                            },
-                            "video_url": {
-                                "bsonType": "string",
-                                "description": "Liên kết video"
-                            },
-                            "lesson_note": {
-                                "bsonType": "string",
-                                "description": "Ghi chú bài giảng\n"
-                            }
-                        },
-                        "additionalProperties": false
-                    }
-                },
                 "requirements": {
                     "bsonType": "array",
                     "description": "Yêu cầu kiến thức",
@@ -1543,27 +1663,27 @@ db.createCollection("courses", {
 });
 ```
 
-### <a id="7763d428-db9e-4464-ae2f-19edd261c592"></a>2.1.2.3 Collection **lecturer**
+### <a id="7763d428-db9e-4464-ae2f-19edd261c592"></a>2.1.2.4 Collection **lecturer**
 
-##### 2.1.2.3.1 **lecturer** Tree Diagram
+##### 2.1.2.4.1 **lecturer** Tree Diagram
 
-![Hackolade image](./DATABASE/image65.png?raw=true)
+![Hackolade image](./DATABASE/image69.png?raw=true)
 
-##### 2.1.2.3.2 **lecturer** Properties
+##### 2.1.2.4.2 **lecturer** Properties
 
-<table class="collection-properties-table"><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Collection name</td><td>lecturer</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>$ref</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Bảng thông tin giảng viên, giảng viên là một người dùng đặc biệt</p></div></td></tr><tr><td>Database</td><td><a href=#56fa4821-fb8a-4925-b373-89733686924a><span class="name-container">BanKhoaHoc</span></a></td></tr><tr><td>Capped</td><td></td></tr><tr><td>Time series</td><td></td></tr><tr><td>Size</td><td></td></tr><tr><td>Max</td><td></td></tr><tr><td>Storage engine</td><td>WiredTiger</td></tr><tr><td>Config String</td><td></td></tr><tr><td>Validation level</td><td>Off</td></tr><tr><td>Validation action</td><td>Warn</td></tr><tr><td>Encryption metadata</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table class="collection-properties-table"><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Collection name</td><td>lecturer</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>$ref</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Bảng thông tin giảng viên, giảng viên là một người dùng đặc biệt</p></div></td></tr><tr><td>Database</td><td><a href=#56fa4821-fb8a-4925-b373-89733686924a><span class="name-container">BanKhoaHoc</span></a></td></tr><tr><td>Capped</td><td></td></tr><tr><td>Time series</td><td></td></tr><tr><td>Size</td><td></td></tr><tr><td>Max</td><td></td></tr><tr><td>Storage engine</td><td>WiredTiger</td></tr><tr><td>Config String</td><td></td></tr><tr><td>Validation level</td><td>Off</td></tr><tr><td>Validation action</td><td>Warn</td></tr><tr><td>Encryption metadata</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td colspan="2"><b>Workload analysis</b></td></tr><tr><td>[1] Actor</td><td></td></tr><tr><td>Description</td><td></td></tr><tr><td>Number of documents</td><td></td></tr><tr><td>Avg document size (Bytes)</td><td></td></tr><tr><td>Read-to-Write ratio</td><td></td></tr><tr><td>Keep forever</td><td></td></tr><tr><td>Retention (months)</td><td></td></tr><tr><td>Write operations</td><td></td></tr><tr><td>Read operations</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.3.3 **lecturer** Fields
+##### 2.1.2.4.3 **lecturer** Fields
 
 <table><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#f603d220-29bf-401e-86ec-66b54f47d4e4 class="margin-0">User</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#be59b29d-b720-4080-9962-6444a170aae5 class="margin-5">user_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#ab2a6165-4a95-4555-bab2-ab1aed75ecd2 class="margin-5">name</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#7146d843-accf-494f-88fd-4acddb0c4ecc class="margin-5">email</a></td><td class="no-break-word">email</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#d257387a-5101-4ff8-8552-70801527ec81 class="margin-5">gender</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c16e98a6-8747-4a46-ae54-bc6f42813393 class="margin-5">profile_pic</a></td><td class="no-break-word">uri</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#e91fa04c-ca90-42c8-aa64-0cb5235c16f0 class="margin-0">bio</a></td><td class="no-break-word">string</td><td>false</td><td>dk</td><td><div class="docs-markdown"><p>Mô tả giảng viên</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#5ef33f10-453f-4ae2-a029-152d8d7cd3a1 class="margin-0">lecturer_courses</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Khóa học phụ trách</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c9b022c4-2a45-4d89-9f38-681081e0b84b class="margin-5">[0]&nbsp;course</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#72b9a15e-d6b2-49c1-8e1e-1c60b7a6206c class="margin-10">course_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="f603d220-29bf-401e-86ec-66b54f47d4e4"></a>2.1.2.3.3.1 Field **User**
+### <a id="f603d220-29bf-401e-86ec-66b54f47d4e4"></a>2.1.2.4.3.1 Field **User**
 
-##### 2.1.2.3.3.1.1 **User** Tree Diagram
+##### 2.1.2.4.3.1.1 **User** Tree Diagram
 
-![Hackolade image](./DATABASE/image66.png?raw=true)
+![Hackolade image](./DATABASE/image70.png?raw=true)
 
-##### 2.1.2.3.3.1.2 **User** Hierarchy
+##### 2.1.2.4.3.1.2 **User** Hierarchy
 
 Parent field: **lecturer**
 
@@ -1571,77 +1691,77 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#be59b29d-b720-4080-9962-6444a170aae5 class="margin-NaN">user_id</a></td><td class="no-break-word">objectId</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#ab2a6165-4a95-4555-bab2-ab1aed75ecd2 class="margin-NaN">name</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#7146d843-accf-494f-88fd-4acddb0c4ecc class="margin-NaN">email</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#d257387a-5101-4ff8-8552-70801527ec81 class="margin-NaN">gender</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c16e98a6-8747-4a46-ae54-bc6f42813393 class="margin-NaN">profile_pic</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.3.3.1.3 **User** properties
+##### 2.1.2.4.3.1.3 **User** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>User</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>document</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>DBRef</td><td></td></tr><tr><td>Min Properties</td><td></td></tr><tr><td>Max Properties</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="be59b29d-b720-4080-9962-6444a170aae5"></a>2.1.2.3.3.2 Field **user\_id**
+### <a id="be59b29d-b720-4080-9962-6444a170aae5"></a>2.1.2.4.3.2 Field **user\_id**
 
-##### 2.1.2.3.3.2.1 **user\_id** Tree Diagram
-
-![Hackolade image](./DATABASE/image67.png?raw=true)
-
-##### 2.1.2.3.3.2.2 **user\_id** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>user_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td></tr><tr><td>Foreign field</td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk lecturer.User.user_id to users._id</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="ab2a6165-4a95-4555-bab2-ab1aed75ecd2"></a>2.1.2.3.3.3 Field **name**
-
-##### 2.1.2.3.3.3.1 **name** Tree Diagram
-
-![Hackolade image](./DATABASE/image68.png?raw=true)
-
-##### 2.1.2.3.3.3.2 **name** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>name</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="7146d843-accf-494f-88fd-4acddb0c4ecc"></a>2.1.2.3.3.4 Field **email**
-
-##### 2.1.2.3.3.4.1 **email** Tree Diagram
-
-![Hackolade image](./DATABASE/image69.png?raw=true)
-
-##### 2.1.2.3.3.4.2 **email** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>email</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Format</td><td>email</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="d257387a-5101-4ff8-8552-70801527ec81"></a>2.1.2.3.3.5 Field **gender**
-
-##### 2.1.2.3.3.5.1 **gender** Tree Diagram
-
-![Hackolade image](./DATABASE/image70.png?raw=true)
-
-##### 2.1.2.3.3.5.2 **gender** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>gender</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="c16e98a6-8747-4a46-ae54-bc6f42813393"></a>2.1.2.3.3.6 Field **profile\_pic**
-
-##### 2.1.2.3.3.6.1 **profile\_pic** Tree Diagram
+##### 2.1.2.4.3.2.1 **user\_id** Tree Diagram
 
 ![Hackolade image](./DATABASE/image71.png?raw=true)
 
-##### 2.1.2.3.3.6.2 **profile\_pic** properties
+##### 2.1.2.4.3.2.2 **user\_id** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>profile_pic</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Format</td><td>uri</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>user_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td></tr><tr><td>Foreign field</td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk lecturer.User.user_id to users._id</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="e91fa04c-ca90-42c8-aa64-0cb5235c16f0"></a>2.1.2.3.3.7 Field **bio**
+### <a id="ab2a6165-4a95-4555-bab2-ab1aed75ecd2"></a>2.1.2.4.3.3 Field **name**
 
-##### 2.1.2.3.3.7.1 **bio** Tree Diagram
+##### 2.1.2.4.3.3.1 **name** Tree Diagram
 
 ![Hackolade image](./DATABASE/image72.png?raw=true)
 
-##### 2.1.2.3.3.7.2 **bio** properties
+##### 2.1.2.4.3.3.2 **name** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>bio</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Mô tả giảng viên</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>Siêu giáo viên, tác giả của hơn 300 framwork nổi tiếng của Javascript, C#, ..., 30 năm kinh nghiệp giảng dạy các trường đại học danh tiếng</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>name</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="5ef33f10-453f-4ae2-a029-152d8d7cd3a1"></a>2.1.2.3.3.8 Field **lecturer\_courses**
+### <a id="7146d843-accf-494f-88fd-4acddb0c4ecc"></a>2.1.2.4.3.4 Field **email**
 
-##### 2.1.2.3.3.8.1 **lecturer\_courses** Tree Diagram
+##### 2.1.2.4.3.4.1 **email** Tree Diagram
 
 ![Hackolade image](./DATABASE/image73.png?raw=true)
 
-##### 2.1.2.3.3.8.2 **lecturer\_courses** Hierarchy
+##### 2.1.2.4.3.4.2 **email** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>email</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Format</td><td>email</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="d257387a-5101-4ff8-8552-70801527ec81"></a>2.1.2.4.3.5 Field **gender**
+
+##### 2.1.2.4.3.5.1 **gender** Tree Diagram
+
+![Hackolade image](./DATABASE/image74.png?raw=true)
+
+##### 2.1.2.4.3.5.2 **gender** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>gender</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="c16e98a6-8747-4a46-ae54-bc6f42813393"></a>2.1.2.4.3.6 Field **profile\_pic**
+
+##### 2.1.2.4.3.6.1 **profile\_pic** Tree Diagram
+
+![Hackolade image](./DATABASE/image75.png?raw=true)
+
+##### 2.1.2.4.3.6.2 **profile\_pic** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>profile_pic</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Format</td><td>uri</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="e91fa04c-ca90-42c8-aa64-0cb5235c16f0"></a>2.1.2.4.3.7 Field **bio**
+
+##### 2.1.2.4.3.7.1 **bio** Tree Diagram
+
+![Hackolade image](./DATABASE/image76.png?raw=true)
+
+##### 2.1.2.4.3.7.2 **bio** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>bio</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Mô tả giảng viên</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>Siêu giáo viên, tác giả của hơn 300 framwork nổi tiếng của Javascript, C#, ..., 30 năm kinh nghiệp giảng dạy các trường đại học danh tiếng</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="5ef33f10-453f-4ae2-a029-152d8d7cd3a1"></a>2.1.2.4.3.8 Field **lecturer\_courses**
+
+##### 2.1.2.4.3.8.1 **lecturer\_courses** Tree Diagram
+
+![Hackolade image](./DATABASE/image77.png?raw=true)
+
+##### 2.1.2.4.3.8.2 **lecturer\_courses** Hierarchy
 
 Parent field: **lecturer**
 
@@ -1649,17 +1769,17 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#c9b022c4-2a45-4d89-9f38-681081e0b84b class="margin-NaN">[0]&nbsp;course</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.3.3.8.3 **lecturer\_courses** properties
+##### 2.1.2.4.3.8.3 **lecturer\_courses** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>lecturer_courses</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Khóa học phụ trách</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>lecturer_courses</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Khóa học phụ trách</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td><span>Quantification</span></td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="c9b022c4-2a45-4d89-9f38-681081e0b84b"></a>2.1.2.3.3.9 Field **\[0\] course**
+### <a id="c9b022c4-2a45-4d89-9f38-681081e0b84b"></a>2.1.2.4.3.9 Field **\[0\] course**
 
-##### 2.1.2.3.3.9.1 **\[0\] course** Tree Diagram
+##### 2.1.2.4.3.9.1 **\[0\] course** Tree Diagram
 
-![Hackolade image](./DATABASE/image74.png?raw=true)
+![Hackolade image](./DATABASE/image78.png?raw=true)
 
-##### 2.1.2.3.3.9.2 **\[0\] course** Hierarchy
+##### 2.1.2.4.3.9.2 **\[0\] course** Hierarchy
 
 Parent field: **lecturer\_courses**
 
@@ -1667,21 +1787,21 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#72b9a15e-d6b2-49c1-8e1e-1c60b7a6206c class="margin-NaN">course_id</a></td><td class="no-break-word">objectId</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.3.3.9.3 **\[0\] course** properties
+##### 2.1.2.4.3.9.3 **\[0\] course** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Display name</td><td>course</td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>document</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>DBRef</td><td></td></tr><tr><td>Min Properties</td><td></td></tr><tr><td>Max Properties</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="72b9a15e-d6b2-49c1-8e1e-1c60b7a6206c"></a>2.1.2.3.3.10 Field **course\_id**
+### <a id="72b9a15e-d6b2-49c1-8e1e-1c60b7a6206c"></a>2.1.2.4.3.10 Field **course\_id**
 
-##### 2.1.2.3.3.10.1 **course\_id** Tree Diagram
+##### 2.1.2.4.3.10.1 **course\_id** Tree Diagram
 
-![Hackolade image](./DATABASE/image75.png?raw=true)
+![Hackolade image](./DATABASE/image79.png?raw=true)
 
-##### 2.1.2.3.3.10.2 **course\_id** properties
+##### 2.1.2.4.3.10.2 **course\_id** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>course_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td></tr><tr><td>Foreign field</td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk lecturer.lecturer_courses.[0].course_id to courses._id</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.3.4 **lecturer** JSON Schema
+##### 2.1.2.4.4 **lecturer** JSON Schema
 
 ```
 {
@@ -1738,12 +1858,12 @@ Child field(s):
 }
 ```
 
-##### 2.1.2.3.5 **lecturer** JSON data
+##### 2.1.2.4.5 **lecturer** JSON data
 
 ```
 {
     "User": {
-        "user_id": ObjectId("70adcc27b1196abd58dbdaae"),
+        "user_id": ObjectId("7b6d7ec61b8d52de0588f4ef"),
         "name": "Lorem",
         "email": "sample@email.com",
         "gender": "Lorem",
@@ -1752,13 +1872,13 @@ Child field(s):
     "bio": "Siêu giáo viên, tác giả của hơn 300 framwork nổi tiếng của Javascript, C#, ..., 30 năm kinh nghiệp giảng dạy các trường đại học danh tiếng",
     "lecturer_courses": [
         {
-            "course_id": ObjectId("13005aac57ebe5dae69be8c8")
+            "course_id": ObjectId("bbf2cde1cfaa2eccfff4fdfd")
         }
     ]
 }
 ```
 
-##### 2.1.2.3.6 **lecturer** Target Script
+##### 2.1.2.4.6 **lecturer** Target Script
 
 ```
 use BanKhoaHoc;
@@ -1822,107 +1942,107 @@ db.createCollection("lecturer", {
 });
 ```
 
-### <a id="5caea1b9-171f-48a0-9410-077677c63b7e"></a>2.1.2.4 Collection **users**
+### <a id="5caea1b9-171f-48a0-9410-077677c63b7e"></a>2.1.2.5 Collection **users**
 
-##### 2.1.2.4.1 **users** Tree Diagram
-
-![Hackolade image](./DATABASE/image76.png?raw=true)
-
-##### 2.1.2.4.2 **users** Properties
-
-<table class="collection-properties-table"><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Collection name</td><td>users</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>$ref</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Bảng thông tin chi tiết gnười dùng</p></div></td></tr><tr><td>Database</td><td><a href=#56fa4821-fb8a-4925-b373-89733686924a><span class="name-container">BanKhoaHoc</span></a></td></tr><tr><td>Capped</td><td></td></tr><tr><td>Time series</td><td></td></tr><tr><td>Size</td><td></td></tr><tr><td>Max</td><td></td></tr><tr><td>Storage engine</td><td>WiredTiger</td></tr><tr><td>Config String</td><td></td></tr><tr><td>Validation level</td><td>Off</td></tr><tr><td>Validation action</td><td>Warn</td></tr><tr><td>Encryption metadata</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-##### 2.1.2.4.3 **users** Fields
-
-<table><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c class="margin-0">_id</a></td><td class="no-break-word">objectId</td><td>true</td><td>pk, dk</td><td><div class="docs-markdown"><p>ID người dùng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#b5e75e8b-48c7-41e0-9d14-3827822a3fac class="margin-0">username</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tên người dùng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#f3637504-476e-48ee-bd6f-d338ea072a35 class="margin-0">full&nbsp;name</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Họ tên đầy đủ</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#ff66539b-fb70-4f66-8223-b79dba828350 class="margin-0">email</a></td><td class="no-break-word">email</td><td>false</td><td></td><td><div class="docs-markdown"><p>email</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#9c74715c-dd97-4be2-852a-12463db3fe34 class="margin-0">password</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>mật khẩu đã được băm</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#a1f657f0-a79d-4acc-90eb-14429e8bde45 class="margin-0">role</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Vai trò: học viên, giảng viên, admin</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#1ed64ca6-2ea9-43be-b0f6-42974a25281f class="margin-0">profile_pic</a></td><td class="no-break-word">uri</td><td>false</td><td></td><td><div class="docs-markdown"><p>URL hình đại diện</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c4508f3d-bc6f-4413-8c8e-c88d47e4b9f4 class="margin-0">gender</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Giới tính</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#ee21f4f1-c36b-406b-8378-456e9b278760 class="margin-0">wishlist</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Giỏ hàng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#d77bc556-9a07-4dcd-a3f5-5f2cda3834e2 class="margin-5">[0]&nbsp;course</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#ea2e59d4-81ac-41f9-a051-bc67f48dd1c5 class="margin-10">course_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#caa99901-95fa-4b1b-ba8e-b10c7d03f942 class="margin-0">owned_courses</a></td><td class="no-break-word">array</td><td>true</td><td></td><td><div class="docs-markdown"><p>Khóa học đã mua</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#be050d9d-85c0-46d0-8786-e2b0bec3117f class="margin-5">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#5b3113c0-37b6-4567-b338-c625e98f9860 class="margin-10">course_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#69946891-1d58-4955-a196-9595bd871305 class="margin-10">purchased_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Ngày mua khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#9094c875-a394-4efa-92e8-ebcfd99e2e16 class="margin-0">billings_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>ID thanh toán của người dùng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c22cf015-6e65-4e71-af60-9e66a41adbc6 class="margin-0">fb_id</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>ID đăng nhập facebook</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#7bcf4a40-4914-41a4-9729-0c3e1fc47148 class="margin-0">fb_token</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Token đăng nhập facebook</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#21737f9b-f405-4e07-b032-4619cf3e752e class="margin-0">google_id</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>ID đăng nhập google</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#4504dad5-839c-4a64-9f42-0b56bb41b0e2 class="margin-0">created_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Được tạo vào ngày</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#cd4eb72f-fab1-4ce2-a3ec-6c760d6c7cba class="margin-0">updated_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Được cập nhật vào ngày</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="6f9602ee-7272-44dd-8c1b-bbe20fb6255c"></a>2.1.2.4.3.1 Field **\_id**
-
-##### 2.1.2.4.3.1.1 **\_id** Tree Diagram
-
-![Hackolade image](./DATABASE/image77.png?raw=true)
-
-##### 2.1.2.4.3.1.2 **\_id** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID người dùng</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td>true</td></tr><tr><td>Primary key</td><td>true</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="b5e75e8b-48c7-41e0-9d14-3827822a3fac"></a>2.1.2.4.3.2 Field **username**
-
-##### 2.1.2.4.3.2.1 **username** Tree Diagram
-
-![Hackolade image](./DATABASE/image78.png?raw=true)
-
-##### 2.1.2.4.3.2.2 **username** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>username</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Tên người dùng</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="f3637504-476e-48ee-bd6f-d338ea072a35"></a>2.1.2.4.3.3 Field **full name**
-
-##### 2.1.2.4.3.3.1 **full name** Tree Diagram
-
-![Hackolade image](./DATABASE/image79.png?raw=true)
-
-##### 2.1.2.4.3.3.2 **full name** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>full name</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Họ tên đầy đủ</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="ff66539b-fb70-4f66-8223-b79dba828350"></a>2.1.2.4.3.4 Field **email**
-
-##### 2.1.2.4.3.4.1 **email** Tree Diagram
+##### 2.1.2.5.1 **users** Tree Diagram
 
 ![Hackolade image](./DATABASE/image80.png?raw=true)
 
-##### 2.1.2.4.3.4.2 **email** properties
+##### 2.1.2.5.2 **users** Properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>email</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>email</p></div></td></tr><tr><td>Format</td><td>email</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table class="collection-properties-table"><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Collection name</td><td>users</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>$ref</td><td></td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Bảng thông tin chi tiết gnười dùng</p></div></td></tr><tr><td>Database</td><td><a href=#56fa4821-fb8a-4925-b373-89733686924a><span class="name-container">BanKhoaHoc</span></a></td></tr><tr><td>Capped</td><td></td></tr><tr><td>Time series</td><td></td></tr><tr><td>Size</td><td></td></tr><tr><td>Max</td><td></td></tr><tr><td>Storage engine</td><td>WiredTiger</td></tr><tr><td>Config String</td><td></td></tr><tr><td>Validation level</td><td>Off</td></tr><tr><td>Validation action</td><td>Warn</td></tr><tr><td>Encryption metadata</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td colspan="2"><b>Workload analysis</b></td></tr><tr><td>[1] Actor</td><td></td></tr><tr><td>Description</td><td></td></tr><tr><td>Number of documents</td><td></td></tr><tr><td>Avg document size (Bytes)</td><td></td></tr><tr><td>Read-to-Write ratio</td><td></td></tr><tr><td>Keep forever</td><td></td></tr><tr><td>Retention (months)</td><td></td></tr><tr><td>Write operations</td><td></td></tr><tr><td>Read operations</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="9c74715c-dd97-4be2-852a-12463db3fe34"></a>2.1.2.4.3.5 Field **password**
+##### 2.1.2.5.3 **users** Fields
 
-##### 2.1.2.4.3.5.1 **password** Tree Diagram
+<table><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c class="margin-0">_id</a></td><td class="no-break-word">objectId</td><td>true</td><td>pk, dk</td><td><div class="docs-markdown"><p>ID người dùng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#b5e75e8b-48c7-41e0-9d14-3827822a3fac class="margin-0">username</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Tên người dùng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#f3637504-476e-48ee-bd6f-d338ea072a35 class="margin-0">full&nbsp;name</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Họ tên đầy đủ</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#ff66539b-fb70-4f66-8223-b79dba828350 class="margin-0">email</a></td><td class="no-break-word">email</td><td>false</td><td></td><td><div class="docs-markdown"><p>email</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#9c74715c-dd97-4be2-852a-12463db3fe34 class="margin-0">password</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>mật khẩu đã được băm</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#a1f657f0-a79d-4acc-90eb-14429e8bde45 class="margin-0">role</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Vai trò: học viên, giảng viên, admin</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#1ed64ca6-2ea9-43be-b0f6-42974a25281f class="margin-0">profile_pic</a></td><td class="no-break-word">uri</td><td>false</td><td></td><td><div class="docs-markdown"><p>URL hình đại diện</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c4508f3d-bc6f-4413-8c8e-c88d47e4b9f4 class="margin-0">gender</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Giới tính</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#ee21f4f1-c36b-406b-8378-456e9b278760 class="margin-0">wishlist</a></td><td class="no-break-word">array</td><td>false</td><td></td><td><div class="docs-markdown"><p>Giỏ hàng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#d77bc556-9a07-4dcd-a3f5-5f2cda3834e2 class="margin-5">[0]&nbsp;course</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#ea2e59d4-81ac-41f9-a051-bc67f48dd1c5 class="margin-10">course_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#caa99901-95fa-4b1b-ba8e-b10c7d03f942 class="margin-0">owned_courses</a></td><td class="no-break-word">array</td><td>true</td><td></td><td><div class="docs-markdown"><p>Khóa học đã mua</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#be050d9d-85c0-46d0-8786-e2b0bec3117f class="margin-5">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#5b3113c0-37b6-4567-b338-c625e98f9860 class="margin-10">course_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#69946891-1d58-4955-a196-9595bd871305 class="margin-10">purchased_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Ngày mua khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#9094c875-a394-4efa-92e8-ebcfd99e2e16 class="margin-0">billings_id</a></td><td class="no-break-word">objectId</td><td>false</td><td>fk</td><td><div class="docs-markdown"><p>ID thanh toán của người dùng</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#c22cf015-6e65-4e71-af60-9e66a41adbc6 class="margin-0">fb_id</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>ID đăng nhập facebook</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#7bcf4a40-4914-41a4-9729-0c3e1fc47148 class="margin-0">fb_token</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>Token đăng nhập facebook</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#21737f9b-f405-4e07-b032-4619cf3e752e class="margin-0">google_id</a></td><td class="no-break-word">string</td><td>false</td><td></td><td><div class="docs-markdown"><p>ID đăng nhập google</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#4504dad5-839c-4a64-9f42-0b56bb41b0e2 class="margin-0">created_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Được tạo vào ngày</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#cd4eb72f-fab1-4ce2-a3ec-6c760d6c7cba class="margin-0">updated_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Được cập nhật vào ngày</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="6f9602ee-7272-44dd-8c1b-bbe20fb6255c"></a>2.1.2.5.3.1 Field **\_id**
+
+##### 2.1.2.5.3.1.1 **\_id** Tree Diagram
 
 ![Hackolade image](./DATABASE/image81.png?raw=true)
 
-##### 2.1.2.4.3.5.2 **password** properties
+##### 2.1.2.5.3.1.2 **\_id** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>password</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>mật khẩu đã được băm</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID người dùng</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td>true</td></tr><tr><td>Primary key</td><td>true</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="a1f657f0-a79d-4acc-90eb-14429e8bde45"></a>2.1.2.4.3.6 Field **role**
+### <a id="b5e75e8b-48c7-41e0-9d14-3827822a3fac"></a>2.1.2.5.3.2 Field **username**
 
-##### 2.1.2.4.3.6.1 **role** Tree Diagram
+##### 2.1.2.5.3.2.1 **username** Tree Diagram
 
 ![Hackolade image](./DATABASE/image82.png?raw=true)
 
-##### 2.1.2.4.3.6.2 **role** properties
+##### 2.1.2.5.3.2.2 **username** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>role</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Vai trò: học viên, giảng viên, admin</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>học viên</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>username</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Tên người dùng</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="1ed64ca6-2ea9-43be-b0f6-42974a25281f"></a>2.1.2.4.3.7 Field **profile\_pic**
+### <a id="f3637504-476e-48ee-bd6f-d338ea072a35"></a>2.1.2.5.3.3 Field **full name**
 
-##### 2.1.2.4.3.7.1 **profile\_pic** Tree Diagram
+##### 2.1.2.5.3.3.1 **full name** Tree Diagram
 
 ![Hackolade image](./DATABASE/image83.png?raw=true)
 
-##### 2.1.2.4.3.7.2 **profile\_pic** properties
+##### 2.1.2.5.3.3.2 **full name** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>profile_pic</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>URL hình đại diện</p></div></td></tr><tr><td>Format</td><td>uri</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>full name</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Họ tên đầy đủ</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="c4508f3d-bc6f-4413-8c8e-c88d47e4b9f4"></a>2.1.2.4.3.8 Field **gender**
+### <a id="ff66539b-fb70-4f66-8223-b79dba828350"></a>2.1.2.5.3.4 Field **email**
 
-##### 2.1.2.4.3.8.1 **gender** Tree Diagram
+##### 2.1.2.5.3.4.1 **email** Tree Diagram
 
 ![Hackolade image](./DATABASE/image84.png?raw=true)
 
-##### 2.1.2.4.3.8.2 **gender** properties
+##### 2.1.2.5.3.4.2 **email** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>gender</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Giới tính</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>nam</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>email</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>email</p></div></td></tr><tr><td>Format</td><td>email</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="ee21f4f1-c36b-406b-8378-456e9b278760"></a>2.1.2.4.3.9 Field **wishlist**
+### <a id="9c74715c-dd97-4be2-852a-12463db3fe34"></a>2.1.2.5.3.5 Field **password**
 
-##### 2.1.2.4.3.9.1 **wishlist** Tree Diagram
+##### 2.1.2.5.3.5.1 **password** Tree Diagram
 
 ![Hackolade image](./DATABASE/image85.png?raw=true)
 
-##### 2.1.2.4.3.9.2 **wishlist** Hierarchy
+##### 2.1.2.5.3.5.2 **password** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>password</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>mật khẩu đã được băm</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="a1f657f0-a79d-4acc-90eb-14429e8bde45"></a>2.1.2.5.3.6 Field **role**
+
+##### 2.1.2.5.3.6.1 **role** Tree Diagram
+
+![Hackolade image](./DATABASE/image86.png?raw=true)
+
+##### 2.1.2.5.3.6.2 **role** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>role</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Vai trò: học viên, giảng viên, admin</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>học viên</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="1ed64ca6-2ea9-43be-b0f6-42974a25281f"></a>2.1.2.5.3.7 Field **profile\_pic**
+
+##### 2.1.2.5.3.7.1 **profile\_pic** Tree Diagram
+
+![Hackolade image](./DATABASE/image87.png?raw=true)
+
+##### 2.1.2.5.3.7.2 **profile\_pic** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>profile_pic</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>URL hình đại diện</p></div></td></tr><tr><td>Format</td><td>uri</td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="c4508f3d-bc6f-4413-8c8e-c88d47e4b9f4"></a>2.1.2.5.3.8 Field **gender**
+
+##### 2.1.2.5.3.8.1 **gender** Tree Diagram
+
+![Hackolade image](./DATABASE/image88.png?raw=true)
+
+##### 2.1.2.5.3.8.2 **gender** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>gender</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Giới tính</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td>nam</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="ee21f4f1-c36b-406b-8378-456e9b278760"></a>2.1.2.5.3.9 Field **wishlist**
+
+##### 2.1.2.5.3.9.1 **wishlist** Tree Diagram
+
+![Hackolade image](./DATABASE/image89.png?raw=true)
+
+##### 2.1.2.5.3.9.2 **wishlist** Hierarchy
 
 Parent field: **users**
 
@@ -1930,17 +2050,17 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#d77bc556-9a07-4dcd-a3f5-5f2cda3834e2 class="margin-NaN">[0]&nbsp;course</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.4.3.9.3 **wishlist** properties
+##### 2.1.2.5.3.9.3 **wishlist** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>wishlist</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Giỏ hàng</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>wishlist</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Giỏ hàng</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td><span>Quantification</span></td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="d77bc556-9a07-4dcd-a3f5-5f2cda3834e2"></a>2.1.2.4.3.10 Field **\[0\] course**
+### <a id="d77bc556-9a07-4dcd-a3f5-5f2cda3834e2"></a>2.1.2.5.3.10 Field **\[0\] course**
 
-##### 2.1.2.4.3.10.1 **\[0\] course** Tree Diagram
+##### 2.1.2.5.3.10.1 **\[0\] course** Tree Diagram
 
-![Hackolade image](./DATABASE/image86.png?raw=true)
+![Hackolade image](./DATABASE/image90.png?raw=true)
 
-##### 2.1.2.4.3.10.2 **\[0\] course** Hierarchy
+##### 2.1.2.5.3.10.2 **\[0\] course** Hierarchy
 
 Parent field: **wishlist**
 
@@ -1948,27 +2068,27 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#ea2e59d4-81ac-41f9-a051-bc67f48dd1c5 class="margin-NaN">course_id</a></td><td class="no-break-word">objectId</td><td>false</td><td></td><td><div class="docs-markdown"><p>ID khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.4.3.10.3 **\[0\] course** properties
+##### 2.1.2.5.3.10.3 **\[0\] course** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Display name</td><td>course</td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>document</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>DBRef</td><td></td></tr><tr><td>Min Properties</td><td></td></tr><tr><td>Max Properties</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="ea2e59d4-81ac-41f9-a051-bc67f48dd1c5"></a>2.1.2.4.3.11 Field **course\_id**
+### <a id="ea2e59d4-81ac-41f9-a051-bc67f48dd1c5"></a>2.1.2.5.3.11 Field **course\_id**
 
-##### 2.1.2.4.3.11.1 **course\_id** Tree Diagram
+##### 2.1.2.5.3.11.1 **course\_id** Tree Diagram
 
-![Hackolade image](./DATABASE/image87.png?raw=true)
+![Hackolade image](./DATABASE/image91.png?raw=true)
 
-##### 2.1.2.4.3.11.2 **course\_id** properties
+##### 2.1.2.5.3.11.2 **course\_id** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>course_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td></tr><tr><td>Foreign field</td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk users.wishlist.[0].course_id to courses._id</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="caa99901-95fa-4b1b-ba8e-b10c7d03f942"></a>2.1.2.4.3.12 Field **owned\_courses**
+### <a id="caa99901-95fa-4b1b-ba8e-b10c7d03f942"></a>2.1.2.5.3.12 Field **owned\_courses**
 
-##### 2.1.2.4.3.12.1 **owned\_courses** Tree Diagram
+##### 2.1.2.5.3.12.1 **owned\_courses** Tree Diagram
 
-![Hackolade image](./DATABASE/image88.png?raw=true)
+![Hackolade image](./DATABASE/image92.png?raw=true)
 
-##### 2.1.2.4.3.12.2 **owned\_courses** Hierarchy
+##### 2.1.2.5.3.12.2 **owned\_courses** Hierarchy
 
 Parent field: **users**
 
@@ -1976,17 +2096,17 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#be050d9d-85c0-46d0-8786-e2b0bec3117f class="margin-NaN">[0]</a></td><td class="no-break-word">document</td><td>false</td><td></td><td><div class="docs-markdown"></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.4.3.12.3 **owned\_courses** properties
+##### 2.1.2.5.3.12.3 **owned\_courses** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>owned_courses</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Khóa học đã mua</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td>true</td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>owned_courses</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>array</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Khóa học đã mua</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td>true</td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Min items</td><td></td></tr><tr><td>Max items</td><td></td></tr><tr><td>Unique items</td><td></td></tr><tr><td>Additional items</td><td>true</td></tr><tr><td><span>Quantification</span></td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="be050d9d-85c0-46d0-8786-e2b0bec3117f"></a>2.1.2.4.3.13 Field **\[0\]**
+### <a id="be050d9d-85c0-46d0-8786-e2b0bec3117f"></a>2.1.2.5.3.13 Field **\[0\]**
 
-##### 2.1.2.4.3.13.1 **\[0\]** Tree Diagram
+##### 2.1.2.5.3.13.1 **\[0\]** Tree Diagram
 
-![Hackolade image](./DATABASE/image89.png?raw=true)
+![Hackolade image](./DATABASE/image93.png?raw=true)
 
-##### 2.1.2.4.3.13.2 **\[0\]** Hierarchy
+##### 2.1.2.5.3.13.2 **\[0\]** Hierarchy
 
 Parent field: **owned\_courses**
 
@@ -1994,91 +2114,91 @@ Child field(s):
 
 <table class="field-properties-table"><thead><tr><td>Field</td><td>Type</td><td>Req</td><td>Key</td><td>Description</td><td>Comments</td></tr></thead><tbody><tr><td><a href=#5b3113c0-37b6-4567-b338-c625e98f9860 class="margin-NaN">course_id</a></td><td class="no-break-word">objectId</td><td>false</td><td></td><td><div class="docs-markdown"><p>ID khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr><tr><td><a href=#69946891-1d58-4955-a196-9595bd871305 class="margin-NaN">purchased_at</a></td><td class="no-break-word">date</td><td>false</td><td></td><td><div class="docs-markdown"><p>Ngày mua khóa học</p></div></td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.4.3.13.3 **\[0\]** properties
+##### 2.1.2.5.3.13.3 **\[0\]** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Display name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>document</td></tr><tr><td>Description</td><td><div class="docs-markdown"></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>DBRef</td><td></td></tr><tr><td>Min Properties</td><td></td></tr><tr><td>Max Properties</td><td></td></tr><tr><td>Additional properties</td><td>false</td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="5b3113c0-37b6-4567-b338-c625e98f9860"></a>2.1.2.4.3.14 Field **course\_id**
+### <a id="5b3113c0-37b6-4567-b338-c625e98f9860"></a>2.1.2.5.3.14 Field **course\_id**
 
-##### 2.1.2.4.3.14.1 **course\_id** Tree Diagram
-
-![Hackolade image](./DATABASE/image90.png?raw=true)
-
-##### 2.1.2.4.3.14.2 **course\_id** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>course_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td></tr><tr><td>Foreign field</td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk users.owned_courses.[0].course_id to courses._id</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="69946891-1d58-4955-a196-9595bd871305"></a>2.1.2.4.3.15 Field **purchased\_at**
-
-##### 2.1.2.4.3.15.1 **purchased\_at** Tree Diagram
-
-![Hackolade image](./DATABASE/image91.png?raw=true)
-
-##### 2.1.2.4.3.15.2 **purchased\_at** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>purchased_at</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>date</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Ngày mua khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Now</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="9094c875-a394-4efa-92e8-ebcfd99e2e16"></a>2.1.2.4.3.16 Field **billings\_id**
-
-##### 2.1.2.4.3.16.1 **billings\_id** Tree Diagram
-
-![Hackolade image](./DATABASE/image92.png?raw=true)
-
-##### 2.1.2.4.3.16.2 **billings\_id** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>billings_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID thanh toán của người dùng</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#dd398e23-e65c-4d6f-b4a1-985e080b2b4b>billings</a></td></tr><tr><td>Foreign field</td><td><a href=#b85dd627-f4c6-4312-970c-3c75e62cc3ad>_id</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk users.billings_id to billings._id</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="c22cf015-6e65-4e71-af60-9e66a41adbc6"></a>2.1.2.4.3.17 Field **fb\_id**
-
-##### 2.1.2.4.3.17.1 **fb\_id** Tree Diagram
-
-![Hackolade image](./DATABASE/image93.png?raw=true)
-
-##### 2.1.2.4.3.17.2 **fb\_id** properties
-
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>fb_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID đăng nhập facebook</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
-
-### <a id="7bcf4a40-4914-41a4-9729-0c3e1fc47148"></a>2.1.2.4.3.18 Field **fb\_token**
-
-##### 2.1.2.4.3.18.1 **fb\_token** Tree Diagram
+##### 2.1.2.5.3.14.1 **course\_id** Tree Diagram
 
 ![Hackolade image](./DATABASE/image94.png?raw=true)
 
-##### 2.1.2.4.3.18.2 **fb\_token** properties
+##### 2.1.2.5.3.14.2 **course\_id** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>fb_token</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Token đăng nhập facebook</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>course_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td></tr><tr><td>Foreign field</td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk users.owned_courses.[0].course_id to courses._id</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="21737f9b-f405-4e07-b032-4619cf3e752e"></a>2.1.2.4.3.19 Field **google\_id**
+### <a id="69946891-1d58-4955-a196-9595bd871305"></a>2.1.2.5.3.15 Field **purchased\_at**
 
-##### 2.1.2.4.3.19.1 **google\_id** Tree Diagram
+##### 2.1.2.5.3.15.1 **purchased\_at** Tree Diagram
 
 ![Hackolade image](./DATABASE/image95.png?raw=true)
 
-##### 2.1.2.4.3.19.2 **google\_id** properties
+##### 2.1.2.5.3.15.2 **purchased\_at** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>google_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID đăng nhập google</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>purchased_at</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>date</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Ngày mua khóa học</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Now</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="4504dad5-839c-4a64-9f42-0b56bb41b0e2"></a>2.1.2.4.3.20 Field **created\_at**
+### <a id="9094c875-a394-4efa-92e8-ebcfd99e2e16"></a>2.1.2.5.3.16 Field **billings\_id**
 
-##### 2.1.2.4.3.20.1 **created\_at** Tree Diagram
+##### 2.1.2.5.3.16.1 **billings\_id** Tree Diagram
 
 ![Hackolade image](./DATABASE/image96.png?raw=true)
 
-##### 2.1.2.4.3.20.2 **created\_at** properties
+##### 2.1.2.5.3.16.2 **billings\_id** properties
 
-<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>created_at</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>date</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Được tạo vào ngày</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Now</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>billings_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>objectId</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID thanh toán của người dùng</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Foreign collection</td><td><a href=#dd398e23-e65c-4d6f-b4a1-985e080b2b4b>billings</a></td></tr><tr><td>Foreign field</td><td><a href=#b85dd627-f4c6-4312-970c-3c75e62cc3ad>_id</a></td></tr><tr><td>Relationship type</td><td>Foreign Key</td></tr><tr><td>Relationship name</td><td>fk users.billings_id to billings._id</td></tr><tr><td>Cardinality</td><td>1</td></tr><tr><td>Default</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-### <a id="cd4eb72f-fab1-4ce2-a3ec-6c760d6c7cba"></a>2.1.2.4.3.21 Field **updated\_at**
+### <a id="c22cf015-6e65-4e71-af60-9e66a41adbc6"></a>2.1.2.5.3.17 Field **fb\_id**
 
-##### 2.1.2.4.3.21.1 **updated\_at** Tree Diagram
+##### 2.1.2.5.3.17.1 **fb\_id** Tree Diagram
 
 ![Hackolade image](./DATABASE/image97.png?raw=true)
 
-##### 2.1.2.4.3.21.2 **updated\_at** properties
+##### 2.1.2.5.3.17.2 **fb\_id** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>fb_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID đăng nhập facebook</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="7bcf4a40-4914-41a4-9729-0c3e1fc47148"></a>2.1.2.5.3.18 Field **fb\_token**
+
+##### 2.1.2.5.3.18.1 **fb\_token** Tree Diagram
+
+![Hackolade image](./DATABASE/image98.png?raw=true)
+
+##### 2.1.2.5.3.18.2 **fb\_token** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>fb_token</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Token đăng nhập facebook</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="21737f9b-f405-4e07-b032-4619cf3e752e"></a>2.1.2.5.3.19 Field **google\_id**
+
+##### 2.1.2.5.3.19.1 **google\_id** Tree Diagram
+
+![Hackolade image](./DATABASE/image99.png?raw=true)
+
+##### 2.1.2.5.3.19.2 **google\_id** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>google_id</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>string</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>ID đăng nhập google</p></div></td></tr><tr><td>Format</td><td></td></tr><tr><td>Pattern</td><td></td></tr><tr><td>Min length</td><td></td></tr><tr><td>Max length</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Enum</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="4504dad5-839c-4a64-9f42-0b56bb41b0e2"></a>2.1.2.5.3.20 Field **created\_at**
+
+##### 2.1.2.5.3.20.1 **created\_at** Tree Diagram
+
+![Hackolade image](./DATABASE/image100.png?raw=true)
+
+##### 2.1.2.5.3.20.2 **created\_at** properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>created_at</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>date</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Được tạo vào ngày</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Now</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
+
+### <a id="cd4eb72f-fab1-4ce2-a3ec-6c760d6c7cba"></a>2.1.2.5.3.21 Field **updated\_at**
+
+##### 2.1.2.5.3.21.1 **updated\_at** Tree Diagram
+
+![Hackolade image](./DATABASE/image101.png?raw=true)
+
+##### 2.1.2.5.3.21.2 **updated\_at** properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>updated_at</td></tr><tr><td>Technical name</td><td></td></tr><tr><td>Activated</td><td>true</td></tr><tr><td>Id</td><td></td></tr><tr><td>Field-level encryption</td><td></td></tr><tr><td>Type</td><td>date</td></tr><tr><td>Description</td><td><div class="docs-markdown"><p>Được cập nhật vào ngày</p></div></td></tr><tr><td>Dependencies</td><td></td></tr><tr><td>Required</td><td></td></tr><tr><td>Primary key</td><td>false</td></tr><tr><td>Foreign collection</td><td></td></tr><tr><td>Foreign field</td><td></td></tr><tr><td>Relationship type</td><td></td></tr><tr><td>Relationship name</td><td></td></tr><tr><td>Cardinality</td><td></td></tr><tr><td>Default</td><td></td></tr><tr><td>Now</td><td></td></tr><tr><td>Faker function</td><td></td></tr><tr><td>Sample</td><td></td></tr><tr><td>Comments</td><td><div class="docs-markdown"></div></td></tr></tbody></table>
 
-##### 2.1.2.4.4 **users** JSON Schema
+##### 2.1.2.5.4 **users** JSON Schema
 
 ```
 {
@@ -2195,11 +2315,11 @@ Child field(s):
 }
 ```
 
-##### 2.1.2.4.5 **users** JSON data
+##### 2.1.2.5.5 **users** JSON data
 
 ```
 {
-    "_id": ObjectId("e0fe6beccee4ed3ff55ba23a"),
+    "_id": ObjectId("b1c17f16efdc707b953ab9a3"),
     "username": "Lorem",
     "full name": "Lorem",
     "email": "sample@email.com",
@@ -2209,16 +2329,16 @@ Child field(s):
     "gender": "nam",
     "wishlist": [
         {
-            "course_id": ObjectId("440a5bd7e38fafdafe30a12c")
+            "course_id": ObjectId("fc216de1cd59f3eaf0f2adaf")
         }
     ],
     "owned_courses": [
         {
-            "course_id": ObjectId("93ed5e2edc031f1ab16f1ae8"),
+            "course_id": ObjectId("df9ba5165a2dc54d21c12c7c"),
             "purchased_at": ISODate("2016-04-08T15:06:21.595Z")
         }
     ],
-    "billings_id": ObjectId("2cf4f9d39a68cc8f40b9c99a"),
+    "billings_id": ObjectId("785c33b0a93ae35ebfd9bfcf"),
     "fb_id": "Lorem",
     "fb_token": "Lorem",
     "google_id": "Lorem",
@@ -2227,7 +2347,7 @@ Child field(s):
 }
 ```
 
-##### 2.1.2.4.6 **users** Target Script
+##### 2.1.2.5.6 **users** Target Script
 
 ```
 use BanKhoaHoc;
@@ -2353,7 +2473,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./DATABASE/image98.png?raw=true)![Hackolade image](./DATABASE/image99.png?raw=true)
+![Hackolade image](./DATABASE/image102.png?raw=true)![Hackolade image](./DATABASE/image103.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#dd398e23-e65c-4d6f-b4a1-985e080b2b4b>billings</a></td><td><a href=#386052d2-ec30-4e18-985a-603c7487a282>orders.[-1].items.[-1].course_id</a></td></tr></tbody></table>
 
@@ -2367,7 +2487,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./DATABASE/image100.png?raw=true)![Hackolade image](./DATABASE/image101.png?raw=true)
+![Hackolade image](./DATABASE/image104.png?raw=true)![Hackolade image](./DATABASE/image105.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#dd398e23-e65c-4d6f-b4a1-985e080b2b4b>billings</a></td><td><a href=#86d31629-427a-41ef-9c83-4338dd46f10e>user_id</a></td></tr></tbody></table>
 
@@ -2381,7 +2501,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./DATABASE/image102.png?raw=true)![Hackolade image](./DATABASE/image103.png?raw=true)
+![Hackolade image](./DATABASE/image106.png?raw=true)![Hackolade image](./DATABASE/image107.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#a9d37e6c-9455-4669-9c7a-27cdc0e867e3>course_review.[-1].[-1]</a></td></tr></tbody></table>
 
@@ -2395,7 +2515,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./DATABASE/image104.png?raw=true)![Hackolade image](./DATABASE/image105.png?raw=true)
+![Hackolade image](./DATABASE/image108.png?raw=true)![Hackolade image](./DATABASE/image109.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#c2b86c74-5fbc-4750-943a-ab9319ffc328>instructors.[-1].User.user_id</a></td></tr></tbody></table>
 
@@ -2409,7 +2529,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#7763d428-db9e-4464-ae2f-19edd261c592>lecturer</a></td><td><a href=#e91fa04c-ca90-42c8-aa64-0cb5235c16f0>bio</a></td></tr></tbody></table>
 
-![Hackolade image](./DATABASE/image106.png?raw=true)![Hackolade image](./DATABASE/image107.png?raw=true)
+![Hackolade image](./DATABASE/image110.png?raw=true)![Hackolade image](./DATABASE/image111.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#4ea5071e-544d-49aa-9415-c52eb2b38901>instructors.[-1].bio</a></td></tr></tbody></table>
 
@@ -2423,7 +2543,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./DATABASE/image108.png?raw=true)![Hackolade image](./DATABASE/image109.png?raw=true)
+![Hackolade image](./DATABASE/image112.png?raw=true)![Hackolade image](./DATABASE/image113.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#d1ce568b-196c-4688-b768-656232a9c33a>students.[-1].user_id</a></td></tr></tbody></table>
 
@@ -2437,7 +2557,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#6f9602ee-7272-44dd-8c1b-bbe20fb6255c>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./DATABASE/image110.png?raw=true)![Hackolade image](./DATABASE/image111.png?raw=true)
+![Hackolade image](./DATABASE/image114.png?raw=true)![Hackolade image](./DATABASE/image115.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#7763d428-db9e-4464-ae2f-19edd261c592>lecturer</a></td><td><a href=#be59b29d-b720-4080-9962-6444a170aae5>User.user_id</a></td></tr></tbody></table>
 
@@ -2451,7 +2571,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./DATABASE/image112.png?raw=true)![Hackolade image](./DATABASE/image113.png?raw=true)
+![Hackolade image](./DATABASE/image116.png?raw=true)![Hackolade image](./DATABASE/image117.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#7763d428-db9e-4464-ae2f-19edd261c592>lecturer</a></td><td><a href=#72b9a15e-d6b2-49c1-8e1e-1c60b7a6206c>lecturer_courses.[-1].course_id</a></td></tr></tbody></table>
 
@@ -2465,7 +2585,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#dd398e23-e65c-4d6f-b4a1-985e080b2b4b>billings</a></td><td><a href=#b85dd627-f4c6-4312-970c-3c75e62cc3ad>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./DATABASE/image114.png?raw=true)![Hackolade image](./DATABASE/image115.png?raw=true)
+![Hackolade image](./DATABASE/image118.png?raw=true)![Hackolade image](./DATABASE/image119.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#9094c875-a394-4efa-92e8-ebcfd99e2e16>billings_id</a></td></tr></tbody></table>
 
@@ -2479,7 +2599,7 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./DATABASE/image116.png?raw=true)![Hackolade image](./DATABASE/image117.png?raw=true)
+![Hackolade image](./DATABASE/image120.png?raw=true)![Hackolade image](./DATABASE/image121.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#5b3113c0-37b6-4567-b338-c625e98f9860>owned_courses.[-1].course_id</a></td></tr></tbody></table>
 
@@ -2487,17 +2607,31 @@ db.createCollection("users", {
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>fk users.owned_courses.[0].course_id to courses._id</td></tr><tr><td>Description</td><td></td></tr><tr><td>Parent Collection</td><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td></tr><tr><td>Parent field</td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr><tr><td>Parent Cardinality</td><td>1</td></tr><tr><td>Child Collection</td><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td></tr><tr><td>Child field</td><td><a href=#5b3113c0-37b6-4567-b338-c625e98f9860>course_id</a></td></tr><tr><td>Child Cardinality</td><td>1</td></tr><tr><td>Comments</td><td></td></tr></tbody></table>
 
-### <a id="6b0bd35e-3dea-45b3-95fd-f1471eba130e"></a>3.11 Relationship **fk users.wishlist.\[0\].course\_id to courses.\_id**
+### <a id="cb21947e-a9bd-4998-a5c4-a4ff57167343"></a>3.11 Relationship **fk users.owned\_courses.\[0\].course\_id to courses.\_id**
 
-##### 3.11.1 **fk users.wishlist.\[0\].course\_id to courses.\_id** Diagram
+##### 3.11.1 **fk users.owned\_courses.\[0\].course\_id to courses.\_id** Diagram
 
 <table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr></tbody></table>
 
-![Hackolade image](./DATABASE/image118.png?raw=true)![Hackolade image](./DATABASE/image119.png?raw=true)
+![Hackolade image](./DATABASE/image122.png?raw=true)![Hackolade image](./DATABASE/image123.png?raw=true)
+
+<table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#632fa453-d974-45e5-896e-39f17cd9c627>course_content</a></td><td><a href=#6ff66ff7-b659-4397-b6cf-881cdcad3815>course_id</a></td></tr></tbody></table>
+
+##### 3.11.2 **fk users.owned\_courses.\[0\].course\_id to courses.\_id** Properties
+
+<table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>fk users.owned_courses.[0].course_id to courses._id</td></tr><tr><td>Description</td><td></td></tr><tr><td>Parent Collection</td><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td></tr><tr><td>Parent field</td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr><tr><td>Parent Cardinality</td><td>1</td></tr><tr><td>Child Collection</td><td><a href=#632fa453-d974-45e5-896e-39f17cd9c627>course_content</a></td></tr><tr><td>Child field</td><td><a href=#6ff66ff7-b659-4397-b6cf-881cdcad3815>course_id</a></td></tr><tr><td>Child Cardinality</td><td>1</td></tr><tr><td>Comments</td><td></td></tr></tbody></table>
+
+### <a id="6b0bd35e-3dea-45b3-95fd-f1471eba130e"></a>3.12 Relationship **fk users.wishlist.\[0\].course\_id to courses.\_id**
+
+##### 3.12.1 **fk users.wishlist.\[0\].course\_id to courses.\_id** Diagram
+
+<table><thead><tr><td>Parent Table</td><td>Parent field</td></tr></thead><tbody><tr><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr></tbody></table>
+
+![Hackolade image](./DATABASE/image124.png?raw=true)![Hackolade image](./DATABASE/image125.png?raw=true)
 
 <table><thead><tr><td>Child Table</td><td>Child field</td></tr></thead><tbody><tr><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td><td><a href=#ea2e59d4-81ac-41f9-a051-bc67f48dd1c5>wishlist.[-1].[-1]</a></td></tr></tbody></table>
 
-##### 3.11.2 **fk users.wishlist.\[0\].course\_id to courses.\_id** Properties
+##### 3.12.2 **fk users.wishlist.\[0\].course\_id to courses.\_id** Properties
 
 <table><thead><tr><td>Property</td><td>Value</td></tr></thead><tbody><tr><td>Name</td><td>fk users.wishlist.[0].course_id to courses._id</td></tr><tr><td>Description</td><td></td></tr><tr><td>Parent Collection</td><td><a href=#34fb3d70-57d0-4028-b679-efc879f2836e>courses</a></td></tr><tr><td>Parent field</td><td><a href=#4c2b9f63-a48c-482b-973f-6f8877d75b58>_id</a></td></tr><tr><td>Parent Cardinality</td><td>1</td></tr><tr><td>Child Collection</td><td><a href=#5caea1b9-171f-48a0-9410-077677c63b7e>users</a></td></tr><tr><td>Child field</td><td><a href=#ea2e59d4-81ac-41f9-a051-bc67f48dd1c5></a></td></tr><tr><td>Child Cardinality</td><td>1</td></tr><tr><td>Comments</td><td></td></tr></tbody></table>
 
