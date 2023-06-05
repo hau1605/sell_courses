@@ -44,6 +44,32 @@ async function getBillingById(req, res) {
   });
 }
 
+// GET /api/billings/:email
+async function getBillingByEmail(req, res) {
+  try {
+    const emailR = req.params.email;
+    console.log("Controller. Email: ", emailR)
+    const billing = await billingDAO.getBillingByEmail(emailR);
+
+    if (!billing) {
+      return res.status(404).json({ message: "Không tìm thấy hóa đơn người dùng!" });
+    }
+
+    const orders = billing.orders;
+    const userItems = [];
+
+    orders.forEach((order) => {
+      const items = order.items;
+      userItems.push(...items);
+    });
+
+    return res.status(200).json(userItems);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
+}
+
 // PUT /api/billings/:id
 async function updateBillingById(req, res) {
   const id = req.params.id;
@@ -174,6 +200,7 @@ async function verifyOrders(orders) {
 export {
   getBillings,
   getBillingById,
+  getBillingByEmail,
   createBilling,
   updateBillingById,
   deleteBillingById,
