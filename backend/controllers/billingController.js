@@ -2,6 +2,7 @@ import * as billingDAO from "../dao/billingsDAO.js";
 import * as userDAO from "../dao/usersDAO.js";
 import { createMoMoPayment } from "../payment/momo.js";
 import mongoose from "mongoose";
+import nodemailer from 'nodemailer';
 
 let momoUrl;
 // GET /api/billings
@@ -24,6 +25,34 @@ async function getBillings(req, res) {
 async function validate(req, res) {
   const orderId = req.params.orderId;
   console.log(orderId)
+
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: "minhhau.uit@gmail.com",
+      pass: "vyzgpxblasanronc",
+    },
+  });
+
+  const mailOptions = {
+    to: email,
+    subject: "Thư cảm ơn <3",
+    html: `<h6>Bạn đã mua khóa học thành công!!!</h6>`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error(error);
+      return res.status(500).json({ message: "Lỗi gửi email" });
+    } else {
+      console.log("Email sent: " + info.response);
+      res.json({
+        message: "Thư đã được gửi đến địa chỉ email của bạn",
+      });
+    }
+  });
 }
 
 // POST /api/billings
