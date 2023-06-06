@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import "./OrderSummary.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getTotal } from "../../../features/cartSlice";
+import { getTotal,removeCart } from "../../../features/cartSlice";
 
 const OrderSummary = () => {
     const dispatch = useDispatch();
@@ -43,6 +43,7 @@ const OrderSummary = () => {
     const handlesubmit = async(e)=>{
         e.preventDefault();
         console.log(billing)
+        dispatch(removeCart())
         // const response = await BillingDataService.postBilling(billing);
         window.open('https://www.youtube.com/watch?v=IjWuRvHyS3Q', '_blank').focus();
         window.location.href = "/";
