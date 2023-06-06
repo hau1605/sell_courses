@@ -50,12 +50,8 @@ const start = async () => {
     resources: [
       models.courseModel,
       models.cartModel,
-      models.categoryModel,
       models.userModel,
       models.lecturerModel,
-      models.topicModel,
-      models.topWeekModel,
-      models.facebookUserModel,
       models.billingModel,
       models.courseContentModel,
     ],
