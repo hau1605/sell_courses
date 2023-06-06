@@ -48,6 +48,42 @@
 
 - `DELETE /api/courses/:id` - Delete a single course by its ID.
 
+- `POST /api/courses/content` - Create a new course content.
+
+- `GET /api/courses/content/:Courseid` - Retrieve a course content by course ID.
+
+- `PUT /api/courses/content/:Courseid` - Update a course content by course ID.
+
+```json
+{
+  "content": [
+    {
+      "lesson_note": "Investigating career cybercriminals is hard, especially when their paranoia has fostered strong OpSec? The FBI and Symantec spent 10 years investigating such a gang eventually finding cracks just large enough to end the gangs crime spree. This case study will show how to investigate when strong OpSec exists.Pre-Requisites: General knowledge of cyber crimes investigations, minimal traffic analysis and malware analysis.",
+      "thumbnail_url": "https://static.wixstatic.com/media/3beaca_bfcfe182350d4f95be35bd934a7f42b5~mv2.png/v1/fit/w_940%2Ch_788%2Cal_c%2Cq_80,enc_auto/file.jpg",
+      "title": "When Cybercriminals with Good OpSec Attack",
+      "video_url": "https://www.youtube.com/watch?v=zXmZnU2GdVk"
+    },
+    {
+      "lesson_note": "Yesterday’s tools barely help us today—and they won’t help us tomorrow. Slow, static security solutions like SIEM never solved SecOps challenges and can no longer carry us to the future. Through the power of automation and intelligence, we’ve ushered in a new era of cybersecurity. For the cyber industry, the revolution has finally arrived. Let’s build momentum and continue our great leap forward.",
+      "thumbnail_url": "https://static.wixstatic.com/media/3beaca_bfcfe182350d4f95be35bd934a7f42b5~mv2.png/v1/fit/w_940%2Ch_788%2Cal_c%2Cq_80,enc_auto/file.jpg",
+      "title": "SIEM There, Done That: Rising Up in the SecOps Revolution",
+      "video_url": "https://www.youtube.com/watch?v=SD_m0wZKdkk"
+    }
+  ],
+  "course_id": "6002d1c7777655267ca1fd79",
+  "lesson_count": "2"
+}
+```
+
+HTTPie example:
+
+```sh
+http POST :8000/api/courses/content \
+course_id=6002d1c7777655267ca1fd79 \
+  lesson_count=2 \
+  content:='[{"title":"When Cybercriminals with Good OpSec Attack", "video_url":"https://www.youtube.com/watch?v=zXmZnU2GdVk", "thumbnail_url":"https://static.wixstatic.com/media/3beaca_bfcfe182350d4f95be35bd934a7f42b5~mv2.png/v1/fit/w_940%2Ch_788%2Cal_c%2Cq_80,enc_auto/file.jpg", "lesson_note":"Investigating career cybercriminals is hard, especially when their paranoia has fostered strong OpSec? The FBI and Symantec spent 10 years investigating such a gang eventually finding cracks just large enough to end the gangs crime spree. This case study will show how to investigate when strong OpSec exists.Pre-Requisites: General knowledge of cyber crimes investigations, minimal traffic analysis and malware analysis."}, {"title":"SIEM There, Done That: Rising Up in the SecOps Revolution", "video_url":"https://www.youtube.com/watch?v=SD_m0wZKdkk", "thumbnail_url":"https://static.wixstatic.com/media/3beaca_bfcfe182350d4f95be35bd934a7f42b5~mv2.png/v1/fit/w_940%2Ch_788%2Cal_c%2Cq_80,enc_auto/file.jpg", "lesson_note":"Yesterday’s tools barely help us today—and they won’t help us tomorrow. Slow, static security solutions like SIEM never solved SecOps challenges and can no longer carry us to the future. Through the power of automation and intelligence, we’ve ushered in a new era of cybersecurity. For the cyber industry, the revolution has finally arrived. Let’s build momentum and continue our great leap forward."}]'
+```
+
 - `POST /api/lecturers` - Create a new lecturer.
 
 - `GET /api/lecturers` - Retrieve a list of all lecturers.

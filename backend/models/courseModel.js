@@ -1,5 +1,4 @@
 import mongoose from 'mongoose';
-import Topic from './topicModel.js';
 import Lecturer from './lecturerModel.js';
 
 const courseSchema = new mongoose.Schema({
@@ -44,9 +43,7 @@ const courseSchema = new mongoose.Schema({
     required: true
   },
   idCourseTopic: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Topic',
-    required: true
+    type: mongoose.Schema.Types.ObjectId
   },
   idLecturer: {
     type: mongoose.Schema.Types.ObjectId,

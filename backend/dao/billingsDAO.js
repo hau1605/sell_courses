@@ -26,10 +26,22 @@ async function getItemsForUser(user_id) {
   }
 }
 
+async function getBillingByEmail(emailR) {
+  try {
+    console.log("Billing của user: ", emailR);
+    const billingDocument = await Billing.findOne({ email: { $eq: emailR }});
+    console.log("billingDocument: ", billingDocument);
+    return billingDocument;
+  } catch (error) {
+    throw error;
+  }
+}
+
 async function createBilling(newBilling) {
   try {
     const billing = new Billing(newBilling);
-    return await billing.save();
+    billing.save();
+	  return billing._id
   } catch (error) {
     throw error;
   }
@@ -80,5 +92,6 @@ export {
   deleteById,
   userExists,
   findBillingDocumentByUserId,
-  getItemsForUser
+  getItemsForUser,
+  getBillingByEmail
 };

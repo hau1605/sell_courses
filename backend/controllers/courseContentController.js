@@ -1,55 +1,68 @@
-import CourseContentDAO from '../dao/courseContentDAO.js';
+import * as CourseContentDAO from "../dao/courseContentDAO.js";
+import CourseContent from "../models/courseContentModel.js";
 
-class CourseContentController {
-  static async createCourseContent(req, res) {
-    try {
-      const courseContentData = req.body;
-      const createdCourseContent = await CourseContentDAO.create(courseContentData);
-      res.status(201).json(createdCourseContent);
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to create course content.' });
-    }
-  }
+// Create new course_content
+async function createCourseContent(req, res) {
+  try {
+    const { course_id, lesson_count, content } = req.body;
 
-  static async getCourseContentById(req, res) {
-    try {
-      const { courseContentId } = req.params;
-      const courseContent = await CourseContentDAO.getById(courseContentId);
-      if (courseContent) {
-        res.json(courseContent);
-      } else {
-        res.status(404).json({ error: 'Course content not found.' });
-      }
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to get course content.' });
-    }
-  }
+    const newCourseContent = new CourseContent({
+      course_id,
+      lesson_count,
+      content,
+    });
 
-  static async updateCourseContent(req, res) {
-    try {
-      const { courseContentId } = req.params;
-      const courseContentData = req.body;
-      const updatedCourseContent = await CourseContentDAO.update(courseContentId, courseContentData);
-      if (updatedCourseContent) {
-        res.json(updatedCourseContent);
-      } else {
-        res.status(404).json({ error: 'Course content not found.' });
-      }
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to update course content.' });
-    }
-  }
+    const savedCourseContent = await CourseContentDAO.createCourseContent(
+      newCourseContent
+    );
 
-  static async deleteCourseContent(req, res) {
-    try {
-      const { courseContentId } = req.params;
-      await CourseContentDAO.delete(courseContentId);
-      res.sendStatus(204);
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to delete course content.' });
-    }
+    res.status(201).json(savedCourseContent);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to create course content" });
   }
 }
 
-export default CourseContentController;
+// Get course_content by course_id
+async function getCourseContentByCourseId(req, res) {
+  try {
+    const course_id = req.params['courseId'];
 
+    const courseContent = await
+      CourseContentDAO.getCourseContentByCourseId(course_id);
+
+    if (!courseContent) {
+      return res.status(404).json({ error: "Course content not found" });
+    }
+
+    res.json(courseContent);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to get course content" });
+  }
+}
+
+// Update course_content by course_id
+async function updateCourseContentByCourseId(req, res) {
+  try {
+    const { course_id } = req.params;
+    const { lesson_count, content } = req.body;
+
+    const updatedCourseContent = await CourseContentDAO.updateCourseContentByCourseId(
+      course_id,
+      lesson_count,
+      content
+    );
+    if (!updatedCourseContent) {
+      return res.status(404).json({ error: "Course content not found" });
+    }
+
+    res.json(updatedCourseContent);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to update course content" });
+  }
+}
+
+export {
+  createCourseContent,
+  getCourseContentByCourseId,
+  updateCourseContentByCourseId,
+};

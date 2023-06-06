@@ -5,7 +5,6 @@ import { connectDB } from "./db/connection.js";
 import cors from "cors";
 import {
   coursesRoutes,
-  courseContentRoutes,
   cartRoutes,
   categoriesRoutes,
   topicsRoutes,
@@ -51,12 +50,8 @@ const start = async () => {
     resources: [
       models.courseModel,
       models.cartModel,
-      models.categoryModel,
       models.userModel,
       models.lecturerModel,
-      models.topicModel,
-      models.topWeekModel,
-      models.facebookUserModel,
       models.billingModel,
       models.courseContentModel,
     ],
@@ -97,7 +92,6 @@ const start = async () => {
   app.use("/api/topWeeks", topWeeksRoutes);
   app.use("/api/facebookUsers", facebookUsersRoutes);
   app.use("/api/billings", billingRoutes);
-  app.use("/api/course-content", courseContentRoutes);
   app.get("/api/check-token", (req, res) => {
     const token = req.headers.authorization;
     console.log("Token: ", token);

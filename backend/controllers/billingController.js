@@ -1,7 +1,9 @@
 import * as billingDAO from "../dao/billingsDAO.js";
 import * as userDAO from "../dao/usersDAO.js";
+import { createMoMoPayment } from "../payment/momo.js";
 import mongoose from "mongoose";
 
+let momoUrl;
 // GET /api/billings
 async function getBillings(req, res) {
   try {
@@ -36,12 +38,38 @@ async function getBillingById(req, res) {
     return res.status(400).send(`Invalid ID: ${id}`);
   }
 
-  billingDAO.getBillingById(id, (err, billing) => {
+  billingDAO.findById(id, (err, billing) => {
     if (err) {
       return res.status(500).send(err);
     }
     return res.status(200).json(billing);
   });
+}
+
+// GET /api/billings/:email
+async function getBillingByEmail(req, res) {
+  try {
+    const emailR = req.params.email;
+    console.log("Controller. Email: ", emailR)
+    const billing = await billingDAO.getBillingByEmail(emailR);
+
+    if (!billing) {
+      return res.status(404).json({ message: "Không tìm thấy hóa đơn người dùng!" });
+    }
+
+    const orders = billing.orders;
+    const userItems = [];
+
+    orders.forEach((order) => {
+      const items = order.items;
+      userItems.push(...items);
+    });
+
+    return res.status(200).json(userItems);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: error.message });
+  }
 }
 
 // PUT /api/billings/:id
@@ -76,7 +104,8 @@ async function deleteBillingById(req, res) {
 
 async function createOrder(orders) {
   let total_amount = 0;
-  let orderStatus = await verifyOrders(orders);
+  const orderStatus = "Pending";
+  let purchased_courses = "Thanh toan cho khoa hoc: ";
   const order = {
     order_id: new mongoose.Types.ObjectId(),
     payment_method: {
@@ -98,9 +127,17 @@ async function createOrder(orders) {
       course_price: orders.items[j].course_price,
     };
     total_amount += orders.items[j].course_price;
+    purchased_courses += orders.items[j].course_name + " ";
     order.items.push(item);
   }
   order.total_amount = total_amount;
+  if (orders.payment_method.type == "momo") {
+    momoUrl = await createMoMoPayment(
+      order.order_id,
+      purchased_courses,
+      Math.ceil(total_amount)
+    );
+  }
 
   return order;
 }
@@ -116,7 +153,7 @@ async function createBillingDocument(user_id, user_name, email, orders) {
   const order = await createOrder(orders);
   billingData.orders.push(order);
 
-  await billingDAO.createBilling(billingData, (err) => {
+  return  billingDAO.createBilling(billingData, (err) => {
     if (err) {
       return res.status(500).send(err);
     }
@@ -134,26 +171,31 @@ async function updateBillingDocument(user_id, orders) {
     if (err) {
       return res.status(500).send(err);
     }
+	  return userBillingDoc._id
   });
 }
 
 async function purchase(req, res) {
   const { user_id, user_name, email, orders } = req.body;
+	let billId
   try {
     // Check if user_id exists in the billing collection
     const exists = await billingDAO.userExists(user_id);
     if (exists) {
       // User exists in billing collection -> update orders array
-      await updateBillingDocument(user_id, orders);
+      billId = await updateBillingDocument(user_id, orders);
     } else {
       // User does not exist in billing collection -> create a new billing document
-      await createBillingDocument(user_id, user_name, email, orders);
+      billId = await createBillingDocument(user_id, user_name, email, orders);
     }
     // Return HTTP OK if the operation is successful
-    res.status(200).send("Success");
+    const payUrl = {
+      paymentUrl: momoUrl
+    };
+    res.status(200).json(payUrl);
 
     // add purchased course to user.purchasedCourses
-    userDAO.addtopurchasedCourses(user_id, orders.items);
+    userDAO.addtopurchasedCourses(user_id, orders.items, billId);
 
     //TODO: send thank you for purchasing email
   } catch (error) {
@@ -163,17 +205,10 @@ async function purchase(req, res) {
   }
 }
 
-async function verifyOrders(orders) {
-  //pseudo verify payment function
-  if (orders.items.length === 0) {
-    return "failed";
-  }
-  return "success";
-}
-
 export {
   getBillings,
   getBillingById,
+  getBillingByEmail,
   createBilling,
   updateBillingById,
   deleteBillingById,

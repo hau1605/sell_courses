@@ -18,14 +18,12 @@
 @media(min-width: 768px) and (max-width: 1023px) {
     .video-page {
 		display: flex;
-		height: 70vh;
 	}
 }
 
 @media (min-width: 1024px) {
     .video-page {
 		display: flex;
-		height: 70vh;
 	}
 }
 
@@ -51,15 +49,18 @@
 .video-item {
 	display: flex;
 	align-items: center;
-	padding: 8px;
+	padding: 4px;
+	margin: 4px 0;
 	cursor: pointer;
 	border: solid 1px #cccccc26;
 	border-radius: 10px;
 	box-shadow: 0px 4px 30px rgba(19,28,25,0.1);
+	background-color: #eee;
+    transition: all 150ms ease-in-out;
 }
 
 .video-item:hover {
-	background-color: #eee;
+	background-color: #e2e2e2;
 }
 
 .video-item-thumbnail {
