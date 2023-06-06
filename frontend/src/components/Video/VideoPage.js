@@ -79,7 +79,7 @@ const VideoPage = (props) => {
       	<div className="body p-4">
 			<p className='my-course_breadcrumb'>
 				<Link className="text-link-home" to='/'>Trang chủ</Link> / 
-				<Link className="text-link-home" to="/user/my-course">Khoá học đã mua</Link> / 
+				<Link className="text-link-home" to="/user/my-course"> Khoá học đã mua</Link> / 
 				<span className="text-link-loai">{location.state.course.course_name}</span>
 			</p>
 
