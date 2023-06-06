@@ -3,7 +3,7 @@ import bcrypt from 'bcryptjs';
 import nodemailer from 'nodemailer';
 import jwt from 'jsonwebtoken';
 import { JWT_SECRET_KEY } from '../config/config.js';
-import authenticateJWT from '../middleware/authMiddleware.js';
+// import authenticateJWT from '../middleware/authMiddleware.js';
 const login = async (req, res) => {
   try {
     const email = req.body.email;
@@ -12,10 +12,15 @@ const login = async (req, res) => {
     console.log(password);
     const existingUser = await userModel.findOne({ email: { $eq: email } });
     console.log("Tồn tại user? ", existingUser ? true : false);
+    const userData = {
+      userData_id: existingUser._id,
+      userData_email: existingUser.email,
+      userData_name: existingUser.name
+    }
 
     if (!existingUser) {
-      res.status(401).json({ error: "Tài khoản không tồn tại" });
       console.log("Tài khoản không tồn tại");
+      return res.status(401).json({ error: "Tài khoản không tồn tại" });
     }
 
     // Compare the password with the hash
@@ -39,26 +44,26 @@ const login = async (req, res) => {
               const extendedToken = jwt.sign({ email }, JWT_SECRET_KEY, { expiresIn: '10m' });
               console.log("Token còn hạn, tăng token lên 10 phút: ", extendedToken)
               // Set the extended token in the cookie
-              res.status(200).json({ message: "Đăng nhập thành công", token: extendedToken });
+              res.status(200).json({ message: "Đăng nhập thành công", token: extendedToken, user: userData });
             } else {
               // Token has expired, generate a new one
               const newToken = jwt.sign({ email }, JWT_SECRET_KEY, { expiresIn: '10m' });
               console.log("Token hết hạn, tạo token mới: ", newToken)
               // Set the new token in the cookie
-              res.status(200).json({ message: "Đăng nhập thành công", token: newToken });
+              res.status(200).json({ message: "Đăng nhập thành công", token: newToken, user: userData });
             }
           } catch (error) {
             // Error occurred while verifying the token, generate a new one
             const newToken = jwt.sign({ email }, JWT_SECRET_KEY, { expiresIn: '10m' });
             console.log("Token undefined hoặc không hợp lệ, tạo token mới: ", newToken)
             // Set the new token in the cookie
-            res.status(200).json({ message: "Đăng nhập thành công", token: newToken });
+            res.status(200).json({ message: "Đăng nhập thành công", token: newToken, user: userData });
           }
         } else {
           const token = jwt.sign({ email }, JWT_SECRET_KEY, { expiresIn: '10m' });
           console.log("Chưa có token ở header, tạo token mới: ", token)
           // Set the new token in the cookie
-          res.status(200).json({ message: "Đăng nhập thành công", token });
+          res.status(200).json({ message: "Đăng nhập thành công", token, user: userData });
         }
       } else {
         res.status(401).json({ error: "Mật khẩu không chính xác" });

@@ -1,17 +1,21 @@
 import axios from "axios";
 
 class UserDataService {
-    postLogin(email, password) {
-        return axios.post(`http://52.74.237.230:8000/api/users/login`, (email, password))
+    postLogin(email, password, cookieValue) {
+        return axios.post('http://localhost:8000/api/login', {email, password}, {
+            headers: {
+                Authorization: cookieValue,
+            }
+        });
     }
-    postSendMail(email, password) {
-        return axios.post(`http://52.74.237.230:8000/api/users/forgot-password`, (email, password))
+    postSendMail(email) {
+        return axios.post('http://localhost:8000/api/forgot-password', {email});
     }
     postConfirmOtp(emailResetPassword, verificationCode) {
-        return axios.post(`http://52.74.237.230:8000/api/users/reset-password/confirmOtp`, (emailResetPassword, verificationCode))
+        return axios.post(`http://localhost:8000/api/reset-password/confirmOtp`, (emailResetPassword, verificationCode))
     }
     postNewPassword(emailResetPassword, password) {
-        return axios.post(`http://52.74.237.230:8000/api/users/reset-password`, (emailResetPassword, password))
+        return axios.post(`http://localhost:8000/api/reset-password`, (emailResetPassword, password))
     }
 }       
 

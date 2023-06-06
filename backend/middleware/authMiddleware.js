@@ -1,6 +1,29 @@
 import jwt from 'jsonwebtoken';
 import { JWT_SECRET_KEY } from '../config/config.js'; // Import the secret key from config or environment variable
 
+// const refreshToken = jwt.sign({ emailR }, JWT_SECRET_KEY, { expiresIn: '30d' });
+// const accessToken = jwt.sign({ emailR }, JWT_SECRET_KEY, { expiresIn: '1d' });
+
+const signAccessToken = async () => {
+  const payload = {
+    userId: 1,
+    name: "Minh Hau"
+  }
+  const token = await jwt.sign(payload, accessToken, {expiresIn: '1d'});
+}
+
+const signRefreshToken = async () => {
+  
+}
+
+
+const verifyToken = async (req, res, next) => {
+  return res.status(200).json({
+    code: 401,
+    msg: "Invalid Token"
+  })
+}
+
 // Middleware function to verify JWT token
 const authenticateJWT = (req, res, next) => {
   const token = req.header('Authorization'); // Get token from Authorization header
@@ -19,4 +42,9 @@ const authenticateJWT = (req, res, next) => {
   });
 };
 
-export default authenticateJWT;
+export {
+  authenticateJWT,
+  signAccessToken,
+  signRefreshToken,
+  verifyToken,
+}

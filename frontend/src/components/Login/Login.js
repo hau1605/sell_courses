@@ -8,9 +8,9 @@ import { useDispatch } from "react-redux";
 import { setEmailResetPassword } from "../../features/userSlice";
 import { useNavigate } from 'react-router-dom';
 import { loginSuccess } from '../../features/userSlice';
-import ClipLoader from 'react-spinners/ClipLoader';
 import FullPageLoader from "../FullPageLoader/FullPageLoader";
 import Cookies from 'js-cookie';
+import UserDataService from '../../services/UserDataService';
 import "./Login.css";
 const Login=()=>{
     const [email, setEmail] = useState("");
@@ -46,21 +46,24 @@ const Login=()=>{
         setIsLoading(true);
         try {
             const cookieValue = Cookies.get('token');
-            const response = await axios.post('http://localhost:8000/api/login', {email, password}, {
-                headers: {
-                    Authorization: cookieValue,
-                }
-            });
+            const response = await UserDataService.postLogin(email, password, cookieValue);
+            console.log("response: ", response);
             if (response.status === 200) {
+                console.log("response.data.user: ", response.data.user)
+                const userData = {
+                    userId: response.data.user.userData_id,
+                    email: response.data.user.userData_email,
+                    userName: response.data.user.userData_name
+                }
                 console.log('Đăng nhập thành công:', response.data.message);
                 const expirationDate = new Date();
                 expirationDate.setTime(expirationDate.getTime() + (10 * 60 * 1000)); // 10 phút
                 Cookies.set('token', response.data.token, { expires: expirationDate });
-
-                setShow(false);
-                dispatch(loginSuccess(email));
-                console.log(email);
+                
+                console.log("userData: ", userData)
+                dispatch(loginSuccess(userData));
                 setIsLoading(false);
+                setShow(false);
                 navigate("/");
             } else {
                 console.error('Lỗi đăng nhập:', response.data.error);
