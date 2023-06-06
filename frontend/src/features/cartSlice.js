@@ -76,8 +76,11 @@ export const cartSlice = createSlice({
         state.viewedItem.reverse().push(action.payload)
         state.viewedItem.reverse();
         localStorage.setItem("viewedItem", JSON.stringify(state.viewedItem));
-    }
+    },removeCart:(state,action)=>{
+        state.cart=[]
+        localStorage.setItem("cart", JSON.stringify(state.cart));
+    },
 }
 })
-export const { addToCart,increaseQuantity,decreaseQuantity,getTotal,removeItem ,viewedItem} = cartSlice.actions;
+export const { addToCart,increaseQuantity,decreaseQuantity,getTotal,removeItem ,viewedItem,removeCart} = cartSlice.actions;
 export default cartSlice.reducer;
