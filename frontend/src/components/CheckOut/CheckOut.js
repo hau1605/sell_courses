@@ -2,6 +2,7 @@ import React from "react";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { FaRegAddressCard, FaRegCreditCard } from "react-icons/fa";
 import { BsBank2 } from "react-icons/bs"
+import { useSelector } from "react-redux";
 
 import "./CheckOut.css"
 import Container from 'react-bootstrap/Container';
@@ -45,6 +46,7 @@ function ContainerFluidBreakpointExample() {
   }
 
 function ResponsiveAutoExample() {
+  const user = useSelector((state) => state.user)
     return (
       <Container>
         <Row>
@@ -62,7 +64,7 @@ function ResponsiveAutoExample() {
                 <Row>
                   <Col >
                     <div>
-                        <input type="text" name="fullname" placeholder="Họ và tên người nhận"></input>
+                        <input value={user.userName} type="text" name="fullname" placeholder="Họ và tên người nhận"></input>
                     </div>
                   </Col>
                 </Row>
@@ -76,14 +78,7 @@ function ResponsiveAutoExample() {
                 <Row>
                     <Col >
                     <div>
-                        <input type="text" name="address" placeholder="Địa chỉ"></input>
-                    </div>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col >
-                    <div>
-                        <input type="text" name="email" placeholder="Email"></input>
+                        <input value={user.email} type="text" name="email" placeholder="Email"></input>
                     </div>
                     </Col>
                 </Row>
@@ -104,15 +99,17 @@ function ResponsiveAutoExample() {
                 <div className="content-box">
                   <div className="content-box_row">
                     <div className="radio-wrapper">
-                      <label className="radio_label">Thanh toán qua ngân hàng</label>
+                      <label className="radio_label">Thanh toán qua Momo</label>
                       <BsBank2 />
                     </div>
                     <div className="purchase-decription">
-                      <div className="banking-account">
-                        <p>Ngân hàng Vietcombank CN Hùng Vương</p>
-                        <p>Số TK: 0441000707892Chủ TK: Phan Tuấn Anh</p>
-                        <p>(Nội dung chuyển khoản: Tên + Số ĐT đặt hàng)</p>
-                      </div>
+                      <div>
+                        <div className="banking-account">
+                          <p>Khách hàng chuyển khoản vào tài khoản của Udemy trong phần Hồ Sơ.</p>
+                          <p>Nhân viên của Udemy sẽ gọi điện cho quý khách để xác nhận đơn hàng chuyển khoản.</p>
+                          <p>Bạn vui lòng để ý điện thoại ngay khi đặt hàng thành công nhé.</p>
+                        </div>
+                      </div> 
                     </div>
                   </div>
                 </div>

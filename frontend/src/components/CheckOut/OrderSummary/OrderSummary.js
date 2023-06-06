@@ -89,7 +89,7 @@ const OrderSummary = () => {
                                 <div className="fieldset">
                                     <div className="field_input-btn-wrapper">
                                         <Form.Control type="text" placeholder="Nhập mã giảm giá" />
-                                        <Button variant="primary">Áp dụng</Button>
+                                        <Button variant="primary" style={{backgroundColor:"#00bc86", border:"#00bc86"}}>Áp dụng</Button>
                                     </div>
                                 </div>
                             </div>
@@ -122,7 +122,7 @@ const OrderSummary = () => {
                                             <span className="previous-link_content">Quay trở về giỏ hàng</span>
                                         </a>
                                         <div className="order-summary_nav-btn">
-                                            <Button className="complete-order-button" onClick={handlesubmit}>Hoàn tất</Button>
+                                            <Button style={{backgroundColor:"#00bc86", border:"#00bc86"}} className="complete-order-button" onClick={handlesubmit}>Hoàn tất</Button>
                                         </div> 
                                     </div>  
                                 </tfoot>
