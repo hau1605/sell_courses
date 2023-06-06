@@ -18,6 +18,7 @@ const Login=()=>{
     const [isRecoverPasswordFormVisible, setIsRecoverPasswordFormVisible] = useState(false);
     const [emailError, setEmailError] = useState('');
     const [show, setShow] = useState(false);
+    const [showErr, setShowErr] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState(false);
     const dispatch = useDispatch();
@@ -85,18 +86,18 @@ const Login=()=>{
         try {
             const response = await axios.post('http://localhost:8000/api/forgot-password', { email });
             if (response.status === 200) {
-                setSuccess(true);
-                setError('');
+                setShowErr(false)
                 dispatch(setEmailResetPassword(email));
                 setIsLoading(false);
                 navigate('/account/reset-password');
                 console.log('Đã gửi mail xác nhận');
             } else {
-                setSuccess(false);
+                setShowErr(true)
                 setIsLoading(false);
                 setError(response.data.error || 'Có lỗi xảy ra. Vui lòng thử lại sau.');
               }
         } catch (error) {
+            setShowErr(true)
             console.error(`Lỗi yêu cầu đặt lại mật khẩu: ${error.message}`);
             setError('Có lỗi xảy ra. Vui lòng thử lại sau.');
             setIsLoading(false);
@@ -106,6 +107,11 @@ const Login=()=>{
     const handleSubmitModal = async (event) => {
         setShow(false);
         setIsLoading(false);
+    }
+    const handleSubmitModalErr = async (event) => {
+        setShowErr(false);
+        setIsLoading(false);
+        setIsRecoverPasswordFormVisible(false);
     }
 
     // Hàm ẩn form phục hồi mật khẩu
@@ -187,7 +193,7 @@ const Login=()=>{
                 </section>
             </div>
 
-            <Modal show={show} onHide={()=>setShow(false)}>
+            <Modal show={show} onHide={handleSubmitModal} backdrop="static" keyboard={false}>
                 <Modal.Header closeButton>
                     <Modal.Title>Thông báo</Modal.Title>
                 </Modal.Header>
@@ -197,6 +203,19 @@ const Login=()=>{
                 </Modal.Body>
                 <Modal.Footer>
                     <Button  variant="success" onClick={handleSubmitModal}>Đồng ý</Button>
+                </Modal.Footer>
+            </Modal>
+
+            <Modal show={showErr} onHide={handleSubmitModalErr} backdrop="static" keyboard={false}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Thông báo</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    Tài khoản chưa được đăng ký, đăng nhập bằng tài khoản khác.
+                    Hoặc <Link to='/register'>đăng ký ngay</Link>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button  variant="success" onClick={handleSubmitModalErr}>Đồng ý</Button>
                 </Modal.Footer>
             </Modal>
         </div>

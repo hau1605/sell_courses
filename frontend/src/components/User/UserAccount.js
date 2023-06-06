@@ -23,7 +23,7 @@ const UserAccount=()=>{
 
     const fetchUserData = async () => {
         try {
-            const res = await axios.get(`http://localhost:8000/api/users/${email}`);
+            const res = await axios.get(`http://localhost:8000/api/users/${email}/data`);
             setUser(res.data);
             setPhoneNumber(res.data.phoneNumber);
             setName(res.data.name);

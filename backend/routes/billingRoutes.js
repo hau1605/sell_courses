@@ -12,6 +12,9 @@ router.post("/", billingController.createBilling);
 // GET /api/billings/:id
 router.get("/:id", billingController.getBillingById);
 
+// GET /api/billings/:email
+router.get("/:email/data", billingController.getBillingByEmail);
+
 // PUT /api/billings/:id
 router.put("/:id", billingController.updateBillingById);
 
