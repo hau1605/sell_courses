@@ -60,21 +60,33 @@ const ProductDetail = (props) => {
                     <Row>
                         <h1 className="title-header-text">{product.name}</h1>
                         <p className="category-product">{product.categories}</p>
-                        <div className="group-status">
-                            <p className="update-date">Ngày đăng<br />{d.toLocaleDateString("vi-VI")}</p>
-                            <p className="level">
+                    </Row>
+                    <Row style={{fontSize:'16px'}} >
+                        <Col md='7' xs='12'>
+                        <Row>
+                        <Col>
+                            <p>Ngày đăng<br />{d.toLocaleDateString("vi-VI")}</p>
+                        </Col>
+                        <Col>
+                            <p>
                                 Cấp độ<br />
                                 {level === "normal" && <div className="level-normal" >Cơ bản</div>}
                                 {level === "medium" && <div className="level-medium" >Mọi cấp độ</div>}
                                 {level === "hard" && <div className="level-hard" >Nâng cao</div>}
                             </p>
-                            <p className="number-student">
+                        </Col>
+                        <Col>
+                            <p >
                                 Học Viên<br />Đang cập nhật
                             </p>
-                            <p className="language">
+                        </Col>
+                        <Col>
+                            <p >
                                 Ngôn Ngữ<br />Tiếng Việt
                             </p>
-                        </div>
+                        </Col>
+                        </Row>
+                        </Col>
                     </Row>
                     <Row>
                         <Col xs='12' lg='8'>
@@ -88,17 +100,16 @@ const ProductDetail = (props) => {
                                 <Button className="product-cart-button" onClick={() => { dispatch(addToCart(product)) }}>Thêm vào giỏ hàng</Button>
                             </div>
                             <h2 className="product-des">MÔ TẢ KHÓA HỌC</h2>
-                            <p style={{fontSize:'16px'}}>{product.description}</p>
+                            <p style={{ fontSize: '16px' }}>{product.description}</p>
                         </Col>
                     </Row>
                     <Row>
-                    <div className="bot-body-product">
-                    <Container className="youll-learn">
-                        <h2 className="learn-title">CHI TIẾT KHÓA HỌC</h2>
-                        {product.whatYoullLearn.map((item) => <li>{item}</li>)}
-                    </Container>
-
-                </div>
+                        <div className="bot-body-product">
+                            <Container className="youll-learn">
+                                <h2 className="learn-title">CHI TIẾT KHÓA HỌC</h2>
+                                {product.whatYoullLearn.map((item) => <li>{item}</li>)}
+                            </Container>
+                        </div>
                     </Row>
                 </Container>
             </div>
