@@ -43,9 +43,7 @@ const courseSchema = new mongoose.Schema({
     required: true
   },
   idCourseTopic: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Topic',
-    required: true
+    type: mongoose.Schema.Types.ObjectId
   },
   idLecturer: {
     type: mongoose.Schema.Types.ObjectId,
