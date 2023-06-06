@@ -27,13 +27,13 @@ const OrderSummary = () => {
     const [billing, setBilling] = useState({
         email: user.email,
         orders: {
-            item: billings,
+            items: billings,
 
             payment_method: {
-            card_number: "1234567890",
-            expiration_date: "12/23",
-            security_code: 123,
-            type: "credit_card"
+                card_number: "1234567890",
+                expiration_date: "12/23",
+                security_code: 123,
+                type: "momo"
             }
         },
         user_id: user.userId,
