@@ -125,6 +125,7 @@ async function createOrder(orders) {
       course_id: orders.items[j].course_id,
       course_name: orders.items[j].course_name,
       course_price: orders.items[j].course_price,
+      course_pic: orders.items[j].course_pic,
     };
     total_amount += orders.items[j].course_price;
     purchased_courses += orders.items[j].course_name + " ";

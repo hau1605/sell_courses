@@ -19,7 +19,8 @@ const OrderSummary = () => {
             {
                 course_id: item._id,
                 course_name: item.name,
-                course_price: item.cost
+                course_price: item.cost,
+                course_pic: item.poster
             }
         billings.push(billingItems)
         return 0;
@@ -44,9 +45,12 @@ const OrderSummary = () => {
         e.preventDefault();
         console.log(billing)
         dispatch(removeCart())
-        // const response = await BillingDataService.postBilling(billing);
-        window.open('https://www.youtube.com/watch?v=IjWuRvHyS3Q', '_blank').focus();
-        window.location.href = "/";
+        const response = await BillingDataService.postBilling(billing);
+        if(response.status === 200) {
+            console.log("response.data: ",response.data)
+            window.location.href = response.data.paymentUrl;
+        }
+        // window.location.href = "/";
     };
 
     useEffect(() => { dispatch(getTotal()) }, [cart])
