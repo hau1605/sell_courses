@@ -126,6 +126,7 @@ button.complete-order-button.btn.btn-primary {
 .order-summary_nav {
     display: flex;
     align-items: center;
+    width: 120%;
 }
 
 .field_input-btn-wrapper {

@@ -109,10 +109,10 @@ const Header = () => {
                         </li>
                         </>) : (<>
                           <li className='d-lg-none'>
-                            <Link to='/login'>Đăng nhập</Link>
+                            <Link to='/account/login'>Đăng nhập</Link>
                           </li>
                           <li className='d-lg-none'>
-                            <Link to='/register'>Đăng ký</Link>
+                            <Link to='/account/register'>Đăng ký</Link>
                           </li>
                         </>)}
                       </ul>

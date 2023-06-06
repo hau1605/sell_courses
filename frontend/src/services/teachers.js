@@ -1,8 +1,9 @@
 import axios from "axios";
+import { BASE_URL } from "../config/config";
 
 class TeacherDataService {
     getAll() {
-        return axios.get(`http://52.74.237.230:8000/api/lecturers`)
+        return axios.get(`${BASE_URL}/api/lecturers`)
     }
 }
 

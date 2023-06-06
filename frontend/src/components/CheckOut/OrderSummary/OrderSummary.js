@@ -6,23 +6,29 @@ import Button from 'react-bootstrap/Button';
 import "./OrderSummary.css";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { getTotal } from "../../../features/cartSlice";
 
 const OrderSummary = () => {
-    const [billing, setBilling] = useState({
-        email: "example@gmail.com",
-        orders: {
-            items: [
+    const dispatch = useDispatch();
+
+    const { cart, totalPrice } = useSelector((state) => state.Allcart)
+    const user = useSelector((state) => state.user)
+    let billings = [];
+    cart.map((item) => {
+        let billingItems = 
             {
-                course_id: "64621e807e8afdc6899cecf8",
-                course_name: "Course 1",
-                course_price: 9.99
-            },
-            {
-                course_id: "64621e807e8afdc6899cecf9",
-                course_name: "Course 2",
-                course_price: 19.99
+                course_id: item._id,
+                course_name: item.name,
+                course_price: item.cost
             }
-            ],
+        billings.push(billingItems)
+        return 0;
+    })
+    const [billing, setBilling] = useState({
+        email: user.email,
+        orders: {
+            item: billings,
+
             payment_method: {
             card_number: "1234567890",
             expiration_date: "12/23",
@@ -30,16 +36,19 @@ const OrderSummary = () => {
             type: "credit_card"
             }
         },
-        user_id: "646364b5aef93cf257f8dddd",
-        user_name: "Phuc Hoang",   
+        // user_id: user_id,
+        // user_name: user_name,   
     } );
-    const { cart, totalPrice } = useSelector((state) => state.Allcart)
+
     const handlesubmit = async(e)=>{
         e.preventDefault();
-        console.log("1");
-        const response = await BillingDataService.postBilling(billing);
-        console.log(response);
-    }
+        console.log(billing)
+        // const response = await BillingDataService.postBilling(billing);
+        window.open('https://www.youtube.com/watch?v=IjWuRvHyS3Q', '_blank').focus();
+        window.location.href = "/";
+    };
+
+    useEffect(() => { dispatch(getTotal()) }, [cart])
     
     return (
         <aside>
@@ -110,10 +119,10 @@ const OrderSummary = () => {
                                     </tr>
                                     <div className="order-summary_nav">
                                         <a href="/cart" className="previous-link">
-                                            <span className="previous-link_content">Quay ve gio hang</span>
+                                            <span className="previous-link_content">Quay trở về giỏ hàng</span>
                                         </a>
                                         <div className="order-summary_nav-btn">
-                                            <Button className="complete-order-button" onClick={handlesubmit}>Hoan tat</Button>
+                                            <Button className="complete-order-button" onClick={handlesubmit}>Hoàn tất</Button>
                                         </div> 
                                     </div>  
                                 </tfoot>
