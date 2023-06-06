@@ -40,7 +40,8 @@ async function getBillingByEmail(emailR) {
 async function createBilling(newBilling) {
   try {
     const billing = new Billing(newBilling);
-    return await billing.save();
+    billing.save();
+	  return billing._id
   } catch (error) {
     throw error;
   }
