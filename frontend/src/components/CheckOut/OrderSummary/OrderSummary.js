@@ -36,8 +36,8 @@ const OrderSummary = () => {
             type: "credit_card"
             }
         },
-        // user_id: user_id,
-        // user_name: user_name,   
+        user_id: user.userId,
+        user_name: user.userName,   
     } );
 
     const handlesubmit = async(e)=>{
