@@ -8,24 +8,23 @@ const userSchema = new mongoose.Schema({
   },
   date: {
     type: Date,
-  },
-  avatar: {
-    type: String,
-  },
-  isAuth: {
-    type: Boolean,
+    default: Date.now,
+    require: true
   },
   name: {
     type: String,
+    require: true
   },
   email: {
     type: String,
+    require: true
   },
   phoneNumber: {
     type: String,
   },
   password: {
     type: String,
+    require: true
   },
   otpNumber: {
     type: String,
@@ -35,30 +34,7 @@ const userSchema = new mongoose.Schema({
   },
   refreshToken: {
     type: String,
-  },
-  billing_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "Billing",
-  },
-  __v: {
-    type: Number,
-    default: 0,
-  },
-  idWishList: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Course",
-    },
-  ],
-  purchasedCourses: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Course",
-    },
-  ],
-  status: {
-    type: Boolean,
-  },
+  }
 });
 
 const User = mongoose.model("User", userSchema);

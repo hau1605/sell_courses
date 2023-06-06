@@ -5,14 +5,9 @@ import { connectDB } from "./db/connection.js";
 import cors from "cors";
 import {
   coursesRoutes,
-  cartRoutes,
-  categoriesRoutes,
-  topicsRoutes,
   usersRoutes,
   loginRoutes,
   lecturersRoutes,
-  topWeeksRoutes,
-  facebookUsersRoutes,
   billingRoutes,
 } from "./routes/index.js";
 import * as models from "./models/index.js";
@@ -49,7 +44,6 @@ const start = async () => {
   const adminOptions = {
     resources: [
       models.courseModel,
-      models.cartModel,
       models.userModel,
       models.lecturerModel,
       models.billingModel,
@@ -83,14 +77,9 @@ const start = async () => {
 
   // Routes
   app.use("/api/courses", coursesRoutes);
-  app.use("/api/cart", cartRoutes);
-  app.use("/api/categories", categoriesRoutes);
-  app.use("/api/topics", topicsRoutes);
   app.use("/api/users", usersRoutes);
   app.use("/api", loginRoutes);
   app.use("/api/lecturers", lecturersRoutes);
-  app.use("/api/topWeeks", topWeeksRoutes);
-  app.use("/api/facebookUsers", facebookUsersRoutes);
   app.use("/api/billings", billingRoutes);
   app.get("/api/check-token", (req, res) => {
     const token = req.headers.authorization;
