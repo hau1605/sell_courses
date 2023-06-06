@@ -100,7 +100,7 @@ const Cart = () => {
 
                         <Row style={{ display: 'flex',justifyContent:'center',margin:'auto' }}>
                             <Link to='/ProductList' style={{margin:'auto' }} className='btn-all cart-btn-continue'>TIẾP TỤC MUA HÀNG</Link>
-                            <Link to="/oder" className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</Link>
+                            <Link to="/order" className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</Link>
                         </Row>
                     </Row>
                 </Col>
