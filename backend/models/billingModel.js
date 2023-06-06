@@ -51,6 +51,9 @@ const billingSchema = new mongoose.Schema({
           course_name: {
             type: String,
           },
+          course_pic: {
+            type: String,
+          },
           course_price: {
             type: Number,
           },

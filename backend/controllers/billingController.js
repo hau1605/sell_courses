@@ -38,7 +38,7 @@ async function getBillingById(req, res) {
     return res.status(400).send(`Invalid ID: ${id}`);
   }
 
-  billingDAO.getBillingById(id, (err, billing) => {
+  billingDAO.findById(id, (err, billing) => {
     if (err) {
       return res.status(500).send(err);
     }
@@ -153,7 +153,7 @@ async function createBillingDocument(user_id, user_name, email, orders) {
   const order = await createOrder(orders);
   billingData.orders.push(order);
 
-  await billingDAO.createBilling(billingData, (err) => {
+  return  billingDAO.createBilling(billingData, (err) => {
     if (err) {
       return res.status(500).send(err);
     }
@@ -171,29 +171,31 @@ async function updateBillingDocument(user_id, orders) {
     if (err) {
       return res.status(500).send(err);
     }
+	  return userBillingDoc._id
   });
 }
 
 async function purchase(req, res) {
   const { user_id, user_name, email, orders } = req.body;
+	let billId
   try {
     // Check if user_id exists in the billing collection
     const exists = await billingDAO.userExists(user_id);
     if (exists) {
       // User exists in billing collection -> update orders array
-      await updateBillingDocument(user_id, orders);
+      billId = await updateBillingDocument(user_id, orders);
     } else {
       // User does not exist in billing collection -> create a new billing document
-      await createBillingDocument(user_id, user_name, email, orders);
+      billId = await createBillingDocument(user_id, user_name, email, orders);
     }
     // Return HTTP OK if the operation is successful
-    const result = {
+    const payUrl = {
       paymentUrl: momoUrl
     };
-    res.status(200).json(result);
+    res.status(200).json(payUrl);
 
     // add purchased course to user.purchasedCourses
-    userDAO.addtopurchasedCourses(user_id, orders.items);
+    userDAO.addtopurchasedCourses(user_id, orders.items, billId);
 
     //TODO: send thank you for purchasing email
   } catch (error) {

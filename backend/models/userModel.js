@@ -1,58 +1,66 @@
-import mongoose from 'mongoose';
-import Course from './courseModel.js';
+import mongoose from "mongoose";
+import Course from "./courseModel.js";
+import Billing from "./billingModel.js"
 
 const userSchema = new mongoose.Schema({
   gender: {
-    type: String
+    type: String,
   },
   date: {
-    type: Date
+    type: Date,
   },
   avatar: {
-    type: String
+    type: String,
   },
   isAuth: {
-    type: Boolean
+    type: Boolean,
   },
   name: {
-    type: String
+    type: String,
   },
   email: {
-    type: String
+    type: String,
   },
   phoneNumber: {
-    type: String
+    type: String,
   },
   password: {
-    type: String
+    type: String,
   },
   otpNumber: {
-    type: String
+    type: String,
   },
   expiryTime: {
-    type: Date
+    type: Date,
   },
   refreshToken: {
-    type: String
+    type: String,
+  },
+  billing_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Billing",
   },
   __v: {
     type: Number,
-    default: 0
+    default: 0,
   },
-  idWishList: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Course'
-  }],
-  purchasedCourses: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Course'
-  }],
+  idWishList: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
+    },
+  ],
+  purchasedCourses: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Course",
+    },
+  ],
   status: {
-    type: Boolean
-  }
+    type: Boolean,
+  },
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 
 export default User;
-
