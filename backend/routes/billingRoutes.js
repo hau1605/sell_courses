@@ -6,6 +6,9 @@ import * as billingController from '../controllers/billingController.js';
 // GET /api/billings
 router.get("/", billingController.getBillings);
 
+// GET /api/billings
+router.post("/validate", billingController.validate);
+
 // POST /api/billings
 router.post("/", billingController.createBilling);
 

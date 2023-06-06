@@ -20,6 +20,12 @@ async function getBillings(req, res) {
   }
 }
 
+// 
+async function validate(req, res) {
+  const orderId = req.params.orderId;
+  console.log(orderId)
+}
+
 // POST /api/billings
 async function createBilling(req, res) {
   const billing = billingDAO.createBilling(req.body, (err) => {
@@ -62,7 +68,9 @@ async function getBillingByEmail(req, res) {
 
     orders.forEach((order) => {
       const items = order.items;
-      userItems.push(...items);
+      if(order.status === "success") {
+        userItems.push(...items);
+      }
     });
 
     return res.status(200).json(userItems);
@@ -208,6 +216,7 @@ async function purchase(req, res) {
 
 export {
   getBillings,
+  validate,
   getBillingById,
   getBillingByEmail,
   createBilling,
