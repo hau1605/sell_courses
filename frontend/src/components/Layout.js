@@ -50,7 +50,7 @@ const WebLayout = () => {
             <Header style={{ zIndex: 1 }} >Header</Header>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/ProductDetail" element={<ProductDetail />} />
+              <Route path="/ProductDetail/:id" element={<ProductDetail />} />
               <Route path="/Cart" element={<Cart />} />
               <Route path='/Contact' element={<Contact />} />
               <Route path='/SearchPage/:_searchName' element={<SearchPage />} />

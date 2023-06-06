@@ -43,14 +43,14 @@ const Product = (props) => {
   return (
     <div>
       <Card className="Card">
-        <Link to='/ProductDetail'>
+        <Link to={`/ProductDetail/${props.product._id}`}>
           <Card.Img className="card-img" onClick={()=>{updateView();dispatch(viewedItem(product))}} variant="top" src={props.product.poster} />
           </Link>
         <Card.Body style={{ textAlign: 'left', padding: '0' }}>
           {level === "normal" && <div className="btn-level-normal text-mb-10" >Cơ bản</div>}
           {level === "medium" && <div className="btn-level-medium text-mb-10" >Mọi cấp độ</div>}
           {level === "hard" && <div className="btn-level-hard text-mb-10" >Nâng cao</div>}
-          <Link to='/ProductDetail' className="link"><Card.Title className="text-tittle" onClick={()=>{updateView();dispatch(viewedItem(product))}}>{props.product.name}</Card.Title></Link>
+          <Link to={`/ProductDetail/${props.product._id}`} className="link"><Card.Title className="text-tittle" onClick={()=>{updateView();dispatch(viewedItem(product))}}>{props.product.name}</Card.Title></Link>
           <Card.Text className="text-des">
             {props.product.categories}
           </Card.Text>
