@@ -65,7 +65,9 @@ const Cart = () => {
 
                         <Col style={{ display: 'flex', justifyContent: 'right' }}>
                             <Link to='/ProductList' className='btn-all cart-btn-continue'>TIẾP TỤC MUA HÀNG</Link>
-                            <Link to="/order" className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</Link>
+                            {cart.length===0?<Link to="/" className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</Link>:
+                            <Link to="/order" className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</Link>}
+                            
                         </Col>
                     </Row>
 
@@ -100,7 +102,8 @@ const Cart = () => {
 
                         <Row style={{ display: 'flex',justifyContent:'center',margin:'auto' }}>
                             <Link to='/ProductList' style={{margin:'auto' }} className='btn-all cart-btn-continue'>TIẾP TỤC MUA HÀNG</Link>
-                            <Link to="/order" className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</Link>
+                            {cart.length===0?<Link to="/" className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</Link>:
+                            <Link to="/order" className='btn-all cart-btn-checkout'>THỰC HIỆN THANH TOÁN</Link>}
                         </Row>
                     </Row>
                 </Col>
