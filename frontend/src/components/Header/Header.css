@@ -508,6 +508,9 @@
     background: #929292;
 }
 
+.header .account_header a.btns::before {
+    display: none;
+}
 
 /* Responsive */
 
