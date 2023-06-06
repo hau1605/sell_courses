@@ -1,7 +1,9 @@
 import * as billingDAO from "../dao/billingsDAO.js";
 import * as userDAO from "../dao/usersDAO.js";
+import { createMoMoPayment } from "../payment/momo.js";
 import mongoose from "mongoose";
 
+let momoUrl;
 // GET /api/billings
 async function getBillings(req, res) {
   try {
@@ -76,7 +78,8 @@ async function deleteBillingById(req, res) {
 
 async function createOrder(orders) {
   let total_amount = 0;
-  let orderStatus = await verifyOrders(orders);
+  const orderStatus = "Pending";
+  let purchased_courses = "Thanh toan cho khoa hoc: ";
   const order = {
     order_id: new mongoose.Types.ObjectId(),
     payment_method: {
@@ -98,9 +101,17 @@ async function createOrder(orders) {
       course_price: orders.items[j].course_price,
     };
     total_amount += orders.items[j].course_price;
+    purchased_courses += orders.items[j].course_name + " ";
     order.items.push(item);
   }
   order.total_amount = total_amount;
+  if (orders.payment_method.type == "momo") {
+    momoUrl = await createMoMoPayment(
+      order.order_id,
+      purchased_courses,
+      Math.ceil(total_amount)
+    );
+  }
 
   return order;
 }
@@ -150,7 +161,10 @@ async function purchase(req, res) {
       await createBillingDocument(user_id, user_name, email, orders);
     }
     // Return HTTP OK if the operation is successful
-    res.status(200).send("Success");
+    const result = {
+      paymentUrl: momoUrl
+    };
+    res.status(200).json(result);
 
     // add purchased course to user.purchasedCourses
     userDAO.addtopurchasedCourses(user_id, orders.items);
@@ -161,14 +175,6 @@ async function purchase(req, res) {
     console.error(error);
     res.status(500).send("Internal Server Error");
   }
-}
-
-async function verifyOrders(orders) {
-  //pseudo verify payment function
-  if (orders.items.length === 0) {
-    return "failed";
-  }
-  return "success";
 }
 
 export {
