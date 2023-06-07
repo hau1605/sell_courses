@@ -8,7 +8,7 @@ const createMoMoPayment = async (orderId, orderInfo, amount) => {
   const requestId = partnerCode + new Date().getTime();
   // const redirectUrl = "https://momo.vn/return";
   const redirectUrl = "http://localhost:3000";
-  const ipnUrl = "https://3fb5f16e4e1887.lhr.life/api/billings/validate";
+  const ipnUrl = "http://52.74.237.230:8000/api/billings/validate";
   const requestType = "captureWallet";
   const extraData = "";
 
