@@ -33,7 +33,7 @@ const VideoPage = (props) => {
 			}, {
 			  headers: {
 				'Content-Type': 'application/json',
-				'Authorization': 'Bearer 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',
+				'Authorization': 'Bearer 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',
 			  },
 			});
 	  
