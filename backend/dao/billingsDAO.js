@@ -5,6 +5,26 @@ async function findAll() {
   return Billing.find();
 }
 
+async function getOrdersByStatusAndUserId(status, userId){
+  try {
+    const billing = await Billing.find({
+      "orders.status": status,
+      user_id: userId
+    });
+    if (billing) {
+      const matchingOrders = billing.reduce((orders, bill) => {
+        const userOrders = bill.orders.filter((order) => order.status === status);
+        return orders.concat(userOrders);
+      }, []);
+      return matchingOrders;
+    }
+    return [];
+  } catch (error) {
+    console.error("Error retrieving orders by status and user ID:", error);
+    throw error;
+  }
+};
+
 async function getItemsForUser(user_id) {
   try {
     const billingDocument = await Billing.findOne({ user_id }).exec();
@@ -128,5 +148,6 @@ export {
   getItemsForUser,
   getBillingByEmail,
   updateOrderStatus,
+  getOrdersByStatusAndUserId,
   findEmailByOrderId,
 };
