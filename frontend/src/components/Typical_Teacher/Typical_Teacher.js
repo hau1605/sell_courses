@@ -31,7 +31,7 @@ const Typical_Teacher = () => {
   const Item = ({ lecturer }) => {
     return (
       <Col>
-        <Card className ='lec-card' style={{ width: 'auto', margin:'auto'} } >
+        <Card className ='lec-card' style={{ width: '325px', margin:'10px'} } >
           <Link to={"/lecturers/"+lecturer._id}>
             <Card.Img src={lecturer.avatar} className='lec-img'/>
             <Card.Body>
@@ -77,18 +77,18 @@ const Typical_Teacher = () => {
         renderDotsOutside={false}
         responsive={{
           desktop: {
-            breakpoint: { max: 3000, min: 1024 },
+            breakpoint: { max: 2560, min: 1024 },
             items: 4,
             partialVisibilityGutter: 40
           },
           mobile: {
-            breakpoint: { max: 464, min: 0 },
+            breakpoint: { max: 767, min: 0 },
             items: 1,
             partialVisibilityGutter: 30
           },
           tablet: {
-            breakpoint: { max: 1024, min: 464 },
-            items: 3,
+            breakpoint: { max: 1024, min: 767 },
+            items: 2,
             partialVisibilityGutter: 30
           }
         }}      
