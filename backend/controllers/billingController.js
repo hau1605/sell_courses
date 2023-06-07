@@ -2,6 +2,7 @@ import * as billingDAO from "../dao/billingsDAO.js";
 import * as userDAO from "../dao/usersDAO.js";
 import { createMoMoPayment } from "../payment/momo.js";
 import mongoose from "mongoose";
+import nodemailer from 'nodemailer';
 
 let momoUrl;
 // GET /api/billings
@@ -18,6 +19,40 @@ async function getBillings(req, res) {
     console.error("Failed to retrieve billings:", error);
     return res.status(500).send(error);
   }
+}
+
+// 
+async function validate(req, res) {
+  const orderId = req.params.orderId;
+  console.log(orderId)
+
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: "minhhau.uit@gmail.com",
+      pass: "vyzgpxblasanronc",
+    },
+  });
+
+  const mailOptions = {
+    to: email,
+    subject: "Thư cảm ơn <3",
+    html: `<h6>Bạn đã mua khóa học thành công!!!</h6>`,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error(error);
+      return res.status(500).json({ message: "Lỗi gửi email" });
+    } else {
+      console.log("Email sent: " + info.response);
+      res.json({
+        message: "Thư đã được gửi đến địa chỉ email của bạn",
+      });
+    }
+  });
 }
 
 // POST /api/billings
@@ -62,7 +97,9 @@ async function getBillingByEmail(req, res) {
 
     orders.forEach((order) => {
       const items = order.items;
-      userItems.push(...items);
+      if(order.status === "success") {
+        userItems.push(...items);
+      }
     });
 
     return res.status(200).json(userItems);
@@ -125,6 +162,7 @@ async function createOrder(orders) {
       course_id: orders.items[j].course_id,
       course_name: orders.items[j].course_name,
       course_price: orders.items[j].course_price,
+      course_pic: orders.items[j].course_pic,
     };
     total_amount += orders.items[j].course_price;
     purchased_courses += orders.items[j].course_name + " ";
@@ -207,6 +245,7 @@ async function purchase(req, res) {
 
 export {
   getBillings,
+  validate,
   getBillingById,
   getBillingByEmail,
   createBilling,

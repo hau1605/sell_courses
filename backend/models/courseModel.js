@@ -10,29 +10,21 @@ const courseSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  evaluationPoint: {
-    type: Number,
-    default: 0
-  },
-  numberOfStudent: {
-    type: Number,
-    default: 0
+  level: {
+    type: String,
+    required: true
   },
   numberOfView: {
     type: Number,
     default: 0
   },
-  tuition: {
+  cost: {
     type: Number,
     required: true
   },
   uploadDate: {
     type: Date,
     default: Date.now
-  },
-  previewIndex: {
-    type: [Number],
-    default: []
   },
   whatYoullLearn: {
     type: [String],
@@ -42,34 +34,15 @@ const courseSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  idCourseTopic: {
-    type: mongoose.Schema.Types.ObjectId
+  categories: {
+    type: String,
+    required: true
   },
   idLecturer: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Lecturer',
     required: true
-  },
-  videos: [{
-    name: {
-      type: String,
-      required: true
-    },
-    source: {
-      type: String,
-      required: true
-    }
-  }],
-  userEvaluations: [{
-    type: mongoose.Schema.Types.ObjectId,
-  }],
-  numberOfVideo: {
-    type: Number,
-    default: 0
-  },
-  userReviews: [{
-    type: mongoose.Schema.Types.ObjectId,
-  }]
+  }
 });
 
 const Course = mongoose.model('Course', courseSchema);
