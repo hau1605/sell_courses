@@ -99,9 +99,10 @@ async function getBillingByEmail(req, res) {
     const billing = await billingDAO.getBillingByEmail(emailR);
 
     if (!billing) {
+      let arr=[]
       return res
-        .status(404)
-        .json({ message: "Không tìm thấy hóa đơn người dùng!" });
+        .status(200)
+        .json(arr);
     }
 
     const orders = billing.orders;

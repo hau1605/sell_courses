@@ -1,26 +1,28 @@
 import React, { useEffect } from "react";
-import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import { useState } from "react";
 import Card from 'react-bootstrap/Card';
-import Button from "react-bootstrap/esm/Button";
 import './Product.css';
 import { Link, Route } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import { useDispatch,useSelector } from "react-redux";
 import { FaCartPlus } from 'react-icons/fa';
 import CoursesDataService from "../../services/CoursesDataService";
+import BillingDataService from "../../services/BillingDataService";
 import { VariantType, useSnackbar } from 'notistack';
 import { addToCart,viewedItem } from "../../features/cartSlice"
 import { FaEye } from 'react-icons/fa';
 import { MdOutlineDateRange } from 'react-icons/md';
 const Product = (props) => {
   const { cart } = useSelector((state) => state.Allcart)
+  const user  = useSelector((state) => state.user)
+  const [MyProducts,setMyproducts]=useState([])
   const dispatch = useDispatch();
   const [level, setLevel] = useState('');
   const { enqueueSnackbar } = useSnackbar();
   let product={...props.product};
   const handleClickVariant = (variant) => () => {
+
     if (cart.filter(item=>item._id===props.product._id).length!==0)
       {variant='warning';
         enqueueSnackbar('Khóa học đã có trong giỏ hàng', { variant });
@@ -32,10 +34,30 @@ const Product = (props) => {
   const updateView=()=>{
     product.numberOfView++;
     CoursesDataService.updateCourseById(product._id,product)
-    .then(
-
-    )
+   
   }
+  const handleClickAdd=()=>{
+    BillingDataService.getBilling(user.email)
+    .then((data)=>{
+      console.log('tytjtjy',data.data)
+      let variant
+   if (data.data.filter(item=>item.course_id===props.product._id).length===0&&cart.filter(item=>item._id===props.product._id).length===0)
+    {   
+      variant='success';
+      enqueueSnackbar('Thêm vào giỏ hàng thành công', { variant });
+      dispatch(addToCart(props.product))
+    }
+   else if (data.data.filter(item=>item.course_id===props.product._id).length!==0){
+    variant='warning';
+    enqueueSnackbar('Khóa học này đã được thanh toán!', { variant });
+  }else{
+    variant='warning';
+    enqueueSnackbar('Khóa học đã có trong giỏ hàng!', { variant });
+  }
+   })
+
+  }
+
   useEffect(() => {
     setLevel(props.product.level)
   })
@@ -67,8 +89,8 @@ const Product = (props) => {
               
               <p className="card-text-date-view" style={{ margin:'auto 0' }}>{d.toLocaleDateString("vi-VI")}</p>
             </Col>
-            <Col onClick={handleClickVariant("success")} style={{ display: 'flex', justifyContent: 'right' }}>
-              <FaCartPlus className="product-cart-icon" style={{ margin: '0 0px 0 0',  cursor: 'pointer' }} onClick={() => {dispatch(addToCart(props.product))}} />
+            <Col style={{ display: 'flex', justifyContent: 'right' }}>
+              <FaCartPlus className="product-cart-icon" style={{ margin: '0 0px 0 0',  cursor: 'pointer' }} onClick={handleClickAdd} />
             </Col>
           </Row>
         </Card.Body>

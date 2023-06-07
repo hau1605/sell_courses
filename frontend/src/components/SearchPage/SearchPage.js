@@ -17,9 +17,6 @@ const SearchPage = () => {
         CoursesDataService.getCourseByName(_searchName)
             .then(res => {
                 setCourseResult(res.data)
-                //setCountResult(res.data.totalCount)
-
-                console.log(courseResult,_searchName,res)
             })
 
     }, [courseResult,countResult])
