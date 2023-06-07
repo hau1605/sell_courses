@@ -2,7 +2,7 @@ import * as billingDAO from "../dao/billingsDAO.js";
 import * as userDAO from "../dao/usersDAO.js";
 import { createMoMoPayment } from "../payment/momo.js";
 import mongoose from "mongoose";
-import nodemailer from 'nodemailer';
+import nodemailer from "nodemailer";
 
 let momoUrl;
 // GET /api/billings
@@ -21,10 +21,10 @@ async function getBillings(req, res) {
   }
 }
 
-// 
+//
 async function validate(req, res) {
-  const orderId = req.params.orderId;
-  console.log(orderId)
+  const { orderId, orderInfo, message, amount } = req.body;
+  await billingDAO.updateOrderStatus(orderId, message);
 
   const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
@@ -35,11 +35,21 @@ async function validate(req, res) {
       pass: "vyzgpxblasanronc",
     },
   });
+  const email = await billingDAO.findEmailByOrderId(orderId);
+  const content =
+    "<h5>Bạn đã mua " +
+    orderInfo +
+    " thành công!!!</h5>" +
+    "<h6>Don hang #" +
+    orderId +
+    " tri gia " +
+    amount +
+    " VND";
 
   const mailOptions = {
     to: email,
     subject: "Thư cảm ơn <3",
-    html: `<h6>Bạn đã mua khóa học thành công!!!</h6>`,
+    html: content,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
@@ -85,11 +95,13 @@ async function getBillingById(req, res) {
 async function getBillingByEmail(req, res) {
   try {
     const emailR = req.params.email;
-    console.log("Controller. Email: ", emailR)
+    console.log("Controller. Email: ", emailR);
     const billing = await billingDAO.getBillingByEmail(emailR);
 
     if (!billing) {
-      return res.status(404).json({ message: "Không tìm thấy hóa đơn người dùng!" });
+      return res
+        .status(404)
+        .json({ message: "Không tìm thấy hóa đơn người dùng!" });
     }
 
     const orders = billing.orders;
@@ -97,7 +109,7 @@ async function getBillingByEmail(req, res) {
 
     orders.forEach((order) => {
       const items = order.items;
-      if(order.status === "success") {
+      if (order.status === "success") {
         userItems.push(...items);
       }
     });
@@ -191,7 +203,7 @@ async function createBillingDocument(user_id, user_name, email, orders) {
   const order = await createOrder(orders);
   billingData.orders.push(order);
 
-  return  billingDAO.createBilling(billingData, (err) => {
+  return billingDAO.createBilling(billingData, (err) => {
     if (err) {
       return res.status(500).send(err);
     }
@@ -209,13 +221,13 @@ async function updateBillingDocument(user_id, orders) {
     if (err) {
       return res.status(500).send(err);
     }
-	  return userBillingDoc._id
+    return userBillingDoc._id;
   });
 }
 
 async function purchase(req, res) {
   const { user_id, user_name, email, orders } = req.body;
-	let billId
+  let billId;
   try {
     // Check if user_id exists in the billing collection
     const exists = await billingDAO.userExists(user_id);
@@ -228,12 +240,9 @@ async function purchase(req, res) {
     }
     // Return HTTP OK if the operation is successful
     const payUrl = {
-      paymentUrl: momoUrl
+      paymentUrl: momoUrl,
     };
     res.status(200).json(payUrl);
-
-    // add purchased course to user.purchasedCourses
-    userDAO.addtopurchasedCourses(user_id, orders.items, billId);
 
     //TODO: send thank you for purchasing email
   } catch (error) {
