@@ -109,7 +109,7 @@ async function getBillingByEmail(req, res) {
 
     orders.forEach((order) => {
       const items = order.items;
-      if (order.status === "success") {
+      if (order.status === "Successful.") {
         userItems.push(...items);
       }
     });
