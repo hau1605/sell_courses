@@ -8,7 +8,7 @@ import axios from 'axios';
 import User from "../User";
 import Product from "../../Product/Product";
 import "./MyProducts.css";
-
+import { BASE_URL } from "../../../config/config";
 const MyProducts = () => {
     const { cart } = useSelector((state) => state.Allcart);
     const email = useSelector((state) => state.user.email);
@@ -16,7 +16,7 @@ const MyProducts = () => {
 
     const fetchDataCourseBilling = async () => {
         try {
-            const res = await axios.get(`http://localhost:8000/api/billings/${email}/data`);
+            const res = await axios.get(`${BASE_URL}/api/billings/${email}/data`);
             console.log('res.status: ', res.status)
             if(res.status === 200) {
                 console.log("Fetch Data Course Billing thành công: ", res.data);

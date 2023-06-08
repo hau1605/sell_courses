@@ -10,7 +10,7 @@ import FullPageLoader from '../FullPageLoader/FullPageLoader';
 import { setNullEmailResetPassword } from "../../features/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-
+import { BASE_URL } from "../../config/config";
 const ResetPass = () => {
     const [isResetPasswordFormVisible, setIsResetPasswordFormVisible] = useState(false);
     const [verificationCode, setVerificationCode] = useState("");
@@ -52,7 +52,7 @@ const ResetPass = () => {
         try {
             console.log(emailResetPassword);
             console.log(verificationCode);
-            const response = await axios.post('http://localhost:8000/api/reset-password/confirmOtp', { emailResetPassword,verificationCode });
+            const response = await axios.post(`${BASE_URL}/api/reset-password/confirmOtp`, { emailResetPassword,verificationCode });
             console.log(response.status);
             if (response.status === 200) {
                 console.log('Mã xác nhận đúng. ', response.data.message);
@@ -84,7 +84,7 @@ const ResetPass = () => {
         event.preventDefault();
         setIsLoading(true);
         try {
-            const response = await axios.post('http://localhost:8000/api/reset-password', { emailResetPassword, password });
+            const response = await axios.post(`${BASE_URL}/api/reset-password`, { emailResetPassword, password });
             console.log(response.status);
             if (response.status === 200) {
                 // setSuccess(true);

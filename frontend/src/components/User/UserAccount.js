@@ -9,7 +9,7 @@ import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
 import "./UserAccount.css";
 import FullPageLoader from "../FullPageLoader/FullPageLoader";
-
+import { BASE_URL } from "../../config/config";
 const UserAccount=()=>{
     const email = useSelector((state) => state.user.email);
     const [user, setUser] = useState({});
@@ -23,7 +23,7 @@ const UserAccount=()=>{
 
     const fetchUserData = async () => {
         try {
-            const res = await axios.get(`http://localhost:8000/api/users/${email}/data`);
+            const res = await axios.get(`${BASE_URL}/api/users/${email}/data`);
             setUser(res.data);
             setPhoneNumber(res.data.phoneNumber);
             setName(res.data.name);
@@ -65,7 +65,7 @@ const UserAccount=()=>{
     event.preventDefault();
     setIsLoading(true);
     try {
-        const res = await axios.put(`http://localhost:8000/api/users/${email}`, {
+        const res = await axios.put(`${BASE_URL}/api/users/${email}`, {
             phoneNumber,
             name,
             gender,

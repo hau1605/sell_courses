@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import FullPageLoader from "../FullPageLoader/FullPageLoader";
 import './Register.css'
+import { BASE_URL } from '../../config/config';
 const Register = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -63,7 +64,7 @@ const Register = () => {
         event.preventDefault();
         setIsLoading(true);
         try {
-            const response = await axios.post('http://localhost:8000/api/users/', {email, password, fullName, phoneNumber});
+            const response = await axios.post(`${BASE_URL}/api/users/`, {email, password, fullName, phoneNumber});
             if (response.status === 201) {
                 console.log('Đăng ký thành công:', response.data.message);
                 setShow(false);

@@ -9,7 +9,7 @@ import './UserPassword.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import FullPageLoader from "../FullPageLoader/FullPageLoader";
-
+import { BASE_URL } from "../../config/config";
 const UserPassword=()=>{
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
@@ -47,7 +47,7 @@ const UserPassword=()=>{
             console.log("Tài khoản: ",email);
             console.log(newPassword);
             console.log(confirmPassword);
-            const response = await axios.put(`http://localhost:8000/api/users/${email}/change-password`, { oldPassword, newPassword });
+            const response = await axios.put(`${BASE_URL}/api/users/${email}/change-password`, { oldPassword, newPassword });
             console.log(response.data);
             if(response.status === 200) {
                 console.log("Đổi mật khẩu thành công");

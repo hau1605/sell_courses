@@ -6,7 +6,7 @@ class BillingDataService {
         return axios.post(`${BASE_URL}/api/billings/purchase`, (billings))
     }
     getBilling(email) {
-        return axios.get(`http://localhost:8000/api/billings/${email}/data`);
+        return axios.get(`${BASE_URL}/api/billings/${email}/data`);
     }
    
 }       

@@ -12,6 +12,8 @@ import FullPageLoader from "../FullPageLoader/FullPageLoader";
 import Cookies from 'js-cookie';
 import UserDataService from '../../services/UserDataService';
 import "./Login.css";
+import { BASE_URL } from "../../config/config";
+
 const Login=()=>{
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -87,7 +89,7 @@ const Login=()=>{
         event.preventDefault();
         setIsLoading(true);
         try {
-            const response = await axios.post('http://localhost:8000/api/forgot-password', { email });
+            const response = await axios.post(`${BASE_URL}/api/forgot-password`, { email });
             if (response.status === 200) {
                 setShowErr(false)
                 dispatch(setEmailResetPassword(email));

@@ -7,6 +7,7 @@ import './Video.css';
 import axios from 'axios'
 import Form from 'react-bootstrap/esm/Form'
 import Button from 'react-bootstrap/Button'
+import { BASE_URL } from '../../config/config';
 const VideoPage = (props) => {
 	//Chat GPT
 		const [question, setQuestion] = useState('');
@@ -51,7 +52,7 @@ const VideoPage = (props) => {
 
 	const courseContent = async () => {
 		try {
-			const res = await axios.get(`http://localhost:8000/api/courses/content/${location.state.course.course_id}`)
+			const res = await axios.get(`${BASE_URL}/api/courses/content/${location.state.course.course_id}`)
 			if(res.status === 200) {
 				console.log("Get courseContent thành công: ", res.data.content)
 				setCourse(res.data.content)
