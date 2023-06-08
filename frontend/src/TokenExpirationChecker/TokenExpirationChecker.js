@@ -6,7 +6,7 @@ import Button from 'react-bootstrap/Button';
 import { logoutSuccess } from '../features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import {base_url} from '../config/config'
+import {BASE_URL} from '../config/config'
 const TokenExpirationChecker = () => {
   const [isTokenExpired, setTokenExpired] = useState(false);
   const [show, setShow] = useState(false);
@@ -20,7 +20,7 @@ const TokenExpirationChecker = () => {
         try {
           console.log("isLoggedIn: ", isLoggedIn);
           console.log("Token from Cookie: ", Cookies.get('token'));
-          const response = await axios.get(`${base_url}/api/check-token`, {
+          const response = await axios.get(`${BASE_URL}/api/check-token`, {
             headers: {
               Authorization: Cookies.get('token'),
             },
