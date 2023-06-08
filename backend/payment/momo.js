@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { createHmac } from 'crypto';
-import { BASE_URL } from '../../frontend/src/config/config';
 const createMoMoPayment = async (orderId, orderInfo, amount) => {
   const partnerCode = "MOMO";
   const accessKey = "F8BBA842ECF85";
@@ -8,7 +7,7 @@ const createMoMoPayment = async (orderId, orderInfo, amount) => {
   const requestId = partnerCode + new Date().getTime();
   // const redirectUrl = "https://momo.vn/return";
 
-  const redirectUrl = `${BASE_URL}`;
+  const redirectUrl = `http://localhost:3000/`;
   const ipnUrl = "http://52.74.237.230:8000/api/billings/validate";
   const requestType = "captureWallet";
   const extraData = "";
