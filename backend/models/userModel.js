@@ -9,22 +9,22 @@ const userSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now,
-    require: true
   },
   name: {
     type: String,
-    require: true
+    required: true
   },
   email: {
     type: String,
-    require: true
+    required: true
   },
   phoneNumber: {
     type: String,
+    required: true
   },
   password: {
     type: String,
-    require: true
+    required: true
   },
   otpNumber: {
     type: String,

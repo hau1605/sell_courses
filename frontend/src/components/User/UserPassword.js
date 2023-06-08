@@ -37,6 +37,7 @@ const UserPassword=()=>{
     const handleSubmit = async (event) => {
         event.preventDefault();
         setIsLoading(true);
+        setError("");
         if (newPassword !== confirmPassword) {
             console.log("Mật khẩu nhập lại không trùng khớp");
             setError('Mật khẩu nhập lại không trùng khớp');
@@ -48,25 +49,21 @@ const UserPassword=()=>{
             console.log(newPassword);
             console.log(confirmPassword);
             const response = await axios.put(`${BASE_URL}/api/users/${email}/change-password`, { oldPassword, newPassword });
-            console.log(response.data);
+            console.log("response: ", response);
             if(response.status === 200) {
                 console.log("Đổi mật khẩu thành công");
                 setShow(true);
                 setIsLoading(false);
-            } else if (response.status === 401) {
-                console.log("Mật khẩu cũ không chính xác");
-                setError('Mật khẩu cũ không chính xác');
-                setIsLoading(false);
             } else {
-                console.log("Đổi mật khẩu không thành công: ", response.data.error );
-                setError('Đổi mật khẩu không thành công');
+                console.log("Mật khẩu cũ không chính xác", response.data.error);
+                setError('Mật khẩu cũ không chính xác');
                 setIsLoading(false);
             }
         } catch (err) {
-            console.error("Lỗi yêu cầu đổi mật khẩu: ",error);
+            console.log("Lỗi yêu cầu đổi mật khẩu: ",err);
             setShow(false);
             setIsLoading(false);
-            setError("Lỗi yêu cầu đổi mật khẩu: ", error.response.data.message);
+            setError(`${err.response.data.error}`);
         }
     }
 
