@@ -12,6 +12,7 @@ import { VariantType, useSnackbar } from 'notistack';
 import { useDispatch, useSelector } from "react-redux";
 import './ProductDetail.css'
 import CoursesDataService from "../../services/CoursesDataService";
+import BillingDataService from "../../services/BillingDataService";
 import { Button, FormGroup } from "react-bootstrap";
 import { addToCart, viewedItem } from "../../features/cartSlice"
 
@@ -19,20 +20,34 @@ const ProductDetail = (props) => {
     let d = new Date;
     const { viewedItem } = useSelector((state) => state.Allcart)
     const { cart } = useSelector((state) => state.Allcart)
+    const user = useSelector((state) => state.user)
     const dispatch = useDispatch();
     const [level, setLevel] = useState('');
     const { enqueueSnackbar } = useSnackbar();
     const [product, setProducts] = useState(null);
     const { id } = useParams();
-    const handleClickVariant = (variant) => () => {
-        if (cart.filter(item => item._id === product._id).length !== 0) {
-            variant = 'warning';
-            enqueueSnackbar('Khóa học đã có trong giỏ hàng', { variant });
-            return;
+    
+    const handleClickAdd=()=>{
+        BillingDataService.getBilling(user.email)
+        .then((data)=>{
+          console.log('tytjtjy',data.data)
+          let variant
+       if (data.data.filter(item=>item.course_id===product._id).length===0&&cart.filter(item=>item._id===product._id).length===0)
+        {   
+          variant='success';
+          enqueueSnackbar('Thêm vào giỏ hàng thành công', { variant });
+          dispatch(addToCart(product))
         }
-        // variant could be success, error, warning, info, or default
-        enqueueSnackbar('Thêm vào giỏ hàng thành công', { variant });
-    };
+       else if (data.data.filter(item=>item.course_id===product._id).length!==0){
+        variant='warning';
+        enqueueSnackbar('Khóa học này đã được thanh toán!', { variant });
+      }else{
+        variant='warning';
+        enqueueSnackbar('Khóa học đã có trong giỏ hàng!', { variant });
+      }
+       })
+    
+      }
     useEffect(() => {
         CoursesDataService.getCourseById(id)
             .then((res) => {
@@ -96,9 +111,7 @@ const ProductDetail = (props) => {
                             <h2 className="cost-head">GIÁ TIỀN KHÓA HỌC</h2>
                             <p className="product-cost">{product.cost.toLocaleString('vi', { style: 'currency', currency: 'VND' })} </p><br />
                             <p className="product-cost-sales">{Math.ceil(product.cost * 1.3).toLocaleString('vi', { style: 'currency', currency: 'VND' })}</p>
-                            <div onClick={handleClickVariant("success")}>
-                                <Button className="product-cart-button" onClick={() => { dispatch(addToCart(product)) }}>Thêm vào giỏ hàng</Button>
-                            </div>
+                                <Button className="product-cart-button" onClick={handleClickAdd}>Thêm vào giỏ hàng</Button>
                             <h2 className="product-des">MÔ TẢ KHÓA HỌC</h2>
                             <p style={{ fontSize: '16px' }}>{product.description}</p>
                         </Col>

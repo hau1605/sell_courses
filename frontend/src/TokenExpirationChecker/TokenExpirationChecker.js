@@ -41,7 +41,7 @@ const TokenExpirationChecker = () => {
 
       const interval = setInterval(() => {
         checkTokenExpiration();
-      }, 600000); // 10 minute
+      }, 6000000); // 10 minute
 
       return () => {
         clearInterval(interval);

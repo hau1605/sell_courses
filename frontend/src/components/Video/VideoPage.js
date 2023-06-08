@@ -27,13 +27,13 @@ const VideoPage = (props) => {
 		  try {
 			const response = await axios.post(apiUrl, {
 			  prompt: `Question: ${question}\nAnswer:`,
-			  max_tokens: 500,
+			  max_tokens: 250,
 			  temperature: 0.6,
 			  top_p: 1,
 			}, {
 			  headers: {
 				'Content-Type': 'application/json',
-				'Authorization': 'Bearer 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',
+				'Authorization': 'Bearer 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',
 			  },
 			});
 	  
