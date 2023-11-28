@@ -10,9 +10,6 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import "./Typical_Teacher.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'swiper/css';
-import "swiper/css/free-mode";
-import facebook_logo from './facebook-logo.png'
 const Typical_Teacher = () => {
   const [lecturers, setTeacher] = useState([]);
 
@@ -66,7 +63,7 @@ const Typical_Teacher = () => {
         className=""
         containerClass="container-with-dots"
         dotListClass=""
-        draggable={false}
+        draggable={true}
         focusOnSelect={false}
         infinite={false}
         itemClass=""
