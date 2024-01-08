@@ -1,0 +1,10 @@
+.rating_container span {
+    font-size: 30px !important;
+}
+
+.rating_container button {
+    background-color: rgb(0, 188, 134);
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

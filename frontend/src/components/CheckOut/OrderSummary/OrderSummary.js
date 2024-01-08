@@ -44,9 +44,11 @@ const OrderSummary = () => {
         e.preventDefault();
         console.log(billing)
         dispatch(removeCart())
-        // const response = await BillingDataService.postBilling(billing);
-        window.open('https://www.youtube.com/watch?v=IjWuRvHyS3Q', '_blank').focus();
-        window.location.href = "/";
+        const response = await BillingDataService.postBilling(billing);
+        if(response.status === 200) {
+            console.log("response.data: ",response.data)
+            window.location.href = response.data.paymentUrl;
+        }
     };
 
     useEffect(() => { dispatch(getTotal()) }, [cart])
