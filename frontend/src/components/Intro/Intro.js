@@ -57,9 +57,9 @@ const Intro = () => {
             <section className='section-abt'>
                 <Container className='container_intro'>
                     <Row className='element'>
-                        <a href='#' title='banner'>
+                        <Link to='/' title='banner'>
                             <img className='banner' src={banner}/>
-                        </a>
+                        </Link>
                     </Row>
                     <Row className='element'>
                         <div className='abt-us'>
@@ -90,7 +90,7 @@ const Intro = () => {
                             </Row>
                             <Row>
                                 <Col style={{ textAlign: 'center' }}>
-                                    <button className='btn-all' onClick={() => navigate("/Product")}>Xem tất cả</button>
+                                    <button className='btn-all' onClick={() => navigate("/ProductList")}>Xem tất cả</button>
                                 </Col>
                             </Row>
                         </div>

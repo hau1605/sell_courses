@@ -2,6 +2,7 @@ import * as billingDAO from "../dao/billingsDAO.js";
 import * as userDAO from "../dao/usersDAO.js";
 import { createMoMoPayment } from "../payment/momo.js";
 import mongoose from "mongoose";
+import nodemailer from "nodemailer";
 
 let momoUrl;
 // GET /api/billings
@@ -18,6 +19,50 @@ async function getBillings(req, res) {
     console.error("Failed to retrieve billings:", error);
     return res.status(500).send(error);
   }
+}
+
+//
+async function validate(req, res) {
+  const { orderId, orderInfo, message, amount } = req.body;
+  await billingDAO.updateOrderStatus(orderId, message);
+
+  const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: "minhhau.uit@gmail.com",
+      pass: "vyzgpxblasanronc",
+    },
+  });
+  const email = await billingDAO.findEmailByOrderId(orderId);
+  const content =
+    "<h5>Bạn đã mua " +
+    orderInfo +
+    " thành công!!!</h5>" +
+    "<h6>Don hang #" +
+    orderId +
+    " tri gia " +
+    amount +
+    " VND";
+
+  const mailOptions = {
+    to: email,
+    subject: "Thư cảm ơn <3",
+    html: content,
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error(error);
+      return res.status(500).json({ message: "Lỗi gửi email" });
+    } else {
+      console.log("Email sent: " + info.response);
+      res.json({
+        message: "Thư đã được gửi đến địa chỉ email của bạn",
+      });
+    }
+  });
 }
 
 // POST /api/billings
@@ -50,11 +95,14 @@ async function getBillingById(req, res) {
 async function getBillingByEmail(req, res) {
   try {
     const emailR = req.params.email;
-    console.log("Controller. Email: ", emailR)
+    console.log("Controller. Email: ", emailR);
     const billing = await billingDAO.getBillingByEmail(emailR);
 
     if (!billing) {
-      return res.status(404).json({ message: "Không tìm thấy hóa đơn người dùng!" });
+      let arr=[]
+      return res
+        .status(200)
+        .json(arr);
     }
 
     const orders = billing.orders;
@@ -62,7 +110,9 @@ async function getBillingByEmail(req, res) {
 
     orders.forEach((order) => {
       const items = order.items;
-      userItems.push(...items);
+      if (order.status === "Successful.") {
+        userItems.push(...items);
+      }
     });
 
     return res.status(200).json(userItems);
@@ -125,6 +175,7 @@ async function createOrder(orders) {
       course_id: orders.items[j].course_id,
       course_name: orders.items[j].course_name,
       course_price: orders.items[j].course_price,
+      course_pic: orders.items[j].course_pic,
     };
     total_amount += orders.items[j].course_price;
     purchased_courses += orders.items[j].course_name + " ";
@@ -153,7 +204,7 @@ async function createBillingDocument(user_id, user_name, email, orders) {
   const order = await createOrder(orders);
   billingData.orders.push(order);
 
-  return  billingDAO.createBilling(billingData, (err) => {
+  return billingDAO.createBilling(billingData, (err) => {
     if (err) {
       return res.status(500).send(err);
     }
@@ -171,13 +222,13 @@ async function updateBillingDocument(user_id, orders) {
     if (err) {
       return res.status(500).send(err);
     }
-	  return userBillingDoc._id
+    return userBillingDoc._id;
   });
 }
 
 async function purchase(req, res) {
   const { user_id, user_name, email, orders } = req.body;
-	let billId
+  let billId;
   try {
     // Check if user_id exists in the billing collection
     const exists = await billingDAO.userExists(user_id);
@@ -190,12 +241,9 @@ async function purchase(req, res) {
     }
     // Return HTTP OK if the operation is successful
     const payUrl = {
-      paymentUrl: momoUrl
+      paymentUrl: momoUrl,
     };
     res.status(200).json(payUrl);
-
-    // add purchased course to user.purchasedCourses
-    userDAO.addtopurchasedCourses(user_id, orders.items, billId);
 
     //TODO: send thank you for purchasing email
   } catch (error) {
@@ -207,6 +255,7 @@ async function purchase(req, res) {
 
 export {
   getBillings,
+  validate,
   getBillingById,
   getBillingByEmail,
   createBilling,

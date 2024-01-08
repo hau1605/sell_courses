@@ -7,8 +7,12 @@ import './Video.css';
 import axios from 'axios'
 import Form from 'react-bootstrap/esm/Form'
 import Button from 'react-bootstrap/Button'
+<<<<<<< HEAD
 import CourseRating from '../Rating/CourseRating';
 
+=======
+import { BASE_URL } from '../../config/config';
+>>>>>>> origin
 const VideoPage = (props) => {
 	//Chat GPT
 	const [question, setQuestion] = useState('');
@@ -28,6 +32,7 @@ const VideoPage = (props) => {
 
 		try {
 			const response = await axios.post(apiUrl, {
+<<<<<<< HEAD
 				prompt: `Question: ${question}\nAnswer:`,
 				max_tokens: 500,
 				temperature: 0.6,
@@ -37,6 +42,17 @@ const VideoPage = (props) => {
 					'Content-Type': 'application/json',
 					'Authorization': 'Bearer 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',
 				},
+=======
+			  prompt: `Question: ${question}\nAnswer:`,
+			  max_tokens: 250,
+			  temperature: 0.6,
+			  top_p: 1,
+			}, {
+			  headers: {
+				'Content-Type': 'application/json',
+				'Authorization': 'Bearer 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',
+			  },
+>>>>>>> origin
 			});
 
 			const answer = response.data.choices[0].text.trim();
@@ -53,8 +69,13 @@ const VideoPage = (props) => {
 
 	const courseContent = async () => {
 		try {
+<<<<<<< HEAD
 			const res = await axios.get(`http://localhost:8000/api/courses/content/${location.state.course.course_id}`)
 			if (res.status === 200) {
+=======
+			const res = await axios.get(`${BASE_URL}/api/courses/content/${location.state.course.course_id}`)
+			if(res.status === 200) {
+>>>>>>> origin
 				console.log("Get courseContent thành công: ", res.data.content)
 				setCourse(res.data.content)
 				console.log("location.state.course: ", location.state.course)

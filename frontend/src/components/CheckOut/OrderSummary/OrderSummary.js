@@ -19,7 +19,8 @@ const OrderSummary = () => {
             {
                 course_id: item._id,
                 course_name: item.name,
-                course_price: item.cost
+                course_price: item.cost,
+                course_pic: item.poster
             }
         billings.push(billingItems)
         return 0;
@@ -49,6 +50,10 @@ const OrderSummary = () => {
             console.log("response.data: ",response.data)
             window.location.href = response.data.paymentUrl;
         }
+<<<<<<< HEAD
+=======
+        // window.location.href = "/";
+>>>>>>> origin
     };
 
     useEffect(() => { dispatch(getTotal()) }, [cart])

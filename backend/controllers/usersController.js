@@ -140,15 +140,15 @@ const changePassword = async (req, res) => {
     console.log("Tồn tại user?: ", existingUser ? true : false);
 
     if (!existingUser) {
-      res.status(404).json({ error: "Tài khoản không tồn tại" });
       console.log("Tài khoản không tồn tại");
+      return res.status(404).json({ error: "Tài khoản không tồn tại" });
     }
 
-    const isMatch = bcrypt.compare(oldPasswordR, existingUser.password);
+    const isMatch = await bcrypt.compare(oldPasswordR, existingUser.password);
     console.log("Mật khẩu đúng?: ", isMatch);
     if (!isMatch) {
-      res.status(401).json({ error: "Mật khẩu cũ không đúng " });
       console.log("Mật khẩu cũ không đúng ");
+      res.status(401).json({ error: "Mật khẩu cũ không đúng " });
     } else {
       // Đổi mật khẩu và lưu vào cơ sở dữ liệu
       const hashedPassword = await bcrypt.hash(newPasswordR, 10);
