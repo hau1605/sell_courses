@@ -50,10 +50,7 @@ const OrderSummary = () => {
             console.log("response.data: ",response.data)
             window.location.href = response.data.paymentUrl;
         }
-<<<<<<< HEAD
-=======
         // window.location.href = "/";
->>>>>>> origin
     };
 
     useEffect(() => { dispatch(getTotal()) }, [cart])
